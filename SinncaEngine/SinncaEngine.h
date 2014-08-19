@@ -7,7 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
+#include "Game.h"
+#include "Platform.h"
+#include "Global.h"
 
-@interface SinncaEngine : NSObject
+#ifdef snMacosx
+@interface SinncaEngine : NSOpenGLView
+{
+
+	BOOL running;
+	
+	NSTimer* timer;
+	CFAbsoluteTime engineTime;
+	sinnca::game myGame;
+}
+- (void) run: (NSTimer*)timer;
+- (void) awakeFromNib;
+- (void) drawRect:(NSRect)rect;
+- (void) resizeScreen;
+- (void) reshape;
+- (void) prepareOpenGL;
+- (void) dealloc;
 
 @end
+#endif
+
+
+
