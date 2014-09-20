@@ -40,6 +40,14 @@ namespace sinnca
 	{
 		return xy[1];
 	}
+	bool tile::getSolid()
+	{
+		return solid;
+	}
+	texture* tile::getTex()
+	{
+		return tex;
+	}
 	
 	void tile::render()
 	{
@@ -125,6 +133,11 @@ namespace sinnca
 		
 	}
 	
+	void grid::setSolid(int x, int y, bool s)
+	{
+		data[x][y].solid = s;
+	}
+	
 	void grid::setTexture(int x, int y, texture *t)
 	{
 		data[x][y].setTex(t);
@@ -161,6 +174,20 @@ namespace sinnca
 		
 		_x = data[x][y].getX();
 		_y = data[x][y].getY();
+	}
+	
+	int grid::getX()
+	{
+		return size[0];
+	}
+	int grid::getY()
+	{
+		return size[1];
+	}
+	
+	tile* grid::getTile(int x, int y)
+	{
+		return &data[x][y];
 	}
 	
 	
@@ -239,6 +266,8 @@ namespace sinnca
 		
 		
 		Script->setGlobal(n);
+		Tree->currentScene->gridRef.push_back(*gd);
+		Tree->currentScene->nodeRef.push_back(*gd);
 		return ((void*)*gd);
 	}
 	

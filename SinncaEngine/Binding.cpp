@@ -16,6 +16,8 @@
 #include "Image.h"
 #include "Texture.h"
 #include "Grid.h"
+#include "Scene.h"
+#include "Tree.h"
 
 namespace sinnca
 {
@@ -31,7 +33,9 @@ namespace sinnca
 		
 		// register node classes
 		registerEntity(L);
+		registerScene(L);
 		registerGrid(L);
+		registerTree(L);
 		
 		// register color classes
 		registerImage(L);

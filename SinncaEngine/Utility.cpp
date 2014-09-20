@@ -83,4 +83,32 @@ namespace sinnca
 		return b / 1048576000.0f;
 	}
 	
+	// endian swapping
+	
+	short endian16bit(short input)
+	{
+		short output;
+		char* swap_a = (char*) &input;
+		char* swap_b = (char*) &output;
+		
+		swap_b[0] = swap_a[1];
+		swap_b[1] = swap_a[0];
+		
+		return output;
+	}
+	
+	long endian32bit(long input)
+	{
+		long output;
+		char* swap_a = (char*)&input;
+		char* swap_b = (char*)&output;
+		
+		swap_b[0] = swap_a[2];
+		swap_b[1] = swap_a[3];
+		swap_b[2] = swap_a[0];
+		swap_b[3] = swap_a[1];
+		
+		return output;
+	}
+	
 }

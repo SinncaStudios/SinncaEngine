@@ -9,6 +9,9 @@
 #ifndef SinncaEngine_Array_h
 #define SinncaEngine_Array_h
 
+#include "Types.h"
+#include "Heap.h"
+
 namespace sinnca
 {
 	template <class t>
@@ -19,20 +22,27 @@ namespace sinnca
 			t data[10];
 		};
 		
+		
+		
 	public:
+		
+		uint size;
 		
 		array()
 		{
-			
+			size = 0;
 		}
 		~array()
 		{
 			
 		}
 		
-		t* operator []()
+		t* operator [](int i)
 		{
-			
+			if (i > size)
+			{
+				
+			}
 		}
 		
 	};

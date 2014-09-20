@@ -27,6 +27,7 @@ namespace sinnca
 		~tree();
 		
 		void setup(const char* path = "");
+		scene* getRoot();
 		//void render();
 		
 		static tree* Instance();
@@ -36,6 +37,9 @@ namespace sinnca
 		static tree* _instance;
 		
 	};
+	
+	void registerTree(lua_State* L);
+	
 }
 
 #endif /* defined(__SinncaEngine__Tree__) */

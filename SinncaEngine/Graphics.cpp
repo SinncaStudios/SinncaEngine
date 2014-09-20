@@ -13,7 +13,7 @@
 #include "TimeKeeping.h"
 
 #include "i_graphics.h"
-
+#include <math.h>
 
 #include "Global.h"
 
@@ -44,6 +44,7 @@ namespace sinnca
 		
 		
 		glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &maxTextureUnits);
+		printf("Maximum texture units supported: %i\n", (int)maxTextureUnits);
 	}
 	
 	graphics::~graphics()
@@ -237,7 +238,7 @@ namespace sinnca
 		setMatrixMode(SINNCA_PROJECTION_MATRIX);
 		loadIdentity();
 		
-		ortho(resW * 0.5f, -(resW * 0.5f), resH * 0.5f, -(resH * 0.5f), -1.0f, 1.0f);
+		ortho(-1.0f, 1.0f);
 		
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_BLEND);
@@ -299,7 +300,7 @@ namespace sinnca
 		glViewport(0, 0, resW, resH);
 		setMatrixMode(SINNCA_PROJECTION_MATRIX);
 		loadIdentity();
-		ortho(half_width, -(half_width), half_height, -(half_height), -1.0f, 1.0f);
+		ortho(-1.0f, 1.0f);
 		
 		
 		//setMatrixMode(SINNCA_MODELVIEW_MATRIX);
@@ -544,8 +545,13 @@ namespace sinnca
 		}
 	}
 	
-	void graphics::ortho(float left, float right, float up, float down, float near, float far)
+	void graphics::ortho(float near, float far)
 	{
+		float left = (float)resW * 0.5f;
+		float right = -(float)resW * 0.5f;
+		float up = (float)resH * 0.5f;
+		float down = -(float)resH * 0.5f;
+		
 		switch (matrixMode)
 		{
 			case SINNCA_MODELVIEW_MATRIX:
@@ -565,6 +571,47 @@ namespace sinnca
 				break;
 			}
 		}
+	}
+	
+	void graphics::perspective(float end,  float start = 0.1f, float fov = 35.0f)
+	{
+		m4 base;
+		float aspectRatio = (float)resW / (float)resH;
+		
+		float d = end - start,
+			  r = (fov * 0.5) * (M_PI / 180),
+			  s = sin(r),
+			  c = sin(r) / s;
+		
+		snLoadIdentity(&base);
+		
+		base.m[0].x = c / aspectRatio;
+		base.m[1].y = c;
+		base.m[2].z = -(end + start) / d;
+		base.m[2].w = -1.0f;
+		base.m[3].z = -2.0f * start * end / d;
+		base.m[3].w = 0.0f;
+		
+		switch (matrixMode)
+		{
+			case SINNCA_MODELVIEW_MATRIX:
+			{
+				multiply(getModelMatrix(), getModelMatrix(), &base);
+				break;
+				
+			}
+			case SINNCA_PROJECTION_MATRIX:
+			{
+				multiply(getProjectionMatrix(), getProjectionMatrix(), &base);
+				break;
+			}
+			case SINNCA_TEXTURE_MATRIX:
+			{
+				multiply(getTextureMatrix(), getTextureMatrix(), &base);
+				break;
+			}
+		}
+		
 	}
 	
 	void graphics::setMatrixMode(uint mode)

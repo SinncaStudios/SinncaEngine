@@ -20,7 +20,8 @@ namespace sinnca
 		image* source;
 		
 		// Offset in image atlas
-		unsigned int xOff, yOff;
+		uint xOff, yOff;
+		uint xSize, ySize;
 		
 	public:
 		
@@ -33,7 +34,12 @@ namespace sinnca
 		void operator delete(void* p);
 		
 		void setSource(image* i);
+		image* getSource();
 		void setOffset(int x, int y);
+		void setSize(int x, int y);
+		
+		void getOffset(int& x, int& y);
+		void getSize(int& x, int& y);
 		void bind();
 	};
 	

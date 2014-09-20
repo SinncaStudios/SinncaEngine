@@ -9,6 +9,7 @@
 #ifndef SinncaEngine_Types_h
 #define SinncaEngine_Types_h
 
+
 #include <cstdint>
 //#include "MemoryManager.h"
 

@@ -1,5 +1,5 @@
 print("hello from lua!")
-
+--[[
 entity:new("player")
 
 image:new("atlas")
@@ -32,13 +32,15 @@ print(i, k)
 end
 
 print("\n\n")
-
-for i, k in pairs(player) do
-print(i, k)
-end
+]]--
+_root:loadFromFile("firstScene.sinncascene")
 
 function player:update()
 	
 	
 	
 end
+
+--_root:dumpToFile("firstScene")
+
+print("done!")

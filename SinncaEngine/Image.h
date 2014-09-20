@@ -44,12 +44,13 @@ namespace sinnca
 		
 		unsigned int clients;
 		bool bound;
-		std::string name;
+		std::string name, path;
+		texBlend tb;
 		
 		image(std::string n);
 		~image();
 		
-		void load(std::string path, texBlend t);
+		void load(std::string p, texBlend t);
 		GLuint getData();
 		
 		void* operator new(size_t s, std::string n);

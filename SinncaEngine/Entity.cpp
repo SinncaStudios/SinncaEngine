@@ -33,6 +33,7 @@ namespace sinnca
 		scl.z = 1.0f;
 		
 		col = &Palette->white;
+		m = NULL;
 		Tree->currentScene->addChild(this);
 		parent = Tree->currentScene;
 		
@@ -58,6 +59,7 @@ namespace sinnca
 		
 	}
 	
+	
 	void entity::render()
 	{
 		Graphics->loadIdentity();
@@ -66,36 +68,29 @@ namespace sinnca
 		{
 			(*i)->render();
 		}
+	
+		Graphics->move(pos);
+		Graphics->rotate(rot);
+		
+		
+		col->bind();
+		
+		
+		Graphics->scale(scl);
+		//glPopMatrix();
+		
+		
 		
 		if (m == NULL)
 		{
+			if (Tree->currentScene->pers() == 0)
+			{
+				Graphics->square->render();
+				
+			} else {
+				
+			}
 			
-			//if (state != NULL)
-			//{
-			//btTransform trans;
-			//state->btMotionState::getWorldTransform(trans);
-			//}
-			
-			
-			//glPushMatrix();
-			
-			Graphics->move(pos);
-			Graphics->rotate(rot);
-			
-			//glPopMatrix();
-			
-			
-			col->bind();
-			
-			
-			Graphics->scale(scl);
-			//glPopMatrix();
-			
-			
-			
-			Graphics->square->render();
-			
-			//glPopMatrix();
 		}
 		
 	}
@@ -132,7 +127,7 @@ namespace sinnca
 			*en = (entity*)Heap->allocate((unsigned int)s, __alignof(entity));
 		}
 		
-		(*en)->name = n;
+		//(*en)->name = n;
 		
 		Script->getMetaTable("entity");
 		Script->setMetaTable(-2);
@@ -141,6 +136,8 @@ namespace sinnca
 		
 		
 		Script->setGlobal(n);
+		Tree->currentScene->entityRef.push_back(*en);
+		Tree->currentScene->nodeRef.push_back(*en);
 		return ((void*)*en);
 		
 		/*

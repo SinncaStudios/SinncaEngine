@@ -102,6 +102,11 @@ namespace sinnca
 		}
 		
 		
+		friend class scene;
+		friend class entity;
+		friend class grid;
+		friend class camera;
+		
 	};
 	
 	static node* checkNode(int ind)

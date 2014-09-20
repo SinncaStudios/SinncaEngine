@@ -78,7 +78,8 @@ namespace sinnca
 		void pushMatrix();
 		void popMatrix();
 		
-		void ortho(float left, float right, float up, float down, float near, float far);
+		void ortho(float near, float far);
+		void perspective(float end, float start, float fov);
 		void setMatrixMode(uint mode);
 		
 		m4* getModelMatrix();

@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		94017E7719BE1EBD00C42EA4 /* ArtificialIntelligence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */; };
+		94017E7819BE1EBD00C42EA4 /* ArtificialIntelligence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */; };
+		94017E7919BE1EBD00C42EA4 /* ArtificialIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = 94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */; };
+		94017E7A19BE1EBD00C42EA4 /* ArtificialIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = 94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */; };
 		9405C0E818C1BBD800AFEDE9 /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9405C0E618C1BBD800AFEDE9 /* Font.cpp */; };
 		9405C0E918C1BBD800AFEDE9 /* Font.h in Headers */ = {isa = PBXBuildFile; fileRef = 9405C0E718C1BBD800AFEDE9 /* Font.h */; };
 		9405C0F418C30D2D00AFEDE9 /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405C0F018C30D2D00AFEDE9 /* libbz2.a */; };
@@ -217,6 +221,10 @@
 		948C1708192F02350047D0B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9416ABD818E766870071B917 /* UIKit.framework */; };
 		948C1710192F02350047D0B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 948C170E192F02350047D0B4 /* InfoPlist.strings */; };
 		948C1712192F02350047D0B4 /* Mobile_Sinnca_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 948C1711192F02350047D0B4 /* Mobile_Sinnca_DemoTests.m */; };
+		948D88FE19C5221E00E73F6A /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948D88FC19C5221E00E73F6A /* Action.cpp */; };
+		948D88FF19C5221E00E73F6A /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948D88FC19C5221E00E73F6A /* Action.cpp */; };
+		948D890019C5221E00E73F6A /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 948D88FD19C5221E00E73F6A /* Action.h */; };
+		948D890119C5221E00E73F6A /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 948D88FD19C5221E00E73F6A /* Action.h */; };
 		94AAFA981991E880000AA4E4 /* BasicFrag.fs in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA961991E880000AA4E4 /* BasicFrag.fs */; };
 		94AAFA991991E880000AA4E4 /* BasicVert.vs in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA971991E880000AA4E4 /* BasicVert.vs */; };
 		94AAFA9D1996D15C000AA4E4 /* iso_grass copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */; };
@@ -354,15 +362,15 @@
 		94BBDB0518DBD85300CA2D2B /* GuiMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BBDA0718D642D700CA2D2B /* GuiMenu.h */; };
 		94BBDB0618DBD85300CA2D2B /* Font.h in Headers */ = {isa = PBXBuildFile; fileRef = 9405C0E718C1BBD800AFEDE9 /* Font.h */; };
 		94BC91BE199886A800B53026 /* GuiJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91BC199886A800B53026 /* GuiJoystick.cpp */; };
-		94BC91BF199886A800B53026 /* GuiJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91BC199886A800B53026 /* GuiJoystick.cpp */; };
+		94BC91BF199886A800B53026 /* GuiJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91BC199886A800B53026 /* GuiJoystick.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		94BC91C0199886A800B53026 /* GuiJoystick.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91BD199886A800B53026 /* GuiJoystick.h */; };
 		94BC91C1199886A800B53026 /* GuiJoystick.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91BD199886A800B53026 /* GuiJoystick.h */; };
 		94BC91C4199B168100B53026 /* TimeKeeping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C2199B168100B53026 /* TimeKeeping.cpp */; };
-		94BC91C5199B168100B53026 /* TimeKeeping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C2199B168100B53026 /* TimeKeeping.cpp */; };
+		94BC91C5199B168100B53026 /* TimeKeeping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C2199B168100B53026 /* TimeKeeping.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		94BC91C6199B168100B53026 /* TimeKeeping.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C3199B168100B53026 /* TimeKeeping.h */; };
 		94BC91C7199B168100B53026 /* TimeKeeping.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C3199B168100B53026 /* TimeKeeping.h */; };
 		94BC91CA199C79F800B53026 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C8199C79F800B53026 /* Timer.cpp */; };
-		94BC91CB199C79F800B53026 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C8199C79F800B53026 /* Timer.cpp */; };
+		94BC91CB199C79F800B53026 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C8199C79F800B53026 /* Timer.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		94BC91CC199C79F800B53026 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C9199C79F800B53026 /* Timer.h */; };
 		94BC91CD199C79F800B53026 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C9199C79F800B53026 /* Timer.h */; };
 		94D40A80195BD39600584E4A /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = 94D40A51195BD39600584E4A /* png.c */; };
@@ -460,6 +468,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArtificialIntelligence.cpp; sourceTree = "<group>"; };
+		94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtificialIntelligence.h; sourceTree = "<group>"; };
 		9405C0E618C1BBD800AFEDE9 /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
 		9405C0E718C1BBD800AFEDE9 /* Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
 		9405C0EA18C30B9800AFEDE9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
@@ -659,6 +669,8 @@
 		948C170D192F02350047D0B4 /* Mobile Sinnca DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mobile Sinnca DemoTests-Info.plist"; sourceTree = "<group>"; };
 		948C170F192F02350047D0B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		948C1711192F02350047D0B4 /* Mobile_Sinnca_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mobile_Sinnca_DemoTests.m; sourceTree = "<group>"; };
+		948D88FC19C5221E00E73F6A /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Action.cpp; sourceTree = "<group>"; };
+		948D88FD19C5221E00E73F6A /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		94AAFA961991E880000AA4E4 /* BasicFrag.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicFrag.fs; sourceTree = "<group>"; };
 		94AAFA971991E880000AA4E4 /* BasicVert.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicVert.vs; sourceTree = "<group>"; };
 		94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iso_grass copy.png"; sourceTree = "<group>"; };
@@ -1068,6 +1080,8 @@
 				945AFB3618B3377B00BA7AB9 /* RapidPress.cpp */,
 				945AFB3B18B337EE00BA7AB9 /* ButtonCombo.h */,
 				945AFB3A18B337EE00BA7AB9 /* ButtonCombo.cpp */,
+				948D88FD19C5221E00E73F6A /* Action.h */,
+				948D88FC19C5221E00E73F6A /* Action.cpp */,
 			);
 			name = Input;
 			sourceTree = "<group>";
@@ -1084,6 +1098,8 @@
 				945AFB1C18A9844600BA7AB9 /* Grid.cpp */,
 				945AFB2118A9845D00BA7AB9 /* Camera.h */,
 				945AFB2018A9845D00BA7AB9 /* Camera.cpp */,
+				94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */,
+				94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */,
 				945AFB2518A9848600BA7AB9 /* Tree.h */,
 				945AFB2418A9848600BA7AB9 /* Tree.cpp */,
 			);
@@ -1549,6 +1565,7 @@
 				94D40AA1195BD39600584E4A /* inftrees.h in Headers */,
 				94D40AAB195BD39600584E4A /* zlib.h in Headers */,
 				941D2F4A182C2C47007EB1BE /* Types.h in Headers */,
+				948D890019C5221E00E73F6A /* Action.h in Headers */,
 				945AFB1F18A9844600BA7AB9 /* Grid.h in Headers */,
 				944D6CC5185A60850083EAEC /* Platform.h in Headers */,
 				9405C10F18C50ABA00AFEDE9 /* Texture.h in Headers */,
@@ -1564,6 +1581,7 @@
 				94D40A81195BD39600584E4A /* png.h in Headers */,
 				944D6CCF185C0B750083EAEC /* ListAlloc.h in Headers */,
 				94D40A82195BD39600584E4A /* pngconf.h in Headers */,
+				94017E7919BE1EBD00C42EA4 /* ArtificialIntelligence.h in Headers */,
 				94D40AA3195BD39600584E4A /* ioapi.h in Headers */,
 				945AFB02189A3C3D00BA7AB9 /* MemoryManager.h in Headers */,
 				94B6444C18E4969400FBA7F1 /* Shader.h in Headers */,
@@ -1594,6 +1612,7 @@
 				948C162B192D23DE0047D0B4 /* lzio.h in Headers */,
 				94BBDAF318DBD85300CA2D2B /* ButtonCombo.h in Headers */,
 				94BBDB0518DBD85300CA2D2B /* GuiMenu.h in Headers */,
+				94017E7A19BE1EBD00C42EA4 /* ArtificialIntelligence.h in Headers */,
 				94BBDAF818DBD85300CA2D2B /* Camera.h in Headers */,
 				94BBDAE418DBD85300CA2D2B /* Array.h in Headers */,
 				94BC91C7199B168100B53026 /* TimeKeeping.h in Headers */,
@@ -1628,6 +1647,7 @@
 				94B6444D18E4969400FBA7F1 /* Shader.h in Headers */,
 				944D69C8194A42A600EF9649 /* zutil.h in Headers */,
 				948C1624192D23DE0047D0B4 /* luaconf.h in Headers */,
+				948D890119C5221E00E73F6A /* Action.h in Headers */,
 				944D69C5194A42A600EF9649 /* zconf.h in Headers */,
 				948C1604192D23DE0047D0B4 /* lfunc.h in Headers */,
 				948C1613192D23DE0047D0B4 /* lopcodes.h in Headers */,
@@ -1997,6 +2017,7 @@
 				94BC91CA199C79F800B53026 /* Timer.cpp in Sources */,
 				945AFB1418A749A700BA7AB9 /* Entity.cpp in Sources */,
 				94D40A90195BD39600584E4A /* pngwrite.c in Sources */,
+				94017E7719BE1EBD00C42EA4 /* ArtificialIntelligence.cpp in Sources */,
 				94D40A91195BD39600584E4A /* pngwtran.c in Sources */,
 				94D40A8F195BD39600584E4A /* pngwio.c in Sources */,
 				94B6445018E4CA4D00FBA7F1 /* OpenFile.cpp in Sources */,
@@ -2039,6 +2060,7 @@
 				94D40A99195BD39600584E4A /* gzio.c in Sources */,
 				94BBDA0018D63CBB00CA2D2B /* GuiButton.cpp in Sources */,
 				944D6CCA185A782A0083EAEC /* StackAlloc.cpp in Sources */,
+				948D88FE19C5221E00E73F6A /* Action.cpp in Sources */,
 				94D40A89195BD39600584E4A /* pngrio.c in Sources */,
 				94D40A92195BD39600584E4A /* adler32.c in Sources */,
 				945AFB2A18AC6D5D00BA7AB9 /* Input.cpp in Sources */,
@@ -2119,6 +2141,7 @@
 				94BBDADA18DBD80900CA2D2B /* Sprite.cpp in Sources */,
 				94BBDAB218D9611000CA2D2B /* Utility.cpp in Sources */,
 				94BBDACB18DBD80900CA2D2B /* ListAlloc.cpp in Sources */,
+				948D88FF19C5221E00E73F6A /* Action.cpp in Sources */,
 				948C1608192D23DE0047D0B4 /* liolib.c in Sources */,
 				94BBDABF18DA900700CA2D2B /* Computer.cpp in Sources */,
 				94BBDAD718DBD80900CA2D2B /* Image.cpp in Sources */,
@@ -2131,6 +2154,7 @@
 				948C1617192D23DE0047D0B4 /* lstate.c in Sources */,
 				94BBDADE18DBD80900CA2D2B /* GuiMenu.cpp in Sources */,
 				944D69E0194A42B600EF9649 /* pngget.c in Sources */,
+				94017E7819BE1EBD00C42EA4 /* ArtificialIntelligence.cpp in Sources */,
 				948C15F6192D23DD0047D0B4 /* lapi.c in Sources */,
 				946001D5192F09B40087DA6D /* Matrix.cpp in Sources */,
 				94BBDACF18DBD80900CA2D2B /* RapidPress.cpp in Sources */,

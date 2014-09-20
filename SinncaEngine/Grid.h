@@ -31,6 +31,8 @@ namespace sinnca
 		void setTex(texture* t);
 		int getX();
 		int getY();
+		bool getSolid();
+		texture* getTex();
 		void render();
 		
 		
@@ -38,7 +40,7 @@ namespace sinnca
 	
 	class grid: public node
 	{
-		bool iso; // isometric?
+		
 		float tileX, tileY; // the size of the tiles
 		int size[2];
 		
@@ -49,16 +51,21 @@ namespace sinnca
 	public:
 		
 		//float xy[2];
-		
+		bool iso; // isometric?
 		friend class tile;
 		
 		grid(std::string n, int xSize, int ySize, bool io);
 		~grid();
 		
 		void callBehavior();
+		void setSolid(int x, int y, bool s);
 		void setTexture(int x, int y, texture* t);
 		bool checkBounds(int& x, int& y);
 		void getTileXY(int x, int y, int& _x, int& _y);
+		int getX();
+		int getY();
+		tile* getTile(int x, int y);
+		
 		void render();
 		
 		void* operator new(size_t s, std::string n);

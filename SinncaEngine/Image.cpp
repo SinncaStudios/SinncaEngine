@@ -28,14 +28,16 @@ namespace sinnca
 	}
 	
 	
-	void image::load(std::string path, texBlend t = smooth)
+	void image::load(std::string p, texBlend t = smooth)
 	{
-		std::size_t fileTypePos = path.find_last_of(".");
-		std::string type = path.substr(fileTypePos);
+		std::size_t fileTypePos = p.find_last_of(".");
+		std::string type = p.substr(fileTypePos);
+		path = p;
+		tb = t;
 		
 		if (type == ".png")
 		{
-			loadPNG(path);
+			loadPNG(p);
 		}
 	}
 	
@@ -74,6 +76,7 @@ namespace sinnca
 		
 		
 		Script->setGlobal(n);
+		Tree->currentScene->imageRef.push_back(*im);
 		return ((void*)*im);
 	}
 	

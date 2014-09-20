@@ -77,6 +77,7 @@ namespace sinnca
 		virtual void* allocate(ui32 size, ui8 align) = 0;
 		virtual void deallocate(void* point) = 0;
 		
+		
 		template <class t> t* allocateNew()
 		{
 			return new (allocate(sizeof(t), __alignof(t))) t();

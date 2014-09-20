@@ -9,6 +9,8 @@
 #ifndef SinncaEngine_Utility_h
 #define SinncaEngine_Utility_h
 
+
+
 namespace sinnca
 {
 	// C++ declarations
@@ -34,6 +36,10 @@ namespace sinnca
 	float fromKilobyte(long b);
 	float fromMegabyte(long b);
 	float fromGigabyte(long b);
+	
+	// endian swapping
+	short endian16bit(short input);
+	long endian32bit(long input);
 	
 	// Lua declarations
 	
