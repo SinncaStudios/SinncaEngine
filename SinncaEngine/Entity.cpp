@@ -216,6 +216,8 @@ namespace sinnca
 		{"movR", l_movR},
 		{"movS", l_movS},
 		
+		{"movGWithoutDeltaTimeButDontBecauseItsBadProgrammingHabit", l_movGWithoutDeltaTimeButDontBecauseItsBadProgrammingHabit},
+		
 		{"getG", l_getPos},
 		{"getR", l_getRot},
 		{"getS", l_getScl},

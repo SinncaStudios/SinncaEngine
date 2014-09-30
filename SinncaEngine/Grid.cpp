@@ -44,9 +44,9 @@ namespace sinnca
 	{
 		return solid;
 	}
-	texture* tile::getTex()
+	color* tile::getTex()
 	{
-		return tex;
+		return col;
 	}
 	
 	void tile::render()
@@ -98,6 +98,8 @@ namespace sinnca
 				
 				data[i][j].xy[0] = (j - i) * tileX / 2;
 				data[i][j].xy[1] = (j + i) * tileY / 4;
+				
+				Tree->currentScene->nodeRef.push_back(&data[i][j]);
 				
 			}
 		}

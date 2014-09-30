@@ -58,6 +58,7 @@ namespace sinnca
 		
 		Script->setGlobal(n);
 		Tree->currentScene->textureRef.push_back(*tx);
+		Tree->currentScene->colorRef.push_back(*tx);
 		return ((void*)*tx);
 	}
 	
@@ -84,25 +85,25 @@ namespace sinnca
 		return source;
 	}
 	
-	void texture::setOffset(int x, int y)
+	void texture::setOffset(uint x, uint y)
 	{
 		xOff = x;
 		yOff = y;
 	}
 	
-	void texture::setSize(int x, int y)
+	void texture::setSize(uint x, uint y)
 	{
 		xSize = x;
 		ySize = y;
 	}
 	
-	void texture::getOffset(int &x, int &y)
+	void texture::getOffset(uint &x, uint &y)
 	{
 		x = xOff;
 		y = yOff;
 	}
 	
-	void texture::getSize(int &x, int &y)
+	void texture::getSize(uint &x, uint &y)
 	{
 		x = xSize;
 		y = ySize;

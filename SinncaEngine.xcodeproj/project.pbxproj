@@ -225,6 +225,15 @@
 		948D88FF19C5221E00E73F6A /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948D88FC19C5221E00E73F6A /* Action.cpp */; };
 		948D890019C5221E00E73F6A /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 948D88FD19C5221E00E73F6A /* Action.h */; };
 		948D890119C5221E00E73F6A /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 948D88FD19C5221E00E73F6A /* Action.h */; };
+		949D5BE119CE10C20005BD8C /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 949D5BE019CE10C10005BD8C /* Engine.h */; };
+		94A7A1FD19D716230025EA2D /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A1FB19D716230025EA2D /* Listener.cpp */; };
+		94A7A1FE19D716230025EA2D /* Listener.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A7A1FC19D716230025EA2D /* Listener.h */; };
+		94A7A20219D71AED0025EA2D /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A20019D71AED0025EA2D /* Audio.cpp */; };
+		94A7A20319D71AED0025EA2D /* Audio.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A7A20119D71AED0025EA2D /* Audio.h */; };
+		94A7A20619D7B60E0025EA2D /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A20419D7B60E0025EA2D /* Buffer.cpp */; };
+		94A7A20719D7B60E0025EA2D /* Buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A7A20519D7B60E0025EA2D /* Buffer.h */; };
+		94A7A20A19D7B75F0025EA2D /* Source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A20819D7B75F0025EA2D /* Source.cpp */; };
+		94A7A20B19D7B75F0025EA2D /* Source.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A7A20919D7B75F0025EA2D /* Source.h */; };
 		94AAFA981991E880000AA4E4 /* BasicFrag.fs in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA961991E880000AA4E4 /* BasicFrag.fs */; };
 		94AAFA991991E880000AA4E4 /* BasicVert.vs in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA971991E880000AA4E4 /* BasicVert.vs */; };
 		94AAFA9D1996D15C000AA4E4 /* iso_grass copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */; };
@@ -671,6 +680,15 @@
 		948C1711192F02350047D0B4 /* Mobile_Sinnca_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mobile_Sinnca_DemoTests.m; sourceTree = "<group>"; };
 		948D88FC19C5221E00E73F6A /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Action.cpp; sourceTree = "<group>"; };
 		948D88FD19C5221E00E73F6A /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		949D5BE019CE10C10005BD8C /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		94A7A1FB19D716230025EA2D /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Listener.cpp; sourceTree = "<group>"; };
+		94A7A1FC19D716230025EA2D /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listener.h; sourceTree = "<group>"; };
+		94A7A20019D71AED0025EA2D /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
+		94A7A20119D71AED0025EA2D /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
+		94A7A20419D7B60E0025EA2D /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Buffer.cpp; sourceTree = "<group>"; };
+		94A7A20519D7B60E0025EA2D /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer.h; sourceTree = "<group>"; };
+		94A7A20819D7B75F0025EA2D /* Source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Source.cpp; sourceTree = "<group>"; };
+		94A7A20919D7B75F0025EA2D /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
 		94AAFA961991E880000AA4E4 /* BasicFrag.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicFrag.fs; sourceTree = "<group>"; };
 		94AAFA971991E880000AA4E4 /* BasicVert.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicVert.vs; sourceTree = "<group>"; };
 		94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iso_grass copy.png"; sourceTree = "<group>"; };
@@ -793,8 +811,8 @@
 		94D40A7D195BD39600584E4A /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		94D40A7E195BD39600584E4A /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		94D40A7F195BD39600584E4A /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
-		94E13473191488FB00DAC0BF /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Matrix.cpp; path = ../Matrix.cpp; sourceTree = "<group>"; };
-		94E13474191488FB00DAC0BF /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matrix.h; path = ../Matrix.h; sourceTree = "<group>"; };
+		94E13473191488FB00DAC0BF /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
+		94E13474191488FB00DAC0BF /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1098,6 +1116,10 @@
 				945AFB1C18A9844600BA7AB9 /* Grid.cpp */,
 				945AFB2118A9845D00BA7AB9 /* Camera.h */,
 				945AFB2018A9845D00BA7AB9 /* Camera.cpp */,
+				94A7A1FC19D716230025EA2D /* Listener.h */,
+				94A7A1FB19D716230025EA2D /* Listener.cpp */,
+				94A7A20919D7B75F0025EA2D /* Source.h */,
+				94A7A20819D7B75F0025EA2D /* Source.cpp */,
 				94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */,
 				94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */,
 				945AFB2518A9848600BA7AB9 /* Tree.h */,
@@ -1225,6 +1247,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		94A7A1FF19D71A210025EA2D /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				94A7A20119D71AED0025EA2D /* Audio.h */,
+				94A7A20019D71AED0025EA2D /* Audio.cpp */,
+				94A7A20519D7B60E0025EA2D /* Buffer.h */,
+				94A7A20419D7B60E0025EA2D /* Buffer.cpp */,
+				94A7A20C19D9181E0025EA2D /* Audio Loaders */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		94A7A20C19D9181E0025EA2D /* Audio Loaders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Audio Loaders";
+			sourceTree = "<group>";
+		};
 		94B344771820BCFE00C370DA = {
 			isa = PBXGroup;
 			children = (
@@ -1312,6 +1353,7 @@
 				94B344B51820BE6B00C370DA /* System */,
 				948B9C0D1825B15B0010E7ED /* Abstract */,
 				945AFB07189DA5DA00BA7AB9 /* Graphics */,
+				94A7A1FF19D71A210025EA2D /* Audio */,
 				94B3448B1820BCFE00C370DA /* Supporting Files */,
 			);
 			path = SinncaEngine;
@@ -1354,6 +1396,7 @@
 			children = (
 				944D6CD1185C2A9F0083EAEC /* Game.h */,
 				944D6CD0185C2A9F0083EAEC /* Game.cpp */,
+				949D5BE019CE10C10005BD8C /* Engine.h */,
 				94319D6E18D128CB00E78F8E /* Hardware */,
 				945AFB0C18A442A800BA7AB9 /* Memory */,
 				945AFB3518B3361E00BA7AB9 /* Input */,
@@ -1554,12 +1597,14 @@
 				944D6CD3185C2A9F0083EAEC /* Game.h in Headers */,
 				94BC91CC199C79F800B53026 /* Timer.h in Headers */,
 				945AFB3D18B337EE00BA7AB9 /* ButtonCombo.h in Headers */,
+				94A7A20B19D7B75F0025EA2D /* Source.h in Headers */,
 				941D2F51183DDFBC007EB1BE /* Utility.h in Headers */,
 				945AFB3918B3377B00BA7AB9 /* RapidPress.h in Headers */,
 				94D40AA9195BD39600584E4A /* unzip.h in Headers */,
 				941D2F4F183AC205007EB1BE /* LinearAlloc.h in Headers */,
 				94BC91C0199886A800B53026 /* GuiJoystick.h in Headers */,
 				944D6CC1185997790083EAEC /* Script.h in Headers */,
+				94A7A20319D71AED0025EA2D /* Audio.h in Headers */,
 				94B344B91820CB3200C370DA /* Power.h in Headers */,
 				94D40A95195BD39600584E4A /* crc32.h in Headers */,
 				94D40AA1195BD39600584E4A /* inftrees.h in Headers */,
@@ -1572,6 +1617,7 @@
 				94BBDA3118D7AB1900CA2D2B /* SinncaEngine.h in Headers */,
 				9405C10B18C50A1D00AFEDE9 /* Image.h in Headers */,
 				94D40A96195BD39600584E4A /* crypt.h in Headers */,
+				94A7A1FE19D716230025EA2D /* Listener.h in Headers */,
 				94D40A9C195BD39600584E4A /* inffast.h in Headers */,
 				94D40AAA195BD39600584E4A /* zconf.h in Headers */,
 				945AFB2B18AC6D5D00BA7AB9 /* Input.h in Headers */,
@@ -1591,10 +1637,12 @@
 				94D40A9D195BD39600584E4A /* inffixed.h in Headers */,
 				94D40AAD195BD39600584E4A /* zutil.h in Headers */,
 				9405C0E918C1BBD800AFEDE9 /* Font.h in Headers */,
+				949D5BE119CE10C20005BD8C /* Engine.h in Headers */,
 				9405C10518C4344100AFEDE9 /* Sprite.h in Headers */,
 				94B344BD18220C9900C370DA /* Computer.h in Headers */,
 				94E13477191488FB00DAC0BF /* Matrix.h in Headers */,
 				94D40A9F195BD39600584E4A /* inflate.h in Headers */,
+				94A7A20719D7B60E0025EA2D /* Buffer.h in Headers */,
 				94D40AA6195BD39600584E4A /* trees.h in Headers */,
 				94D40A98195BD39600584E4A /* deflate.h in Headers */,
 				945AFB4118B5D57500BA7AB9 /* Heap.h in Headers */,
@@ -2012,6 +2060,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9405C0E818C1BBD800AFEDE9 /* Font.cpp in Sources */,
+				94A7A20619D7B60E0025EA2D /* Buffer.cpp in Sources */,
 				944D6CD2185C2A9F0083EAEC /* Game.cpp in Sources */,
 				94D40AA7195BD39600584E4A /* uncompr.c in Sources */,
 				94BC91CA199C79F800B53026 /* Timer.cpp in Sources */,
@@ -2023,6 +2072,7 @@
 				94B6445018E4CA4D00FBA7F1 /* OpenFile.cpp in Sources */,
 				945AFB3818B3377B00BA7AB9 /* RapidPress.cpp in Sources */,
 				944D6CC0185997790083EAEC /* Script.cpp in Sources */,
+				94A7A20A19D7B75F0025EA2D /* Source.cpp in Sources */,
 				94BBDA0A18D78DB400CA2D2B /* GuiWidget.cpp in Sources */,
 				945AFB2218A9845D00BA7AB9 /* Camera.cpp in Sources */,
 				94D40AA8195BD39600584E4A /* unzip.c in Sources */,
@@ -2055,6 +2105,7 @@
 				945AFB1718A811B600BA7AB9 /* Utility.cpp in Sources */,
 				945AFB1A18A97AE900BA7AB9 /* Scene.cpp in Sources */,
 				946D06A21977492E00A39114 /* Palette.cpp in Sources */,
+				94A7A20219D71AED0025EA2D /* Audio.cpp in Sources */,
 				945AFB2618A9848600BA7AB9 /* Tree.cpp in Sources */,
 				945AFB0A189DA60100BA7AB9 /* Graphics.cpp in Sources */,
 				94D40A99195BD39600584E4A /* gzio.c in Sources */,
@@ -2074,6 +2125,7 @@
 				94D40A84195BD39600584E4A /* pnggccrd.c in Sources */,
 				94D40AA4195BD39600584E4A /* pngwutil.c in Sources */,
 				944D6CCE185C0B750083EAEC /* ListAlloc.cpp in Sources */,
+				94A7A1FD19D716230025EA2D /* Listener.cpp in Sources */,
 				945AFB3C18B337EE00BA7AB9 /* ButtonCombo.cpp in Sources */,
 				94D40A9A195BD39600584E4A /* infback.c in Sources */,
 				945AFAFD189A3BBA00BA7AB9 /* PoolAlloc.cpp in Sources */,

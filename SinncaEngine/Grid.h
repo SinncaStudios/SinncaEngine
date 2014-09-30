@@ -22,7 +22,6 @@ namespace sinnca
 		int xy[2];
 		bool solid;
 		
-		texture* tex;
 		
 	public:
 		friend class grid;
@@ -32,7 +31,7 @@ namespace sinnca
 		int getX();
 		int getY();
 		bool getSolid();
-		texture* getTex();
+		color* getTex();
 		void render();
 		
 		

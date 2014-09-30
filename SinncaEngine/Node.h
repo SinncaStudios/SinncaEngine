@@ -225,9 +225,23 @@ namespace sinnca
 		{
 			node* nd = checkNode(1);
 			
-			nd->pos.x = (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
-			nd->pos.y = (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
-			nd->pos.z = (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
+			nd->pos.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
+			nd->pos.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
+			nd->pos.z += (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
+		}
+		return 0;
+	}
+	
+	static int l_movGWithoutDeltaTimeButDontBecauseItsBadProgrammingHabit(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n == 4)
+		{
+			node* nd = checkNode(1);
+			
+			nd->pos.x += lua_tonumber(L, 2);
+			nd->pos.y += lua_tonumber(L, 3);
+			nd->pos.z += lua_tonumber(L, 4);
 		}
 		return 0;
 	}
@@ -239,9 +253,9 @@ namespace sinnca
 		{
 			node* nd = checkNode(1);
 			
-			nd->rot.x = (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
-			nd->rot.y = (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
-			nd->rot.z = (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
+			nd->rot.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
+			nd->rot.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
+			nd->rot.z += (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
 		}
 		return 0;
 	}
@@ -253,9 +267,9 @@ namespace sinnca
 		{
 			node* nd = checkNode(1);
 			
-			nd->scl.x = (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
-			nd->scl.y = (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
-			nd->scl.z = (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
+			nd->scl.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
+			nd->scl.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
+			nd->scl.z += (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
 		}
 		return 0;
 	}

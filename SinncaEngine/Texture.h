@@ -35,11 +35,11 @@ namespace sinnca
 		
 		void setSource(image* i);
 		image* getSource();
-		void setOffset(int x, int y);
-		void setSize(int x, int y);
+		void setOffset(uint x, uint y);
+		void setSize(uint x, uint y);
 		
-		void getOffset(int& x, int& y);
-		void getSize(int& x, int& y);
+		void getOffset(uint& x, uint& y);
+		void getSize(uint& x, uint& y);
 		void bind();
 	};
 	
