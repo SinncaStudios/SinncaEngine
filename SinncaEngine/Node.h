@@ -74,7 +74,10 @@ namespace sinnca
 			return draw;
 		}
 		
-		virtual void render() = 0;
+		virtual void render()
+		{
+			
+		}
 		
 		node* getParent()
 		{

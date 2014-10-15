@@ -14,11 +14,15 @@
 	#define snWin_64 1
 	#define snWindows 1
 	#define snDesktop 1
+	#define snMicrosoft 1
+	#define snIsUnix 0
 
 #elif _WIN32
 	#define snWin_32 1
 	#define snWindows 1
 	#define snDesktop 1
+	#define snMicrosoft 1
+	#define snIsUnix 0
 
 // Are we on an apple platform?
 #elif __APPLE__
@@ -30,26 +34,31 @@
 		#define sniPhone 1
 		#define snApple 1
 		#define snMobile 1
+		#define snIsUnix 1
 
 	#elif TARGET_OS_IPHONE
 		#define sniPhone 1
 		#define snMobile 1
 		#define snApple 1
+		#define snIsUnix 1
 
 	#elif TARGET_OS_MAC
 		#define snMacosx 1
 		#define snApple 1
 		#define snDesktop 1
+		#define snIsUnix 1
 
 	#endif
 
 #elif __linux
 	#define snLinux 1
 	#define snDesktop 1
+	#define snIsUnix 1
 
 #elif __unix
 	#define snUnix 1
 	#define snDesktop 1
+	#define snIsUnix 1
 
 #else
 	#define snOtherOS 1

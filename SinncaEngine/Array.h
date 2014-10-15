@@ -11,6 +11,7 @@
 
 #include "Types.h"
 #include "Heap.h"
+#include "List.h"
 
 namespace sinnca
 {
@@ -22,27 +23,35 @@ namespace sinnca
 			t data[10];
 		};
 		
-		
+		linkList<chunk*> data;
 		
 	public:
 		
 		uint size;
 		
+		
 		array()
 		{
 			size = 0;
+			data.pushBack(new(Heap->allocateNew<chunk*>) chunk());
 		}
+		
 		~array()
 		{
-			
+			data.clear();
 		}
 		
 		t* operator [](int i)
 		{
-			if (i > size)
+			uint inChunk = i / 10;
+			int access = i % 10;
+			
+			for (chunk* start = data, int i = 0; i < inChunk; i++)
 			{
-				
+				start = start->next
 			}
+			
+			return start[access];
 		}
 		
 	};

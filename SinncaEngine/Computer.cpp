@@ -12,7 +12,11 @@
 #include "Heap.h"
 #include "Platform.h"
 
+#if snIsUnix
 #include <sys/sysctl.h>
+#endif
+
+
 #if snMacosx
 #include <CoreFoundation/CoreFoundation.h>
 #endif
@@ -65,11 +69,11 @@ namespace sinnca
 		// Lets start with the number of proccessors
 		if (cpus == 0)
 		{
-			#ifdef snWin_32
+			#ifdef snWindows
 			
 			// Windows functions will go here
 			
-			#endif
+			#else
 			
 			size_t size = sizeof(cpus);
 			sysctlbyname("hw.physicalcpu", &cpus, &size, NULL, 0);
@@ -85,7 +89,22 @@ namespace sinnca
 			
 			size = sizeof(machineModel);
 			sysctlbyname("hw.model", &machineModel, &size, NULL, 0);
-			printf("Model: %s\n", machineModel.c_str());
+			printf("Model: %s\n", machineModel);
+			
+			size = sizeof(arch);
+			sysctlbyname("hw.machine", &arch, &size, NULL, 0);
+			printf("Machine Architecture: %s\n", arch);
+			
+			size = sizeof(floatingPoint);
+			sysctlbyname("hw.floatingpoint", &floatingPoint, &size, NULL, 0);
+			printf("Floating point support: %i\n", floatingPoint);
+			
+			size = sizeof(byteOrder);
+			sysctlbyname("hw.byteorder", &byteOrder, &size, NULL, 0);
+			printf("Byte Order: %i\n", byteOrder);
+			printf("\n");
+			
+			#endif
 		}
 	}
 	

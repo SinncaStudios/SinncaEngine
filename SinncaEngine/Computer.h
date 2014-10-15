@@ -23,23 +23,24 @@ namespace sinnca
 		int cpus, vcpus;
 		int cpuSpeed;
 		long memAvalible;
-		// gpus
-		int gpuMemAvailible;
+		int floatingPoint, byteOrder;
 		
-		
-		
-		std::string machineName,
-					machineModel,
-					arch;
+		char machineName[64],
+					machineModel[64],
+					arch[64];
 		
 		std::string resourcePath;
 		
 	public:
 		
+		// gpus
+		uint gpuMemAvailible;
 		std::string gCard;
 		
 		computer();
 		void getCompInfo();
+		void printInfo();
+		
 		std::string getResourcePath();
 		void setResourcePath(const char* path);
 		
