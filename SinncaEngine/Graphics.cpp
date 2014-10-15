@@ -229,8 +229,11 @@ namespace sinnca
 		
 		const unsigned char* temp = glGetString(GL_VENDOR);
 		const unsigned char* temp2 = glGetString(GL_RENDERER);
-		const unsigned char* temp3 = glGetString(GL_VERSION);
-		printf("Graphics Card: %s\nRenderer: %s\nVersion: %s\n", temp, temp2, temp3);
+		//const unsigned char* temp3 = glGetString(GL_VERSION);
+		
+		Computer->gVendor.append((char*)temp);
+		Computer->gCard.append((char*)temp2);
+		//printf("Graphics Card: %s\nRenderer: %s\nVersion: %s\n", temp, temp2, temp3);
 		
 		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 		

@@ -32,6 +32,7 @@ namespace sinnca
 		
 		// Get Hardware and Software information
 		Computer->getCompInfo();
+		Computer->printInfo();
 		
 		// We need to be able to interact with the game
 		// but not on mobile devices

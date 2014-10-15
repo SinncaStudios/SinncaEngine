@@ -35,7 +35,7 @@ namespace sinnca
 		
 		// gpus
 		uint gpuMemAvailible;
-		std::string gCard;
+		std::string gVendor, gCard;
 		
 		computer();
 		void getCompInfo();

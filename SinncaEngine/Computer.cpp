@@ -77,35 +77,42 @@ namespace sinnca
 			
 			size_t size = sizeof(cpus);
 			sysctlbyname("hw.physicalcpu", &cpus, &size, NULL, 0);
-			printf("cpus: %i\n", cpus);
 			
 			size = sizeof(vcpus);
 			sysctlbyname("hw.logicalcpu", &vcpus, &size, NULL, 0);
-			printf("virtual cpus: %i\n", vcpus);
 			
 			size = sizeof(memAvalible);
 			sysctlbyname("hw.memsize", &memAvalible, &size, NULL, 0);
-			printf("RAM: %f\n", fromGigabyte(memAvalible));
 			
 			size = sizeof(machineModel);
 			sysctlbyname("hw.model", &machineModel, &size, NULL, 0);
-			printf("Model: %s\n", machineModel);
 			
 			size = sizeof(arch);
 			sysctlbyname("hw.machine", &arch, &size, NULL, 0);
-			printf("Machine Architecture: %s\n", arch);
 			
 			size = sizeof(floatingPoint);
 			sysctlbyname("hw.floatingpoint", &floatingPoint, &size, NULL, 0);
-			printf("Floating point support: %i\n", floatingPoint);
 			
 			size = sizeof(byteOrder);
 			sysctlbyname("hw.byteorder", &byteOrder, &size, NULL, 0);
-			printf("Byte Order: %i\n", byteOrder);
-			printf("\n");
+			
 			
 			#endif
 		}
+	}
+	
+	void computer::printInfo()
+	{
+		printf("cpus: %i\n", cpus);
+		printf("virtual cpus: %i\n", vcpus);
+		printf("RAM: %f\n", fromGigabyte(memAvalible));
+		printf("Model: %s\n", machineModel);
+		printf("Machine Architecture: %s\n", arch);
+		printf("Floating point support: %i\n", floatingPoint);
+		printf("Byte Order: %i\n", byteOrder);
+		printf("Graphics Card Manufacturer: %s\n", gVendor.c_str());
+		printf("Graphics Card: %s\n", gCard.c_str());
+		printf("\n");
 	}
 	
 	std::string computer::getResourcePath()
