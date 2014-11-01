@@ -32,6 +32,8 @@ namespace sinnca
 	void listener::update()
 	{
 		alListener3f(AL_POSITION, pos.x, pos.y, pos.z);
+		alListener3f(AL_ORIENTATION, rot.x, rot.y, rot.z);
+		alListener3f(AL_VELOCITY, 0.0f, 0.0f, 0.0f);
 	}
 	
 	void listener::render()

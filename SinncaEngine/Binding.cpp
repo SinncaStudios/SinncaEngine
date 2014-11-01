@@ -18,6 +18,7 @@
 #include "Grid.h"
 #include "Scene.h"
 #include "Tree.h"
+#include "Buffer.h"
 
 namespace sinnca
 {
@@ -40,6 +41,9 @@ namespace sinnca
 		// register color classes
 		registerImage(L);
 		registerTexture(L);
+		
+		// register sound classes
+		registerBuffer(L);
 		
 		// register gui classes
 		registerFont(L);

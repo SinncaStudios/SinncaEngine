@@ -16,6 +16,7 @@
 #include "Palette.h"
 
 #include "TimeKeeping.h"
+#include "CopyOnWrite.h"
 
 namespace sinnca
 {
@@ -58,11 +59,17 @@ namespace sinnca
 		
 		virtual void update()
 		{
-			for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
+			for (auto i = children.begin(); i != children.end(); ++i)
 			{
 				(*i)->update();
 			}
 		}
+		
+		virtual void render()
+		{
+			
+		}
+		
 		
 		void setName(std::string n)
 		{
@@ -74,7 +81,7 @@ namespace sinnca
 			return draw;
 		}
 		
-		virtual void render() = 0;
+		
 		
 		node* getParent()
 		{

@@ -25,7 +25,9 @@ namespace sinnca
 		
 	public:
 		
-		source();
+		ALfloat pitch, gain;
+		
+		source(std::string n);
 		~source();
 		
 		void setBuffer(buffer* b);
@@ -35,7 +37,16 @@ namespace sinnca
 		void pause();
 		void rewind();
 		
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
+		
 	};
+	
+	#define createSource(a) new(a)source(a)
+	source* checkSource(int ind);
+	
+	void registerSource(lua_State* L);
+	
 }
 
 #endif /* defined(__SinncaEngine__Source__) */

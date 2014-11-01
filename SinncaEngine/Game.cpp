@@ -13,7 +13,7 @@
 #include "Graphics.h"
 #include "Computer.h"
 #include "Input.h"
-//#include "Audio.h"
+#include "Audio.h"
 #include "Tree.h"
 
 #include "Entity.h"
@@ -34,13 +34,13 @@ namespace sinnca
 		Computer->getCompInfo();
 		
 		// We need to be able to interact with the game
-		// but not on mobile devices
+		// but not like this on mobile devices
 #if snMobile == 0
 		Input->setupKeys();
 #endif
 		
 		// Time for Audio!
-		//Audio->init();
+		Audio::setup();
 		
 		// Lastly, make the root node that forms the foundation of the game
 		Tree->setup(path);

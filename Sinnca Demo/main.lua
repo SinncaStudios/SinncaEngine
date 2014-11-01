@@ -41,6 +41,6 @@ function player:update()
 	
 end
 
-_root:dumpToFile("firstScene")
+--_root:dumpToFile("firstScene")
 
 print("done!")

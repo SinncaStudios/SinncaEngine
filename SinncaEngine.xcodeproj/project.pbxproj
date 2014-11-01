@@ -50,6 +50,9 @@
 		941D2F4F183AC205007EB1BE /* LinearAlloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 941D2F4D183AC205007EB1BE /* LinearAlloc.h */; };
 		941D2F51183DDFBC007EB1BE /* Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = 941D2F50183DDFBC007EB1BE /* Utility.h */; };
 		94240D401937CF9C004A78C3 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 94240D3F1937CF9C004A78C3 /* main.lua */; };
+		943E19F819F0690F009CA1CF /* LoadWAV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F719F0690F009CA1CF /* LoadWAV.cpp */; };
+		943E19FB19F09B77009CA1CF /* CopyOnWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */; };
+		943E19FC19F09B77009CA1CF /* CopyOnWrite.h in Headers */ = {isa = PBXBuildFile; fileRef = 943E19FA19F09B76009CA1CF /* CopyOnWrite.h */; };
 		94412361198D2F5E00BB3179 /* sinnca sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 94412360198D2F5D00BB3179 /* sinnca sprite.png */; };
 		944D69AD194A42A600EF9649 /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 944D6991194A42A600EF9649 /* adler32.c */; };
 		944D69AE194A42A600EF9649 /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 944D6992194A42A600EF9649 /* compress.c */; };
@@ -512,6 +515,9 @@
 		94240D3F1937CF9C004A78C3 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
 		94321B6C18BFD97F0020BA56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		94321B6E18BFD97F0020BA56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		943E19F719F0690F009CA1CF /* LoadWAV.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadWAV.cpp; sourceTree = "<group>"; };
+		943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyOnWrite.cpp; sourceTree = "<group>"; };
+		943E19FA19F09B76009CA1CF /* CopyOnWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyOnWrite.h; sourceTree = "<group>"; };
 		94412360198D2F5D00BB3179 /* sinnca sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sinnca sprite.png"; sourceTree = "<group>"; };
 		944D6991194A42A600EF9649 /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = adler32.c; path = zlib/adler32.c; sourceTree = "<group>"; };
 		944D6992194A42A600EF9649 /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = compress.c; path = zlib/compress.c; sourceTree = "<group>"; };
@@ -932,6 +938,8 @@
 				94E13473191488FB00DAC0BF /* Matrix.cpp */,
 				94B6444F18E4CA4D00FBA7F1 /* OpenFile.h */,
 				94B6444E18E4CA4D00FBA7F1 /* OpenFile.cpp */,
+				943E19FA19F09B76009CA1CF /* CopyOnWrite.h */,
+				943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1262,6 +1270,7 @@
 		94A7A20C19D9181E0025EA2D /* Audio Loaders */ = {
 			isa = PBXGroup;
 			children = (
+				943E19F719F0690F009CA1CF /* LoadWAV.cpp */,
 			);
 			name = "Audio Loaders";
 			sourceTree = "<group>";
@@ -1585,6 +1594,7 @@
 				945AFB1118A4B0F100BA7AB9 /* List.h in Headers */,
 				948B9C11182612010010E7ED /* Memory.h in Headers */,
 				945AFB0B189DA60100BA7AB9 /* Graphics.h in Headers */,
+				943E19FC19F09B77009CA1CF /* CopyOnWrite.h in Headers */,
 				9405C13718C90E3C00AFEDE9 /* Array.h in Headers */,
 				945AFB2318A9845D00BA7AB9 /* Camera.h in Headers */,
 				945AFB3418B1E48800BA7AB9 /* RenderObj.h in Headers */,
@@ -2104,9 +2114,11 @@
 				94D40A8D195BD39600584E4A /* pngtrans.c in Sources */,
 				945AFB1718A811B600BA7AB9 /* Utility.cpp in Sources */,
 				945AFB1A18A97AE900BA7AB9 /* Scene.cpp in Sources */,
+				943E19FB19F09B77009CA1CF /* CopyOnWrite.cpp in Sources */,
 				946D06A21977492E00A39114 /* Palette.cpp in Sources */,
 				94A7A20219D71AED0025EA2D /* Audio.cpp in Sources */,
 				945AFB2618A9848600BA7AB9 /* Tree.cpp in Sources */,
+				943E19F819F0690F009CA1CF /* LoadWAV.cpp in Sources */,
 				945AFB0A189DA60100BA7AB9 /* Graphics.cpp in Sources */,
 				94D40A99195BD39600584E4A /* gzio.c in Sources */,
 				94BBDA0018D63CBB00CA2D2B /* GuiButton.cpp in Sources */,

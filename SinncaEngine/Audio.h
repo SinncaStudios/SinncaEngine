@@ -13,28 +13,25 @@
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 
+
 namespace sinnca
 {
 	
-	#define Audio (audio::Instance())
-	class audio
+	namespace Audio
 	{
-		ALCdevice* device;
-		ALCcontext* context;
-
-	public:
+		/*
+		 // variables are in Audio.cpp
+		 
+		static ALCdevice* device;
+		static ALCcontext* context;
 		
-		~audio();
+		static ALboolean enumEnabled;
+		*/
 		
 		void setup();
+		void shutDown();
 		
-		static audio* Instance();
-		
-	protected:
-		
-		static audio* _instance;
-		
-	};
+	}
 }
 
 #endif /* defined(__SinncaEngine__Audio__) */

@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "Audio.h"
+#include "Script.h"
 
 namespace sinnca
 {
@@ -29,12 +30,25 @@ namespace sinnca
 	public:
 		
 		bool loops;
+		ALenum bufFormat;
+		ALsizei frequency;
+		ALsizei size;
 		
-		buffer();
+		std::string name;
+		
+		buffer(std::string n);
 		~buffer();
 		
-		int load(std::string path);
+		int load(std::string p);
+		
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
 	};
+	
+	#define createBuffer(a) new(a)buffer(a)
+	buffer* checkBuffer(int ind);
+	
+	void registerBuffer(lua_State* L);
 }
 
 #endif /* defined(__SinncaEngine__Buffer__) */

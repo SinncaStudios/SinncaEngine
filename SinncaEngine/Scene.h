@@ -19,6 +19,8 @@
 #include "Grid.h"
 #include "Image.h"
 #include "Texture.h"
+#include "Source.h"
+#include "Buffer.h"
 
 namespace sinnca
 {
@@ -37,6 +39,8 @@ namespace sinnca
 		pool* sceneStorage;
 		pool* imageStorage;
 		pool* textureStorage;
+		pool* sourceStorage;
+		pool* bufferStorage;
 		list* gridStorage;
 		
 		// reference keeping
@@ -47,6 +51,8 @@ namespace sinnca
 		std::vector<image*> imageRef;
 		std::vector<color*> colorRef;
 		std::vector<texture*> textureRef;
+		std::vector<source*> sourceRef;
+		std::vector<buffer*> bufferRef;
 		
 		
 		scene();

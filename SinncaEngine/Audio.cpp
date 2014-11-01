@@ -11,31 +11,57 @@
 
 namespace sinnca
 {
-	audio* audio::_instance = NULL;
-	audio* audio::Instance()
+	
+	namespace Audio
 	{
-		if (_instance == NULL)
+		
+		ALCdevice* device;
+		ALCcontext* context;
+		
+		ALboolean enumEnabled;
+		
+		void setup()
 		{
-			_instance = Heap->allocateNew<audio>();
+			device = alcOpenDevice(NULL);
+			if (!device)
+			{
+				printf("Could not create OpenAL device");
+			}
+			
+			enumEnabled = alcIsExtensionPresent(device, "ALC_ENUMERATION_EXT");
+			if (enumEnabled == AL_TRUE)
+			{
+				
+				const ALCchar* devices = alcGetString(NULL, ALC_DEVICE_SPECIFIER);
+				/*
+				size_t len = 0;
+				
+				printf("AL Devices List:\n");
+				while (devices && *devices != '/0' && next && *next != '/0')
+				{
+					fprintf(stdout, "%s\n", devices);
+					len = strlen(devices);
+					devices += (len + 1);
+					next += (len + 2);
+				}
+				 */
+				fprintf(stdout, "Devices: %s\n", devices);
+			}
+			
+			
+			context = alcCreateContext(device, NULL);
+			if (!alcMakeContextCurrent(context))
+			{
+				printf("Could not make OpenAL context");
+			}
+			
 		}
 		
-		return _instance;
-	}
-	
-	
-	audio::~audio()
-	{
-		
-	}
-	
-	void audio::setup()
-	{
-		device = alcOpenDevice(NULL);
-		if (!device)
+		void shutDown()
 		{
-			printf("Could not create OpenAL device");
+			alcDestroyContext(context);
+			alcCloseDevice(device);
 		}
-		
 		
 	}
 	
