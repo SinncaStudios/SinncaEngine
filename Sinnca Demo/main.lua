@@ -1,5 +1,11 @@
 print("hello from lua!")
 
+buffer:new("hi")
+hi:load(resourcePath .. "helloworld.wav")
+
+source:new("test")
+test:setBuffer(hi)
+
 entity:new("player")
 
 image:new("atlas")
@@ -30,6 +36,8 @@ end
 for i, k in pairs(_G) do
 print(i, k)
 end
+
+test:play()
 
 print("\n\n")
 

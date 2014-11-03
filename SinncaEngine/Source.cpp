@@ -16,6 +16,18 @@ namespace sinnca
 	{
 		alGenSources(1, &theSource);
 		name = n;
+		
+		Tree->currentScene->addChild(this);
+		parent = Tree->currentScene;
+		
+		pitch = 1.0f;
+		gain = 1.0f;
+		
+		alSourcef(theSource, AL_PITCH, pitch);
+		alSourcef(theSource, AL_GAIN, gain);
+		
+		alSource3f(theSource, AL_POSITION, pos.x, pos.y, pos.z);
+		
 	}
 	
 	source::~source()
@@ -39,7 +51,26 @@ namespace sinnca
 		{
 			isPlaying = true;
 			alSourcePlay(theSource);
+			
+			if ((Audio::error = alGetError() != AL_NO_ERROR))
+			{
+				printf("Source '%s' error: %d", name.c_str(), Audio::error);
+			}
 		}
+	}
+	
+	void source::pause()
+	{
+		if (isPlaying)
+		{
+			isPlaying = false;
+			alSourcePause(theSource);
+		}
+	}
+	
+	void source::rewind()
+	{
+		alSourceRewind(theSource);
 	}
 	
 	void* source::operator new(size_t s, std::string n)
@@ -138,10 +169,56 @@ namespace sinnca
 		return 0;
 	}
 	
+	static int l_play(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n != 1)
+		{
+			return luaL_error(L, "You need to provide a valid source...");
+		}
+		
+		source* sc = checkSource(1);
+		sc->play();
+		
+		return 0;
+	}
+	
+	static int l_pause(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n != 1)
+		{
+			return luaL_error(L, "You need to provide a valid source...");
+		}
+		
+		source* sc = checkSource(1);
+		sc->pause();
+		
+		return 0;
+	}
+	
+	static int l_rewind(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n != 1)
+		{
+			return luaL_error(L, "You need to provide a valid source...");
+		}
+		
+		source* sc = checkSource(1);
+		sc->rewind();
+		
+		return 0;
+	}
+	
 	static const luaL_Reg sourceFuncs[] = {
 		
 		{"new", l_newSource},
 		{"setBuffer", l_setBuffer},
+		
+		{"play", l_play},
+		{"pause", l_pause},
+		{"rewind", l_rewind},
 		
 		// node functions
 		{"setParent", l_setParent},

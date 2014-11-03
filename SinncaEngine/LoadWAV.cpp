@@ -14,32 +14,32 @@ namespace sinnca
 	struct riffChunk
 	{
 		char chunkId[4];
-		long chunkSize;
+		ui32 chunkSize;
 		char format[4];
 	};
 	struct formatChunk
 	{
 		char chunkId[4];
-		long chunkSize;
-		short format;
-		uint noOfChannels;
-		long sampleRate;
-		long byteRate;
-		short align;
-		short perSample;
+		ui32 chunkSize;
+		ui16 format;
+		ui16 noOfChannels;
+		ui32 sampleRate;
+		ui32 byteRate;
+		ui16 align;
+		ui16 perSample;
 		
 	};
 	
 	struct wavChunk
 	{
 		char chunkId[4];
-		long chunkSize;
+		ui32 chunkSize;
 	};
 	
 	int buffer::loadWAV(std::string path)
 	{
 		
-		FILE* f = fopen(path.c_str(), "fb");
+		FILE* f = fopen(path.c_str(), "rb");
 		
 		riffChunk riff;
 		formatChunk format;

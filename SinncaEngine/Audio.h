@@ -27,6 +27,7 @@ namespace sinnca
 		
 		static ALboolean enumEnabled;
 		*/
+		static ALenum error = alGetError();
 		
 		void setup();
 		void shutDown();

@@ -49,6 +49,15 @@
 		941D2F4E183AC205007EB1BE /* LinearAlloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 941D2F4C183AC205007EB1BE /* LinearAlloc.cpp */; };
 		941D2F4F183AC205007EB1BE /* LinearAlloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 941D2F4D183AC205007EB1BE /* LinearAlloc.h */; };
 		941D2F51183DDFBC007EB1BE /* Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = 941D2F50183DDFBC007EB1BE /* Utility.h */; };
+		941E45D21A05E31E00310EAB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E45D11A05E31E00310EAB /* AppDelegate.m */; };
+		941E45D41A05E31E00310EAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E45D31A05E31E00310EAB /* main.m */; };
+		941E45D71A05E31E00310EAB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E45D61A05E31E00310EAB /* ViewController.m */; };
+		941E45DA1A05E31E00310EAB /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E45D91A05E31E00310EAB /* Document.m */; };
+		941E45DC1A05E31E00310EAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 941E45DB1A05E31E00310EAB /* Images.xcassets */; };
+		941E45DF1A05E31F00310EAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941E45DD1A05E31F00310EAB /* Main.storyboard */; };
+		941E45EB1A05E31F00310EAB /* Sinnca_EditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E45EA1A05E31F00310EAB /* Sinnca_EditorTests.m */; };
+		941E45F21A05E38A00310EAB /* SinncaEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
+		941E45F41A06D57300310EAB /* helloworld.wav in Resources */ = {isa = PBXBuildFile; fileRef = 941E45F31A06D57300310EAB /* helloworld.wav */; };
 		94240D401937CF9C004A78C3 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 94240D3F1937CF9C004A78C3 /* main.lua */; };
 		943E19F819F0690F009CA1CF /* LoadWAV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F719F0690F009CA1CF /* LoadWAV.cpp */; };
 		943E19FB19F09B77009CA1CF /* CopyOnWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */; };
@@ -436,6 +445,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		941E45E51A05E31F00310EAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94B344781820BCFE00C370DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 941E45CB1A05E31D00310EAB;
+			remoteInfo = "Sinnca Editor";
+		};
 		948C1709192F02350047D0B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94B344781820BCFE00C370DA /* Project object */;
@@ -512,6 +528,21 @@
 		941D2F4C183AC205007EB1BE /* LinearAlloc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearAlloc.cpp; sourceTree = "<group>"; };
 		941D2F4D183AC205007EB1BE /* LinearAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearAlloc.h; sourceTree = "<group>"; };
 		941D2F50183DDFBC007EB1BE /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		941E45CC1A05E31E00310EAB /* Sinnca Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sinnca Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		941E45CF1A05E31E00310EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		941E45D01A05E31E00310EAB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		941E45D11A05E31E00310EAB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		941E45D31A05E31E00310EAB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		941E45D51A05E31E00310EAB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		941E45D61A05E31E00310EAB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		941E45D81A05E31E00310EAB /* Document.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		941E45D91A05E31E00310EAB /* Document.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		941E45DB1A05E31E00310EAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		941E45DE1A05E31F00310EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		941E45E41A05E31F00310EAB /* Sinnca EditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sinnca EditorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		941E45E91A05E31F00310EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		941E45EA1A05E31F00310EAB /* Sinnca_EditorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sinnca_EditorTests.m; sourceTree = "<group>"; };
+		941E45F31A06D57300310EAB /* helloworld.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = helloworld.wav; sourceTree = "<group>"; };
 		94240D3F1937CF9C004A78C3 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
 		94321B6C18BFD97F0020BA56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		94321B6E18BFD97F0020BA56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -822,6 +853,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		941E45C91A05E31D00310EAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				941E45F21A05E38A00310EAB /* SinncaEngine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		941E45E11A05E31F00310EAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		948C16DD192F02300047D0B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -942,6 +988,48 @@
 				943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		941E45CD1A05E31E00310EAB /* Sinnca Editor */ = {
+			isa = PBXGroup;
+			children = (
+				941E45D01A05E31E00310EAB /* AppDelegate.h */,
+				941E45D11A05E31E00310EAB /* AppDelegate.m */,
+				941E45D51A05E31E00310EAB /* ViewController.h */,
+				941E45D61A05E31E00310EAB /* ViewController.m */,
+				941E45D81A05E31E00310EAB /* Document.h */,
+				941E45D91A05E31E00310EAB /* Document.m */,
+				941E45DB1A05E31E00310EAB /* Images.xcassets */,
+				941E45DD1A05E31F00310EAB /* Main.storyboard */,
+				941E45CE1A05E31E00310EAB /* Supporting Files */,
+			);
+			path = "Sinnca Editor";
+			sourceTree = "<group>";
+		};
+		941E45CE1A05E31E00310EAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				941E45CF1A05E31E00310EAB /* Info.plist */,
+				941E45D31A05E31E00310EAB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		941E45E71A05E31F00310EAB /* Sinnca EditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				941E45EA1A05E31F00310EAB /* Sinnca_EditorTests.m */,
+				941E45E81A05E31F00310EAB /* Supporting Files */,
+			);
+			path = "Sinnca EditorTests";
+			sourceTree = "<group>";
+		};
+		941E45E81A05E31F00310EAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				941E45E91A05E31F00310EAB /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		94319D6E18D128CB00E78F8E /* Hardware */ = {
@@ -1286,6 +1374,8 @@
 				94BBDA8018D94CE200CA2D2B /* SinncaEngineLibraryTests */,
 				948C16E6192F02320047D0B4 /* Mobile Sinnca Demo */,
 				948C170B192F02350047D0B4 /* Mobile Sinnca DemoTests */,
+				941E45CD1A05E31E00310EAB /* Sinnca Editor */,
+				941E45E71A05E31F00310EAB /* Sinnca EditorTests */,
 				94B344831820BCFE00C370DA /* Frameworks */,
 				94B344821820BCFE00C370DA /* Products */,
 			);
@@ -1302,6 +1392,8 @@
 				94BBDA7918D94CE100CA2D2B /* SinncaEngineLibraryTests.xctest */,
 				948C16E0192F02300047D0B4 /* Mobile Sinnca Demo.app */,
 				948C1705192F02330047D0B4 /* Mobile Sinnca DemoTests.xctest */,
+				941E45CC1A05E31E00310EAB /* Sinnca Editor.app */,
+				941E45E41A05E31F00310EAB /* Sinnca EditorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1432,6 +1524,7 @@
 		94B344C518221A4700C370DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				941E45F31A06D57300310EAB /* helloworld.wav */,
 				94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */,
 				94AAFA9B1996D15C000AA4E4 /* iso_highlight.png */,
 				94AAFA9C1996D15C000AA4E4 /* iso_test.png */,
@@ -1759,6 +1852,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		941E45CB1A05E31D00310EAB /* Sinnca Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 941E45F01A05E32000310EAB /* Build configuration list for PBXNativeTarget "Sinnca Editor" */;
+			buildPhases = (
+				941E45C81A05E31D00310EAB /* Sources */,
+				941E45C91A05E31D00310EAB /* Frameworks */,
+				941E45CA1A05E31D00310EAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sinnca Editor";
+			productName = "Sinnca Editor";
+			productReference = 941E45CC1A05E31E00310EAB /* Sinnca Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		941E45E31A05E31F00310EAB /* Sinnca EditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 941E45F11A05E32000310EAB /* Build configuration list for PBXNativeTarget "Sinnca EditorTests" */;
+			buildPhases = (
+				941E45E01A05E31F00310EAB /* Sources */,
+				941E45E11A05E31F00310EAB /* Frameworks */,
+				941E45E21A05E31F00310EAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				941E45E61A05E31F00310EAB /* PBXTargetDependency */,
+			);
+			name = "Sinnca EditorTests";
+			productName = "Sinnca EditorTests";
+			productReference = 941E45E41A05E31F00310EAB /* Sinnca EditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		948C16DF192F02300047D0B4 /* Mobile Sinnca Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 948C1713192F02350047D0B4 /* Build configuration list for PBXNativeTarget "Mobile Sinnca Demo" */;
@@ -1910,6 +2038,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Ryan Oldis";
 				TargetAttributes = {
+					941E45CB1A05E31D00310EAB = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					941E45E31A05E31F00310EAB = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 941E45CB1A05E31D00310EAB;
+					};
 					948C1704192F02330047D0B4 = {
 						TestTargetID = 94B344801820BCFE00C370DA;
 					};
@@ -1946,11 +2081,29 @@
 				94B6418C18DE082900FBA7F1 /* SinncaEngine Universal */,
 				948C16DF192F02300047D0B4 /* Mobile Sinnca Demo */,
 				948C1704192F02330047D0B4 /* Mobile Sinnca DemoTests */,
+				941E45CB1A05E31D00310EAB /* Sinnca Editor */,
+				941E45E31A05E31F00310EAB /* Sinnca EditorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		941E45CA1A05E31D00310EAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				941E45DC1A05E31E00310EAB /* Images.xcassets in Resources */,
+				941E45DF1A05E31F00310EAB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		941E45E21A05E31F00310EAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		948C16DE192F02300047D0B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2004,6 +2157,7 @@
 				94AAFA9F1996D15C000AA4E4 /* iso_highlight.png in Resources */,
 				94B344C918221A4700C370DA /* InfoPlist.strings in Resources */,
 				94B344D718221A4700C370DA /* Images.xcassets in Resources */,
+				941E45F41A06D57300310EAB /* helloworld.wav in Resources */,
 				94AAFA9D1996D15C000AA4E4 /* iso_grass copy.png in Resources */,
 				94B344CF18221A4700C370DA /* Credits.rtf in Resources */,
 				94AAFA981991E880000AA4E4 /* BasicFrag.fs in Resources */,
@@ -2047,6 +2201,25 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		941E45C81A05E31D00310EAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				941E45DA1A05E31E00310EAB /* Document.m in Sources */,
+				941E45D71A05E31E00310EAB /* ViewController.m in Sources */,
+				941E45D41A05E31E00310EAB /* main.m in Sources */,
+				941E45D21A05E31E00310EAB /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		941E45E01A05E31F00310EAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				941E45EB1A05E31F00310EAB /* Sinnca_EditorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		948C16DC192F02300047D0B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2298,6 +2471,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		941E45E61A05E31F00310EAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 941E45CB1A05E31D00310EAB /* Sinnca Editor */;
+			targetProxy = 941E45E51A05E31F00310EAB /* PBXContainerItemProxy */;
+		};
 		948C170A192F02350047D0B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 948C16DF192F02300047D0B4 /* Mobile Sinnca Demo */;
@@ -2321,6 +2499,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		941E45DD1A05E31F00310EAB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				941E45DE1A05E31F00310EAB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		948C16E9192F02320047D0B4 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2412,6 +2598,94 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		941E45EC1A05E31F00310EAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Sinnca Editor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		941E45ED1A05E31F00310EAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Sinnca Editor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		941E45EE1A05E31F00310EAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Sinnca EditorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sinnca Editor.app/Contents/MacOS/Sinnca Editor";
+			};
+			name = Debug;
+		};
+		941E45EF1A05E31F00310EAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Sinnca EditorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sinnca Editor.app/Contents/MacOS/Sinnca Editor";
+			};
+			name = Release;
+		};
 		948C1714192F02350047D0B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2917,6 +3191,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		941E45F01A05E32000310EAB /* Build configuration list for PBXNativeTarget "Sinnca Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				941E45EC1A05E31F00310EAB /* Debug */,
+				941E45ED1A05E31F00310EAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		941E45F11A05E32000310EAB /* Build configuration list for PBXNativeTarget "Sinnca EditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				941E45EE1A05E31F00310EAB /* Debug */,
+				941E45EF1A05E31F00310EAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		948C1713192F02350047D0B4 /* Build configuration list for PBXNativeTarget "Mobile Sinnca Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -20,6 +20,7 @@ namespace sinnca
 		
 		ALboolean enumEnabled;
 		
+		
 		void setup()
 		{
 			device = alcOpenDevice(NULL);
