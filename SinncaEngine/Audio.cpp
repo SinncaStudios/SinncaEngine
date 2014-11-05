@@ -8,6 +8,7 @@
 
 #include "Audio.h"
 #include "Heap.h"
+#include "Listener.h"
 
 namespace sinnca
 {
@@ -23,10 +24,17 @@ namespace sinnca
 		
 		void setup()
 		{
+			alGetError(); // reset error message;
+			
 			device = alcOpenDevice(NULL);
 			if (!device)
 			{
 				printf("Could not create OpenAL device");
+			}
+			
+			if ((Audio::error = alGetError() != AL_NO_ERROR))
+			{
+				printf("Audio error: %s\n", alGetString(Audio::error));
 			}
 			
 			enumEnabled = alcIsExtensionPresent(device, "ALC_ENUMERATION_EXT");
@@ -51,10 +59,19 @@ namespace sinnca
 			
 			
 			context = alcCreateContext(device, NULL);
-			if (!alcMakeContextCurrent(context))
+			if ((Audio::error = alGetError() != AL_NO_ERROR))
 			{
-				printf("Could not make OpenAL context");
+				printf("Audio error: %s\n", alGetString(Audio::error));
 			}
+			
+			
+			alcMakeContextCurrent(context);
+			if ((Audio::error = alGetError() != AL_NO_ERROR))
+			{
+				printf("Audio error: %s\n", alGetString(Audio::error));
+			}
+			
+			Listener->update();
 			
 		}
 		

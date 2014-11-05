@@ -15,6 +15,12 @@ namespace sinnca
 	source::source(std::string n)
 	{
 		alGenSources(1, &theSource);
+		if ((Audio::error = alGetError() != AL_NO_ERROR))
+		{
+			printf("Source '%s' error: %d\n", n.c_str(), Audio::error);
+		}
+		
+		
 		name = n;
 		
 		Tree->currentScene->addChild(this);
@@ -25,6 +31,7 @@ namespace sinnca
 		
 		alSourcef(theSource, AL_PITCH, pitch);
 		alSourcef(theSource, AL_GAIN, gain);
+		alSourcei(theSource, AL_LOOPING, AL_FALSE);
 		
 		alSource3f(theSource, AL_POSITION, pos.x, pos.y, pos.z);
 		
@@ -38,6 +45,11 @@ namespace sinnca
 	void source::setBuffer(buffer* b)
 	{
 		theBuffer = b;
+		alSourcei(theSource, AL_BUFFER, b->getBuffer());
+		if ((Audio::error = alGetError() != AL_NO_ERROR))
+		{
+			printf("Source '%s' error: %d\n", name.c_str(), Audio::error);
+		}
 	}
 	
 	void source::update()
@@ -54,7 +66,7 @@ namespace sinnca
 			
 			if ((Audio::error = alGetError() != AL_NO_ERROR))
 			{
-				printf("Source '%s' error: %d", name.c_str(), Audio::error);
+				printf("Source '%s' error: %s\n", name.c_str(), alGetString(Audio::error));
 			}
 		}
 	}

@@ -15,6 +15,12 @@ namespace sinnca
 	buffer::buffer(std::string n)
 	{
 		alGenBuffers(1, &theBuffer);
+		if ((Audio::error = alGetError() != AL_NO_ERROR))
+		{
+			fprintf(stdout, "Buffer '%s' error: %d\n", n.c_str(), Audio::error);
+			
+		}
+		
 		name = n;
 	}
 	
@@ -37,6 +43,11 @@ namespace sinnca
 		
 		printf("This file does not have a compatible loader.\n");
 		return -1;
+	}
+	
+	ALuint buffer::getBuffer()
+	{
+		return theBuffer;
 	}
 	
 	void* buffer::operator new(size_t s, std::string n)

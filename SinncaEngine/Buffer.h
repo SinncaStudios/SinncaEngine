@@ -40,6 +40,7 @@ namespace sinnca
 		~buffer();
 		
 		int load(std::string p);
+		ALuint getBuffer();
 		
 		void* operator new(size_t s, std::string n);
 		void operator delete(void* p);

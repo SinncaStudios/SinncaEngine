@@ -45,7 +45,9 @@ print("\n\n")
 
 function player:update()
 	
-	
+	if keyDown(Key.space) == 1 then
+		
+	end
 	
 end
 
