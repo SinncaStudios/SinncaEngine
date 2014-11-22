@@ -20,6 +20,7 @@ namespace sinnca
 		
 	public:
 		
+		bool debug, inEditor;
 		unsigned int glW, glH;
 		
 		void startUp(const char* path = "");

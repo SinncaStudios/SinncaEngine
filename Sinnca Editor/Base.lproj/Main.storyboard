@@ -677,13 +677,12 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Edit" identifier="2" id="o1o-i1-aQ8">
-                                        <view key="view" id="LJi-l6-QRI">
-                                            <rect key="frame" x="10" y="33" width="916" height="676"/>
+                                        <view key="view" ambiguous="YES" id="LJi-l6-QRI">
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Preview" identifier="1" id="EV8-9U-XXB">
-                                        <view key="view" ambiguous="YES" id="1pr-ze-OGO">
+                                        <view key="view" id="1pr-ze-OGO">
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <openGLView fixedFrame="YES" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-3O-96B">
@@ -700,7 +699,6 @@
                                 <tabViewItems>
                                     <tabViewItem label="Tab" identifier="1" id="TfL-xs-SwM">
                                         <view key="view" ambiguous="YES" id="1ru-fn-xgg">
-                                            <rect key="frame" x="10" y="33" width="272" height="835"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </tabViewItem>

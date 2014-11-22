@@ -74,6 +74,6 @@ namespace sinnca
 	
 	void game::cleanUp()
 	{
-		
+		Audio::shutDown();
 	}
 }

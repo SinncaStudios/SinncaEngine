@@ -58,7 +58,11 @@
 		941E45EB1A05E31F00310EAB /* Sinnca_EditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 941E45EA1A05E31F00310EAB /* Sinnca_EditorTests.m */; };
 		941E45F21A05E38A00310EAB /* SinncaEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
 		941E45F41A06D57300310EAB /* helloworld.wav in Resources */ = {isa = PBXBuildFile; fileRef = 941E45F31A06D57300310EAB /* helloworld.wav */; };
+		941E45FB1A0B328E00310EAB /* Timeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 941E45F91A0B328E00310EAB /* Timeline.h */; };
+		941E45FD1A0FC08E00310EAB /* DoubleList.h in Headers */ = {isa = PBXBuildFile; fileRef = 941E45FC1A0FC08E00310EAB /* DoubleList.h */; };
 		94240D401937CF9C004A78C3 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 94240D3F1937CF9C004A78C3 /* main.lua */; };
+		942F8C9E1A213E5200563FA0 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 942F8C9C1A213E5200563FA0 /* Animation.cpp */; };
+		942F8C9F1A213E5300563FA0 /* Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F8C9D1A213E5200563FA0 /* Animation.h */; };
 		943E19F819F0690F009CA1CF /* LoadWAV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F719F0690F009CA1CF /* LoadWAV.cpp */; };
 		943E19FB19F09B77009CA1CF /* CopyOnWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */; };
 		943E19FC19F09B77009CA1CF /* CopyOnWrite.h in Headers */ = {isa = PBXBuildFile; fileRef = 943E19FA19F09B76009CA1CF /* CopyOnWrite.h */; };
@@ -543,7 +547,11 @@
 		941E45E91A05E31F00310EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		941E45EA1A05E31F00310EAB /* Sinnca_EditorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sinnca_EditorTests.m; sourceTree = "<group>"; };
 		941E45F31A06D57300310EAB /* helloworld.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = helloworld.wav; sourceTree = "<group>"; };
+		941E45F91A0B328E00310EAB /* Timeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timeline.h; sourceTree = "<group>"; };
+		941E45FC1A0FC08E00310EAB /* DoubleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleList.h; sourceTree = "<group>"; };
 		94240D3F1937CF9C004A78C3 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
+		942F8C9C1A213E5200563FA0 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		942F8C9D1A213E5200563FA0 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		94321B6C18BFD97F0020BA56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		94321B6E18BFD97F0020BA56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		943E19F719F0690F009CA1CF /* LoadWAV.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadWAV.cpp; sourceTree = "<group>"; };
@@ -1032,6 +1040,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		941E45F71A0B322900310EAB /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				941E45F91A0B328E00310EAB /* Timeline.h */,
+				942F8C9D1A213E5200563FA0 /* Animation.h */,
+				942F8C9C1A213E5200563FA0 /* Animation.cpp */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
 		94319D6E18D128CB00E78F8E /* Hardware */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1198,7 @@
 			children = (
 				945AFB0F18A4B0F000BA7AB9 /* List.h */,
 				9405C13618C90E3B00AFEDE9 /* Array.h */,
+				941E45FC1A0FC08E00310EAB /* DoubleList.h */,
 			);
 			name = Containers;
 			sourceTree = "<group>";
@@ -1449,6 +1468,7 @@
 			children = (
 				94B344911820BCFE00C370DA /* SinncaEngine.h */,
 				94B344921820BCFE00C370DA /* SinncaEngine.mm */,
+				941E45F71A0B322900310EAB /* Animation */,
 				941D2F4B182F641C007EB1BE /* Utility */,
 				944D6CBB1859926D0083EAEC /* Scripting */,
 				94B344B51820BE6B00C370DA /* System */,
@@ -1691,6 +1711,7 @@
 				9405C13718C90E3C00AFEDE9 /* Array.h in Headers */,
 				945AFB2318A9845D00BA7AB9 /* Camera.h in Headers */,
 				945AFB3418B1E48800BA7AB9 /* RenderObj.h in Headers */,
+				941E45FD1A0FC08E00310EAB /* DoubleList.h in Headers */,
 				946D06A41977492E00A39114 /* Palette.h in Headers */,
 				94BBDA0418D63DC700CA2D2B /* GuiString.h in Headers */,
 				94BBDA4218D7FA1000CA2D2B /* i_graphics.h in Headers */,
@@ -1700,6 +1721,7 @@
 				944D6CD3185C2A9F0083EAEC /* Game.h in Headers */,
 				94BC91CC199C79F800B53026 /* Timer.h in Headers */,
 				945AFB3D18B337EE00BA7AB9 /* ButtonCombo.h in Headers */,
+				942F8C9F1A213E5300563FA0 /* Animation.h in Headers */,
 				94A7A20B19D7B75F0025EA2D /* Source.h in Headers */,
 				941D2F51183DDFBC007EB1BE /* Utility.h in Headers */,
 				945AFB3918B3377B00BA7AB9 /* RapidPress.h in Headers */,
@@ -1721,6 +1743,7 @@
 				9405C10B18C50A1D00AFEDE9 /* Image.h in Headers */,
 				94D40A96195BD39600584E4A /* crypt.h in Headers */,
 				94A7A1FE19D716230025EA2D /* Listener.h in Headers */,
+				941E45FB1A0B328E00310EAB /* Timeline.h in Headers */,
 				94D40A9C195BD39600584E4A /* inffast.h in Headers */,
 				94D40AAA195BD39600584E4A /* zconf.h in Headers */,
 				945AFB2B18AC6D5D00BA7AB9 /* Input.h in Headers */,
@@ -2256,6 +2279,7 @@
 				945AFB3818B3377B00BA7AB9 /* RapidPress.cpp in Sources */,
 				944D6CC0185997790083EAEC /* Script.cpp in Sources */,
 				94A7A20A19D7B75F0025EA2D /* Source.cpp in Sources */,
+				942F8C9E1A213E5200563FA0 /* Animation.cpp in Sources */,
 				94BBDA0A18D78DB400CA2D2B /* GuiWidget.cpp in Sources */,
 				945AFB2218A9845D00BA7AB9 /* Camera.cpp in Sources */,
 				94D40AA8195BD39600584E4A /* unzip.c in Sources */,
@@ -3198,6 +3222,7 @@
 				941E45ED1A05E31F00310EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		941E45F11A05E32000310EAB /* Build configuration list for PBXNativeTarget "Sinnca EditorTests" */ = {
 			isa = XCConfigurationList;
@@ -3206,6 +3231,7 @@
 				941E45EF1A05E31F00310EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		948C1713192F02350047D0B4 /* Build configuration list for PBXNativeTarget "Mobile Sinnca Demo" */ = {
 			isa = XCConfigurationList;
