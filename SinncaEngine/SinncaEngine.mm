@@ -22,6 +22,21 @@
 @implementation SinncaEngine
 using namespace sinnca;
 
+- (BOOL) acceptsFirstResponder
+{
+	return YES;
+}
+
+- (BOOL) becomeFirstResponder
+{
+	return YES;
+}
+
+- (BOOL) resignFirstResponder
+{
+	return YES;
+}
+
 - (void) viewDidLoad
 {
 	
@@ -111,17 +126,85 @@ using namespace sinnca;
 {
 	unichar theKey = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
 	
-	Input->sendKeyDown((int)theKey);
+	Input::sendKeyDown((int)theKey);
 }
 - (void) keyUp:(NSEvent *)theEvent
 {
 	unichar theKey = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
 	
-	Input->sendKeyUp((int)theKey);
+	Input::sendKeyUp((int)theKey);
 }
 - (void) mouseDown:(NSEvent *)theEvent
 {
 	
+	switch ([theEvent type])
+	{
+		case NSLeftMouseDown:
+			Input::Mouse::left.x = 1.0f;
+			Input::Mouse::pressure.x = theEvent.pressure;
+			break;
+			
+		case NSOtherMouseDown:
+			Input::Mouse::middle.x = 1.0f;
+			break;
+			
+		case NSRightMouseDown:
+			Input::Mouse::right.x = 1.0f;
+			break;
+			
+		
+		default:
+			break;
+	}
+}
+
+- (void) mouseUp:(NSEvent *)theEvent
+{
+	
+	switch ([theEvent type])
+	{
+		case NSLeftMouseUp:
+			Input::Mouse::left.x = 0.0f;
+			Input::Mouse::pressure.x = theEvent.pressure;
+			break;
+			
+		case NSOtherMouseUp:
+			Input::Mouse::middle.x = 0.0f;
+			break;
+			
+		case NSRightMouseUp:
+			Input::Mouse::right.x = 0.0f;
+			break;
+			
+			
+		default:
+			break;
+	}
+}
+
+- (void) mouseMoved:(NSEvent*)theEvent
+{
+	NSPoint loc = [self convertPoint:[theEvent locationInWindow] fromView: nil];
+	Input::Mouse::x = loc.x;
+	Input::Mouse::y = loc.y;
+}
+
+// multi-touch events
+
+- (void) magnifyWithEvent:(NSEvent*)theEvent
+{
+	Input::Touch::magnify = [theEvent magnification];
+}
+
+- (void) rotateWithEvent:(NSEvent*)theEvent
+{
+	Input::Touch::rotation = [theEvent rotation];
+}
+
+- (void) swipeWithEvent:(NSEvent*)theEvent
+{
+	Input::Touch::swipeX = [theEvent deltaX];
+	Input::Touch::swipeY = [theEvent deltaY];
 }
 
 - (void) resizeScreen

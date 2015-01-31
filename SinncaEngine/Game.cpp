@@ -35,9 +35,9 @@ namespace sinnca
 		
 		// We need to be able to interact with the game
 		// but not like this on mobile devices
-#if snMobile == 0
-		Input->setupKeys();
-#endif
+
+		Input::setup();
+
 		
 		// Time for Audio!
 		Audio::setup();
@@ -51,7 +51,7 @@ namespace sinnca
 	void game::loopItr()
 	{
 		// first check the inputs
-		Input->update();
+		Input::update();
 		
 		// update the current scene
 		Tree->currentScene->update();

@@ -14,6 +14,8 @@
 #include "Script.h"
 #include "i_graphics.h"
 
+#include "Graphics.h"
+
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
@@ -23,10 +25,9 @@ namespace sinnca
 	struct glyph
 	{
 		float addx, addy;
-		float w, h;
 		float left, top;
-		float tx, ty;
 		
+		sprite ob;
 	};
 
 	class font

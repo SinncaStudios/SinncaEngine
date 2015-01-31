@@ -12,7 +12,7 @@
 
 namespace sinnca
 {
-	void input::setupKeys()
+	void Input::setupKeys()
 	{
 		Script->newBlankTable();
 		

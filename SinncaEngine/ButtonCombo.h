@@ -9,6 +9,19 @@
 #ifndef __SinncaEngine__ButtonCombo__
 #define __SinncaEngine__ButtonCombo__
 
-#include <iostream>
+#include "InputWatcher.h"
+#include "List.h"
+
+namespace sinnca
+{
+	class buttonCombo : public inputWatcher
+	{
+		linkList<InputType*> combo;
+		
+	public:
+		
+		void update();
+	};
+}
 
 #endif /* defined(__SinncaEngine__ButtonCombo__) */

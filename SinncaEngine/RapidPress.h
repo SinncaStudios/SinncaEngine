@@ -9,6 +9,24 @@
 #ifndef __SinncaEngine__RapidPress__
 #define __SinncaEngine__RapidPress__
 
-#include <iostream>
+#include "InputWatcher.h"
+#include "TimeKeeping.h"
+
+namespace sinnca
+{
+	class rapidPress : public inputWatcher
+	{
+		bool isWatching;
+		uint frequency;
+		ui64 timesPressed;
+		
+		sinncaTime durration;
+		
+	public:
+		
+		rapidPress();
+		void update();
+	};
+}
 
 #endif /* defined(__SinncaEngine__RapidPress__) */

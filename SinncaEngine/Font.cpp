@@ -9,7 +9,6 @@
 #include "Font.h"
 #include "Utility.h"
 
-#include "i_graphics.h"
 
 namespace sinnca
 {
@@ -40,7 +39,7 @@ namespace sinnca
 	
 	void font::generate()
 	{
-		/*
+		
 		FT_Library ft;
 		//int hang, bearing;
 		
@@ -154,17 +153,31 @@ namespace sinnca
 			
 			
 			
-			tmp.addx = g->advance.x;
-			tmp.addy = g->advance.y;
+//			tmp.addx = g->advance.x;
+//			tmp.addy = g->advance.y;
+//			
+//			tmp.w = g->bitmap.width;
+//			tmp.h = g->bitmap.rows;
+//			
+//			tmp.left = g->bitmap_left;
+//			tmp.top = g->bitmap_top;
+//			
+//			tmp.tx = offx / (float)w;
+//			tmp.ty = offy / (float)h;
 			
-			tmp.w = g->bitmap.width;
-			tmp.h = g->bitmap.rows;
+			tmp.ob.vertices[0].position[1] = g->bitmap.rows;
+			tmp.ob.vertices[2].position[0] = g->bitmap.width;
+			tmp.ob.vertices[3].position[0] = g->bitmap.width;
+			tmp.ob.vertices[3].position[1] = g->bitmap.rows;
 			
-			tmp.left = g->bitmap_left;
-			tmp.top = g->bitmap_top;
-			
-			tmp.tx = offx / (float)w;
-			tmp.ty = offy / (float)h;
+			tmp.ob.vertices[0].texco[0] = offx / (float)w;
+			tmp.ob.vertices[0].texco[1] = ((1.0f / h) * (float)g->bitmap.rows);
+			tmp.ob.vertices[1].texco[0] = offx / (float)w;
+			tmp.ob.vertices[1].texco[1] = offy / (float)h;
+			tmp.ob.vertices[2].texco[0] = ((1.0f / w) * (float)g->bitmap.width);
+			tmp.ob.vertices[2].texco[1] = offy / (float)h;
+			tmp.ob.vertices[3].texco[0] = ((1.0f / w) * (float)g->bitmap.width);
+			tmp.ob.vertices[3].texco[1] = ((1.0f / h) * (float)g->bitmap.rows);
 			
 			data.push_back(tmp);
 			
@@ -175,7 +188,7 @@ namespace sinnca
 		FT_Done_Face(fontface);
 		FT_Done_FreeType(ft);
 		glBindTexture(GL_TEXTURE_2D, 0);
-		*/
+		
 	}
 	
 	void font::renderGlyph(char aci)
@@ -186,39 +199,27 @@ namespace sinnca
 		
 		if (aci == '\n')
 		{
-			glPopMatrix();
-			glTranslatef(0.0f, size, 0.0f);
-			glPushMatrix();
+			Graphics->popMatrix();
+			Graphics->move(0.0f, size, 0.0f);
+			Graphics->pushMatrix();
 			
 		} else {
 			// texture was set by string renderer
 			
-			glPushMatrix();
-			glTranslatef(0.0f, (data[ref].top * -1) + 16, 0.0f);
-			
-			float x = data[ref].tx;
-			float y = data[ref].ty;
-			float wth = data[ref].tx + ((1.0f / w) * (float)data[ref].w);
-			float hgt = ((1.0f / h) * (float)data[ref].h);
-			
-			//printf("%c %f %f %f\n", ref, data[ref - range[0]].tx, data[ref - range[0]].w, wth);
+			Graphics->pushMatrix();
+			Graphics->move(0.0f, (data[ref].top * -1) + 16, 0.0f);
 			if (!data[ref].addx) {
 				return;
 			}
 			
-#if snMobile == 0
-			glBegin(GL_QUADS);
-			glTexCoord2d(x, hgt);	glVertex2f(0, data[ref].h);
-			glTexCoord2d(x, y);		glVertex2f(0, 0);
-			glTexCoord2d(wth, y);	glVertex2f(data[ref].w, 0);
-			glTexCoord2d(wth, hgt);	glVertex2f(data[ref].w, data[ref].h);
-			glEnd();
-#endif
+			data[ref].ob.render();
 			
-			glPopMatrix();
+			
+			
+			Graphics->popMatrix();
 		}
 		
-		glTranslatef(data[ref].addx / 64.f, 0, 0);
+		Graphics->move(data[ref].addx / 64.f, 0, 0);
 		
 	}
 	
@@ -343,10 +344,10 @@ namespace sinnca
 		return 0;
 	}
 	
-	static const luaL_Reg fontGc[] = {
-		{"__gc", clear},
-		{NULL, NULL}
-	};
+//	static const luaL_Reg fontGc[] = {
+//		{"__gc", clear},
+//		{NULL, NULL}
+//	};
 	
 	static const luaL_Reg fontFuncs[] = {
 		

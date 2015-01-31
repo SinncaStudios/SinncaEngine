@@ -20,6 +20,7 @@ namespace sinnca
 		ALCcontext* context;
 		
 		ALboolean enumEnabled;
+		ALenum error = alGetError();
 		
 		
 		void setup()

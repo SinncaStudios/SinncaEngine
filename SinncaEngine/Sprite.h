@@ -24,12 +24,6 @@ namespace sinnca
 		sprite();
 		~sprite();
 		
-		const float POSITION[ 8 ] = {
-			0.0f, 0.0f, // Down left (pivot point)
-			1.0f, 0.0f, // Up left
-			0.0f, 1.0f, // Down right
-			1.0f, 1.0f  // Up right
-		};
 		
 		vertex vertices[4] = {
 			{{0.0f, 0.0f, 0.0f}, {0.0f, 1.0f}},

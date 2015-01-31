@@ -33,17 +33,18 @@ namespace sinnca
 
 	void guiString::render()
 	{
-		/*
+		
 		if (ft != NULL)
 		{
 			
-			glPushMatrix();
-			glTranslatef(xy[0]/2, xy[1]/2, 0);
+			Graphics->pushMatrix();
+			Graphics->move(xy[0]/2, xy[1]/2, 0);
 			
-			glColor4f(color[0], color[1], color[2], color[3]);
+			//glColor4f(color[0], color[1], color[2], color[3]);
+			col->bind();
 			glBindTexture(GL_TEXTURE_2D, ft->atlas);
 			
-			glPushMatrix();
+			Graphics->pushMatrix();
 			
 			for (int i = 0; i < str.length(); i++)
 			{
@@ -51,11 +52,11 @@ namespace sinnca
 				ft->renderGlyph(str[i]);
 			}
 			
-			glPopMatrix();
-			glPopMatrix();
+			Graphics->popMatrix();
+			Graphics->popMatrix();
 			 
 		}
-		*/
+		
 	}
 
 	void guiString::setFont(font *f)

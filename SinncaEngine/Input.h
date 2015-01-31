@@ -13,42 +13,50 @@
 #include "Types.h"
 #include "Script.h"
 
+#include "InputType.h"
+#include "DigitalButton.h"
+#include "AnalogButton.h"
+#include "Analog2Axis.h"
+#include "Analog3Axis.h"
+
 namespace sinnca
 {
 	
-	struct mse
+	namespace Input
 	{
-		unsigned int x, y;
+		extern ui8 noOfInputsChanged;
+		extern InputType* inputsChanged[20];
+		extern uint tapLimit;
 		
-		bool left, right, middle, scrollUp, scrollDown;
-	};
-	
-#define Input (input::Instance())
-	class input
-	{
-		// there will be room for 512 keys!
-		//ui64 keyArray;
+		namespace Keyboard
+		{
+			extern digitalButton keys[322];
+		}
 		
+		namespace Mouse
+		{
+			extern uint x, y;
+			extern digitalButton left, middle, right;
+			
+			extern analogButton pressure;
+		}
 		
-	public:
-		bool keyArray[322];
-		mse Mouse;
+		namespace Touch
+		{
+			extern float magnify;
+			extern float rotation;
+			extern float swipeX, swipeY;
+		}
 		
-		input();
-		~input();
+		void setup();
+		void shutDown();
 		
 		void setupKeys();
 		void update();
-		
 		void sendKeyDown(int k);
 		void sendKeyUp(int k);
 		
-		static input* Instance();
-		
-	protected:
-		
-		static input* _instance;
-	};
+	}
 	
 	int l_keyDown(lua_State* L);
 }

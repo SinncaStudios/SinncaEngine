@@ -19,7 +19,9 @@ namespace sinnca
 {
 	class color
 	{
-			
+		
+		// discriminated union
+		
 	public:
 		// each variable is one byte with a range of 0 to 255
 		ui8 r, g, b, a;

@@ -29,6 +29,9 @@
 - (void) prepareOpenGL;
 - (void) dealloc;
 
+- (void) keyDown:(NSEvent *)theEvent;
+- (void) keyUp:(NSEvent *)theEvent;
+
 @end
 #endif
 

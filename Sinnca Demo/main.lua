@@ -1,5 +1,10 @@
 print("hello from lua!")
 
+font:new("test")
+test:setSize(16)
+test:setPath(resourcePath .. "/Gravity-Light.ttf")
+test:generate()
+
 buffer:new("hi")
 hi:load(resourcePath .. "helloworld.wav")
 
@@ -46,7 +51,7 @@ print("\n\n")
 function player:update()
 	
 	if keyDown(Key.space) == 1 then
-		
+		print("space")
 	end
 	
 end

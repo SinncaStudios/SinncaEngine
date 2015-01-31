@@ -148,8 +148,8 @@ namespace sinnca
 	bool grid::checkBounds(int &x, int &y)
 	{
 		
-		int _x = Input->Mouse.x + pos.x - Camera->pos.x * 2;
-		int _y = Input->Mouse.y - pos.y - Camera->pos.y * 2;
+		int _x = Input::Mouse::x + pos.x - Camera->pos.x * 2;
+		int _y = Input::Mouse::y - pos.y - Camera->pos.y * 2;
 		
 		double d_x = ((2 * _y + _x) / 2.0);
 		double d_y = ((2 * _y - _x) / 2.0);

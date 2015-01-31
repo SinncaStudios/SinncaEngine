@@ -250,6 +250,7 @@
 		94A7A20719D7B60E0025EA2D /* Buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A7A20519D7B60E0025EA2D /* Buffer.h */; };
 		94A7A20A19D7B75F0025EA2D /* Source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A20819D7B75F0025EA2D /* Source.cpp */; };
 		94A7A20B19D7B75F0025EA2D /* Source.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A7A20919D7B75F0025EA2D /* Source.h */; };
+		94A906041A7C81CF002892A7 /* Asset.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A906031A7C81CF002892A7 /* Asset.h */; };
 		94AAFA981991E880000AA4E4 /* BasicFrag.fs in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA961991E880000AA4E4 /* BasicFrag.fs */; };
 		94AAFA991991E880000AA4E4 /* BasicVert.vs in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA971991E880000AA4E4 /* BasicVert.vs */; };
 		94AAFA9D1996D15C000AA4E4 /* iso_grass copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */; };
@@ -398,6 +399,22 @@
 		94BC91CB199C79F800B53026 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C8199C79F800B53026 /* Timer.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		94BC91CC199C79F800B53026 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C9199C79F800B53026 /* Timer.h */; };
 		94BC91CD199C79F800B53026 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C9199C79F800B53026 /* Timer.h */; };
+		94C68F8D1A3801FB00FEB552 /* Gravity-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94C68F8B1A37FFF600FEB552 /* Gravity-Light.ttf */; };
+		94C68F901A43C94600FEB552 /* InputType.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F8F1A43C94600FEB552 /* InputType.h */; };
+		94C68F921A43CFE900FEB552 /* DigitalButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F911A43CFE900FEB552 /* DigitalButton.h */; };
+		94C68F941A43D4DE00FEB552 /* AnalogButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F931A43D4DE00FEB552 /* AnalogButton.h */; };
+		94C68F961A43DBDA00FEB552 /* Analog2Axis.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F951A43DBDA00FEB552 /* Analog2Axis.h */; };
+		94C68F981A43E28000FEB552 /* Analog3Axis.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F971A43E28000FEB552 /* Analog3Axis.h */; };
+		94C68F9F1A44E01500FEB552 /* LightTap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94C68F9D1A44E01500FEB552 /* LightTap.cpp */; };
+		94C68FA01A44E01500FEB552 /* LightTap.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F9E1A44E01500FEB552 /* LightTap.h */; };
+		94C68FA31A44E07000FEB552 /* ButtonHold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94C68FA11A44E07000FEB552 /* ButtonHold.cpp */; };
+		94C68FA41A44E07000FEB552 /* ButtonHold.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FA21A44E07000FEB552 /* ButtonHold.h */; };
+		94C68FA71A44E14F00FEB552 /* ButtonChord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94C68FA51A44E14F00FEB552 /* ButtonChord.cpp */; };
+		94C68FA81A44E14F00FEB552 /* ButtonChord.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FA61A44E14F00FEB552 /* ButtonChord.h */; };
+		94C68FAB1A44E96800FEB552 /* UpandDown.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94C68FA91A44E96800FEB552 /* UpandDown.cpp */; };
+		94C68FAC1A44E96800FEB552 /* UpandDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FAA1A44E96800FEB552 /* UpandDown.h */; };
+		94C68FAF1A44F38E00FEB552 /* InputWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FAE1A44F38E00FEB552 /* InputWatcher.h */; };
+		94C68FB11A490ED700FEB552 /* AnalogHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FB01A490ED700FEB552 /* AnalogHelper.h */; };
 		94D40A80195BD39600584E4A /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = 94D40A51195BD39600584E4A /* png.c */; };
 		94D40A81195BD39600584E4A /* png.h in Headers */ = {isa = PBXBuildFile; fileRef = 94D40A52195BD39600584E4A /* png.h */; };
 		94D40A82195BD39600584E4A /* pngconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 94D40A53195BD39600584E4A /* pngconf.h */; };
@@ -734,6 +751,7 @@
 		94A7A20519D7B60E0025EA2D /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffer.h; sourceTree = "<group>"; };
 		94A7A20819D7B75F0025EA2D /* Source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Source.cpp; sourceTree = "<group>"; };
 		94A7A20919D7B75F0025EA2D /* Source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
+		94A906031A7C81CF002892A7 /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
 		94AAFA961991E880000AA4E4 /* BasicFrag.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicFrag.fs; sourceTree = "<group>"; };
 		94AAFA971991E880000AA4E4 /* BasicVert.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicVert.vs; sourceTree = "<group>"; };
 		94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iso_grass copy.png"; sourceTree = "<group>"; };
@@ -810,6 +828,22 @@
 		94BC91C3199B168100B53026 /* TimeKeeping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeKeeping.h; sourceTree = "<group>"; };
 		94BC91C8199C79F800B53026 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		94BC91C9199C79F800B53026 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		94C68F8B1A37FFF600FEB552 /* Gravity-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gravity-Light.ttf"; path = "../Gravity-Light.ttf"; sourceTree = "<group>"; };
+		94C68F8F1A43C94600FEB552 /* InputType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputType.h; sourceTree = "<group>"; };
+		94C68F911A43CFE900FEB552 /* DigitalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalButton.h; sourceTree = "<group>"; };
+		94C68F931A43D4DE00FEB552 /* AnalogButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalogButton.h; sourceTree = "<group>"; };
+		94C68F951A43DBDA00FEB552 /* Analog2Axis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Analog2Axis.h; sourceTree = "<group>"; };
+		94C68F971A43E28000FEB552 /* Analog3Axis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Analog3Axis.h; sourceTree = "<group>"; };
+		94C68F9D1A44E01500FEB552 /* LightTap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightTap.cpp; sourceTree = "<group>"; };
+		94C68F9E1A44E01500FEB552 /* LightTap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightTap.h; sourceTree = "<group>"; };
+		94C68FA11A44E07000FEB552 /* ButtonHold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonHold.cpp; sourceTree = "<group>"; };
+		94C68FA21A44E07000FEB552 /* ButtonHold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonHold.h; sourceTree = "<group>"; };
+		94C68FA51A44E14F00FEB552 /* ButtonChord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonChord.cpp; sourceTree = "<group>"; };
+		94C68FA61A44E14F00FEB552 /* ButtonChord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonChord.h; sourceTree = "<group>"; };
+		94C68FA91A44E96800FEB552 /* UpandDown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UpandDown.cpp; sourceTree = "<group>"; };
+		94C68FAA1A44E96800FEB552 /* UpandDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpandDown.h; sourceTree = "<group>"; };
+		94C68FAE1A44F38E00FEB552 /* InputWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputWatcher.h; sourceTree = "<group>"; };
+		94C68FB01A490ED700FEB552 /* AnalogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalogHelper.h; sourceTree = "<group>"; };
 		94D40A51195BD39600584E4A /* png.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = png.c; sourceTree = "<group>"; };
 		94D40A52195BD39600584E4A /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
 		94D40A53195BD39600584E4A /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
@@ -1209,10 +1243,8 @@
 				945AFB2918AC6D5D00BA7AB9 /* Input.h */,
 				945AFB2818AC6D5D00BA7AB9 /* Input.cpp */,
 				945AFB2D18AC9BED00BA7AB9 /* Keys.cpp */,
-				945AFB3718B3377B00BA7AB9 /* RapidPress.h */,
-				945AFB3618B3377B00BA7AB9 /* RapidPress.cpp */,
-				945AFB3B18B337EE00BA7AB9 /* ButtonCombo.h */,
-				945AFB3A18B337EE00BA7AB9 /* ButtonCombo.cpp */,
+				94C68F8E1A43C90400FEB552 /* Input Types */,
+				94C68FAD1A44F2E000FEB552 /* Input Watchers */,
 				948D88FD19C5221E00E73F6A /* Action.h */,
 				948D88FC19C5221E00E73F6A /* Action.cpp */,
 			);
@@ -1223,22 +1255,7 @@
 			isa = PBXGroup;
 			children = (
 				946179071848632B0048FF81 /* Node.h */,
-				945AFB1318A749A700BA7AB9 /* Entity.h */,
-				945AFB1218A749A700BA7AB9 /* Entity.cpp */,
-				945AFB1918A97AE900BA7AB9 /* Scene.h */,
-				945AFB1818A97AE900BA7AB9 /* Scene.cpp */,
-				945AFB1D18A9844600BA7AB9 /* Grid.h */,
-				945AFB1C18A9844600BA7AB9 /* Grid.cpp */,
-				945AFB2118A9845D00BA7AB9 /* Camera.h */,
-				945AFB2018A9845D00BA7AB9 /* Camera.cpp */,
-				94A7A1FC19D716230025EA2D /* Listener.h */,
-				94A7A1FB19D716230025EA2D /* Listener.cpp */,
-				94A7A20919D7B75F0025EA2D /* Source.h */,
-				94A7A20819D7B75F0025EA2D /* Source.cpp */,
-				94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */,
-				94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */,
-				945AFB2518A9848600BA7AB9 /* Tree.h */,
-				945AFB2418A9848600BA7AB9 /* Tree.cpp */,
+				94A906031A7C81CF002892A7 /* Asset.h */,
 			);
 			name = Abstract;
 			sourceTree = "<group>";
@@ -1382,6 +1399,29 @@
 			name = "Audio Loaders";
 			sourceTree = "<group>";
 		};
+		94A906021A7C817A002892A7 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				945AFB1918A97AE900BA7AB9 /* Scene.h */,
+				945AFB1818A97AE900BA7AB9 /* Scene.cpp */,
+				945AFB1318A749A700BA7AB9 /* Entity.h */,
+				945AFB1218A749A700BA7AB9 /* Entity.cpp */,
+				945AFB1D18A9844600BA7AB9 /* Grid.h */,
+				945AFB1C18A9844600BA7AB9 /* Grid.cpp */,
+				945AFB2118A9845D00BA7AB9 /* Camera.h */,
+				945AFB2018A9845D00BA7AB9 /* Camera.cpp */,
+				94A7A1FC19D716230025EA2D /* Listener.h */,
+				94A7A1FB19D716230025EA2D /* Listener.cpp */,
+				94A7A20919D7B75F0025EA2D /* Source.h */,
+				94A7A20819D7B75F0025EA2D /* Source.cpp */,
+				94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */,
+				94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */,
+				945AFB2518A9848600BA7AB9 /* Tree.h */,
+				945AFB2418A9848600BA7AB9 /* Tree.cpp */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
 		94B344771820BCFE00C370DA = {
 			isa = PBXGroup;
 			children = (
@@ -1473,6 +1513,7 @@
 				944D6CBB1859926D0083EAEC /* Scripting */,
 				94B344B51820BE6B00C370DA /* System */,
 				948B9C0D1825B15B0010E7ED /* Abstract */,
+				94A906021A7C817A002892A7 /* Scene */,
 				945AFB07189DA5DA00BA7AB9 /* Graphics */,
 				94A7A1FF19D71A210025EA2D /* Audio */,
 				94B3448B1820BCFE00C370DA /* Supporting Files */,
@@ -1544,6 +1585,7 @@
 		94B344C518221A4700C370DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				94C68F8B1A37FFF600FEB552 /* Gravity-Light.ttf */,
 				941E45F31A06D57300310EAB /* helloworld.wav */,
 				94AAFA9A1996D15C000AA4E4 /* iso_grass copy.png */,
 				94AAFA9B1996D15C000AA4E4 /* iso_highlight.png */,
@@ -1635,6 +1677,39 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		94C68F8E1A43C90400FEB552 /* Input Types */ = {
+			isa = PBXGroup;
+			children = (
+				94C68F8F1A43C94600FEB552 /* InputType.h */,
+				94C68F911A43CFE900FEB552 /* DigitalButton.h */,
+				94C68F931A43D4DE00FEB552 /* AnalogButton.h */,
+				94C68F951A43DBDA00FEB552 /* Analog2Axis.h */,
+				94C68F971A43E28000FEB552 /* Analog3Axis.h */,
+				94C68FB01A490ED700FEB552 /* AnalogHelper.h */,
+			);
+			name = "Input Types";
+			sourceTree = "<group>";
+		};
+		94C68FAD1A44F2E000FEB552 /* Input Watchers */ = {
+			isa = PBXGroup;
+			children = (
+				94C68FAE1A44F38E00FEB552 /* InputWatcher.h */,
+				94C68F9E1A44E01500FEB552 /* LightTap.h */,
+				94C68F9D1A44E01500FEB552 /* LightTap.cpp */,
+				94C68FA21A44E07000FEB552 /* ButtonHold.h */,
+				94C68FA11A44E07000FEB552 /* ButtonHold.cpp */,
+				94C68FAA1A44E96800FEB552 /* UpandDown.h */,
+				94C68FA91A44E96800FEB552 /* UpandDown.cpp */,
+				94C68FA61A44E14F00FEB552 /* ButtonChord.h */,
+				94C68FA51A44E14F00FEB552 /* ButtonChord.cpp */,
+				945AFB3718B3377B00BA7AB9 /* RapidPress.h */,
+				945AFB3618B3377B00BA7AB9 /* RapidPress.cpp */,
+				945AFB3B18B337EE00BA7AB9 /* ButtonCombo.h */,
+				945AFB3A18B337EE00BA7AB9 /* ButtonCombo.cpp */,
+			);
+			name = "Input Watchers";
+			sourceTree = "<group>";
+		};
 		94D40A50195BD39600584E4A /* png */ = {
 			isa = PBXGroup;
 			children = (
@@ -1705,12 +1780,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				945AFB1118A4B0F100BA7AB9 /* List.h in Headers */,
+				94C68FA01A44E01500FEB552 /* LightTap.h in Headers */,
+				94C68FA41A44E07000FEB552 /* ButtonHold.h in Headers */,
 				948B9C11182612010010E7ED /* Memory.h in Headers */,
 				945AFB0B189DA60100BA7AB9 /* Graphics.h in Headers */,
 				943E19FC19F09B77009CA1CF /* CopyOnWrite.h in Headers */,
 				9405C13718C90E3C00AFEDE9 /* Array.h in Headers */,
+				94C68F921A43CFE900FEB552 /* DigitalButton.h in Headers */,
 				945AFB2318A9845D00BA7AB9 /* Camera.h in Headers */,
 				945AFB3418B1E48800BA7AB9 /* RenderObj.h in Headers */,
+				94C68FAF1A44F38E00FEB552 /* InputWatcher.h in Headers */,
 				941E45FD1A0FC08E00310EAB /* DoubleList.h in Headers */,
 				946D06A41977492E00A39114 /* Palette.h in Headers */,
 				94BBDA0418D63DC700CA2D2B /* GuiString.h in Headers */,
@@ -1721,25 +1800,33 @@
 				944D6CD3185C2A9F0083EAEC /* Game.h in Headers */,
 				94BC91CC199C79F800B53026 /* Timer.h in Headers */,
 				945AFB3D18B337EE00BA7AB9 /* ButtonCombo.h in Headers */,
+				94A906041A7C81CF002892A7 /* Asset.h in Headers */,
 				942F8C9F1A213E5300563FA0 /* Animation.h in Headers */,
 				94A7A20B19D7B75F0025EA2D /* Source.h in Headers */,
+				94C68F941A43D4DE00FEB552 /* AnalogButton.h in Headers */,
 				941D2F51183DDFBC007EB1BE /* Utility.h in Headers */,
 				945AFB3918B3377B00BA7AB9 /* RapidPress.h in Headers */,
 				94D40AA9195BD39600584E4A /* unzip.h in Headers */,
+				94C68FAC1A44E96800FEB552 /* UpandDown.h in Headers */,
 				941D2F4F183AC205007EB1BE /* LinearAlloc.h in Headers */,
 				94BC91C0199886A800B53026 /* GuiJoystick.h in Headers */,
 				944D6CC1185997790083EAEC /* Script.h in Headers */,
 				94A7A20319D71AED0025EA2D /* Audio.h in Headers */,
 				94B344B91820CB3200C370DA /* Power.h in Headers */,
+				94C68FA81A44E14F00FEB552 /* ButtonChord.h in Headers */,
 				94D40A95195BD39600584E4A /* crc32.h in Headers */,
 				94D40AA1195BD39600584E4A /* inftrees.h in Headers */,
 				94D40AAB195BD39600584E4A /* zlib.h in Headers */,
 				941D2F4A182C2C47007EB1BE /* Types.h in Headers */,
+				94C68FB11A490ED700FEB552 /* AnalogHelper.h in Headers */,
 				948D890019C5221E00E73F6A /* Action.h in Headers */,
 				945AFB1F18A9844600BA7AB9 /* Grid.h in Headers */,
 				944D6CC5185A60850083EAEC /* Platform.h in Headers */,
+				94C68F981A43E28000FEB552 /* Analog3Axis.h in Headers */,
+				94C68F961A43DBDA00FEB552 /* Analog2Axis.h in Headers */,
 				9405C10F18C50ABA00AFEDE9 /* Texture.h in Headers */,
 				94BBDA3118D7AB1900CA2D2B /* SinncaEngine.h in Headers */,
+				94C68F901A43C94600FEB552 /* InputType.h in Headers */,
 				9405C10B18C50A1D00AFEDE9 /* Image.h in Headers */,
 				94D40A96195BD39600584E4A /* crypt.h in Headers */,
 				94A7A1FE19D716230025EA2D /* Listener.h in Headers */,
@@ -2178,6 +2265,7 @@
 				945AFB3018ACA37900BA7AB9 /* main.lua in Resources */,
 				94412361198D2F5E00BB3179 /* sinnca sprite.png in Resources */,
 				94AAFA9F1996D15C000AA4E4 /* iso_highlight.png in Resources */,
+				94C68F8D1A3801FB00FEB552 /* Gravity-Light.ttf in Resources */,
 				94B344C918221A4700C370DA /* InfoPlist.strings in Resources */,
 				94B344D718221A4700C370DA /* Images.xcassets in Resources */,
 				941E45F41A06D57300310EAB /* helloworld.wav in Resources */,
@@ -2279,6 +2367,7 @@
 				945AFB3818B3377B00BA7AB9 /* RapidPress.cpp in Sources */,
 				944D6CC0185997790083EAEC /* Script.cpp in Sources */,
 				94A7A20A19D7B75F0025EA2D /* Source.cpp in Sources */,
+				94C68FAB1A44E96800FEB552 /* UpandDown.cpp in Sources */,
 				942F8C9E1A213E5200563FA0 /* Animation.cpp in Sources */,
 				94BBDA0A18D78DB400CA2D2B /* GuiWidget.cpp in Sources */,
 				945AFB2218A9845D00BA7AB9 /* Camera.cpp in Sources */,
@@ -2321,6 +2410,7 @@
 				94BBDA0018D63CBB00CA2D2B /* GuiButton.cpp in Sources */,
 				944D6CCA185A782A0083EAEC /* StackAlloc.cpp in Sources */,
 				948D88FE19C5221E00E73F6A /* Action.cpp in Sources */,
+				94C68FA71A44E14F00FEB552 /* ButtonChord.cpp in Sources */,
 				94D40A89195BD39600584E4A /* pngrio.c in Sources */,
 				94D40A92195BD39600584E4A /* adler32.c in Sources */,
 				945AFB2A18AC6D5D00BA7AB9 /* Input.cpp in Sources */,
@@ -2331,10 +2421,12 @@
 				94D40AA2195BD39600584E4A /* ioapi.c in Sources */,
 				94BBDA0118D63CBB00CA2D2B /* GuiMenu.cpp in Sources */,
 				9405C10018C3E12900AFEDE9 /* Vertex.cpp in Sources */,
+				94C68FA31A44E07000FEB552 /* ButtonHold.cpp in Sources */,
 				94D40A84195BD39600584E4A /* pnggccrd.c in Sources */,
 				94D40AA4195BD39600584E4A /* pngwutil.c in Sources */,
 				944D6CCE185C0B750083EAEC /* ListAlloc.cpp in Sources */,
 				94A7A1FD19D716230025EA2D /* Listener.cpp in Sources */,
+				94C68F9F1A44E01500FEB552 /* LightTap.cpp in Sources */,
 				945AFB3C18B337EE00BA7AB9 /* ButtonCombo.cpp in Sources */,
 				94D40A9A195BD39600584E4A /* infback.c in Sources */,
 				945AFAFD189A3BBA00BA7AB9 /* PoolAlloc.cpp in Sources */,

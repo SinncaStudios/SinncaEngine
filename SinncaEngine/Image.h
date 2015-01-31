@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Heap.h"
 #include "Script.h"
+#include "Asset.h"
 
 #include "i_graphics.h"
 
@@ -23,7 +24,7 @@ namespace sinnca
 		hard = GL_NEAREST
 	};
 	
-	class image
+	class image : public asset
 	{
 		GLuint data, colorType;
 		

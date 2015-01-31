@@ -9,64 +9,87 @@
 #include "Input.h"
 #include "Heap.h"
 
+
 namespace sinnca
 {
-	input* input::_instance = NULL;
-	
-	input* input::Instance()
+	namespace Input
 	{
-		if (_instance == NULL)
+		ui8 noOfInputsChanged = 0;
+		InputType* inputsChanged[20];
+		uint tapLimit = 500;
+		
+		namespace Keyboard
 		{
-			_instance = Heap->allocateNew<input>();
+			digitalButton keys[322];
 		}
 		
-		return _instance;
-	}
-	
-	input::input()
-	{
-		for (int i = 0; i < 322; i++)
+		namespace Mouse
 		{
-			keyArray[i] = false;
+			uint x, y;
+			digitalButton left, middle, right;
+			
+			analogButton pressure;
+		}
+		
+		namespace Touch
+		{
+			float magnify;
+			float rotation;
+			float swipeX, swipeY;
+		}
+		
+		void setup()
+		{
+			
+			
+			for (int i = 0; i < 322; i++)
+			{
+				Keyboard::keys[i].x = 0.0f;
+			}
+			
+			setupKeys();
+		}
+		
+		void shutDown()
+		{
+			
+		}
+		
+		void update()
+		{
+			
+			
+			noOfInputsChanged = 0;
+			for (int i = 0; i < 20; i++)
+			{
+				inputsChanged[i] = nullptr;
+			}
+		}
+		
+		void sendKeyDown(int k)
+		{
+			Keyboard::keys[k].x = 1.0f;
+			Keyboard::keys[k].didChange = true;
+			
+			inputsChanged[noOfInputsChanged] = &Keyboard::keys[k];
+			noOfInputsChanged++;
+		}
+		void sendKeyUp(int k)
+		{
+			Keyboard::keys[k].x = 0.0f;
+			Keyboard::keys[k].didChange = true;
+			
+			inputsChanged[noOfInputsChanged] = &Keyboard::keys[k];
+			noOfInputsChanged++;
 		}
 	}
-	
-	input::~input()
-	{
-		
-	}
-	
-	void input::update()
-	{
-		
-	}
-	
-	void input::sendKeyDown(int k)
-	{
-		keyArray[k] = true;
-	}
-	void input::sendKeyUp(int k)
-	{
-		keyArray[k] = false;
-	}
-	
 	
 	int l_keyDown(lua_State* L)
 	{
-		int n = lua_gettop(L);
-		int a;
 		
-		for (int i = -1; i >= (n * -1); i--)
-		{
-			a = (int)lua_tointeger(L, i);
-			if (Input->keyArray[a])
-			{
-				lua_pushboolean(L, 0);
-				return 1;
-			}
-			
-		}
-		lua_pushboolean(L, 1);
+		
+		int a = (int)lua_tointeger(L, -1);
+		lua_pushnumber(L, Input::Keyboard::keys[a].x);
 		
 		return 1;
 	}
