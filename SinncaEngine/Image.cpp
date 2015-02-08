@@ -28,18 +28,19 @@ namespace sinnca
 	}
 	
 	
-	void image::load(std::string p, texBlend t = smooth)
+	void image::load(std::string p)
 	{
 		std::size_t fileTypePos = p.find_last_of(".");
 		std::string type = p.substr(fileTypePos);
 		path = p;
-		tb = t;
+		tb = smooth;
 		
 		if (type == ".png")
 		{
 			loadPNG(p);
 		}
 	}
+
 	
 	GLuint image::getData()
 	{

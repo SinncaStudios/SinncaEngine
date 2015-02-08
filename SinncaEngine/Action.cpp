@@ -139,8 +139,8 @@ namespace sinnca
 		lua_gettable(Script->getState(), ind);
 		
 		// cast userdata pointer to "Image" type
-		ud = dynamic_cast<action*>((action*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'buffer' type...");
+		ud = lua_touserdata(Script->getState(), -1);
+		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'action' type...");
 		
 		return *((action**)ud);
 	}

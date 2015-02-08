@@ -40,14 +40,37 @@ namespace sinnca
 		
 		void setup()
 		{
-			
+			Script->newBlankTable();
 			
 			for (int i = 0; i < 322; i++)
 			{
 				Keyboard::keys[i].x = 0.0f;
+				
+				Script->newBlankTable();
+				
+				Script->pushValue(1);
+				Script->setMetaTable(-2);
+				Script->pushValue(1);
+				Script->setField(1, "__index");
+				
+				digitalButton** k = Script->newUserdata<digitalButton*>();
+				*k = &Keyboard::keys[i];
+				
+				
+				
+				Script->getMetaTable("button");
+				Script->setMetaTable(-2);
+				
+				Script->setField(-2, "__self");
+				
+				
+				
+				Script->push((char)i);
+				Script->setTable(-3);
 			}
 			
-			setupKeys();
+			Script->setGlobal("Key");
+			//setupKeys();
 		}
 		
 		void shutDown()

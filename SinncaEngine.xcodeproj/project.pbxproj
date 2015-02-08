@@ -415,6 +415,7 @@
 		94C68FAC1A44E96800FEB552 /* UpandDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FAA1A44E96800FEB552 /* UpandDown.h */; };
 		94C68FAF1A44F38E00FEB552 /* InputWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FAE1A44F38E00FEB552 /* InputWatcher.h */; };
 		94C68FB11A490ED700FEB552 /* AnalogHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FB01A490ED700FEB552 /* AnalogHelper.h */; };
+		94CC22C61A84748D007858E8 /* DigitalButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94CC22C51A84748D007858E8 /* DigitalButton.cpp */; };
 		94D40A80195BD39600584E4A /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = 94D40A51195BD39600584E4A /* png.c */; };
 		94D40A81195BD39600584E4A /* png.h in Headers */ = {isa = PBXBuildFile; fileRef = 94D40A52195BD39600584E4A /* png.h */; };
 		94D40A82195BD39600584E4A /* pngconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 94D40A53195BD39600584E4A /* pngconf.h */; };
@@ -844,6 +845,7 @@
 		94C68FAA1A44E96800FEB552 /* UpandDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpandDown.h; sourceTree = "<group>"; };
 		94C68FAE1A44F38E00FEB552 /* InputWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputWatcher.h; sourceTree = "<group>"; };
 		94C68FB01A490ED700FEB552 /* AnalogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalogHelper.h; sourceTree = "<group>"; };
+		94CC22C51A84748D007858E8 /* DigitalButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DigitalButton.cpp; sourceTree = "<group>"; };
 		94D40A51195BD39600584E4A /* png.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = png.c; sourceTree = "<group>"; };
 		94D40A52195BD39600584E4A /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
 		94D40A53195BD39600584E4A /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
@@ -1682,6 +1684,7 @@
 			children = (
 				94C68F8F1A43C94600FEB552 /* InputType.h */,
 				94C68F911A43CFE900FEB552 /* DigitalButton.h */,
+				94CC22C51A84748D007858E8 /* DigitalButton.cpp */,
 				94C68F931A43D4DE00FEB552 /* AnalogButton.h */,
 				94C68F951A43DBDA00FEB552 /* Analog2Axis.h */,
 				94C68F971A43E28000FEB552 /* Analog3Axis.h */,
@@ -2357,6 +2360,7 @@
 				94A7A20619D7B60E0025EA2D /* Buffer.cpp in Sources */,
 				944D6CD2185C2A9F0083EAEC /* Game.cpp in Sources */,
 				94D40AA7195BD39600584E4A /* uncompr.c in Sources */,
+				94CC22C61A84748D007858E8 /* DigitalButton.cpp in Sources */,
 				94BC91CA199C79F800B53026 /* Timer.cpp in Sources */,
 				945AFB1418A749A700BA7AB9 /* Entity.cpp in Sources */,
 				94D40A90195BD39600584E4A /* pngwrite.c in Sources */,
@@ -2971,6 +2975,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -3000,6 +3005,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = SinncaEngine;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SUPPORTED_PLATFORMS = macosx;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -3010,6 +3016,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -3038,6 +3045,7 @@
 					/usr/local/lib,
 				);
 				PRODUCT_NAME = SinncaEngine;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				SUPPORTED_PLATFORMS = macosx;
 				WRAPPER_EXTENSION = framework;
 			};

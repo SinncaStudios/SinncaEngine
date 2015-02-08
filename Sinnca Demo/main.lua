@@ -42,6 +42,10 @@ for i, k in pairs(_G) do
 print(i, k)
 end
 
+for i, k in pairs(Key) do
+print(i, k)
+end
+
 test:play()
 
 print("\n\n")

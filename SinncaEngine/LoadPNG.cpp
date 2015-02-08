@@ -127,8 +127,8 @@ namespace sinnca
 		glGenTextures(1, &data);
 		glBindTexture(GL_TEXTURE_2D, data);
 		glTexImage2D(GL_TEXTURE_2D, 0, colorType, tempW, tempH, 0, colorType, GL_UNSIGNED_BYTE, snPNGdata);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, tb);
+		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, tb);
 		
 		//clean up!
 		png_destroy_read_struct(&snPng, &snInfop, &snEndp);

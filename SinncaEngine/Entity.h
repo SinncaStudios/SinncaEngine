@@ -25,6 +25,9 @@ namespace sinnca
 
 	public:
 		
+		//when it's time to specify a lua metatable, this will be looked up
+		static constexpr auto metatable = "entity";
+		
 		entity(std::string n);
 		~entity();
 		

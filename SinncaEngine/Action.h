@@ -35,6 +35,9 @@ namespace sinnca
 		void setOverride(uint ov);
 		void setFunction(std::string);
 		
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
+		
 	};
 	
 	#define createAction(a) new(a)action(a)

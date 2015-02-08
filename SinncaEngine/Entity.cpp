@@ -107,7 +107,7 @@ namespace sinnca
 		
 		//Create object in lua
 		
-		
+		/*
 		Script->newBlankTable();
 		
 		Script->pushValue(1);
@@ -133,12 +133,14 @@ namespace sinnca
 		Script->setMetaTable(-2);
 		
 		Script->setField(-2, "__self");
+		*/
 		
+		entity* en = Script->createObject<entity>();
 		
 		Script->setGlobal(n);
-		Tree->currentScene->entityRef.push_back(*en);
-		Tree->currentScene->nodeRef.push_back(*en);
-		return ((void*)*en);
+		Tree->currentScene->entityRef.push_back(en);
+		Tree->currentScene->nodeRef.push_back(en);
+		return ((void*)en);
 		
 		/*
 		 All my life

@@ -29,7 +29,7 @@ namespace sinnca
 		
 	};
 	
-	void registerButton(lua_State* L);
+	void registerGuiButton(lua_State* L);
 }
 
 #endif

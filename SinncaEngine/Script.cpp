@@ -97,6 +97,12 @@ namespace sinnca
 	{
 		luaL_getmetatable(L, m.c_str());
 	}
+	
+	void luaScript::setTable(int i)
+	{
+		lua_settable(L, i);
+	}
+	
 
 
 	void luaScript::getGlobal(std::string glb)

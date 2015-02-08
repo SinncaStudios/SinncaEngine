@@ -30,7 +30,7 @@ namespace sinnca
 	}
 	
 	
-	int buffer::load(std::string p)
+	void buffer::load(std::string p)
 	{
 		std::size_t fileTypePos = p.find_last_of(".");
 		std::string type = p.substr(fileTypePos);
@@ -38,11 +38,8 @@ namespace sinnca
 		if (type == ".wav")
 		{
 			loadWAV(p);
-			return 0;
 		}
 		
-		printf("This file does not have a compatible loader.\n");
-		return -1;
 	}
 	
 	ALuint buffer::getBuffer()

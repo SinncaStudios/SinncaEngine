@@ -12,10 +12,11 @@
 #include <iostream>
 #include "Audio.h"
 #include "Script.h"
+#include "Asset.h"
 
 namespace sinnca
 {
-	class buffer
+	class buffer : public asset
 	{
 		ALuint theBuffer;
 		
@@ -39,7 +40,7 @@ namespace sinnca
 		buffer(std::string n);
 		~buffer();
 		
-		int load(std::string p);
+		void load(std::string p);
 		ALuint getBuffer();
 		
 		void* operator new(size_t s, std::string n);

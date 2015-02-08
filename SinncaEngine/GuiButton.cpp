@@ -179,7 +179,7 @@ namespace sinnca
 		{NULL, NULL}
 	};
 
-	void registerButton(lua_State* L)
+	void registerGuiButton(lua_State* L)
 	{
 		luaL_register(L, "button", buttonFuncs);
 		

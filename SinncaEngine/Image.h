@@ -24,6 +24,14 @@ namespace sinnca
 		hard = GL_NEAREST
 	};
 	
+	enum texWrap
+	{
+		repeat = GL_REPEAT,
+		mirrored = GL_MIRRORED_REPEAT,
+		clampEdge = GL_CLAMP_TO_EDGE
+		//clampBorder = GL_CLAMP_TO_BORDER;
+	};
+	
 	class image : public asset
 	{
 		GLuint data, colorType;
@@ -51,7 +59,8 @@ namespace sinnca
 		image(std::string n);
 		~image();
 		
-		void load(std::string p, texBlend t);
+		void bind();
+		void load(std::string p);
 		GLuint getData();
 		
 		void* operator new(size_t s, std::string n);

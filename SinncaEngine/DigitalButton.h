@@ -17,11 +17,11 @@ namespace sinnca
 	{
 		// for buttons on a controller or keys on a keyboard
 		
-		void setDown(int s)
-		{
-			x = (float)s;
-		}
+		void setDown(int s);
+		
 	};
+	
+	void registerButton(lua_State* L);
 }
 
 #endif

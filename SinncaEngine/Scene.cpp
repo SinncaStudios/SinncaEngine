@@ -547,7 +547,7 @@ namespace sinnca
 			f.read((char*)&blendMode, 1);
 			
 			image* im = createImage(theName);
-			im->load(thePath, (texBlend)blendMode);
+			im->load(thePath);
 			
 			imageContainer[entryPosition] = *im;
 		}

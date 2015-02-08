@@ -10,6 +10,8 @@
 #define __SinncaEngine__Script__
 
 #include <iostream>
+#include "Memory.h"
+#include "Heap.h"
 
 namespace sinnca
 {
@@ -49,8 +51,27 @@ namespace sinnca
 		void setVar(std::string var, std::string i);
 		void setMetaTable(int i);
 		void getMetaTable(std::string m);
+		void setTable(int i);
 		
-		bool checkType(int ind, int t);
+		template<typename T>
+		T* checkType(int ind)
+		{
+			void* ud = 0;
+			
+			// check for table object
+			luaL_checktype(L, ind, LUA_TTABLE);
+			
+			// push the key we're looking for (in this case, it's "__self")
+			lua_pushstring(L, "__self");
+			// get our table
+			lua_gettable(L, ind);
+			
+			// cast userdata pointer to "Node" type
+			ud = lua_touserdata(L, -1);
+			luaL_argcheck(L, ud != 0, ind, "The object given cannot be cast into the required type...");
+			
+			return *((T**)ud);
+		}
 		
 		void getGlobal(std::string glb);
 		void getLocal(int ind, std::string loc);
@@ -70,6 +91,11 @@ namespace sinnca
 		{
 			return (t*)lua_newuserdata(L, sizeof(t));
 		}
+		template <class t>
+		t* toUserdata(int ind)
+		{
+			return (t*)lua_touserdata(L, ind);
+		}
 		
 		void newBlankTable();
 		void setTableField(const char* key, int i);
@@ -78,6 +104,34 @@ namespace sinnca
 		void setField(int i, const char* key);
 		
 		void setGlobal(std::string name);
+		
+		template <class t>
+		t* createObject(Memory* allocator = Heap)
+		{
+			
+			Script->newBlankTable();
+			
+			Script->pushValue(1);
+			Script->setMetaTable(-2);
+			
+			Script->pushValue(1);
+			Script->setField(1, "__index");
+			
+			//entity** en = Script->newUserdata<entity*>();
+			t** ob = newUserdata<t*>();
+			
+			*ob = (t*)allocator->allocate(sizeof(t), alignof(t));
+			
+			
+			//(*en)->name = n;
+			
+			luaL_getmetatable(L, t::metatable);
+			Script->setMetaTable(-2);
+			
+			Script->setField(-2, "__self");
+			
+			return *ob;
+		}
 		
 		
 		~luaScript();
