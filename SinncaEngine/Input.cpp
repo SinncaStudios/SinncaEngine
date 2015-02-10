@@ -20,6 +20,7 @@ namespace sinnca
 		
 		namespace Keyboard
 		{
+			float prevKeyState[322];
 			digitalButton keys[322];
 		}
 		
@@ -45,12 +46,19 @@ namespace sinnca
 			for (int i = 0; i < 322; i++)
 			{
 				Keyboard::keys[i].x = 0.0f;
+				Keyboard::prevKeyState[i] = 0.0f;
 				
+				keySetupHelper(i);
+				// new table
 				Script->newBlankTable();
 				
+				// copy table
 				Script->pushValue(1);
+				// set metatable and pop from stack
 				Script->setMetaTable(-2);
+				// copy table
 				Script->pushValue(1);
+				// metatable[1] = "__index" then pop
 				Script->setField(1, "__index");
 				
 				digitalButton** k = Script->newUserdata<digitalButton*>();
@@ -65,7 +73,8 @@ namespace sinnca
 				
 				
 				
-				Script->push((char)i);
+				//Script->push((char)i);
+				
 				Script->setTable(-3);
 			}
 			
@@ -91,16 +100,34 @@ namespace sinnca
 		
 		void sendKeyDown(int k)
 		{
+			// this area can probably be better optimized
+			// maybe this can work without prevKeyState
+			
+			Keyboard::prevKeyState[k] = Keyboard::keys[k].x;
 			Keyboard::keys[k].x = 1.0f;
-			Keyboard::keys[k].didChange = true;
+			
+			if (Keyboard::prevKeyState[k] != Keyboard::keys[k].x)
+			{
+				Keyboard::keys[k].didChange = true;
+			} else {
+				Keyboard::keys[k].didChange = false;
+			}
 			
 			inputsChanged[noOfInputsChanged] = &Keyboard::keys[k];
 			noOfInputsChanged++;
 		}
 		void sendKeyUp(int k)
 		{
+			
+			Keyboard::prevKeyState[k] = Keyboard::keys[k].x;
 			Keyboard::keys[k].x = 0.0f;
-			Keyboard::keys[k].didChange = true;
+			
+			if (Keyboard::prevKeyState[k] != Keyboard::keys[k].x)
+			{
+				Keyboard::keys[k].didChange = true;
+			} else {
+				Keyboard::keys[k].didChange = false;
+			}
 			
 			inputsChanged[noOfInputsChanged] = &Keyboard::keys[k];
 			noOfInputsChanged++;

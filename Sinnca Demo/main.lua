@@ -46,6 +46,10 @@ for i, k in pairs(Key) do
 print(i, k)
 end
 
+for i, k in pairs(Key.space) do
+print(i, k)
+end
+
 test:play()
 
 print("\n\n")
@@ -54,7 +58,7 @@ print("\n\n")
 
 function player:update()
 	
-	if keyDown(Key.space) == 1 then
+	if Key.space:wasPressed() == 1 then
 		print("space")
 	end
 	

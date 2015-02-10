@@ -87,6 +87,7 @@ namespace sinnca
 			if (bn->x > 0.0f && bn->didChange)
 			{
 				Script->push(1);
+				bn->didChange = false;
 				
 			} else {
 				Script->push(0);
@@ -106,6 +107,7 @@ namespace sinnca
 			if (bn->x == 0.0f && bn->didChange)
 			{
 				Script->push(1);
+				bn->didChange = false;
 				
 			} else {
 				Script->push(0);
@@ -130,12 +132,7 @@ namespace sinnca
 	
 	/*
 	static const luaL_Reg inputTypeFuncs[] = {
-		{"isDown", l_isDown},
-		{"isUp", l_isUp},
-		{"wasPressed", l_wasPressed},
-		{"wasReleased", l_wasReleased},
-		{"getPressure", l_getRawPressure},
-		{NULL, NULL}
+		 
 	};
 	*/
 	

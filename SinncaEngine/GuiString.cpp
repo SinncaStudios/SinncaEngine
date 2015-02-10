@@ -137,7 +137,7 @@ namespace sinnca
 		if (n == 2)
 		{
 			st = checkString(L, 1);
-			f = checkFont(L, 2);
+			f = Script->checkType<font>(2);
 			
 			st->setFont(f);
 		}

@@ -233,25 +233,6 @@ namespace sinnca
 	}
 	
 	
-	font* checkFont(lua_State* L, int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(L, ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(L, "__self");
-		// get our table
-		lua_gettable(L, ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<font*>((font*)lua_touserdata(L, -1));
-		luaL_argcheck(L, ud != 0, ind, "Incompatible 'gui' type...");
-		
-		return *((font**)ud);
-		
-	}
 	
 	int l_newFont(lua_State* L)
 	{
@@ -297,7 +278,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			ft = checkFont(L, 1);
+			ft = Script->checkType<font>(1);
 			ft->generate();
 		}
 		
@@ -311,7 +292,7 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			ft = checkFont(L, 1);
+			ft = Script->checkType<font>(1);
 			ft->setPath(lua_tostring(L, 2));
 		}
 		
@@ -325,7 +306,7 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			ft = checkFont(L, 1);
+			ft = Script->checkType<font>(1);
 			ft->setSize(lua_tonumber(L, 2));
 		}
 		
@@ -335,7 +316,7 @@ namespace sinnca
 	int clear(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		font* ft = checkFont(L, 1);
+		font* ft = Script->checkType<font>(1);
 		
 		if (n == 1)
 		{

@@ -30,6 +30,7 @@ namespace sinnca
 		
 		namespace Keyboard
 		{
+			extern float prevKeyState[322];
 			extern digitalButton keys[322];
 		}
 		
@@ -51,7 +52,7 @@ namespace sinnca
 		void setup();
 		void shutDown();
 		
-		void setupKeys();
+		void keySetupHelper(int currentKey);
 		void update();
 		void sendKeyDown(int k);
 		void sendKeyUp(int k);

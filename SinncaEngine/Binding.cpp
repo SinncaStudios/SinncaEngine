@@ -11,6 +11,7 @@
 
 #include "Computer.h"
 #include "Input.h"
+#include "DigitalButton.h"
 #include "Entity.h"
 #include "Font.h"
 #include "Image.h"
@@ -32,6 +33,7 @@ namespace sinnca
 		setVar("resourcePath", tempPath + "/");
 		
 		lua_register(L, "keyDown", l_keyDown);
+		registerButton(L);
 		
 		// register node classes
 		registerEntity(L);
