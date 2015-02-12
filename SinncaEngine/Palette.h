@@ -17,6 +17,8 @@ namespace sinnca
 	class palette
 	{
 		
+		inline void addColor(std::string n, color* c);
+		
 	public:
 		
 		static palette* Instance();

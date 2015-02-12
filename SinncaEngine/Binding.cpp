@@ -43,6 +43,7 @@ namespace sinnca
 		registerSource(L);
 		
 		// register color classes
+		registerType<color>(colorFuncs);
 		registerImage(L);
 		registerTexture(L);
 		

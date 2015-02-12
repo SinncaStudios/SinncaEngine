@@ -17,21 +17,8 @@
 namespace sinnca
 {
 
-	guiButton::guiButton()
+	guiButton::guiButton(std::string n) : guiWidget(n)
 	{
-		draw = true;
-		
-		xy[0] = 1;
-		xy[1] = 1;
-		
-		col = &Palette->white;
-		
-		scl[0] = 20;
-		scl[1] = 20;
-		
-		rendOb = Graphics->square;
-		
-		//name = n;
 		
 		useAlph = false;
 	}
@@ -48,26 +35,26 @@ namespace sinnca
 
 	bool guiButton::checkbounds()
 	{
-		/*
+		
 		// check if in button bounds
-		if ((Input->m_x >= xy[0]) && (Input->m_x <= xy[0] + scl[0]) && (Input->m_y >= xy[1]) && (Input->m_y <= xy[1] + scl[1]))
+		if ((Input::Mouse::x >= pos.x) && (Input::Mouse::x <= pos.x + scl.x) && (Input::Mouse::y >= pos.y) && (Input::Mouse::y <= pos.y + scl.y))
 		{
-			if (useAlph == true && tex != NULL)
+			if (useAlph == true && col != NULL)
 			{
 				
 				// mouse coords - button coords = local coords
-				int localX = Input->m_x - xy[0];
-				int localY = Input->m_y - xy[1];
+				int localX = Input::Mouse::x - pos.x;
+				int localY = Input::Mouse::y - pos.y;
 				
 				// percent of local to size = tex coords
-				float percX = (1 / scl[0]) * localX;
-				float percY = (1 / scl[1]) * localY;
+				float percX = (1 / scl.x) * localX;
+				float percY = (1 / scl.y) * localY;
 				
 				// get percentage based on texture coords
-				float texCoX = percX / rendOb->vertices->tex->u;
-				float texCoY = percY / rendOb->vertices->tex->v;
+				float texCoX = percX / m->getVertices()->texco[0];
+				float texCoY = percY / m->getVertices()->texco[1];
 				
-				GLubyte* pix = tex->getPixel(texCoX * tex->getW(), texCoY * tex->getH());
+				ui32* pix = col->getPixel(texCoX * col->getWidth(), texCoY * col->getHeight());
 				if (pix[3] == 0x00)
 				{
 					return false;
@@ -84,29 +71,30 @@ namespace sinnca
 			
 			
 		}
-		 */
+		
 		return false;
 		
 	}
-
-	guiButton* checkButton(lua_State* L, int ind)
+	
+	void guiButton::render()
 	{
-		void* ud = 0;
 		
-		// check for table object
-		luaL_checktype(L, ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(L, "__self");
-		// get our table
-		lua_gettable(L, ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<guiButton*>((guiButton*)lua_touserdata(L, -1));
-		luaL_argcheck(L, ud != 0, ind, "Incompatible 'gui' type...");
-		
-		return *((guiButton**)ud);
 	}
+	
+	void* guiButton::operator new(size_t s, std::string n)
+	{
+		guiButton* bn = Script->createObject<guiButton>();
+		
+		Script->setGlobal(n);
+		Tree->currentScene->guiManager->addChild(bn);
+		return (void*)bn;
+	}
+	
+	void guiButton::operator delete(void *p)
+	{
+		Heap->deallocate(p);
+	}
+
 
 	static int newButton(lua_State* L)
 	{
@@ -116,34 +104,9 @@ namespace sinnca
 			return luaL_error(L, "You need to name this button...");
 		}
 		
-		luaL_checktype(L, 1, LUA_TTABLE);
-		
-		
-		lua_newtable(L);
-		
-		lua_pushvalue(L, 1);
-		lua_setmetatable(L, -2);
-		
-		lua_pushvalue(L, 1);
-		lua_setfield(L, 1, "__index");
-		
-		
-		guiWidget** bn = (guiWidget**)lua_newuserdata(L, sizeof(guiButton*));
-		*bn = new guiButton(/*luaL_checkstring(L, 2)*/);
-		
-		//(*bn)->setName(luaL_checkstring(L, 2));
-		
-		luaL_getmetatable(L, "button");
-		lua_setmetatable(L, -2);
-		
-		lua_setfield(L, -2, "__self");
-		
-		
-		lua_setglobal(L, luaL_checkstring(L, 2));
-		
-		
-		Tree->currentScene->guiManager->children.pushBack(*bn);
-		return 1;
+		Script->checkTable(1);
+		createGuiButton(lua_tostring(L, 2));
+		return 0;
 	}
 
 	static int hover(lua_State* L)
@@ -152,7 +115,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			guiButton* bn = checkButton(L, 1);
+			guiButton* bn = Script->checkType<guiButton>(1);
 			
 			if (bn->checkbounds())
 			{
@@ -171,20 +134,29 @@ namespace sinnca
 		{"new", newButton},
 		{"hover", hover},
 		
-		{"setXY", l_setXY},
-		{"movXY", l_movXY},
-		{"setCol", l_setCol},
-		{"setWH", l_setWH},
-		{"movWH", l_movWH},
+		{"setParent", l_setParent},
+		{"addChild", l_addChild},
+		{"removeChild", l_removeChild},
+		
+		{"setG", l_setG},
+		{"setR", l_setR},
+		{"setS", l_setS},
+		
+		{"movG", l_movG},
+		{"movR", l_movR},
+		{"movS", l_movS},
+		
+		{"getG", l_getPos},
+		{"getR", l_getRot},
+		{"getS", l_getScl},
+		
+		{"setCol", l_setColor},
 		{NULL, NULL}
 	};
 
 	void registerGuiButton(lua_State* L)
 	{
-		luaL_register(L, "button", buttonFuncs);
-		
-		lua_pushvalue(L, -1);
-		lua_setfield(L, -2, "__index");
+		Script->registerType<guiButton>(buttonFuncs);
 	}
 }
 

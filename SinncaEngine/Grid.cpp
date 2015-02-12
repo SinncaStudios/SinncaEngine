@@ -329,7 +329,7 @@ namespace sinnca
 		
 		if (n == 4)
 		{
-			gr->setTexture((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), checkTexture(4));
+			gr->setTexture((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), Script->checkType<texture>(4));
 			
 		}
 		

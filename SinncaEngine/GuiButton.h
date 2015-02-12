@@ -21,14 +21,18 @@ namespace sinnca
 		
 	public:
 		
-		guiButton();
+		guiButton(std::string n);
 		
 		void update();
 		bool checkbounds();
-		//void render();
+		void render();
+		
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
 		
 	};
 	
+	#define createGuiButton(a) new(a)guiButton(a)
 	void registerGuiButton(lua_State* L);
 }
 

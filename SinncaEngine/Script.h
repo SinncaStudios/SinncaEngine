@@ -25,19 +25,19 @@ namespace sinnca
 		
 	}
 
-
 	#define Script (luaScript::Instance())
 	class luaScript
 	{
-		
-	public:
-		
+		public:
 		// the lua state
 		lua_State* L;
+		
+
 		lua_State* getState();
 		
+		//void setup();
+		//void shutdown();
 		static luaScript* Instance();
-		
 		luaScript();
 		
 		void bindFunctions();
@@ -53,25 +53,6 @@ namespace sinnca
 		void getMetaTable(std::string m);
 		void setTable(int i);
 		
-		template<typename T>
-		T* checkType(int ind)
-		{
-			void* ud = 0;
-			
-			// check for table object
-			luaL_checktype(L, ind, LUA_TTABLE);
-			
-			// push the key we're looking for (in this case, it's "__self")
-			lua_pushstring(L, "__self");
-			// get our table
-			lua_gettable(L, ind);
-			
-			// cast userdata pointer to "Node" type
-			ud = lua_touserdata(L, -1);
-			luaL_argcheck(L, ud != 0, ind, "The object given cannot be cast into the required type...");
-			
-			return *((T**)ud);
-		}
 		
 		void getGlobal(std::string glb);
 		void getLocal(int ind, std::string loc);
@@ -131,6 +112,41 @@ namespace sinnca
 			Script->setField(-2, "__self");
 			
 			return *ob;
+		}
+		
+		template<typename T>
+		T* checkType(int ind)
+		{
+			void* ud = 0;
+			
+			// check for table object
+			luaL_checktype(L, ind, LUA_TTABLE);
+			
+			// push the key we're looking for (in this case, it's "__self")
+			lua_pushstring(L, "__self");
+			// get our table
+			lua_gettable(L, ind);
+			
+			// cast userdata pointer to "Node" type
+			ud = lua_touserdata(L, -1);
+			luaL_argcheck(L, ud != 0, ind, "The object given cannot be cast into the required type...");
+			
+			return *((T**)ud);
+		}
+		
+		template<class T>
+		void registerType(const luaL_Reg funcs[])
+		{
+			luaL_newmetatable(L, T::metatable);
+			
+			luaL_register(L, 0, funcs);
+			lua_pushvalue(L, -1);
+			
+			lua_setfield(L, -2, "__index");
+			
+			
+			
+			luaL_register(L, T::metatable, funcs);
 		}
 		
 		

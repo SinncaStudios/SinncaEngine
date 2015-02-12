@@ -15,6 +15,8 @@ namespace sinnca
 {
 	class asset
 	{
+	protected:
+		
 		std::string path;
 		
 	public:

@@ -15,6 +15,7 @@
 #include "i_graphics.h"
 
 #include "Graphics.h"
+#include "Asset.h"
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -30,12 +31,12 @@ namespace sinnca
 		sprite ob;
 	};
 
-	class font
+	class font: public asset
 	{
 		
 		int w, h;
 		
-		std::string name, path;
+		std::string name;
 		float size, kern;
 		
 		int range[2];
@@ -45,6 +46,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "font";
+		
 		GLuint atlas;
 		
 		std::vector<glyph> data;
@@ -52,26 +55,29 @@ namespace sinnca
 		font(std::string n);
 		~font();
 		
-		void generate();
+		void load(std::string p);
 		void renderGlyph(char aci);
 		
 		void setSize(float s);
 		void setPath(std::string s);
 		
+		
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
 	};
-
-	font* checkFont(lua_State* L, int ind);
+	
+	#define createFont(a) new(a)font(a)
 	void registerFont(lua_State* L);
 
 
 
 
-
+/*
 	int l_newFont(lua_State* L);
 	int l_generate(lua_State* L);
 	int l_setSize(lua_State* L);
 	int l_setPath(lua_State* L);
-
+*/
 }
 
 #endif /* defined(__SinncaEngine__Font__) */

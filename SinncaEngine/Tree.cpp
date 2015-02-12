@@ -159,19 +159,7 @@ namespace sinnca
 	
 	void registerTree(lua_State* L)
 	{
-		
-		luaL_newmetatable(L, "_root");
-		
-		
-		luaL_register(L, 0, rootFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "_root", rootFuncs);
-		
+		Script->registerType<tree>(rootFuncs);
 	}
 }
 

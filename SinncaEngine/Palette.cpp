@@ -23,8 +23,51 @@ namespace sinnca
 		return _instance;
 	}
 	
+	inline void palette::addColor(std::string n, color* c)
+	{
+		// var name
+		Script->push(n);
+		
+		// new table
+		Script->newBlankTable();
+		
+		// copy table
+		Script->pushValue(1);
+		// set metatable and pop from stack
+		Script->setMetaTable(-2);
+		// copy table
+		Script->pushValue(1);
+		// metatable[1] = "__index" then pop
+		Script->setField(1, "__index");
+		
+		color** cl = Script->newUserdata<color*>();
+		*cl = c;
+		
+		
+		
+		Script->getMetaTable("button");
+		Script->setMetaTable(-2);
+		
+		Script->setField(-2, "__self");
+		
+		Script->setTable(-3);
+	}
+	
 	palette::palette()
 	{
+		
+		Script->newBlankTable();
+		
+		addColor("white", &white);
+		addColor("black", &black);
+		addColor("blue", &blue);
+		addColor("red", &red);
+		addColor("yellow", &yellow);
+		addColor("green", &green);
+		
+		Script->setGlobal("palette");
+		
+		
 		// 0.1, 0.24, 0.4, 0
 		defaultColor.r = 25;
 		defaultColor.g = 61;

@@ -22,7 +22,7 @@ namespace sinnca
 	scene::scene()
 	{
 		col = &Palette->defaultColor;
-		guiManager = Heap->allocateNew<guiMenu>();
+		guiManager = createGuiMenu("mainMenu");
 		percLoaded = 0.0f;
 		perspective = 0; // 2D by defualt
 		//entityStorage = memoryManager->heap->allocateNew<PoolAllocator>();
@@ -700,32 +700,14 @@ namespace sinnca
 		return 0;
 	}
 	
-	scene* checkScene(int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<scene*>((scene*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'scene' type...");
-		
-		return *((scene**)ud);
-		
-	}
+	
 	
 	static int l_dumptofile(lua_State* L)
 	{
 		int n = lua_gettop(L);
 		if (n == 2)
 		{
-			scene* sn = checkScene(1);
+			scene* sn = Script->checkType<scene>(1);
 			sn->dumpToFile(lua_tostring(L, 2));
 		}
 		
@@ -737,7 +719,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 2)
 		{
-			scene* sn = checkScene(1);
+			scene* sn = Script->checkType<scene>(1);
 			sn->readFromFile(lua_tostring(L, 2));
 		}
 		
@@ -769,19 +751,7 @@ namespace sinnca
 	
 	void registerScene(lua_State* L)
 	{
-		
-		luaL_newmetatable(L, "scene");
-		
-		
-		luaL_register(L, 0, sceneFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "scene", sceneFuncs);
-			
+		Script->registerType<scene>(sceneFuncs);
 	}
 	
 }

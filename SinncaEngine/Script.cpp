@@ -24,8 +24,6 @@ namespace sinnca
 		// start lua
 		luaL_openlibs(L);
 		
-		bindFunctions();
-		
 	}
 
 
@@ -38,6 +36,7 @@ namespace sinnca
 			//_instance = new (memoryManager->systems->allocateNew<luaScript>()) luaScript();
 			_instance = new (Heap->allocateNew<luaScript>()) luaScript();
 		}
+		
 		return _instance;
 	}
 	

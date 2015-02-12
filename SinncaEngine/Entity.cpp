@@ -163,25 +163,6 @@ namespace sinnca
 		
 	}
 	
-	entity* checkEntity(int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<entity*>((entity*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'entity' type...");
-		
-		return *((entity**)ud);
-		
-	}
 	
 	static int l_newEntity(lua_State* L)
 	{
@@ -230,20 +211,7 @@ namespace sinnca
 	};
 	void registerEntity(lua_State* L)
 	{
-		
-		luaL_newmetatable(L, "entity");
-		
-		//luaL_register(L, 0, entityGc);
-		luaL_register(L, 0, entityFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "entity", entityFuncs);
-		
-		
+		Script->registerType<entity>(entityFuncs);
 	}
 	
 }

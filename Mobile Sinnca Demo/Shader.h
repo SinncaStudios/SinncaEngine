@@ -31,6 +31,8 @@ namespace sinnca
 		unsigned int fragmentShader;
 	public:
 		
+		static constexpr auto metatable = "shader";
+		
 		GLint uniformMVMatrix, uniformNormalMatrix, attributeColor, attributePosition, attributeTexCo, uniformTex;
 		void loadShaders(std::string vs, std::string fs);
 		

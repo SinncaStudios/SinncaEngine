@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include "RenderObj.h"
-#include "Vertex.h"
+
 
 namespace sinnca
 {
@@ -34,6 +34,7 @@ namespace sinnca
 		GLubyte newind[4];
 		
 		void render();
+		vertex* getVertices();
 		
 	};
 }

@@ -30,36 +30,12 @@ namespace sinnca
 	
 	void* texture::operator new(size_t s, std::string n)
 	{
-		Script->newBlankTable();
-		
-		Script->pushValue(1);
-		Script->setMetaTable(-2);
-		
-		Script->pushValue(1);
-		Script->setField(1, "__index");
-		
-		//entity** en = Script->newUserdata<entity*>();
-		texture** tx = (texture**)lua_newuserdata(Script->getState(), sizeof(texture*));
-		if (Tree->currentScene->textureStorage != NULL)
-		{
-			*tx = (texture*)Tree->currentScene->textureStorage->allocate((unsigned int)s, __alignof(texture));
-			
-		} else {
-			
-			*tx = (texture*)Heap->allocate((unsigned int)s, __alignof(texture));
-		}
-		
-		
-		Script->getMetaTable("texture");
-		Script->setMetaTable(-2);
-		
-		Script->setField(-2, "__self");
-		
+		texture* tx = Script->createObject<texture>();
 		
 		Script->setGlobal(n);
-		Tree->currentScene->textureRef.push_back(*tx);
-		Tree->currentScene->colorRef.push_back(*tx);
-		return ((void*)*tx);
+		Tree->currentScene->textureRef.push_back(tx);
+		Tree->currentScene->colorRef.push_back(tx);
+		return ((void*)tx);
 	}
 	
 	void texture::operator delete(void *p)
@@ -133,24 +109,6 @@ namespace sinnca
 		
 	}
 	
-	texture* checkTexture(int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Texture" type
-		ud = dynamic_cast<texture*>((texture*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'color' type...");
-		
-		return *((texture**)ud);
-	}
 	
 	static int l_newTexture(lua_State* L)
 	{
@@ -176,9 +134,9 @@ namespace sinnca
 			return luaL_error(L, "I need an image to source!");
 		}
 		
-		texture* tx = checkTexture(1);
+		texture* tx = Script->checkType<texture>(1);
 		
-		tx->setSource(checkImage(2));
+		tx->setSource(Script->checkType<image>(2));
 		
 		return 0;
 	}
@@ -191,7 +149,7 @@ namespace sinnca
 			return luaL_error(L, "I need coordinates!");
 		}
 		
-		texture* tx = checkTexture(1);
+		texture* tx = Script->checkType<texture>(1);
 		tx->setOffset((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3));
 		
 		return 0;
@@ -206,17 +164,7 @@ namespace sinnca
 	
 	void registerTexture(lua_State* L)
 	{
-		
-		luaL_newmetatable(L, "texture");
-		
-		luaL_register(L, 0, textureFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "texture", textureFuncs);
+		Script->registerType<texture>(textureFuncs);
 	}
 	
 	

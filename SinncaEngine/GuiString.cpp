@@ -12,23 +12,27 @@
 
 namespace sinnca
 {
-	guiString::guiString()
+	guiString::guiString(std::string n) : guiWidget(n)
 	{
+		/*
 		draw = true;
 		
-		xy[0] = 1;
-		xy[1] = 1;
+		pos.x = 1;
+		pos.y = 1;
 		
 		col = &Palette->white;
 		
-		scl[0] = 20;
-		scl[1] = 20;
-		
+		scl.x = 20;
+		scl.y = 20;
+		*/
 		
 		ft = NULL;
-		
-		//name = n;
 		str = "";
+	}
+	
+	guiString::~guiString()
+	{
+		
 	}
 
 	void guiString::render()
@@ -38,7 +42,7 @@ namespace sinnca
 		{
 			
 			Graphics->pushMatrix();
-			Graphics->move(xy[0]/2, xy[1]/2, 0);
+			Graphics->move(pos.x/2, pos.y/2, 0);
 			
 			//glColor4f(color[0], color[1], color[2], color[3]);
 			col->bind();
@@ -68,25 +72,19 @@ namespace sinnca
 		str = s;
 	}
 
-
-
-	guiString* checkString(lua_State* L, int ind)
+	
+	void* guiString::operator new(size_t s, std::string n)
 	{
-		void* ud = 0;
+		guiString* st = Script->createObject<guiString>();
 		
-		// check for table object
-		luaL_checktype(L, ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(L, "__self");
-		// get our table
-		lua_gettable(L, ind);
-		
-		// cast userdata pointer to "String" type
-		ud = dynamic_cast<guiString*>((guiString*)lua_touserdata(L, -1));
-		luaL_argcheck(L, ud != 0, ind, "Incompatible 'gui' type...");
-		
-		return *((guiString**)ud);
+		Script->setGlobal(n);
+		Tree->currentScene->guiManager->addChild(st);
+		return (void*)st;
+	}
+	
+	void guiString::operator delete(void *p)
+	{
+		Heap->deallocate(p);
 	}
 
 
@@ -98,33 +96,9 @@ namespace sinnca
 			return luaL_error(L, "You need to name this widget...");
 		}
 		
-		luaL_checktype(L, 1, LUA_TTABLE);
+		Script->checkTable(1);
+		createGuiString(lua_tostring(L, 2));
 		
-		
-		lua_newtable(L);
-		
-		lua_pushvalue(L, 1);
-		lua_setmetatable(L, -2);
-		
-		lua_pushvalue(L, 1);
-		lua_setfield(L, 1, "__index");
-		
-		
-		guiString** st = (guiString**)lua_newuserdata(L, sizeof(guiString*));
-		*st = new guiString(/*lua_tostring(L, 2)*/);
-		
-		(*st)->setName(luaL_checkstring(L, 2));
-		
-		luaL_getmetatable(L, "string");
-		lua_setmetatable(L, -2);
-		
-		lua_setfield(L, -2, "__self");
-		
-		
-		lua_setglobal(L, luaL_checkstring(L, 2));
-		
-		
-		Tree->currentScene->guiManager->children.pushBack(*st);
 		return 1;
 	}
 
@@ -136,7 +110,7 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			st = checkString(L, 1);
+			st = Script->checkType<guiString>(1);
 			f = Script->checkType<font>(2);
 			
 			st->setFont(f);
@@ -152,7 +126,7 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			st = checkString(L, 1);
+			st = Script->checkType<guiString>(1);
 			
 			st->setStr(lua_tostring(L, 2));
 		}
@@ -168,26 +142,29 @@ namespace sinnca
 		{"setFont", l_setFont},
 		{"setStr", l_setStr},
 		
-		{"setXY", l_setXY},
-		{"movXY", l_movXY},
-		{"setCol", l_setCol},
-		{"setWH", l_setWH},
-		{"movWH", l_movWH},
+		{"setParent", l_setParent},
+		{"addChild", l_addChild},
+		{"removeChild", l_removeChild},
+		
+		{"setG", l_setG},
+		{"setR", l_setR},
+		{"setS", l_setS},
+		
+		{"movG", l_movG},
+		{"movR", l_movR},
+		{"movS", l_movS},
+		
+		{"getG", l_getPos},
+		{"getR", l_getRot},
+		{"getS", l_getScl},
+		
+		{"setCol", l_setColor},
 		{NULL, NULL}
 	};
 
 	void registerString(lua_State* L)
 	{
-		luaL_newmetatable(L, "string");
-		
-		luaL_register(L, 0, stringFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "string", stringFuncs);
+		Script->registerType<guiString>(stringFuncs);
 	}
 }
 

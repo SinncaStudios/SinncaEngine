@@ -40,7 +40,6 @@ namespace sinnca
 	};
 	
 #define createEntity(a) new(a)entity(a)
-	entity* checkEntity(int ind);
 	
 	void registerEntity(lua_State* L);
 }

@@ -9,23 +9,26 @@
 #include "GuiMenu.h"
 
 #include "Graphics.h"
+#include "Tree.h"
 
 namespace sinnca
 {
 
-	guiMenu::guiMenu()
+	guiMenu::guiMenu(std::string n) : guiWidget(n)
 	{
+		/*
 		draw = true;
 		
-		xy[0] = 0;
-		xy[1] = 0;
+		pos.x = 0;
+		pos.y = 0;
 		
 		col = &Palette->white;
 		
-		scl[0] = 20;
-		scl[1] = 20;
+		scl.x = 20;
+		scl.y = 20;
 		
-		//name = n;
+		name = n;
+		 */
 	}
 
 	void guiMenu::update()
@@ -35,21 +38,41 @@ namespace sinnca
 
 	void guiMenu::render()
 	{
-		
+		/*
 		glPushMatrix();
 		// render widget first
 			// menus have no widget to render
 		
 		// set scissor area
-		Graphics->enableScissor(xy[0], xy[1], scl[0], scl[1]);
+		Graphics->enableScissor(pos.x, pos.y, scl.x, scl.y);
 		
 		// render contents
-		for (linkList<guiWidget*>::iterator i = children.begin(); i != children.end(); ++i)
+		for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
 		{
 			(*i)->render();
 		}
 		
 		glPopMatrix();
+		 */
 	}
+	
+	void* guiMenu::operator new(size_t s, std::string n)
+	{
+		guiMenu* mu = Script->createObject<guiMenu>();
+		
+		Script->setGlobal(n);
+		if (Tree->currentScene->guiManager != nullptr) {
+			Tree->currentScene->guiManager->addChild(mu);
+		}
+		
+		return (void*)mu;
+	}
+	
+	void guiMenu::operator delete(void *p)
+	{
+		Heap->deallocate(p);
+	}
+	
+	
 }
 

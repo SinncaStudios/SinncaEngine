@@ -39,6 +39,7 @@ namespace sinnca
 			extern uint x, y;
 			extern digitalButton left, middle, right;
 			
+			// (wacom)tablet pressure
 			extern analogButton pressure;
 		}
 		

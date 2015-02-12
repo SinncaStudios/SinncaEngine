@@ -25,6 +25,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "source";
+		
 		ALfloat pitch, gain;
 		
 		source(std::string n);
@@ -43,7 +45,6 @@ namespace sinnca
 	};
 	
 	#define createSource(a) new(a)source(a)
-	source* checkSource(int ind);
 	
 	void registerSource(lua_State* L);
 	

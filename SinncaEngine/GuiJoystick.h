@@ -26,6 +26,13 @@ namespace sinnca
 		// shows the limits of the joystick
 		guiWidget base;
 		
+		
+	public:
+		
+		
+		
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
 	};
 }
 

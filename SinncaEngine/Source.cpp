@@ -89,37 +89,12 @@ namespace sinnca
 	{
 		//Create object in lua
 		
-		
-		Script->newBlankTable();
-		
-		Script->pushValue(1);
-		Script->setMetaTable(-2);
-		
-		Script->pushValue(1);
-		Script->setField(1, "__index");
-		
-		source** sc = (source**)lua_newuserdata(Script->getState(), sizeof(source*));
-		if (Tree->currentScene->sourceStorage != NULL)
-		{
-			*sc = (source*)Tree->currentScene->sourceStorage->allocate((unsigned int)s, __alignof(source));
-			
-		} else {
-			
-			*sc = (source*)Heap->allocate((unsigned int)s, __alignof(source));
-		}
-		
-		//(*en)->name = n;
-		
-		Script->getMetaTable("source");
-		Script->setMetaTable(-2);
-		
-		Script->setField(-2, "__self");
-		
+		source* sc = Script->createObject<source>();
 		
 		Script->setGlobal(n);
-		Tree->currentScene->sourceRef.push_back(*sc);
-		Tree->currentScene->nodeRef.push_back(*sc);
-		return ((void*)*sc);
+		Tree->currentScene->sourceRef.push_back(sc);
+		Tree->currentScene->nodeRef.push_back(sc);
+		return ((void*)sc);
 	}
 	
 	void source::operator delete(void *p)
@@ -134,24 +109,6 @@ namespace sinnca
 		}
 	}
 	
-	source* checkSource(int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Image" type
-		ud = dynamic_cast<source*>((source*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'source' type...");
-		
-		return *((source**)ud);
-	}
 	
 	static int l_newSource(lua_State* L)
 	{
@@ -175,8 +132,8 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid buffer...");
 		}
 		
-		source* sc = checkSource(1);
-		sc->setBuffer(checkBuffer(2));
+		source* sc = Script->checkType<source>(1);
+		sc->setBuffer(Script->checkType<buffer>(2));
 		
 		return 0;
 	}
@@ -189,7 +146,7 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid source...");
 		}
 		
-		source* sc = checkSource(1);
+		source* sc = Script->checkType<source>(1);
 		sc->play();
 		
 		return 0;
@@ -203,7 +160,7 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid source...");
 		}
 		
-		source* sc = checkSource(1);
+		source* sc = Script->checkType<source>(1);
 		sc->pause();
 		
 		return 0;
@@ -217,7 +174,7 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid source...");
 		}
 		
-		source* sc = checkSource(1);
+		source* sc = Script->checkType<source>(1);
 		sc->rewind();
 		
 		return 0;
@@ -257,17 +214,7 @@ namespace sinnca
 	
 	void registerSource(lua_State* L)
 	{
-		luaL_newmetatable(L, "source");
-		
-		//luaL_register(L, 0, entityGc);
-		luaL_register(L, 0, sourceFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "source", sourceFuncs);
+		Script->registerType<source>(sourceFuncs);
 	}
 }
 

@@ -34,16 +34,20 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "scene";
+		
 		// storage
 		guiMenu* guiManager;
 		pool* entityStorage;
 		pool* sceneStorage;
+		pool* colorStorage;
 		pool* imageStorage;
 		pool* textureStorage;
 		pool* sourceStorage;
 		pool* bufferStorage;
 		list* gridStorage;
 		pool* actionStorage;
+		pool* fontStorage;
 		
 		// reference keeping
 		std::vector<node*> nodeRef;
@@ -56,6 +60,7 @@ namespace sinnca
 		std::vector<source*> sourceRef;
 		std::vector<buffer*> bufferRef;
 		std::vector<action*> actionRef;
+		std::vector<font*> fontRef;
 		
 		
 		scene();

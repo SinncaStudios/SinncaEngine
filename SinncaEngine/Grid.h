@@ -49,6 +49,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "grid";
+		
 		//float xy[2];
 		bool iso; // isometric?
 		friend class tile;

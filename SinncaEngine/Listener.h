@@ -22,6 +22,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "listener";
+		
 		listener();
 		
 		void update();

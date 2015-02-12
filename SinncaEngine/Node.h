@@ -95,7 +95,7 @@ namespace sinnca
 			}
 			parent = np;
 		}
-		void addChild(node* ch)
+		virtual void addChild(node* ch)
 		{
 			ch->setParent(this);
 			
@@ -116,24 +116,6 @@ namespace sinnca
 		
 	};
 	
-	static node* checkNode(int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<node*>((node*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'node' type...");
-		
-		return *((node**)ud);
-	}
 	
 	static int l_setParent(lua_State* L)
 	{
@@ -143,8 +125,8 @@ namespace sinnca
 			return luaL_error(L, "You need to provide one node to be made the parent of this...");
 		}
 		
-		node* nd = checkNode(1);
-		nd->setParent(checkNode(2));
+		node* nd = Script->checkType<node>(1);
+		nd->setParent(Script->checkType<node>(2));
 		
 		return 0;
 	}
@@ -157,10 +139,10 @@ namespace sinnca
 			return luaL_error(L, "You need to provide at least one other node to add. This function can handle batch adding of nodes.");
 		}
 		
-		node* nd = checkNode(1);
+		node* nd = Script->checkType<node>(1);
 		for (int i = 2; i < n; i++)
 		{
-			nd->addChild(checkNode(i));
+			nd->addChild(Script->checkType<node>(i));
 		}
 		
 		return 0;
@@ -174,10 +156,10 @@ namespace sinnca
 			return luaL_error(L, "You need to provide at least one other node to remove. This function can handle batch removal of nodes.");
 		}
 		
-		node* nd = checkNode(1);
+		node* nd = Script->checkType<node>(1);
 		for (int i = 2; i < n; i++)
 		{
-			nd->removeChild(checkNode(i));
+			nd->removeChild(Script->checkType<node>(i));
 		}
 		
 		return 0;
@@ -188,7 +170,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			nd->pos.x = lua_tonumber(L, 2);
 			nd->pos.y = lua_tonumber(L, 3);
@@ -202,7 +184,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			nd->rot.x = lua_tonumber(L, 2);
 			nd->rot.y = lua_tonumber(L, 3);
@@ -216,7 +198,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			nd->scl.x = lua_tonumber(L, 2);
 			nd->scl.y = lua_tonumber(L, 3);
@@ -230,7 +212,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			nd->pos.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
 			nd->pos.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
@@ -244,7 +226,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			nd->pos.x += lua_tonumber(L, 2);
 			nd->pos.y += lua_tonumber(L, 3);
@@ -258,7 +240,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			nd->rot.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
 			nd->rot.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
@@ -272,7 +254,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			nd->scl.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
 			nd->scl.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
@@ -286,7 +268,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			lua_pushnumber(L, nd->pos.x);
 			lua_pushnumber(L, nd->pos.y);
@@ -301,7 +283,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			lua_pushnumber(L, nd->rot.x);
 			lua_pushnumber(L, nd->rot.y);
@@ -316,7 +298,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			node* nd = checkNode(1);
+			node* nd = Script->checkType<node>(1);
 			
 			lua_pushnumber(L, nd->scl.x);
 			lua_pushnumber(L, nd->scl.y);
@@ -334,8 +316,8 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a Color, Texture, or Material class...");
 		}
 		
-		node* nd = checkNode(1);
-		nd->col = checkColor(2);
+		node* nd = Script->checkType<node>(1);
+		nd->col = Script->checkType<color>(2);
 		
 		return 0;
 	}

@@ -21,6 +21,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "camera";
+		
 		//point pos;
 		//point rot;
 		

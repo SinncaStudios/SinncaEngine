@@ -51,6 +51,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "image";
+		
 		unsigned int clients;
 		bool bound;
 		std::string name, path;
@@ -70,7 +72,6 @@ namespace sinnca
 	};
 	
 #define createImage(a) new(a)image(a)
-	image* checkImage(int ind);
 	
 	void registerImage(lua_State* L);
 	

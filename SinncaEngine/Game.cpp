@@ -26,6 +26,7 @@ namespace sinnca
 		
 		// Setup lua scripting
 		Script->setVar("ENGINE VERSION", "0.1.0 : Development");
+		Script->bindFunctions();
 		
 		// Start opengl graphics
 		Graphics->init(glW, glH);

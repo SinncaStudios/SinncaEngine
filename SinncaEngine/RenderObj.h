@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "i_graphics.h"
+#include "Vertex.h"
 
 namespace sinnca
 {
@@ -29,6 +30,7 @@ namespace sinnca
 		}
 		
 		virtual void render() = 0;
+		virtual vertex* getVertices() = 0;
 	};
 }
 

@@ -25,7 +25,7 @@ namespace sinnca
 		
 	public:
 		
-		//std::string name;
+		static constexpr auto metatable = "texture";
 		
 		texture(std::string n);
 		~texture();
@@ -43,7 +43,6 @@ namespace sinnca
 		void bind();
 	};
 	
-	texture* checkTexture(int ind);
 	
 #define createTexture(a) new(a)texture(a)
 	void registerTexture(lua_State* L);

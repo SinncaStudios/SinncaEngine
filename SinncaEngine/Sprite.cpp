@@ -56,4 +56,13 @@ namespace sinnca
 		
 		glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_BYTE, 0);
 	}
+	
+	
+	vertex* sprite::getVertices()
+	{
+		return vertices;
+	}
+	
 }
+
+

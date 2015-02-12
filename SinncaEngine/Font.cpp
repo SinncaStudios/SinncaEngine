@@ -8,6 +8,7 @@
 
 #include "Font.h"
 #include "Utility.h"
+#include "Tree.h"
 
 
 namespace sinnca
@@ -37,7 +38,7 @@ namespace sinnca
 		data.clear();
 	}
 	
-	void font::generate()
+	void font::load(std::string p = "")
 	{
 		
 		FT_Library ft;
@@ -233,6 +234,27 @@ namespace sinnca
 	}
 	
 	
+	void* font::operator new(size_t s, std::string n)
+	{
+		font* ft = Script->createObject<font>();
+		
+		Script->setGlobal(n);
+		
+		return (void*)ft;
+	}
+	
+	void font::operator delete(void *p)
+	{
+		if (Tree->currentScene->fontStorage != NULL)
+		{
+			Tree->currentScene->fontStorage->deallocate(p);
+			
+		} else {
+			Heap->deallocate(p);
+		}
+	}
+	
+	
 	
 	int l_newFont(lua_State* L)
 	{
@@ -242,33 +264,10 @@ namespace sinnca
 			return luaL_error(L, "You need to name this font object...");
 		}
 		
-		luaL_checktype(L, 1, LUA_TTABLE);
+		Script->checkTable(1);
+		createFont(lua_tostring(L, 2));
 		
-		
-		lua_newtable(L);
-		
-		lua_pushvalue(L, 1);
-		lua_setmetatable(L, -2);
-		
-		lua_pushvalue(L, 1);
-		lua_setfield(L, 1, "__index");
-		
-		
-		font** ft = (font**)lua_newuserdata(L, sizeof(font*));
-		*ft = new font(luaL_checkstring(L, 2));
-		
-		//(*en)->setParent(Tree->currentScene);
-		
-		luaL_getmetatable(L, "font");
-		lua_setmetatable(L, -2);
-		
-		lua_setfield(L, -2, "__self");
-		
-		
-		lua_setglobal(L, luaL_checkstring(L, 2));
-		
-		
-		return 1;
+		return 0;
 	}
 	
 	int l_generate(lua_State* L)
@@ -279,7 +278,7 @@ namespace sinnca
 		if (n == 1)
 		{
 			ft = Script->checkType<font>(1);
-			ft->generate();
+			ft->load();
 		}
 		
 		return 0;
@@ -341,17 +340,7 @@ namespace sinnca
 	
 	void registerFont(lua_State* L)
 	{
-		
-		luaL_newmetatable(L, "font");
-		
-		luaL_register(L, 0, fontFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "font", fontFuncs);
+		Script->registerType<font>(fontFuncs);
 		
 	}
 	
