@@ -14,7 +14,7 @@ namespace sinnca
 	// This is useful...
 	// http://stackoverflow.com/questions/2150291/how-do-i-measure-a-time-interval-in-c
 	
-	
+	/*
 	timeKeeping* timeKeeping::_instance = NULL;
 	timeKeeping* timeKeeping::Instance()
 	{
@@ -25,26 +25,48 @@ namespace sinnca
 		
 		return _instance;
 	}
-	
-	timeKeeping::timeKeeping()
+	 */
+	namespace TimeKeeper
 	{
-		fps = 0.0f;
-		deltaTicks = 0;
+		float fps;
+		sinncaTime deltaTicks;
 		
-		start();
-	}
-	
-	void timeKeeping::update()
-	{
-		deltaTicks = getTicks();
-		start();
+		timer* t;
 		
+		void setup()
+		{
+			fps = 0.0f;
+			deltaTicks = 0;
+			
+			t = new timer();
+			
+			t->start();
+		}
+		
+		void shutDown()
+		{
+			delete t;
+		}
+		
+		void update()
+		{
+			deltaTicks = t->getTicks();
+			t->start();
+			
+		}
+		
+		
+		float withDeltaTime()
+		{
+			return (float)deltaTicks / 1000.0f;
+		}
+		
+		sinncaTime getTicks()
+		{
+			return t->getTicks();
+		}
 	}
 	
 	
-	float timeKeeping::withDeltaTime()
-	{
-		return (float)deltaTicks / 1000.0f;
-	}
 	
 }

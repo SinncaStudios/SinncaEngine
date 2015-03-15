@@ -15,6 +15,7 @@
 
 namespace sinnca
 {
+	/*
 	tree* tree::_instance = NULL;
 	
 	tree* tree::Instance()
@@ -26,57 +27,62 @@ namespace sinnca
 		
 		return _instance;
 	}
-	
-	tree::tree()
-	{
-		root = NULL;
-		currentScene = this;
-		
-		entityStorage = NULL;
-		name = "root";
-		
-	}
-	
-	tree::~tree()
+	*/
+
+	namespace Tree
 	{
 		
-	}
-	
-	void tree::setup(const char* path)
-	{
-		/*
-		Script->newBlankTable();
+		scene* root;
+		scene* currentScene;
 		
-		Script->pushValue(1);
-		Script->setMetaTable(-2);
-		
-		Script->pushValue(1);
-		Script->setField(1, "__index");
-		
-		root = (scene**)Script->newUserdata<scene>();
-		*root = Heap->allocateNew<scene>();
-		
-		Script->getGlobal("_root");
-		Script->setMetaTable(-2);
-		Script->getMetaTable("_root");
-		Script->setMetaTable(-2);
-		
-		Script->setField(-2, "__self");
-		Script->setGlobal("root");
-		*/
-		
+		void setup(const char* path)
+		{
+			/*
+			 Script::newBlankTable();
+			 
+			 Script::pushValue(1);
+			 Script::setMetaTable(-2);
+			 
+			 Script::pushValue(1);
+			 Script::setField(1, "__index");
+			 
+			 root = (scene**)Script::newUserdata<scene>();
+			 *root = Heap->allocateNew<scene>();
+			 
+			 Script::getGlobal("_root");
+			 Script::setMetaTable(-2);
+			 Script::getMetaTable("_root");
+			 Script::setMetaTable(-2);
+			 
+			 Script::setField(-2, "__self");
+			 Script::setGlobal("root");
+			 */
+			root = createScene("root");
+			
+			currentScene = root;
+			
+			root->entityStorage = NULL;
+			//root.setName("root");
+			
 #ifdef snMobile
-		Script->doFile(path);
+			Script::doFile(path);
 #else
-		Script->doFile(Computer->getResourcePath() + "/" + "main.lua");
+			Script::doFile(Computer::getResourcePath() + "/" + "main.lua");
 #endif
+			
+		}
 		
-	}
-	
-	scene* tree::getRoot()
-	{
-		// I am root
-		return *root;
+		void shutdown()
+		{
+			delete root;
+		}
+		
+		scene* getRoot()
+		{
+			// I am root
+			return root;
+		}
+		
 	}
 	
 	/*
@@ -93,44 +99,18 @@ namespace sinnca
 	}
 	 */
 	
-	scene* checkRoot(int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<scene*>((scene*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'entity' type...");
-		
-		return *((scene**)ud);
-		
-	}
 	
 	static int l_dumptofile(lua_State* L)
 	{
-		/*
-		int n = lua_gettop(L);
-		if (n == 2)
-		{
-			scene* rt = checkRoot(1);
-			rt->dumpToFile(lua_tostring(L, 2));
-		}
-		 */
-		Tree->dumpToFile(lua_tostring(L, 2));
+		
+		Tree::root->dumpToFile(lua_tostring(L, 2));
 		
 		return 0;
 	}
 	
 	static int l_loadfromfile(lua_State* L)
 	{
-		Tree->readFromFile(lua_tostring(L, 2));
+		Tree::root->readFromFile(lua_tostring(L, 2));
 		return 0;
 	}
 	
@@ -159,7 +139,7 @@ namespace sinnca
 	
 	void registerTree(lua_State* L)
 	{
-		Script->registerType<tree>(rootFuncs);
+		//Script::registerType<ree>(rootFuncs);
 	}
 }
 

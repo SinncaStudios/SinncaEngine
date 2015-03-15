@@ -23,7 +23,7 @@ namespace sinnca
 	{
 		solid = false;
 		
-		col = &Palette->white;
+		col = &Palette::white;
 		
 	}
 	
@@ -54,7 +54,7 @@ namespace sinnca
 		
 		col->bind();
 		
-		Graphics->square->render();
+		Graphics::square->render();
 	}
 	
 	
@@ -99,7 +99,7 @@ namespace sinnca
 				data[i][j].xy[0] = (j - i) * tileX / 2;
 				data[i][j].xy[1] = (j + i) * tileY / 4;
 				
-				Tree->currentScene->nodeRef.push_back(&data[i][j]);
+				Tree::currentScene->nodeRef.push_back(&data[i][j]);
 				
 			}
 		}
@@ -108,7 +108,7 @@ namespace sinnca
 		size[0] = xSize;
 		size[1] = ySize;
 		
-		Tree->currentScene->addChild(this);
+		Tree::currentScene->addChild(this);
 		
 	}
 	
@@ -125,12 +125,12 @@ namespace sinnca
 			//children[i]->callBehavior();
 		}
 		
-		Script->getGlobal(name);
+		Script::getGlobal(name);
 		
-		Script->getLocal(-1, "update");
-		//Script->checkType(2, LUA_TFUNCTION);
+		Script::getLocal(-1, "update");
+		//Script::checkType(2, LUA_TFUNCTION);
 		
-		Script->call(0, 0);
+		Script::call(0, 0);
 		
 		
 	}
@@ -148,8 +148,8 @@ namespace sinnca
 	bool grid::checkBounds(int &x, int &y)
 	{
 		
-		int _x = Input::Mouse::x + pos.x - Camera->pos.x * 2;
-		int _y = Input::Mouse::y - pos.y - Camera->pos.y * 2;
+		int _x = Input::Mouse::x + pos.x - Tree::currentScene->mainCamera.pos.x * 2;
+		int _y = Input::Mouse::y - pos.y - Tree::currentScene->mainCamera.pos.y * 2;
 		
 		double d_x = ((2 * _y + _x) / 2.0);
 		double d_y = ((2 * _y - _x) / 2.0);
@@ -207,11 +207,11 @@ namespace sinnca
 				{
 					
 					
-					Graphics->loadIdentity();
+					Graphics::loadIdentity();
 					//glPushMatrix();
 					
-					Graphics->move(j * tileX, -i * tileY, 0.0);
-					Graphics->scale(tileX, tileY, 0);
+					Graphics::move(j * tileX, -i * tileY, 0.0);
+					Graphics::scale(tileX, tileY, 0);
 					data[i][j].render();
 					
 					//glPopMatrix();
@@ -226,11 +226,11 @@ namespace sinnca
 				for (int j = 0; j < size[1]; j++)
 				{
 					//glPushMatrix();
-					Graphics->loadIdentity();
+					Graphics::loadIdentity();
 					
 					//glTranslatef(data[i][j].xy[0], data[i][j].xy[1], 0.0);
-					Graphics->move((j - i) * tileX / 2, (j + i) * tileY / 4, 0.0);
-					Graphics->scale(tileX, tileY, 0);
+					Graphics::move((j - i) * tileX / 2, (j + i) * tileY / 4, 0.0);
+					Graphics::scale(tileX, tileY, 0);
 					data[i][j].render();
 					
 					//glPopMatrix();
@@ -242,42 +242,42 @@ namespace sinnca
 	
 	void* grid::operator new(size_t s, std::string n)
 	{
-		Script->newBlankTable();
+		Script::newBlankTable();
 		
-		Script->pushValue(1);
-		Script->setMetaTable(-2);
+		Script::pushValue(1);
+		Script::setMetaTable(-2);
 		
-		Script->pushValue(1);
-		Script->setField(1, "__index");
+		Script::pushValue(1);
+		Script::setField(1, "__index");
 		
-		//entity** en = Script->newUserdata<entity*>();
-		grid** gd = (grid**)lua_newuserdata(Script->getState(), sizeof(grid*));
-		if (Tree->currentScene->gridStorage != NULL)
+		//entity** en = Script::newUserdata<entity*>();
+		grid** gd = (grid**)lua_newuserdata(Script::getState(), sizeof(grid*));
+		if (Tree::currentScene->gridStorage != NULL)
 		{
-			*gd = (grid*)Tree->currentScene->gridStorage->allocate((unsigned int)s, __alignof(grid));
+			*gd = (grid*)Tree::currentScene->gridStorage->allocate((unsigned int)s, __alignof(grid));
 			
 		} else {
 			
 			*gd = (grid*)Heap->allocate((unsigned int)s, __alignof(grid));
 		}
 		
-		Script->getMetaTable("grid");
-		Script->setMetaTable(-2);
+		Script::getMetaTable("grid");
+		Script::setMetaTable(-2);
 		
-		Script->setField(-2, "__self");
+		Script::setField(-2, "__self");
 		
 		
-		Script->setGlobal(n);
-		Tree->currentScene->gridRef.push_back(*gd);
-		Tree->currentScene->nodeRef.push_back(*gd);
+		Script::setGlobal(n);
+		Tree::currentScene->gridRef.push_back(*gd);
+		Tree::currentScene->nodeRef.push_back(*gd);
 		return ((void*)*gd);
 	}
 	
 	void grid::operator delete(void *p)
 	{
-		if (Tree->currentScene->gridStorage != NULL)
+		if (Tree::currentScene->gridStorage != NULL)
 		{
-			Tree->currentScene->gridStorage->deallocate(p);
+			Tree::currentScene->gridStorage->deallocate(p);
 			
 		} else {
 			
@@ -317,7 +317,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this grid...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		createGrid(lua_tostring(L, 2), (int)lua_tointeger(L, 3), (int)lua_tointeger(L, 4), lua_toboolean(L, 5));
 		return 0;
 	}
@@ -329,7 +329,7 @@ namespace sinnca
 		
 		if (n == 4)
 		{
-			gr->setTexture((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), Script->checkType<texture>(4));
+			gr->setTexture((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), Script::checkType<texture>(4));
 			
 		}
 		

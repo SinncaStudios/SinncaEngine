@@ -47,6 +47,7 @@ using namespace sinnca;
 	// Start the engine!
 	
 	running = YES;
+	isActive = FALSE;
 	engineTime = CFAbsoluteTimeGetCurrent();
 	
 	timer = [NSTimer timerWithTimeInterval:(1.0f/60.0f) target:self selector:@selector(run:) userInfo:nil repeats:YES];
@@ -86,38 +87,27 @@ using namespace sinnca;
 	
 	myGame.startUp();
 	
+	isActive = TRUE;
+	
 }
 
 - (void) drawRect:(NSRect)rect
 {
-	//[self resizeScreen];
-	/*
-	 glClear(GL_COLOR_BUFFER_BIT);
-	 
-	 glColor3f(1.0f, 0.9f, 0.0f);
-	 
-	 glBegin(GL_QUADS);
-	 
-	 glVertex2f(0.0f, 0.0f);
-	 glVertex2f(1.0f, 0.0f);
-	 glVertex2f(1.0f, 1.0f);
-	 glVertex2f(0.0f, 1.0f);
-	 
-	 glEnd();
-	 */
-	
-	myGame.loopItr();
-	
-	GLenum err;
-    while ((err = glGetError()) != GL_NO_ERROR) {
-        //std::cout << "OpenGL error: " << err << std::endl;
-    }
-	
-	if ([self inLiveResize])
-		glFlush ();
-	
-	else
-		[[self openGLContext] flushBuffer];
+	if (isActive)
+	{
+		myGame.loopItr();
+		
+		GLenum err;
+		while ((err = glGetError()) != GL_NO_ERROR) {
+			//std::cout << "OpenGL error: " << err << std::endl;
+		}
+		
+		if ([self inLiveResize])
+			glFlush ();
+		
+		else
+			[[self openGLContext] flushBuffer];
+	}
 	
 }
 
@@ -211,7 +201,7 @@ using namespace sinnca;
 {
 	NSRect newBounds = [self bounds];
 	
-	Graphics->setScreenSize(newBounds.size.width, newBounds.size.height);
+	Graphics::setScreenSize(newBounds.size.width, newBounds.size.height);
 	glViewport(0, 0, newBounds.size.width, newBounds.size.height);
 }
 

@@ -21,7 +21,7 @@ namespace sinnca
 		
 		guiWidget* wt = createGuiWidget(lua_tostring(L, 2));
 		
-		Tree->currentScene->guiManager->addChild(wt);
+		Tree::currentScene->guiManager->addChild(wt);
 		return 1;
 	}
 	
@@ -51,6 +51,6 @@ namespace sinnca
 	
 	void registerWidget(lua_State* L)
 	{
-		Script->registerType<guiWidget>(widgetFuncs);
+		Script::registerType<guiWidget>(widgetFuncs);
 	}
 }

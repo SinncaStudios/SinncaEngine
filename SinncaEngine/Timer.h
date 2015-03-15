@@ -29,7 +29,7 @@ typedef uint sinncaTime;
 
 namespace sinnca
 {
-
+	
 	class timer
 	{
 		sinncaTime startTicks, pauseTicks;
@@ -45,7 +45,7 @@ namespace sinnca
 		void pause();
 		void resume();
 		
-		int getTicks();
+		sinncaTime getTicks();
 		
 	};
 	

@@ -200,15 +200,15 @@ namespace sinnca
 		
 		if (aci == '\n')
 		{
-			Graphics->popMatrix();
-			Graphics->move(0.0f, size, 0.0f);
-			Graphics->pushMatrix();
+			Graphics::popMatrix();
+			Graphics::move(0.0f, size, 0.0f);
+			Graphics::pushMatrix();
 			
 		} else {
 			// texture was set by string renderer
 			
-			Graphics->pushMatrix();
-			Graphics->move(0.0f, (data[ref].top * -1) + 16, 0.0f);
+			Graphics::pushMatrix();
+			Graphics::move(0.0f, (data[ref].top * -1) + 16, 0.0f);
 			if (!data[ref].addx) {
 				return;
 			}
@@ -217,10 +217,10 @@ namespace sinnca
 			
 			
 			
-			Graphics->popMatrix();
+			Graphics::popMatrix();
 		}
 		
-		Graphics->move(data[ref].addx / 64.f, 0, 0);
+		Graphics::move(data[ref].addx / 64.f, 0, 0);
 		
 	}
 	
@@ -236,18 +236,18 @@ namespace sinnca
 	
 	void* font::operator new(size_t s, std::string n)
 	{
-		font* ft = Script->createObject<font>();
+		font* ft = Script::createObject<font>();
 		
-		Script->setGlobal(n);
+		Script::setGlobal(n);
 		
 		return (void*)ft;
 	}
 	
 	void font::operator delete(void *p)
 	{
-		if (Tree->currentScene->fontStorage != NULL)
+		if (Tree::currentScene->fontStorage != NULL)
 		{
-			Tree->currentScene->fontStorage->deallocate(p);
+			Tree::currentScene->fontStorage->deallocate(p);
 			
 		} else {
 			Heap->deallocate(p);
@@ -264,7 +264,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this font object...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		createFont(lua_tostring(L, 2));
 		
 		return 0;
@@ -277,7 +277,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			ft = Script->checkType<font>(1);
+			ft = Script::checkType<font>(1);
 			ft->load();
 		}
 		
@@ -291,7 +291,7 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			ft = Script->checkType<font>(1);
+			ft = Script::checkType<font>(1);
 			ft->setPath(lua_tostring(L, 2));
 		}
 		
@@ -305,7 +305,7 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			ft = Script->checkType<font>(1);
+			ft = Script::checkType<font>(1);
 			ft->setSize(lua_tonumber(L, 2));
 		}
 		
@@ -315,7 +315,7 @@ namespace sinnca
 	int clear(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		font* ft = Script->checkType<font>(1);
+		font* ft = Script::checkType<font>(1);
 		
 		if (n == 1)
 		{
@@ -340,7 +340,7 @@ namespace sinnca
 	
 	void registerFont(lua_State* L)
 	{
-		Script->registerType<font>(fontFuncs);
+		Script::registerType<font>(fontFuncs);
 		
 	}
 	

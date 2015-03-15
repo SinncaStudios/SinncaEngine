@@ -25,12 +25,12 @@ namespace sinnca
 
 	void guiButton::update()
 	{
-		Script->getGlobal(name);
+		Script::getGlobal(name);
 		
-		Script->getLocal(-1, "update");
-		//Script->checkType(2, LUA_TFUNCTION);
+		Script::getLocal(-1, "update");
+		//Script::checkType(2, LUA_TFUNCTION);
 		
-		Script->call(0, 0);
+		Script::call(0, 0);
 	}
 
 	bool guiButton::checkbounds()
@@ -83,10 +83,10 @@ namespace sinnca
 	
 	void* guiButton::operator new(size_t s, std::string n)
 	{
-		guiButton* bn = Script->createObject<guiButton>();
+		guiButton* bn = Script::createObject<guiButton>();
 		
-		Script->setGlobal(n);
-		Tree->currentScene->guiManager->addChild(bn);
+		Script::setGlobal(n);
+		Tree::currentScene->guiManager->addChild(bn);
 		return (void*)bn;
 	}
 	
@@ -104,7 +104,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this button...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		createGuiButton(lua_tostring(L, 2));
 		return 0;
 	}
@@ -115,7 +115,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			guiButton* bn = Script->checkType<guiButton>(1);
+			guiButton* bn = Script::checkType<guiButton>(1);
 			
 			if (bn->checkbounds())
 			{
@@ -156,7 +156,7 @@ namespace sinnca
 
 	void registerGuiButton(lua_State* L)
 	{
-		Script->registerType<guiButton>(buttonFuncs);
+		Script::registerType<guiButton>(buttonFuncs);
 	}
 }
 

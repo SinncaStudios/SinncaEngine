@@ -20,29 +20,25 @@ namespace sinnca
 	
 	texture::~texture()
 	{
-		source->clients--;
+		source->removeRef();
 		
-		if (source->clients == 0)
-		{
-			delete source;
-		}
 	}
 	
 	void* texture::operator new(size_t s, std::string n)
 	{
-		texture* tx = Script->createObject<texture>();
+		texture* tx = Script::createObject<texture>();
 		
-		Script->setGlobal(n);
-		Tree->currentScene->textureRef.push_back(tx);
-		Tree->currentScene->colorRef.push_back(tx);
+		Script::setGlobal(n);
+		Tree::currentScene->textureRef.push_back(tx);
+		Tree::currentScene->colorRef.push_back(tx);
 		return ((void*)tx);
 	}
 	
 	void texture::operator delete(void *p)
 	{
-		if (Tree->currentScene->textureStorage != NULL)
+		if (Tree::currentScene->textureStorage != NULL)
 		{
-			Tree->currentScene->textureStorage->deallocate(p);
+			Tree::currentScene->textureStorage->deallocate(p);
 			
 		} else {
 			
@@ -52,8 +48,12 @@ namespace sinnca
 	
 	void texture::setSource(sinnca::image *i)
 	{
+		if (source) {
+			source->removeRef();
+		}
+		
 		source = i;
-		i->clients++;
+		source->addRef();
 	}
 	
 	image* texture::getSource()
@@ -89,21 +89,21 @@ namespace sinnca
 	{
 		
 		//Graphics->currentShader->uniformVar("textured", 1);
-		Graphics->currentShader->uniformVar("mainColor", toFloat(r), toFloat(g), toFloat(b), toFloat(a));
+		Graphics::currentShader->uniformVar("mainColor", toFloat(r), toFloat(g), toFloat(b), toFloat(a));
 		
 		if (!source->bound)
 		{
-			if (Graphics->currentImage != NULL)
+			if (Graphics::currentImage != NULL)
 			{
-				Graphics->currentImage->bound = false;
+				Graphics::currentImage->bound = false;
 			}
 			
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, source->getData());
-			glUniform1i(Graphics->currentShader->uniformTex, 0);
+			glUniform1i(Graphics::currentShader->uniformTex, 0);
 			
 			source->bound = true;
-			Graphics->currentImage = source;
+			Graphics::currentImage = source;
 		}
 		
 		
@@ -118,11 +118,9 @@ namespace sinnca
 			return luaL_error(L, "You need to name this texture...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
 		createTexture(luaL_checkstring(L, 2));
-		return 0;
-		
 		return 0;
 	}
 	
@@ -134,9 +132,9 @@ namespace sinnca
 			return luaL_error(L, "I need an image to source!");
 		}
 		
-		texture* tx = Script->checkType<texture>(1);
+		texture* tx = Script::checkType<texture>(1);
 		
-		tx->setSource(Script->checkType<image>(2));
+		tx->setSource(Script::checkType<image>(2));
 		
 		return 0;
 	}
@@ -149,7 +147,7 @@ namespace sinnca
 			return luaL_error(L, "I need coordinates!");
 		}
 		
-		texture* tx = Script->checkType<texture>(1);
+		texture* tx = Script::checkType<texture>(1);
 		tx->setOffset((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3));
 		
 		return 0;
@@ -164,7 +162,7 @@ namespace sinnca
 	
 	void registerTexture(lua_State* L)
 	{
-		Script->registerType<texture>(textureFuncs);
+		Script::registerType<texture>(textureFuncs);
 	}
 	
 	

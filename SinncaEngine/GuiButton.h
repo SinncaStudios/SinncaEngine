@@ -10,6 +10,7 @@
 #define SinncaEngine_GuiButton_h
 
 #include "GuiWidget.h"
+#include "DigitalButton.h"
 
 namespace sinnca
 {

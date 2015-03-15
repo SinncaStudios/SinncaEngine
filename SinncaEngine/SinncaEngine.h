@@ -15,7 +15,7 @@
 @interface SinncaEngine : NSOpenGLView
 {
 
-	BOOL running;
+	BOOL running, isActive;
 	
 	NSTimer* timer;
 	CFAbsoluteTime engineTime;

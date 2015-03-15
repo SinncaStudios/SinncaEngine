@@ -42,17 +42,17 @@ namespace sinnca
 	{
 		
 		
-		glUseProgram(Graphics->currentShader->getProgram());
+		glUseProgram(Graphics::currentShader->getProgram());
 		
 		
-		glUniformMatrix4fv(Graphics->currentShader->uniformMVMatrix, 1, GL_FALSE, (float*)Graphics->getCombinedMatrix());
+		glUniformMatrix4fv(Graphics::currentShader->uniformMVMatrix, 1, GL_FALSE, (float*)Graphics::getCombinedMatrix());
 		
 		
 		glBindBuffer(GL_ARRAY_BUFFER, vBuffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iBuffer);
 		
-		glVertexAttribPointer(Graphics->currentShader->attributePosition, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), 0);
-		glVertexAttribPointer(Graphics->currentShader->attributeTexCo, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)(sizeof(float) * 3));
+		glVertexAttribPointer(Graphics::currentShader->attributePosition, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), 0);
+		glVertexAttribPointer(Graphics::currentShader->attributeTexCo, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (GLvoid*)(sizeof(float) * 3));
 		
 		glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_BYTE, 0);
 	}

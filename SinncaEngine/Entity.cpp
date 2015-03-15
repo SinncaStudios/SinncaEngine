@@ -32,10 +32,10 @@ namespace sinnca
 		scl.y = 40.0f;
 		scl.z = 1.0f;
 		
-		col = &Palette->white;
+		col = &Palette::white;
 		m = NULL;
-		Tree->currentScene->addChild(this);
-		parent = Tree->currentScene;
+		Tree::currentScene->addChild(this);
+		parent = Tree::currentScene;
 		
 	}
 	
@@ -52,40 +52,40 @@ namespace sinnca
 			(*i)->update();
 		}
 		
-		Script->getGlobal(name);
+		Script::getGlobal(name);
 		
-		Script->getLocal(-1, "update");
-		Script->call(0, 0);
+		Script::getLocal(-1, "update");
+		Script::call(0, 0);
 		
 	}
 	
 	
 	void entity::render()
 	{
-		Graphics->loadIdentity();
+		Graphics::loadIdentity();
 		
 		for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
 		{
 			(*i)->render();
 		}
 	
-		Graphics->move(pos);
-		Graphics->rotate(rot);
+		Graphics::move(pos);
+		Graphics::rotate(rot);
 		
 		
 		col->bind();
 		
 		
-		Graphics->scale(scl);
+		Graphics::scale(scl);
 		//glPopMatrix();
 		
 		
 		
 		if (m == NULL)
 		{
-			if (Tree->currentScene->pers() == 0)
+			if (Tree::currentScene->pers() == 0)
 			{
-				Graphics->square->render();
+				Graphics::square->render();
 				
 			} else {
 				
@@ -108,16 +108,16 @@ namespace sinnca
 		//Create object in lua
 		
 		/*
-		Script->newBlankTable();
+		Script::newBlankTable();
 		
-		Script->pushValue(1);
-		Script->setMetaTable(-2);
+		Script::pushValue(1);
+		Script::setMetaTable(-2);
 		
-		Script->pushValue(1);
-		Script->setField(1, "__index");
+		Script::pushValue(1);
+		Script::setField(1, "__index");
 		
-		//entity** en = Script->newUserdata<entity*>();
-		entity** en = (entity**)lua_newuserdata(Script->getState(), sizeof(entity*));
+		//entity** en = Script::newUserdata<entity*>();
+		entity** en = (entity**)lua_newuserdata(Script::getState(), sizeof(entity*));
 		if (Tree->currentScene->entityStorage != NULL)
 		{
 			*en = (entity*)Tree->currentScene->entityStorage->allocate((unsigned int)s, __alignof(entity));
@@ -129,17 +129,17 @@ namespace sinnca
 		
 		//(*en)->name = n;
 		
-		Script->getMetaTable("entity");
-		Script->setMetaTable(-2);
+		Script::getMetaTable("entity");
+		Script::setMetaTable(-2);
 		
-		Script->setField(-2, "__self");
+		Script::setField(-2, "__self");
 		*/
 		
-		entity* en = Script->createObject<entity>();
+		entity* en = Script::createObject<entity>();
 		
-		Script->setGlobal(n);
-		Tree->currentScene->entityRef.push_back(en);
-		Tree->currentScene->nodeRef.push_back(en);
+		Script::setGlobal(n);
+		Tree::currentScene->entityRef.push_back(en);
+		Tree::currentScene->nodeRef.push_back(en);
 		return ((void*)en);
 		
 		/*
@@ -152,9 +152,9 @@ namespace sinnca
 	}
 	void entity::operator delete(void *p)
 	{
-		if (Tree->currentScene->entityStorage != NULL)
+		if (Tree::currentScene->entityStorage != NULL)
 		{
-			Tree->currentScene->entityStorage->deallocate(p);
+			Tree::currentScene->entityStorage->deallocate(p);
 			
 		} else {
 			
@@ -173,7 +173,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this entity...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
 		createEntity(luaL_checkstring(L, 2));
 		return 0;
@@ -211,7 +211,7 @@ namespace sinnca
 	};
 	void registerEntity(lua_State* L)
 	{
-		Script->registerType<entity>(entityFuncs);
+		Script::registerType<entity>(entityFuncs);
 	}
 	
 }

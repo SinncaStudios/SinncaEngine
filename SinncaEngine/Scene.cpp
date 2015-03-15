@@ -21,7 +21,7 @@ namespace sinnca
 {
 	scene::scene()
 	{
-		col = &Palette->defaultColor;
+		col = &Palette::defaultColor;
 		guiManager = createGuiMenu("mainMenu");
 		percLoaded = 0.0f;
 		perspective = 0; // 2D by defualt
@@ -38,11 +38,11 @@ namespace sinnca
 		switch (perspective)
 		{
 			case 0:
-				Graphics->ortho(-1.0f, 1.0f);
+				Graphics::ortho(-1.0f, 1.0f);
 				break;
 				
 			case 1:
-				Graphics->perspective(100.f, 0.1f, 35.0f);
+				Graphics::perspective(100.f, 0.1f, 35.0f);
 				break;
 			default:
 				break;
@@ -64,7 +64,7 @@ namespace sinnca
 	
 	void scene::render()
 	{
-		Graphics->sceneColor(col->toFloat(col->r), col->toFloat(col->g), col->toFloat(col->b));
+		Graphics::sceneColor(col->toFloat(col->r), col->toFloat(col->g), col->toFloat(col->b));
 		
 		for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
 		{
@@ -76,19 +76,20 @@ namespace sinnca
 	{
 		return perspective;
 	}
-	/*
+	
 	void* scene::operator new(size_t s, std::string n)
 	{
 		
-		Script->newBlankTable();
+		Script::newBlankTable();
 		
-		Script->pushValue(1);
-		Script->setMetaTable(-2);
+		Script::pushValue(1);
+		Script::setMetaTable(-2);
 		
-		Script->pushValue(1);
-		Script->setField(1, "__index");
+		Script::pushValue(1);
+		Script::setField(1, "__index");
 		
-		scene** sn = (scene**)lua_newuserdata(Script->getState(), sizeof(scene*));
+		scene** sn = (scene**)lua_newuserdata(Script::getState(), sizeof(scene*));
+		/*
 		if (Tree->currentScene->sceneStorage != NULL)
 		{
 			*sn = (scene*)Tree->currentScene->sceneStorage->allocate((unsigned int)s, __alignof(scene));
@@ -97,21 +98,23 @@ namespace sinnca
 			
 			*sn = (scene*)Heap->allocate((unsigned int)s, __alignof(scene));
 		}
-		
+		*/
+		*sn = (scene*)Heap->allocate((unsigned int)s, __alignof(scene));
 		(*sn)->name = n;
 		
-		Script->getMetaTable("entity");
-		Script->setMetaTable(-2);
+		Script::getMetaTable("entity");
+		Script::setMetaTable(-2);
 		
-		Script->setField(-2, "__self");
+		Script::setField(-2, "__self");
 		
 		
-		Script->setGlobal(n);
+		Script::setGlobal(n);
 		return ((void*)*sn);
 	}
 	
 	void scene::operator delete(void *p)
 	{
+		/*
 		if (Tree->currentScene->sceneStorage != NULL)
 		{
 			Tree->currentScene->sceneStorage->deallocate(p);
@@ -120,9 +123,10 @@ namespace sinnca
 			
 			Heap->deallocate(p);
 		}
-		
+		 */
+		Heap->deallocate(p);
 	}
-	*/
+	
 	int scene::dumpToFile(std::string file)
 	{
 		
@@ -605,7 +609,7 @@ namespace sinnca
 			f.read((char*)&col[3], 1);
 			
 			texture* tx = createTexture(theName);
-			tx->setSource(Tree->currentScene->imageRef[imageLink]);
+			tx->setSource(Tree::currentScene->imageRef[imageLink]);
 			tx->setOffset(xOff, yOff);
 			tx->setSize(xSize, ySize);
 			
@@ -707,7 +711,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 2)
 		{
-			scene* sn = Script->checkType<scene>(1);
+			scene* sn = Script::checkType<scene>(1);
 			sn->dumpToFile(lua_tostring(L, 2));
 		}
 		
@@ -719,7 +723,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 2)
 		{
-			scene* sn = Script->checkType<scene>(1);
+			scene* sn = Script::checkType<scene>(1);
 			sn->readFromFile(lua_tostring(L, 2));
 		}
 		
@@ -751,7 +755,7 @@ namespace sinnca
 	
 	void registerScene(lua_State* L)
 	{
-		Script->registerType<scene>(sceneFuncs);
+		Script::registerType<scene>(sceneFuncs);
 	}
 	
 }

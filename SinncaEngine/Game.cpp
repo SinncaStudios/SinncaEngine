@@ -24,15 +24,23 @@ namespace sinnca
 	{
 		memoryManager->start();
 		
-		// Setup lua scripting
-		Script->setVar("ENGINE VERSION", "0.1.0 : Development");
-		Script->bindFunctions();
-		
-		// Start opengl graphics
-		Graphics->init(glW, glH);
 		
 		// Get Hardware and Software information
-		Computer->getCompInfo();
+		Computer::setup();
+		Computer::getCompInfo();
+		
+		// Start the timer
+		TimeKeeper::setup();
+		
+		// Setup lua scripting
+		Script::setup();
+		Script::setVar("ENGINE VERSION", "0.1.0 : Development");
+		Script::bindFunctions();
+		
+		// Start opengl graphics
+		Graphics::setup();
+		Graphics::init(glW, glH);
+		Palette::setup();
 		
 		// We need to be able to interact with the game
 		// but not like this on mobile devices
@@ -44,7 +52,7 @@ namespace sinnca
 		Audio::setup();
 		
 		// Lastly, make the root node that forms the foundation of the game
-		Tree->setup(path);
+		Tree::setup(path);
 		
 		//createEntity("player");
 	}
@@ -55,26 +63,32 @@ namespace sinnca
 		Input::update();
 		
 		// update the current scene
-		Tree->currentScene->update();
+		Tree::currentScene->update();
 		
 		// draw!
-		Graphics->render();
+		Graphics::render();
 	}
 	
 	void game::update()
 	{
 		// update the current scene
-		Tree->currentScene->update();
+		Tree::currentScene->update();
 	}
 	void game::render()
 	{
 		// draw!
-		Graphics->render();
+		Graphics::render();
 	}
 	
 	
 	void game::cleanUp()
 	{
+		Tree::shutdown();
+		
 		Audio::shutDown();
+		
+		Graphics::shutdown();
+		
+		TimeKeeper::shutDown();
 	}
 }

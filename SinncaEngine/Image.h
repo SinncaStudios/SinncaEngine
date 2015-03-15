@@ -53,7 +53,6 @@ namespace sinnca
 		
 		static constexpr auto metatable = "image";
 		
-		unsigned int clients;
 		bool bound;
 		std::string name, path;
 		texBlend tb;

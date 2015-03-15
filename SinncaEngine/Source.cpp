@@ -23,8 +23,8 @@ namespace sinnca
 		
 		name = n;
 		
-		Tree->currentScene->addChild(this);
-		parent = Tree->currentScene;
+		Tree::currentScene->addChild(this);
+		parent = Tree::currentScene;
 		
 		pitch = 1.0f;
 		gain = 1.0f;
@@ -44,12 +44,18 @@ namespace sinnca
 	
 	void source::setBuffer(buffer* b)
 	{
+		if (theBuffer) {
+			theBuffer->removeRef();
+		}
+		
 		theBuffer = b;
 		alSourcei(theSource, AL_BUFFER, b->getBuffer());
 		if ((Audio::error = alGetError() != AL_NO_ERROR))
 		{
 			printf("Source '%s' error: %d\n", name.c_str(), Audio::error);
 		}
+		
+		theBuffer->addRef();
 	}
 	
 	void source::update()
@@ -89,19 +95,19 @@ namespace sinnca
 	{
 		//Create object in lua
 		
-		source* sc = Script->createObject<source>();
+		source* sc = Script::createObject<source>();
 		
-		Script->setGlobal(n);
-		Tree->currentScene->sourceRef.push_back(sc);
-		Tree->currentScene->nodeRef.push_back(sc);
+		Script::setGlobal(n);
+		Tree::currentScene->sourceRef.push_back(sc);
+		Tree::currentScene->nodeRef.push_back(sc);
 		return ((void*)sc);
 	}
 	
 	void source::operator delete(void *p)
 	{
-		if (Tree->currentScene->sourceStorage != NULL)
+		if (Tree::currentScene->sourceStorage != NULL)
 		{
-			Tree->currentScene->sourceStorage->deallocate(p);
+			Tree::currentScene->sourceStorage->deallocate(p);
 			
 		} else {
 			
@@ -118,7 +124,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this source...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
 		createSource(luaL_checkstring(L, 2));
 		return 0;
@@ -132,8 +138,8 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid buffer...");
 		}
 		
-		source* sc = Script->checkType<source>(1);
-		sc->setBuffer(Script->checkType<buffer>(2));
+		source* sc = Script::checkType<source>(1);
+		sc->setBuffer(Script::checkType<buffer>(2));
 		
 		return 0;
 	}
@@ -146,7 +152,7 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid source...");
 		}
 		
-		source* sc = Script->checkType<source>(1);
+		source* sc = Script::checkType<source>(1);
 		sc->play();
 		
 		return 0;
@@ -160,7 +166,7 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid source...");
 		}
 		
-		source* sc = Script->checkType<source>(1);
+		source* sc = Script::checkType<source>(1);
 		sc->pause();
 		
 		return 0;
@@ -174,7 +180,7 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a valid source...");
 		}
 		
-		source* sc = Script->checkType<source>(1);
+		source* sc = Script::checkType<source>(1);
 		sc->rewind();
 		
 		return 0;
@@ -214,7 +220,7 @@ namespace sinnca
 	
 	void registerSource(lua_State* L)
 	{
-		Script->registerType<source>(sourceFuncs);
+		Script::registerType<source>(sourceFuncs);
 	}
 }
 

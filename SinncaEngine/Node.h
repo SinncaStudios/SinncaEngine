@@ -49,7 +49,7 @@ namespace sinnca
 			
 			noOfChildren = 0;
 			draw = true;
-			col = &Palette->white;
+			col = &Palette::white;
 		}
 		virtual ~node()
 		{
@@ -125,8 +125,8 @@ namespace sinnca
 			return luaL_error(L, "You need to provide one node to be made the parent of this...");
 		}
 		
-		node* nd = Script->checkType<node>(1);
-		nd->setParent(Script->checkType<node>(2));
+		node* nd = Script::checkType<node>(1);
+		nd->setParent(Script::checkType<node>(2));
 		
 		return 0;
 	}
@@ -139,10 +139,10 @@ namespace sinnca
 			return luaL_error(L, "You need to provide at least one other node to add. This function can handle batch adding of nodes.");
 		}
 		
-		node* nd = Script->checkType<node>(1);
+		node* nd = Script::checkType<node>(1);
 		for (int i = 2; i < n; i++)
 		{
-			nd->addChild(Script->checkType<node>(i));
+			nd->addChild(Script::checkType<node>(i));
 		}
 		
 		return 0;
@@ -156,10 +156,10 @@ namespace sinnca
 			return luaL_error(L, "You need to provide at least one other node to remove. This function can handle batch removal of nodes.");
 		}
 		
-		node* nd = Script->checkType<node>(1);
+		node* nd = Script::checkType<node>(1);
 		for (int i = 2; i < n; i++)
 		{
-			nd->removeChild(Script->checkType<node>(i));
+			nd->removeChild(Script::checkType<node>(i));
 		}
 		
 		return 0;
@@ -170,7 +170,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
 			nd->pos.x = lua_tonumber(L, 2);
 			nd->pos.y = lua_tonumber(L, 3);
@@ -184,7 +184,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
 			nd->rot.x = lua_tonumber(L, 2);
 			nd->rot.y = lua_tonumber(L, 3);
@@ -198,7 +198,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
 			nd->scl.x = lua_tonumber(L, 2);
 			nd->scl.y = lua_tonumber(L, 3);
@@ -212,11 +212,11 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
-			nd->pos.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
-			nd->pos.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
-			nd->pos.z += (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
+			nd->pos.x += (lua_tonumber(L, 2) * TimeKeeper::withDeltaTime());
+			nd->pos.y += (lua_tonumber(L, 3) * TimeKeeper::withDeltaTime());
+			nd->pos.z += (lua_tonumber(L, 4) * TimeKeeper::withDeltaTime());
 		}
 		return 0;
 	}
@@ -226,7 +226,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
 			nd->pos.x += lua_tonumber(L, 2);
 			nd->pos.y += lua_tonumber(L, 3);
@@ -240,11 +240,11 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
-			nd->rot.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
-			nd->rot.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
-			nd->rot.z += (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
+			nd->rot.x += (lua_tonumber(L, 2) * TimeKeeper::withDeltaTime());
+			nd->rot.y += (lua_tonumber(L, 3) * TimeKeeper::withDeltaTime());
+			nd->rot.z += (lua_tonumber(L, 4) * TimeKeeper::withDeltaTime());
 		}
 		return 0;
 	}
@@ -254,11 +254,11 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 4)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
-			nd->scl.x += (lua_tonumber(L, 2) * TimeKeeper->withDeltaTime());
-			nd->scl.y += (lua_tonumber(L, 3) * TimeKeeper->withDeltaTime());
-			nd->scl.z += (lua_tonumber(L, 4) * TimeKeeper->withDeltaTime());
+			nd->scl.x += (lua_tonumber(L, 2) * TimeKeeper::withDeltaTime());
+			nd->scl.y += (lua_tonumber(L, 3) * TimeKeeper::withDeltaTime());
+			nd->scl.z += (lua_tonumber(L, 4) * TimeKeeper::withDeltaTime());
 		}
 		return 0;
 	}
@@ -268,7 +268,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
 			lua_pushnumber(L, nd->pos.x);
 			lua_pushnumber(L, nd->pos.y);
@@ -283,7 +283,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
 			lua_pushnumber(L, nd->rot.x);
 			lua_pushnumber(L, nd->rot.y);
@@ -298,7 +298,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			node* nd = Script->checkType<node>(1);
+			node* nd = Script::checkType<node>(1);
 			
 			lua_pushnumber(L, nd->scl.x);
 			lua_pushnumber(L, nd->scl.y);
@@ -316,8 +316,8 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a Color, Texture, or Material class...");
 		}
 		
-		node* nd = Script->checkType<node>(1);
-		nd->col = Script->checkType<color>(2);
+		node* nd = Script::checkType<node>(1);
+		nd->col = Script::checkType<color>(2);
 		
 		return 0;
 	}
@@ -331,6 +331,7 @@ namespace sinnca
 		{"setR", l_setR},
 		{"setS", l_setS},
 		
+		{"movGWithoutDeltaTimeButDontBecauseItsBadProgrammingHabit", l_movGWithoutDeltaTimeButDontBecauseItsBadProgrammingHabit},
 		{"movG", l_movG},
 		{"movR", l_movR},
 		{"movS", l_movS},

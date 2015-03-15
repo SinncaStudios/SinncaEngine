@@ -12,7 +12,7 @@
 
 namespace sinnca
 {
-	camera* camera::_instance = NULL;
+	//camera* camera::_instance = NULL;
 	
 	camera::camera()
 	{
@@ -24,12 +24,15 @@ namespace sinnca
 		zoom.x = 1.0f;
 		zoom.y = 1.0f;
 		zoom.z = 45.0f;
+		
+		// 3D off by default
+		current3D = none;
 	}
 	camera::~camera()
 	{
 		
 	}
-	
+	/*
 	camera* camera::Instance()
 	{
 		if (_instance == NULL)
@@ -39,7 +42,7 @@ namespace sinnca
 		
 		return _instance;
 	}
-	
+	*/
 	void camera::look()
 	{
 		
@@ -47,15 +50,15 @@ namespace sinnca
 	
 	void camera::look2D()
 	{
-		Graphics->setMatrixMode(SINNCA_PROJECTION_MATRIX);
+		Graphics::setMatrixMode(SINNCA_PROJECTION_MATRIX);
 		// move camera
-		Graphics->move(pos);
+		Graphics::move(pos);
 		
 		// zoom is taking z and putting in in the x and y
-		Graphics->scale(zoom.x, zoom.x, 0.0);
+		Graphics::scale(zoom.x, zoom.x, 0.0);
 		
 		// put the modelview back
-		Graphics->setMatrixMode(SINNCA_MODELVIEW_MATRIX);
+		Graphics::setMatrixMode(SINNCA_MODELVIEW_MATRIX);
 	}
 	
 	void camera::render()

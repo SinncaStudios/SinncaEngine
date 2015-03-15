@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="548" height="274"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box autoresizesSubviews="NO" fixedFrame="YES" title="Positioning:" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="KIR-5P-6W4">
+                    <rect key="frame" x="17" y="138" width="261" height="124"/>
+                    <view key="contentView">
+                        <rect key="frame" x="1" y="1" width="259" height="108"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd1-Hs-b28">
+                                <rect key="frame" x="16" y="79" width="62" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Location:" id="tYr-vg-pa4">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkN-QX-JyW">
+                                <rect key="frame" x="16" y="48" width="60" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Rotation:" id="3Ok-BU-lwr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Fz-P2-dxB">
+                                <rect key="frame" x="16" y="17" width="43" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scale:" id="hNV-r9-V3o">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <form verticalHuggingPriority="750" fixedFrame="YES" mode="track" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bEs-AH-yku">
+                                <rect key="frame" x="90" y="16" width="153" height="82"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="28.273373983739837" height="22"/>
+                                <size key="intercellSpacing" width="1" height="8"/>
+                                <formCell key="prototype" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Field:" id="U8z-xV-NIw">
+                                    <font key="font" metaFont="system"/>
+                                    <font key="titleFont" metaFont="system"/>
+                                </formCell>
+                                <cells>
+                                    <column>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="X:" id="zEn-OA-f7H">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" tag="1" title="X:" id="Kjq-qg-I96">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="X:" id="GEe-9e-Ude">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                    </column>
+                                    <column>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Y:" id="N2a-AP-vLH">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Y:" id="3G9-sU-ItA">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Y:" id="IRK-yt-CFW">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                    </column>
+                                    <column>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Z:" id="0GO-6h-PYb">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Z:" id="TBx-J6-edy">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Z:" id="Zfz-q7-GE3">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                    </column>
+                                </cells>
+                            </form>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+            </subviews>
+            <point key="canvasLocation" x="376" y="350"/>
+        </customView>
+    </objects>
+</document>

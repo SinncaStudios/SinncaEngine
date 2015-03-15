@@ -10,14 +10,25 @@
 #define __SinncaEngine__Camera__
 
 #include <iostream>
-#include "Types.h"
+//#include "Types.h"
 #include "Node.h"
 
 namespace sinnca
 {
-	#define Camera (camera::Instance())
+	
+	enum method3D
+	{
+		none, // no 3D effect
+		native, // built-in display is capible of 3D effect
+		stereoscopic, // 3D using those two color glasses like the tenth doctor wears to find "stuff"
+		crosseye, // displays both views next to each other. User then looks at screen crosseyed to create 3D effect
+		vr // similar to crosseye, but with matrix adjustments to allow for a realistic 3D view
+	};
+	
 	class camera : public node
 	{
+		
+		method3D current3D;
 		
 	public:
 		
@@ -27,18 +38,17 @@ namespace sinnca
 		//point rot;
 		
 		point zoom;
+		// col and col2 used for stereoscopic 3D
+		color* col2;
 		
 		camera();
 		~camera();
-		static camera* Instance();
 		
 		void look();
 		void look2D();
 		
 		void render();
 		
-	protected:
-		static camera* _instance;
 		
 	};
 }

@@ -20,10 +20,10 @@ namespace sinnca
 		{
 			if (cause->didChange)
 			{
-				durration = TimeKeeper->getTicks();
+				durration = TimeKeeper::getTicks();
 			}
 			
-			if ((TimeKeeper->getTicks() - durration) > durration)
+			if ((TimeKeeper::getTicks() - durration) > durration)
 			{
 				if (effect)
 				{

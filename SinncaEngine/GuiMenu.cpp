@@ -58,13 +58,15 @@ namespace sinnca
 	
 	void* guiMenu::operator new(size_t s, std::string n)
 	{
-		guiMenu* mu = Script->createObject<guiMenu>();
+		guiMenu* mu = Script::createObject<guiMenu>();
 		
-		Script->setGlobal(n);
-		if (Tree->currentScene->guiManager != nullptr) {
-			Tree->currentScene->guiManager->addChild(mu);
+		Script::setGlobal(n);
+		if (Tree::currentScene)
+		{
+			if (Tree::currentScene->guiManager != nullptr) {
+				Tree::currentScene->guiManager->addChild(mu);
+			}
 		}
-		
 		return (void*)mu;
 	}
 	

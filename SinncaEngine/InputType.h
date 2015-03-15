@@ -43,14 +43,14 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			InputType* bn = Script->checkType<InputType>(1);
+			InputType* bn = Script::checkType<InputType>(1);
 			
 			if (bn->x > 0.0f)
 			{
-				Script->push(1);
+				Script::push(1);
 				
 			} else {
-				Script->push(0);
+				Script::push(0);
 			}
 		}
 		
@@ -62,14 +62,14 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			InputType* bn = Script->checkType<InputType>(1);
+			InputType* bn = Script::checkType<InputType>(1);
 			
 			if (bn->x == 0.0f)
 			{
-				Script->push(1);
+				Script::push(1);
 				
 			} else {
-				Script->push(0);
+				Script::push(0);
 			}
 		}
 		
@@ -82,15 +82,15 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			InputType* bn = Script->checkType<InputType>(1);
+			InputType* bn = Script::checkType<InputType>(1);
 			
 			if (bn->x > 0.0f && bn->didChange)
 			{
-				Script->push(1);
+				Script::push(1);
 				bn->didChange = false;
 				
 			} else {
-				Script->push(0);
+				Script::push(0);
 			}
 		}
 		
@@ -102,15 +102,15 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			InputType* bn = Script->checkType<InputType>(1);
+			InputType* bn = Script::checkType<InputType>(1);
 			
 			if (bn->x == 0.0f && bn->didChange)
 			{
-				Script->push(1);
+				Script::push(1);
 				bn->didChange = false;
 				
 			} else {
-				Script->push(0);
+				Script::push(0);
 			}
 		}
 		
@@ -122,9 +122,9 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 1)
 		{
-			InputType* bn = Script->checkType<InputType>(1);
+			InputType* bn = Script::checkType<InputType>(1);
 			
-			Script->push(bn->x);
+			Script::push(bn->x);
 		}
 		
 		return 1;

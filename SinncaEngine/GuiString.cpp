@@ -41,14 +41,14 @@ namespace sinnca
 		if (ft != NULL)
 		{
 			
-			Graphics->pushMatrix();
-			Graphics->move(pos.x/2, pos.y/2, 0);
+			Graphics::pushMatrix();
+			Graphics::move(pos.x/2, pos.y/2, 0);
 			
 			//glColor4f(color[0], color[1], color[2], color[3]);
 			col->bind();
 			glBindTexture(GL_TEXTURE_2D, ft->atlas);
 			
-			Graphics->pushMatrix();
+			Graphics::pushMatrix();
 			
 			for (int i = 0; i < str.length(); i++)
 			{
@@ -56,8 +56,8 @@ namespace sinnca
 				ft->renderGlyph(str[i]);
 			}
 			
-			Graphics->popMatrix();
-			Graphics->popMatrix();
+			Graphics::popMatrix();
+			Graphics::popMatrix();
 			 
 		}
 		
@@ -65,7 +65,12 @@ namespace sinnca
 
 	void guiString::setFont(font *f)
 	{
+		if (ft) {
+			ft->removeRef();
+		}
+		
 		ft = f;
+		ft->addRef();
 	}
 	void guiString::setStr(std::string s)
 	{
@@ -75,10 +80,10 @@ namespace sinnca
 	
 	void* guiString::operator new(size_t s, std::string n)
 	{
-		guiString* st = Script->createObject<guiString>();
+		guiString* st = Script::createObject<guiString>();
 		
-		Script->setGlobal(n);
-		Tree->currentScene->guiManager->addChild(st);
+		Script::setGlobal(n);
+		Tree::currentScene->guiManager->addChild(st);
 		return (void*)st;
 	}
 	
@@ -96,7 +101,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this widget...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		createGuiString(lua_tostring(L, 2));
 		
 		return 1;
@@ -110,8 +115,8 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			st = Script->checkType<guiString>(1);
-			f = Script->checkType<font>(2);
+			st = Script::checkType<guiString>(1);
+			f = Script::checkType<font>(2);
 			
 			st->setFont(f);
 		}
@@ -126,7 +131,7 @@ namespace sinnca
 		
 		if (n == 2)
 		{
-			st = Script->checkType<guiString>(1);
+			st = Script::checkType<guiString>(1);
 			
 			st->setStr(lua_tostring(L, 2));
 		}
@@ -164,7 +169,7 @@ namespace sinnca
 
 	void registerString(lua_State* L)
 	{
-		Script->registerType<guiString>(stringFuncs);
+		Script::registerType<guiString>(stringFuncs);
 	}
 }
 

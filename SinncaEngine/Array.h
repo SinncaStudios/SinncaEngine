@@ -9,6 +9,7 @@
 #ifndef SinncaEngine_Array_h
 #define SinncaEngine_Array_h
 
+#include "List.h"
 #include "Types.h"
 #include "Heap.h"
 
@@ -22,7 +23,7 @@ namespace sinnca
 			t data[10];
 		};
 		
-		
+		linkList<chunk> data;
 		
 	public:
 		
@@ -31,10 +32,11 @@ namespace sinnca
 		array()
 		{
 			size = 0;
+			
 		}
 		~array()
 		{
-			
+			data.clear();
 		}
 		
 		t* operator [](int i)

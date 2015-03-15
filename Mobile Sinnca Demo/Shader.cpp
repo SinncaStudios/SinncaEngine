@@ -17,11 +17,17 @@
 namespace sinnca
 {
 	
-	void shader::loadShaders(std::string vs, std::string fs)
+	
+	void shader::loadShaders(std::string vs, std::string fs, std::string gs)
 	{
 		
 		vsText = openTextFile(vs);
 		fsText = openTextFile(fs);
+		
+	}
+	
+	void shader::setShaders(std::string v, std::string f, std::string g)
+	{
 		
 	}
 	
@@ -209,7 +215,19 @@ namespace sinnca
 	}
 	
 	
+	void* shader::operator new(size_t s, std::string n)
+	{
+		shader* sh = Script::createObject<shader>();
+		
+		Script::setGlobal(n);
+		return (void*)sh;
+	}
 	
+	void shader::operator delete(void *p)
+	{
+		Heap->deallocate(p);
+	}
+	/*
 	defaultShader* defaultShader::_instance = NULL;
 	defaultShader* defaultShader::Instance()
 	{
@@ -269,16 +287,44 @@ namespace sinnca
 			//"gl_FragColor = convert(testThing);"
 			"}"
 			"}";
-			*/
+			
 			_instance->fsText = openTextFile(Computer->getResourcePath() + "/BasicFrag.fs");
 			_instance->vsText = openTextFile(Computer->getResourcePath() + "/BasicVert.vs");
 			
 			_instance->initShaders();
-			Graphics->currentShader = _instance;
+			Graphics::currentShader = _instance;
 			
 		}
 		
 		return _instance;
 	}
+	*/
 	
+	
+	
+	static int l_newShader(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n != 2)
+		{
+			return luaL_error(L, "You need to name this shader...");
+		}
+		
+		Script::checkTable(1);
+		createShader(lua_tostring(L, 2));
+		return 0;
+	}
+	
+	
+	
+	static const luaL_Reg shaderFuncs[] = {
+		{"new", l_newShader},
+		{NULL, NULL}
+	};
+	
+	
+	void registerShader()
+	{
+		Script::registerType<shader>(shaderFuncs);
+	}
 }

@@ -37,12 +37,12 @@ namespace sinnca
 			pos.x = 0;
 			pos.y = 0;
 			
-			col = &Palette->white;
+			col = &Palette::white;
 			
 			scl.x = 20;
 			scl.y = 20;
 			
-			m = Graphics->square;
+			m = Graphics::square;
 			
 			//name = n;
 			
@@ -56,12 +56,12 @@ namespace sinnca
 				(*i)->update();
 			}
 			
-			Script->getGlobal(name);
+			Script::getGlobal(name);
 			
-			Script->getLocal(-1, "update");
-			//Script->checkType(2, LUA_TFUNCTION);
+			Script::getLocal(-1, "update");
+			//Script::checkType(2, LUA_TFUNCTION);
 			
-			Script->call(0, 0);
+			Script::call(0, 0);
 		}
 		
 		
@@ -102,9 +102,9 @@ namespace sinnca
 		
 		void* operator new(size_t s, std::string n)
 		{
-			guiWidget* wd = Script->createObject<guiWidget>();
+			guiWidget* wd = Script::createObject<guiWidget>();
 			
-			Script->setGlobal(n);
+			Script::setGlobal(n);
 			return (void*)wd;
 		}
 		#define createGuiWidget(a) new(a)guiWidget(a)
@@ -112,6 +112,7 @@ namespace sinnca
 		
 		void operator delete(void* p)
 		{
+			#warning "needs a specific allocator to alloc and dealloc"
 			Heap->deallocate(p);
 		}
 	};

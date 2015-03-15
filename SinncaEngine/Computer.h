@@ -17,37 +17,38 @@
 namespace sinnca
 {
 	
-#define Computer (computer::Instance())
-	class computer
+//#define Computer (computer::Instance())
+	namespace Computer
 	{
-		int cpus, vcpus;
-		int cpuSpeed;
-		long memAvalible;
+		extern int cpus, vcpus;
+		extern int cpuSpeed;
+		extern long memAvalible;
 		// gpus
-		int gpuMemAvailible;
+		extern int gpuMemAvailible;
 		
 		
 		
-		std::string machineName,
-					machineModel,
-					arch;
+		extern std::string machineName,
+						   machineModel,
+						   arch;
 		
-		std::string resourcePath;
+		extern std::string resourcePath;
 		
-	public:
+	//public:
 		
-		std::string gCard;
+		//std::string gCard;
 		
-		computer();
+		//computer();
+		void setup();
 		void getCompInfo();
 		std::string getResourcePath();
 		void setResourcePath(const char* path);
 		
-		static computer* Instance();
+		//static computer* Instance();
 		
-	protected:
+	//protected:
 		
-		static computer* _instance;
+		//static computer* _instance;
 		
 	};
 }

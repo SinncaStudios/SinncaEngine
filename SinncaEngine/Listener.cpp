@@ -9,6 +9,7 @@
 #include "Listener.h"
 #include "Heap.h"
 #include "Camera.h"
+#include "Tree.h"
 
 namespace sinnca
 {
@@ -26,7 +27,7 @@ namespace sinnca
 	listener::listener()
 	{
 		// the OpenAL listener should be the same position as the OpenGL camera
-		setParent(Camera);
+		setParent(&Tree::currentScene->mainCamera);
 	}
 	
 	void listener::update()

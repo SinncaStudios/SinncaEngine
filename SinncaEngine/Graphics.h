@@ -15,6 +15,7 @@
 #include "Shader.h"
 #include "Matrix.h"
 #include "Image.h"
+//#include "Camera.h"
 
 
 namespace sinnca
@@ -26,40 +27,44 @@ namespace sinnca
 		SINNCA_TEXTURE_MATRIX = 2
 	};
 	
-#define Graphics (graphics::Instance())
-	class graphics
+//#define Graphics (graphics::Instance())
+	namespace Graphics
 	{
 		
-		int resW, resH;
-		bool fullScreen;
+		extern int resW, resH;
+		extern bool fullScreen;
 		
 		// the matrix variables
-		raw matrixMode;
-		raw modelViewIndex;
-		raw projectionIndex;
-		raw textureIndex;
+		extern raw matrixMode;
+		extern raw modelViewIndex;
+		extern raw projectionIndex;
+		extern raw textureIndex;
 		
-		m4 modelViewStack[32];
-		m4 projectionStack[2];
-		m4 textureStack[2];
-		m4 combinedModelProj;
+		extern m4 modelViewStack[32];
+		extern m4 projectionStack[2];
+		extern m4 textureStack[2];
+		extern m4 combinedModelProj;
+		extern m3 normalMatrix;
 		
-		m3 normalMatrix;
+		//extern camera mainCamera;
 		
 		// OpenGL information
-		GLint maxTextureUnits;
+		extern GLint maxTextureUnits;
 		
 		
-	public:
+	//public:
 		
-		static graphics* Instance();
-		sprite* square;
+		//static graphics* Instance();
+		extern sprite* square;
 		
-		shader* currentShader;
-		image* currentImage;
+		extern shader* defaultShader;
+		extern shader* currentShader;
+		extern image* currentImage;
 		
-		graphics();
-		~graphics();
+		//graphics();
+		//~graphics();
+		void setup();
+		void shutdown();
 		
 		void render();
 		
@@ -89,9 +94,9 @@ namespace sinnca
 		
 		m3* getNormalMatrix();
 		
-	protected:
+	//protected:
 		
-		static graphics* _instance;
+		//static graphics* _instance;
 		
 	};
 }

@@ -24,430 +24,430 @@ namespace sinnca
 		{
 		
 					case 8:
-			Script->push("backspace");
+			Script::push("backspace");
 			break;
 					case 9:
-			Script->push("tab");
+			Script::push("tab");
 			break;
 					case 12:
-			Script->push("clear");
+			Script::push("clear");
 			break;
 					case 13:
-			Script->push("return");
+			Script::push("return");
 			break;
 					case 19:
-			Script->push("pause");
+			Script::push("pause");
 			break;
 					case 27:
-			Script->push("escape");
+			Script::push("escape");
 			break;
 					case 32:
-			Script->push("space");
+			Script::push("space");
 			break;
 					case 33:
-			Script->push("exclaim");
+			Script::push("exclaim");
 			break;
 					case 34:
-			Script->push("dbl_quote");
+			Script::push("dbl_quote");
 			break;
 					case 35:
-			Script->push("hash");
+			Script::push("hash");
 			break;
 					case 36:
-			Script->push("dollar");
+			Script::push("dollar");
 			break;
 					case 38:
-			Script->push("ampersand");
+			Script::push("ampersand");
 			break;
 					case 39:
-			Script->push("quote");
+			Script::push("quote");
 			break;
 					case 40:
-			Script->push("paren_l");
+			Script::push("paren_l");
 			break;
 					case 41:
-			Script->push("paren_r");
+			Script::push("paren_r");
 			break;
 					case 42:
-			Script->push("asterisk");
+			Script::push("asterisk");
 			break;
 					case 43:
-			Script->push("plus");
+			Script::push("plus");
 			break;
 					case 44:
-			Script->push("comma");
+			Script::push("comma");
 			break;
 					case 45:
-			Script->push("minus");
+			Script::push("minus");
 			break;
 					case 46:
-			Script->push("period");
+			Script::push("period");
 			break;
 					case 47:
-			Script->push("slash");
+			Script::push("slash");
 			break;
 					case 48:
-			Script->push("_0");
+			Script::push("_0");
 			break;
 					case 49:
-			Script->push("_1");
+			Script::push("_1");
 			break;
 					case 50:
-			Script->push("_2");
+			Script::push("_2");
 			break;
 					case 51:
-			Script->push("_3");
+			Script::push("_3");
 			break;
 					case 52:
-			Script->push("_4");
+			Script::push("_4");
 			break;
 					case 53:
-			Script->push("_5");
+			Script::push("_5");
 			break;
 					case 54:
-			Script->push("_6");
+			Script::push("_6");
 			break;
 					case 55:
-			Script->push("_7");
+			Script::push("_7");
 			break;
 					case 56:
-			Script->push("_8");
+			Script::push("_8");
 			break;
 					case 57:
-			Script->push("_9");
+			Script::push("_9");
 			break;
 					case 58:
-			Script->push("colon");
+			Script::push("colon");
 			break;
 					case 59:
-			Script->push("semicolon");
+			Script::push("semicolon");
 			break;
 					case 60:
-			Script->push("less");
+			Script::push("less");
 			break;
 					case 61:
-			Script->push("equals");
+			Script::push("equals");
 			break;
 					case 62:
-			Script->push("greater");
+			Script::push("greater");
 			break;
 					case 63:
-			Script->push("question");
+			Script::push("question");
 			break;
 					case 64:
-			Script->push("at");
+			Script::push("at");
 			break;
 					
 					case 91:
-			Script->push("bracket_l");
+			Script::push("bracket_l");
 			break;
 					case 92:
-			Script->push("backslash");
+			Script::push("backslash");
 			break;
 					case 93:
-			Script->push("bracket_r");
+			Script::push("bracket_r");
 			break;
 					case 94:
-			Script->push("caret");
+			Script::push("caret");
 			break;
 					case 95:
-			Script->push("underscore");
+			Script::push("underscore");
 			break;
 					case 96:
-			Script->push("backquote");
+			Script::push("backquote");
 			break;
 					case 97:
-			Script->push("a");
+			Script::push("a");
 			break;
 					case 98:
-			Script->push("b");
+			Script::push("b");
 			break;
 					case 99:
-			Script->push("c");
+			Script::push("c");
 			break;
 					case 100:
-			Script->push("d");
+			Script::push("d");
 			break;
 					case 101:
-			Script->push("e");
+			Script::push("e");
 			break;
 					case 102:
-			Script->push("f");
+			Script::push("f");
 			break;
 					case 103:
-			Script->push("g");
+			Script::push("g");
 			break;
 					case 104:
-			Script->push("h");
+			Script::push("h");
 			break;
 					case 105:
-			Script->push("i");
+			Script::push("i");
 			break;
 					case 106:
-			Script->push("j");
+			Script::push("j");
 			break;
 					case 107:
-			Script->push("k");
+			Script::push("k");
 			break;
 					case 108:
-			Script->push("l");
+			Script::push("l");
 			break;
 					case 109:
-			Script->push("m");
+			Script::push("m");
 			break;
 					case 110:
-			Script->push("n");
+			Script::push("n");
 			break;
 					case 111:
-			Script->push("o");
+			Script::push("o");
 			break;
 					case 112:
-			Script->push("p");
+			Script::push("p");
 			break;
 					case 113:
-			Script->push("q");
+			Script::push("q");
 			break;
 					case 114:
-			Script->push("r");
+			Script::push("r");
 			break;
 					case 115:
-			Script->push("s");
+			Script::push("s");
 			break;
 					case 116:
-			Script->push("t");
+			Script::push("t");
 			break;
 					case 117:
-			Script->push("u");
+			Script::push("u");
 			break;
 					case 118:
-			Script->push("v");
+			Script::push("v");
 			break;
 					case 119:
-			Script->push("w");
+			Script::push("w");
 			break;
 					case 120:
-			Script->push("x");
+			Script::push("x");
 			break;
 					case 121:
-			Script->push("y");
+			Script::push("y");
 			break;
 					case 122:
-			Script->push("z");
+			Script::push("z");
 			break;
 					case 127:
-			Script->push("delete");
+			Script::push("delete");
 			break;
 					
 					/*
 					 // don't do this yet
 					for (int i = 0; i < 95; i++)
 					{
-						Script->setTableField("WORLD_" + (160 + i), 160 + i);
+						Script::setTableField("WORLD_" + (160 + i), 160 + i);
 					}
 					 */
 					
 					case 256:
-			Script->push("kp0");
+			Script::push("kp0");
 			break;
 					case 257:
-			Script->push("kp1");
+			Script::push("kp1");
 			break;
 					case 258:
-			Script->push("kp2");
+			Script::push("kp2");
 			break;
 					case 259:
-			Script->push("kp3");
+			Script::push("kp3");
 			break;
 					case 260:
-			Script->push("kp4");
+			Script::push("kp4");
 			break;
 					case 261:
-			Script->push("kp5");
+			Script::push("kp5");
 			break;
 					case 262:
-			Script->push("kp6");
+			Script::push("kp6");
 			break;
 					case 263:
-			Script->push("kp7");
+			Script::push("kp7");
 			break;
 					case 264:
-			Script->push("kp8");
+			Script::push("kp8");
 			break;
 					case 265:
-			Script->push("kp9");
+			Script::push("kp9");
 			break;
 					case 266:
-			Script->push("kp_period");
+			Script::push("kp_period");
 			break;
 					case 267:
-			Script->push("kp_divide");
+			Script::push("kp_divide");
 			break;
 					case 268:
-			Script->push("kp_multiply");
+			Script::push("kp_multiply");
 			break;
 					case 269:
-			Script->push("kp_minus");
+			Script::push("kp_minus");
 			break;
 					case 270:
-			Script->push("kp_plus");
+			Script::push("kp_plus");
 			break;
 					case 271:
-			Script->push("kp_enter");
+			Script::push("kp_enter");
 			break;
 					case 272:
-			Script->push("kp_equals");
+			Script::push("kp_equals");
 			break;
 					
 					case 273:
-			Script->push("up");
+			Script::push("up");
 			break;
 					case 274:
-			Script->push("down");
+			Script::push("down");
 			break;
 					case 275:
-			Script->push("right");
+			Script::push("right");
 			break;
 					case 276:
-			Script->push("left");
+			Script::push("left");
 			break;
 					case 277:
-			Script->push("insert");
+			Script::push("insert");
 			break;
 					case 278:
-			Script->push("home");
+			Script::push("home");
 			break;
 					case 279:
-			Script->push("end");
+			Script::push("end");
 			break;
 					case 280:
-			Script->push("pageUp");
+			Script::push("pageUp");
 			break;
 					case 281:
-			Script->push("pageDown");
+			Script::push("pageDown");
 			break;
 					
 					case 282:
-			Script->push("f1");
+			Script::push("f1");
 			break;
 					case 283:
-			Script->push("f2");
+			Script::push("f2");
 			break;
 					case 284:
-			Script->push("f3");
+			Script::push("f3");
 			break;
 					case 285:
-			Script->push("f4");
+			Script::push("f4");
 			break;
 					case 286:
-			Script->push("f5");
+			Script::push("f5");
 			break;
 					case 287:
-			Script->push("f6");
+			Script::push("f6");
 			break;
 					case 288:
-			Script->push("f7");
+			Script::push("f7");
 			break;
 					case 289:
-			Script->push("f8");
+			Script::push("f8");
 			break;
 					case 290:
-			Script->push("f9");
+			Script::push("f9");
 			break;
 					case 291:
-			Script->push("f10");
+			Script::push("f10");
 			break;
 					case 292:
-			Script->push("f11");
+			Script::push("f11");
 			break;
 					case 293:
-			Script->push("f12");
+			Script::push("f12");
 			break;
 					case 294:
-			Script->push("f13");
+			Script::push("f13");
 			break;
 					case 295:
-			Script->push("f14");
+			Script::push("f14");
 			break;
 					case 296:
-			Script->push("f15");
+			Script::push("f15");
 			break;
 					
 					case 300:
-			Script->push("numLock");
+			Script::push("numLock");
 			break;
 					case 301:
-			Script->push("capsLock");
+			Script::push("capsLock");
 			break;
 					case 302:
-			Script->push("scrollLock");
+			Script::push("scrollLock");
 			break;
 					case 303:
-			Script->push("rShift");
+			Script::push("rShift");
 			break;
 					case 304:
-			Script->push("lShift");
+			Script::push("lShift");
 			break;
 					case 305:
-			Script->push("rCtrl");
+			Script::push("rCtrl");
 			break;
 					case 306:
-			Script->push("lCtrl");
+			Script::push("lCtrl");
 			break;
 					case 307:
-			Script->push("rAlt");
+			Script::push("rAlt");
 			break;
 					case 308:
-			Script->push("lAlt");
+			Script::push("lAlt");
 			break;
 					case 309:
-			Script->push("rMeta");
+			Script::push("rMeta");
 			break;
 					case 310:
-			Script->push("lMeta");
+			Script::push("lMeta");
 			break;
 					case 311:
-			Script->push("rSuper");
+			Script::push("rSuper");
 			break;
 					case 312:
-			Script->push("lSuper");
+			Script::push("lSuper");
 			break;
 					case 313:
-			Script->push("mode");
+			Script::push("mode");
 			break;
 					case 314:
-			Script->push("compose");
+			Script::push("compose");
 			break;
 					
 					case 315:
-			Script->push("help");
+			Script::push("help");
 			break;
 					case 316:
-			Script->push("printScn");
+			Script::push("printScn");
 			break;
 					case 317:
-			Script->push("sysReq");
+			Script::push("sysReq");
 			break;
 					case 318:
-			Script->push("break");
+			Script::push("break");
 			break;
 					case 319:
-			Script->push("menu");
+			Script::push("menu");
 			break;
 					case 320:
-			Script->push("power");
+			Script::push("power");
 			break;
 					case 321:
-			Script->push("euro");
+			Script::push("euro");
 			break;
 					case 322:
-			Script->push("undo");
+			Script::push("undo");
 			break;
 				
 			default:
 				
 				std::stringstream str;
 				str << "Unknown_" << currentKey;
-				Script->push(str.str());
+				Script::push(str.str());
 				break;
 		}
 		

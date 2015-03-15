@@ -30,6 +30,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "buffer";
+		
 		bool loops;
 		ALenum bufFormat;
 		ALsizei frequency;

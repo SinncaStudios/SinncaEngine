@@ -13,28 +13,28 @@
 
 namespace sinnca
 {
-#define Palette (palette::Instance())
-	class palette
+//#define Palette (palette::Instance())
+	namespace Palette
 	{
 		
 		inline void addColor(std::string n, color* c);
 		
-	public:
+	//public:
 		
-		static palette* Instance();
-		palette();
+		//static palette* Instance();
+		void setup();
 		
-		color defaultColor;
+		extern color defaultColor;
 		
-		color white;
-		color black;
-		color blue;
-		color red;
-		color yellow;
-		color green;
+		extern color white;
+		extern color black;
+		extern color blue;
+		extern color red;
+		extern color yellow;
+		extern color green;
 		
-	protected:
-		static palette* _instance;
+	//protected:
+		//static palette* _instance;
 		
 	};
 }

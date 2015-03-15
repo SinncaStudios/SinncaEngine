@@ -7,6 +7,7 @@
 //
 
 #include "RapidPress.h"
+#include "TimeKeeping.h"
 
 namespace sinnca
 {
@@ -23,11 +24,11 @@ namespace sinnca
 		{
 			isWatching = true;
 			
-			durration = TimeKeeper->getTicks();
+			durration = TimeKeeper::getTicks();
 			wasCaused = true;
 			timesPressed++;
 			
-			if((TimeKeeper->getTicks() - durration) > frequency)
+			if((TimeKeeper::getTicks() - durration) > frequency)
 			{
 				// the player has held the button
 				isWatching = false;
@@ -39,7 +40,7 @@ namespace sinnca
 		
 		if(isWatching)
 		{
-			if((TimeKeeper->getTicks() - durration) > frequency)
+			if((TimeKeeper::getTicks() - durration) > frequency)
 			{
 				// the player has stopped rappidly pressing the button
 				isWatching = false;

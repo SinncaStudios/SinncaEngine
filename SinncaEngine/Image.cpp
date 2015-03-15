@@ -13,13 +13,11 @@
 
 namespace sinnca
 {
-	image::image(std::string n)
+	image::image(std::string n) :
+	bound(false),
+	name(n)
 	{
 		glGenTextures(1, &data);
-		clients = 0;
-		bound = false;
-		
-		name = n;
 	}
 	
 	image::~image()
@@ -49,18 +47,18 @@ namespace sinnca
 	
 	void* image::operator new(size_t s, std::string n)
 	{
-		image* im = Script->createObject<image>();
+		image* im = Script::createObject<image>();
 		
-		Script->setGlobal(n);
-		Tree->currentScene->imageRef.push_back(im);
+		Script::setGlobal(n);
+		Tree::currentScene->imageRef.push_back(im);
 		return ((void*)im);
 	}
 	
 	void image::operator delete(void *p)
 	{
-		if (Tree->currentScene->imageStorage != NULL)
+		if (Tree::currentScene->imageStorage != NULL)
 		{
-			Tree->currentScene->imageStorage->deallocate(p);
+			Tree::currentScene->imageStorage->deallocate(p);
 			
 		} else {
 			
@@ -78,7 +76,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this image...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
 		createImage(luaL_checkstring(L, 2));
 		return 0;
@@ -92,7 +90,7 @@ namespace sinnca
 			return luaL_error(L, "You need to provide a file to load...");
 		}
 		
-		image* im = Script->checkType<image>(1);
+		image* im = Script::checkType<image>(1);
 		im->load(lua_tostring(L, 2));
 		
 		return 0;
@@ -106,7 +104,7 @@ namespace sinnca
 	
 	void registerImage(lua_State* L)
 	{
-		Script->registerType<image>(imageFuncs);
+		Script::registerType<image>(imageFuncs);
 	}
 }
 

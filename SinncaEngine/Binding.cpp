@@ -25,33 +25,39 @@
 namespace sinnca
 {
 	
-	
-	
-	void luaScript::bindFunctions()
+	namespace Script
 	{
-		std::string tempPath = Computer->getResourcePath().c_str();
-		setVar("resourcePath", tempPath + "/");
-		
-		lua_register(L, "keyDown", l_keyDown);
-		registerButton(L);
-		
-		// register node classes
-		registerEntity(L);
-		registerScene(L);
-		registerGrid(L);
-		registerTree(L);
-		registerSource(L);
-		
-		// register color classes
-		registerType<color>(colorFuncs);
-		registerImage(L);
-		registerTexture(L);
-		
-		// register sound classes
-		registerBuffer(L);
-		
-		// register gui classes
-		registerFont(L);
+		void bindFunctions()
+		{
+			std::string tempPath = Computer::getResourcePath().c_str();
+			setVar("resourcePath", tempPath + "/");
+			
+			lua_register(L, "keyDown", l_keyDown);
+			registerButton(L);
+			
+			// register node classes
+			registerEntity(L);
+			registerScene(L);
+			registerGrid(L);
+			registerTree(L);
+			registerSource(L);
+			
+			// register color classes
+			registerType<color>(colorFuncs);
+			registerImage(L);
+			registerTexture(L);
+			
+			// register sound classes
+			registerBuffer(L);
+			
+			// register gui classes
+			registerFont(L);
+			
+			
+			// create asset and node tracking table
+			newBlankTable();
+			setGlobal("___AssetTracker_");
+		}
 	}
 	
 }

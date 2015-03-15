@@ -51,13 +51,13 @@ namespace sinnca
 		{
 			//glColor4f(r / 255.0f, g / 255.0f, b / 255.0f, a / 255.0f);
 			
-			if (Graphics->currentImage != NULL)
+			if (Graphics::currentImage != NULL)
 			{
-				Graphics->currentImage->bound = false;
+				Graphics::currentImage->bound = false;
 			}
-			Graphics->currentImage = NULL;
-			//Graphics->currentShader->uniformVar("textured", 0);
-			Graphics->currentShader->uniformVar("mainColor", toFloat(r), toFloat(g), toFloat(b), toFloat(a));
+			Graphics::currentImage = NULL;
+			//Graphics::currentShader->uniformVar("textured", 0);
+			Graphics::currentShader->uniformVar("mainColor", toFloat(r), toFloat(g), toFloat(b), toFloat(a));
 		}
 		
 		virtual ui32* getPixel(float u = 0.0f, float v = 0.0f)
@@ -84,9 +84,9 @@ namespace sinnca
 		
 		void* operator new(size_t s, std::string n)
 		{
-			color* cl = Script->createObject<color>();
+			color* cl = Script::createObject<color>();
 			
-			Script->setGlobal(n);
+			Script::setGlobal(n);
 			return (void*)cl;
 		}
 		#define createColor(a) new(a)color(a)
@@ -108,7 +108,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this color...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		createColor(lua_tostring(L, 2));
 		return 0;
 	}
@@ -116,7 +116,7 @@ namespace sinnca
 	static int l_setColorValue(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		color* cl = Script->checkType<color>(1);
+		color* cl = Script::checkType<color>(1);
 		
 		if (n == 3 || n == 4)
 		{
@@ -146,7 +146,7 @@ namespace sinnca
 	/*
 	void registerColor()
 	{
-		Script->registerType<color>(colorFuncs);
+		Script::registerType<color>(colorFuncs);
 	}
 	 */
 }

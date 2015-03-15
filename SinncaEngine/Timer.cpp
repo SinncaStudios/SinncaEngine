@@ -7,7 +7,7 @@
 //
 
 #include "Timer.h"
-#include "TimeKeeping.h"
+
 
 namespace sinnca
 {
@@ -68,7 +68,7 @@ namespace sinnca
 	}
 
 
-	int timer::getTicks()
+	sinncaTime timer::getTicks()
 	{
 		if (started == true)
 		{

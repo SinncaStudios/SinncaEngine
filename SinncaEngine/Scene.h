@@ -13,6 +13,8 @@
 #include "Node.h"
 #include "PoolAlloc.h"
 #include "GuiMenu.h"
+#include "AssetManager.h"
+#include "Camera.h"
 
 // asset tracking
 #include "Entity.h"
@@ -35,6 +37,9 @@ namespace sinnca
 	public:
 		
 		static constexpr auto metatable = "scene";
+		
+		camera mainCamera;
+		pool* cameraStorage;
 		
 		// storage
 		guiMenu* guiManager;
@@ -78,8 +83,8 @@ namespace sinnca
 		int dumpToFile(std::string file);
 		
 		
-		//void* operator new(size_t s, std::string n);
-		//void operator delete(void* p);
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
 	};
 	
 	#define createScene(a) new(a)scene()

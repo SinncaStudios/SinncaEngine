@@ -10,7 +10,7 @@
 #define __SinncaEngine__ButtonHold__
 
 #include "InputWatcher.h"
-#include "TimeKeeping.h"
+#include "Timer.h"
 
 namespace sinnca
 {

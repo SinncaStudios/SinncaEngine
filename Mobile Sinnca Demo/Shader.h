@@ -11,17 +11,16 @@
 
 #include <iostream>
 #include "i_graphics.h"
+#include "Script.h"
 
 namespace sinnca
 {
 	class shader
 	{
-	protected:
 		//const GLchar* vsText;
 		//const GLchar* fsText;
 		std::string vsText;
 		std::string fsText;
-		
 		
 		std::string vsFile;
 		std::string fsFile;
@@ -29,12 +28,19 @@ namespace sinnca
 		unsigned int shaderProgram;
 		unsigned int vertexShader;
 		unsigned int fragmentShader;
+		
+		// a VERY basic glsl precompiler
+		void preCompile();
+		
 	public:
 		
 		static constexpr auto metatable = "shader";
 		
+		//shader();
+		
 		GLint uniformMVMatrix, uniformNormalMatrix, attributeColor, attributePosition, attributeTexCo, uniformTex;
-		void loadShaders(std::string vs, std::string fs);
+		void loadShaders(std::string vs, std::string fs, std::string gs = "");
+		void setShaders(std::string v, std::string f, std::string g = "");
 		
 		void initShaders();
 		
@@ -60,8 +66,14 @@ namespace sinnca
 			return shaderProgram;
 		}
 		
+		void* operator new(size_t s, std::string n);
+		void operator delete(void* p);
+		
 	};
 	
+	#define createShader(a) new(a)shader()
+	void registerShader();
+	/*
 #define DefaultShader (defaultShader::Instance())
 	class defaultShader : public shader
 	{
@@ -74,6 +86,7 @@ namespace sinnca
 		
 		static defaultShader* _instance;
 	};
+	 */
 }
 
 #endif /* defined(__SinncaEngine__Shader__) */

@@ -25,20 +25,22 @@ namespace sinnca
 		
 	}
 
-	#define Script (luaScript::Instance())
-	class luaScript
+	//#define Script (luaScript::Instance())
+	namespace Script
 	{
-		public:
+		//public:
 		// the lua state
-		lua_State* L;
+		extern lua_State* L;
 		
 
 		lua_State* getState();
 		
 		//void setup();
 		//void shutdown();
-		static luaScript* Instance();
-		luaScript();
+		//static luaScript* Instance();
+		//luaScript();
+		void setup();
+		void shutdown();
 		
 		void bindFunctions();
 		
@@ -90,15 +92,15 @@ namespace sinnca
 		t* createObject(Memory* allocator = Heap)
 		{
 			
-			Script->newBlankTable();
+			newBlankTable();
 			
-			Script->pushValue(1);
-			Script->setMetaTable(-2);
+			pushValue(1);
+			setMetaTable(-2);
 			
-			Script->pushValue(1);
-			Script->setField(1, "__index");
+			pushValue(1);
+			setField(1, "__index");
 			
-			//entity** en = Script->newUserdata<entity*>();
+			//entity** en = Script::newUserdata<entity*>();
 			t** ob = newUserdata<t*>();
 			
 			*ob = (t*)allocator->allocate(sizeof(t), alignof(t));
@@ -107,9 +109,9 @@ namespace sinnca
 			//(*en)->name = n;
 			
 			luaL_getmetatable(L, t::metatable);
-			Script->setMetaTable(-2);
+			setMetaTable(-2);
 			
-			Script->setField(-2, "__self");
+			setField(-2, "__self");
 			
 			return *ob;
 		}
@@ -150,13 +152,13 @@ namespace sinnca
 		}
 		
 		
-		~luaScript();
+		//~luaScript();
 		
-	protected:
+	//protected:
 		
 		
 		
-		static luaScript* _instance;
+		//static luaScript* _instance;
 		
 	};
 	

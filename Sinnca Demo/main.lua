@@ -2,7 +2,7 @@ print("hello from lua!")
 
 font:new("test")
 test:setSize(16)
-test:setPath(resourcePath .. "/Gravity-Light.ttf")
+test:setPath(resourcePath .. "Gravity-Light.ttf")
 test:generate()
 
 buffer:new("hi")
@@ -42,11 +42,8 @@ for i, k in pairs(_G) do
 print(i, k)
 end
 
-for i, k in pairs(Key) do
-print(i, k)
-end
 
-for i, k in pairs(Key.space) do
+for i, k in pairs(palette) do
 print(i, k)
 end
 

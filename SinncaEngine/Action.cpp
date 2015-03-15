@@ -28,10 +28,10 @@ namespace sinnca
 			
 			if (luaFunc != "")
 			{
-				Script->getGlobal(name);
+				Script::getGlobal(name);
 			
-				Script->getLocal(-1, luaFunc);
-				Script->call(0, 0);
+				Script::getLocal(-1, luaFunc);
+				Script::call(0, 0);
 				
 				t.start();
 				
@@ -49,10 +49,10 @@ namespace sinnca
 		{
 			if (luaFunc != "")
 			{
-				Script->getGlobal(name);
+				Script::getGlobal(name);
 				
-				Script->getLocal(-1, luaFunc);
-				Script->call(0, 0);
+				Script::getLocal(-1, luaFunc);
+				Script::call(0, 0);
 				
 				t.start();
 				
@@ -84,18 +84,18 @@ namespace sinnca
 		//Create object in lua
 		
 		
-		Script->newBlankTable();
+		Script::newBlankTable();
 		
-		Script->pushValue(1);
-		Script->setMetaTable(-2);
+		Script::pushValue(1);
+		Script::setMetaTable(-2);
 		
-		Script->pushValue(1);
-		Script->setField(1, "__index");
+		Script::pushValue(1);
+		Script::setField(1, "__index");
 		
-		action** ac = (action**)lua_newuserdata(Script->getState(), sizeof(action*));
-		if (Tree->currentScene->actionStorage != NULL)
+		action** ac = (action**)lua_newuserdata(Script::getState(), sizeof(action*));
+		if (Tree::currentScene->actionStorage != NULL)
 		{
-			*ac = (action*)Tree->currentScene->actionStorage->allocate((unsigned int)s, __alignof(action));
+			*ac = (action*)Tree::currentScene->actionStorage->allocate((unsigned int)s, __alignof(action));
 			
 		} else {
 			
@@ -104,21 +104,21 @@ namespace sinnca
 		
 		//(*en)->name = n;
 		
-		Script->getMetaTable("buffer");
-		Script->setMetaTable(-2);
+		Script::getMetaTable("buffer");
+		Script::setMetaTable(-2);
 		
-		Script->setField(-2, "__self");
+		Script::setField(-2, "__self");
 		
 		
-		Script->setGlobal(n);
-		Tree->currentScene->actionRef.push_back(*ac);
+		Script::setGlobal(n);
+		Tree::currentScene->actionRef.push_back(*ac);
 		return ((void*)*ac);
 	}
 	void action::operator delete(void *p)
 	{
-		if (Tree->currentScene->actionStorage != NULL)
+		if (Tree::currentScene->actionStorage != NULL)
 		{
-			Tree->currentScene->actionStorage->deallocate(p);
+			Tree::currentScene->actionStorage->deallocate(p);
 			
 		} else {
 			
@@ -126,24 +126,6 @@ namespace sinnca
 		}
 	}
 	
-	action* checkAction(int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Image" type
-		ud = lua_touserdata(Script->getState(), -1);
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'action' type...");
-		
-		return *((action**)ud);
-	}
 	
 	static int l_newAction(lua_State* L)
 	{
@@ -153,7 +135,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this action...");
 		}
 		
-		Script->checkTable(1);
+		Script::checkTable(1);
 		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
 		createAction(luaL_checkstring(L, 2));
 		return 0;

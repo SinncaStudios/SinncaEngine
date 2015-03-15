@@ -41,7 +41,7 @@ namespace sinnca
 		
 		void setup()
 		{
-			Script->newBlankTable();
+			Script::newBlankTable();
 			
 			for (int i = 0; i < 322; i++)
 			{
@@ -50,35 +50,35 @@ namespace sinnca
 				
 				keySetupHelper(i);
 				// new table
-				Script->newBlankTable();
+				Script::newBlankTable();
 				
 				// copy table
-				Script->pushValue(1);
+				Script::pushValue(1);
 				// set metatable and pop from stack
-				Script->setMetaTable(-2);
+				Script::setMetaTable(-2);
 				// copy table
-				Script->pushValue(1);
+				Script::pushValue(1);
 				// metatable[1] = "__index" then pop
-				Script->setField(1, "__index");
+				Script::setField(1, "__index");
 				
-				digitalButton** k = Script->newUserdata<digitalButton*>();
+				digitalButton** k = Script::newUserdata<digitalButton*>();
 				*k = &Keyboard::keys[i];
 				
 				
 				
-				Script->getMetaTable("button");
-				Script->setMetaTable(-2);
+				Script::getMetaTable("button");
+				Script::setMetaTable(-2);
 				
-				Script->setField(-2, "__self");
+				Script::setField(-2, "__self");
 				
 				
 				
-				//Script->push((char)i);
+				//Script::push((char)i);
 				
-				Script->setTable(-3);
+				Script::setTable(-3);
 			}
 			
-			Script->setGlobal("Key");
+			Script::setGlobal("Key");
 			//setupKeys();
 		}
 		

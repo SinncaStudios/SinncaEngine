@@ -13,25 +13,29 @@
 
 namespace sinnca
 {
-	#define TimeKeeper (timeKeeping::Instance())
-	class timeKeeping : public timer
+	//#define TimeKeeper (timeKeeping::Instance())
+	namespace TimeKeeper
 	{
 		
-		float fps;
-		sinncaTime deltaTicks;
+		extern float fps;
+		extern sinncaTime deltaTicks;
 		
-	public:
+		extern timer* t;
 		
-		static timeKeeping* Instance();
+	//public:
 		
-		timeKeeping();
+		//static timeKeeping* Instance();
+		
+		void setup();
+		void shutDown();
 		void update();
 		
 		float withDeltaTime();
+		sinncaTime getTicks();
 		
-	protected:
+	//protected:
 		
-		static timeKeeping* _instance;
+		//static timeKeeping* _instance;
 	};
 }
 
