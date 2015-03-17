@@ -10,12 +10,13 @@
 #define __SinncaEngine__AssetManager__
 
 #include "Asset.h"
+#include "Types.h"
 
 namespace sinnca
 {
 	class assetManager
 	{
-		int noOfResources;
+		uint noOfResources;
 	};
 }
 

@@ -290,25 +290,6 @@ namespace sinnca
 	// Lua functions
 	//
 	
-	grid* checkGrid(lua_State* L, int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(L, ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(L, "__self");
-		// get our table
-		lua_gettable(L, ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<grid*>((grid*)lua_touserdata(L, -1));
-		luaL_argcheck(L, ud != 0, ind, "Incompatible 'node' type...");
-		
-		return *((grid**)ud);
-	}
-	
 	static int l_newGrid(lua_State* L)
 	{
 		int n = lua_gettop(L);
@@ -325,7 +306,7 @@ namespace sinnca
 	static int l_setTex(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		grid* gr = checkGrid(L, 1);
+		grid* gr = Script::checkType<grid>(1);
 		
 		if (n == 4)
 		{
@@ -341,7 +322,7 @@ namespace sinnca
 		int n = lua_gettop(L);
 		if (n == 3)
 		{
-			grid* gr = checkGrid(L, 1);
+			grid* gr = Script::checkType<grid>(1);
 			int x, y;
 			gr->getTileXY((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), x, y);
 			
@@ -358,7 +339,7 @@ namespace sinnca
 		if (n == 1)
 		{
 			int _x, _y;
-			grid* gr = checkGrid(L, 1);
+			grid* gr = Script::checkType<grid>(1);
 			
 			gr->checkBounds(_x, _y);
 			lua_pushinteger(L, _x);
@@ -397,16 +378,7 @@ namespace sinnca
 	
 	void registerGrid(lua_State* L)
 	{
-		luaL_newmetatable(L, "grid");
-		
-		luaL_register(L, 0, gridFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		
-		
-		luaL_register(L, "grid", gridFuncs);
+		Script::registerType<grid>(gridFuncs);
 	}
 	
 }

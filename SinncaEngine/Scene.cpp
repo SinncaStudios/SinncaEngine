@@ -89,16 +89,7 @@ namespace sinnca
 		Script::setField(1, "__index");
 		
 		scene** sn = (scene**)lua_newuserdata(Script::getState(), sizeof(scene*));
-		/*
-		if (Tree->currentScene->sceneStorage != NULL)
-		{
-			*sn = (scene*)Tree->currentScene->sceneStorage->allocate((unsigned int)s, __alignof(scene));
-			
-		} else {
-			
-			*sn = (scene*)Heap->allocate((unsigned int)s, __alignof(scene));
-		}
-		*/
+		
 		*sn = (scene*)Heap->allocate((unsigned int)s, __alignof(scene));
 		(*sn)->name = n;
 		
@@ -114,16 +105,7 @@ namespace sinnca
 	
 	void scene::operator delete(void *p)
 	{
-		/*
-		if (Tree->currentScene->sceneStorage != NULL)
-		{
-			Tree->currentScene->sceneStorage->deallocate(p);
-			
-		} else {
-			
-			Heap->deallocate(p);
-		}
-		 */
+		
 		Heap->deallocate(p);
 	}
 	

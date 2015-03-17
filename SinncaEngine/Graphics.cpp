@@ -22,20 +22,7 @@
 
 namespace sinnca
 {
-	/*
-	graphics* Graphics::_instance = NULL;
-	graphics* Graphics::Instance()
-	{
-		if (_instance == NULL)
-		{
-			//_instance = new graphics;
-			_instance = Heap->allocateNew<graphics>();
-			
-			//_instance->square = Heap->allocateNew<sprite>();
-		}
-		return _instance;
-	}
-	 */
+	
 	namespace Graphics
 	{
 		int resW, resH;
@@ -59,9 +46,6 @@ namespace sinnca
 		GLint maxTextureUnits;
 		
 		
-		//public:
-		
-		//static graphics* Instance();
 		sprite* square;
 		
 		shader* defaultShader;
@@ -75,10 +59,6 @@ namespace sinnca
 		{
 			fullScreen = false;
 			
-			//resW = glW;
-			//resH = glH;
-			
-			
 			glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &maxTextureUnits);
 			printf("Maximum texture units supported: %i\n", (int)maxTextureUnits);
 		}
@@ -90,169 +70,27 @@ namespace sinnca
 		
 		void render()
 		{
-			/*
-			 // reset frame
-			 // draw scene
-			 // draw gui
-			 
-			 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			 //currentShader->bindShader();
-			 
-			 glMatrixMode(GL_MODELVIEW);
-			 glLoadIdentity();
-			 //scale(100.0f, 100.0f, 0.0f);
-			 glScalef(100.0f, 100.0f, 0.0f);
-			 glViewport(0, 0, resW, resH);
-			 
-			 //glUniformMatrix4fv(currentShader->uniformMVMatrix, 1, GL_FALSE, (float*)getModelMatrix());
-			 
-			 //square->render();
-			 
-			 //glEnableVertexAttribArray(currentShader->uniformMVMatrix);
-			 //glVertexAttribPointer(currentShader->attributePosition, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), 0);
-			 
-			 //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-			 
-			 glLoadIdentity();
-			 glEnable(GL_TEXTURE_2D);
-			 glEnableClientState(GL_VERTEX_ARRAY);
-			 glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-			 
-			 // disable scissor render
-			 if (glIsEnabled(GL_SCISSOR_TEST))
-			 {
-			 glScissor(0, 0, resW, resH);
-			 glDisable(GL_SCISSOR_TEST);
-			 }
-			 
-			 //axisWidget(0.1f);
-			 if (Tree->currentScene->pers() == 1)
-			 {
-			 Tree->currentScene->render();
-			 }
-			 
-			 
-			 glMatrixMode(GL_PROJECTION);
-			 glPushMatrix();
-			 glLoadIdentity();
-			 
-			 #ifdef sniPhone
-			 //GLKMatrix4MakeOrtho(0, resW, 0, resH, 1, -1);
-			 //GLKMatrix4MakeOrtho(0, 960, 0, 640, 1, -1);
-			 glOrthof(0, resW, 0, resH, -1, 1);
-			 //ortho(0, resW, 0, resH, -1.0, 1.0);
-			 #else
-			 gluOrtho2D(0, resW >> 1, resH >> 1, 0);
-			 #endif
-			 
-			 glMatrixMode(GL_MODELVIEW);
-			 glLoadIdentity();
-			 
-			 glDisable(GL_LIGHTING); // 2D elements are not effected by lighting
-			 glDisable(GL_CULL_FACE); // all 2D elements are not to be culled
-			 
-			 
-			 DefaultShader->bindShader();
-			 if (Tree->currentScene->pers() == 0)
-			 {
-			 glPushMatrix();
-			 //glScalef(0.5f, 0.5f, 0.0f);
-			 //glTranslatef(500, 500, 0);
-			 //Camera->look2D();
-			 
-			 Tree->currentScene->render();
-			 
-			 glPopMatrix();
-			 }
-			 
-			 //Tree->currentScene->drawGui();
-			 
-			 
-			 glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-			 glDisableClientState(GL_VERTEX_ARRAY);
-			 glEnable(GL_LIGHTING);
-			 glEnable(GL_CULL_FACE); // turn these back on
-			 
-			 glMatrixMode(GL_PROJECTION);
-			 glPopMatrix();
-			 glMatrixMode(GL_MODELVIEW);
-			 */
 			// reset frame
 			// draw scene
 			// draw gui
 			
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			TimeKeeper::update();
-			/*
-			 glLoadIdentity();
-			 glEnable(GL_TEXTURE_2D);
-			 glEnableClientState(GL_VERTEX_ARRAY);
-			 glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-			 
-			 // disable scissor render
-			 if (glIsEnabled(GL_SCISSOR_TEST))
-			 {
-			 glScissor(0, 0, resW, resH);
-			 glDisable(GL_SCISSOR_TEST);
-			 }
-			 
-			 //axisWidget(0.1f);
-			 if (Tree->currentScene->pers() == 1)
-			 {
-			 Tree->currentScene->render();
-			 }
-			 
-			 
-			 glMatrixMode(GL_PROJECTION);
-			 glPushMatrix();
-			 glLoadIdentity();
-			 #ifdef sniPhone
-			 //GLKMatrix4MakeOrtho(0, resW, 0, resH, 1, -1);
-			 //GLKMatrix4MakeOrtho(0, 960, 0, 640, 1, -1);
-			 //glOrthof(0, resW, 0, resH, -1, 1);
-			 glViewport(0, 0, resW, resH);
-			 ortho(0, resW, 0, resH, -1.0, 1.0);
-			 #else
-			 gluOrtho2D(0, resW >> 1, resH >> 1, 0);
-			 #endif
-			 glMatrixMode(GL_MODELVIEW);
-			 glLoadIdentity();
-			 
-			 glDisable(GL_LIGHTING); // 2D elements are not effected by lighting
-			 glDisable(GL_CULL_FACE); // all 2D elements are not to be culled
-			 */
-			//static float left = 0.0f;
+			
 			
 			setMatrixMode(SINNCA_MODELVIEW_MATRIX);
 			loadIdentity();
 			
-			//DefaultShader->bindShader();
+			
 			currentShader->bindShader();
 			if (Tree::currentScene->pers() == 0)
 			{
-				//glPushMatrix();
-				//glScalef(0.5f, 0.5f, 0.0f);
-				//glTranslatef(500, 500, 0);
+				
 				Tree::currentScene->mainCamera.look2D();
 				
 				Tree::currentScene->render();
 				
-				//glPopMatrix();
 			}
-			
-			//Tree->currentScene->drawGui();
-			
-			/*
-			 glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-			 glDisableClientState(GL_VERTEX_ARRAY);
-			 glEnable(GL_LIGHTING);
-			 glEnable(GL_CULL_FACE); // turn these back on
-			 
-			 glMatrixMode(GL_PROJECTION);
-			 glPopMatrix();
-			 glMatrixMode(GL_MODELVIEW);
-			 */
-			//left += 0.1f;
 		}
 		
 		void init(unsigned int w, unsigned int h)
@@ -284,36 +122,6 @@ namespace sinnca
 			glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 			glEnable(GL_BLEND);
 			
-			//glMatrixMode(GL_PROJECTION);
-			//glLoadIdentity();
-			
-			//move(-(resW * 0.5f), -(resH * 0.5f), 0.0f);
-			
-			/*
-			 glDisable(GL_DEPTH_TEST);
-			 glDepthMask(GL_FALSE);
-			 
-			 glEnable(GL_TEXTURE_2D);
-			 
-			 // enable alpha fuctions
-			 
-			 glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-			 glEnable(GL_BLEND);
-			 
-			 
-			 glEnable(GL_CULL_FACE);
-			 
-			 glCullFace(GL_BACK);
-			 
-			 glEnable (GL_LIGHTING);
-			 glEnable (GL_LIGHT0);
-			 glShadeModel (GL_SMOOTH);
-			 
-			 glClearDepth(1.0);
-			 glEnable(GL_DEPTH_TEST);
-			 glDepthFunc(GL_LEQUAL);
-			 glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-			 */
 			
 			setMatrixMode(SINNCA_TEXTURE_MATRIX);
 			loadIdentity();
@@ -344,10 +152,7 @@ namespace sinnca
 			ortho(-1.0f, 1.0f);
 			
 			
-			//setMatrixMode(SINNCA_MODELVIEW_MATRIX);
 			move(-half_width, -half_height, 0.0f);
-			//move(-100.0f, 0.0f, 0.0f);
-			
 			
 		}
 		

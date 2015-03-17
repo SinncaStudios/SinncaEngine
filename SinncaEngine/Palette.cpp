@@ -11,19 +11,7 @@
 
 namespace sinnca
 {
-	/*
-	palette* palette::_instance = NULL;
-	palette* palette::Instance()
-	{
-		if (_instance == NULL)
-		{
-			//_instance = new graphics;
-			_instance = Heap->allocateNew<palette>();
-			
-		}
-		return _instance;
-	}
-	 */
+	
 	namespace Palette
 	{
 		color defaultColor;

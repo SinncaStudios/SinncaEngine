@@ -23,14 +23,15 @@ namespace sinnca
 		#endif
 	}
 	
-	timer::timer()
+	timer::timer(std::string n) :
+	startTicks(0),
+	pauseTicks(0),
+	started(false),
+	paused(false)
 	{
-		startTicks = 0;
-		pauseTicks = 0;
-		
-		started = false;
-		paused = false;
-		
+		if (n != "") {
+			name = n;
+		}
 	}
 
 	void timer::setName(std::string n)
@@ -83,61 +84,47 @@ namespace sinnca
 		
 		return 0;
 	}
+	
+	void* timer::operator new(size_t s, std::string n)
+	{
+		timer* tm;
+		
+		if (n == "")
+		{
+			//not being created through lua
+			tm = (timer*)Heap->allocate(sizeof(timer), alignof(timer));
+			
+		} else {
+			
+			tm = Script::createObject<timer>();
+			Script::setGlobal(n);
+		}
+		
+		return (void*)tm;
+	}
+	
+	void timer::operator delete(void* p)
+	{
+		Heap->deallocate(p);
+	}
 
 
 	/*
 	 lua functions
 	 */
 
-	timer* checkTimer(lua_State* L, int ind)
-	{
-		void* ud = 0;
-		
-		// check for table object
-		luaL_checktype(L, ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(L, "__self");
-		// get our table
-		lua_gettable(L, ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<timer*>((timer*)lua_touserdata(L, -1));
-		luaL_argcheck(L, ud != 0, ind, "Incompatible 'timer' type...");
-		
-		return *((timer**)ud);
-	}
 
 	static int l_newTimer(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		
-		if (n == 2)
+		if (n != 2)
 		{
-			luaL_checktype(L, 1, LUA_TTABLE);
-			
-			lua_newtable(L);
-			
-			lua_pushvalue(L, 1);
-			lua_setmetatable(L, -2);
-			lua_pushvalue(L, 1);
-			lua_setfield(L, 1, "__index");
-			
-			timer** t = (timer**)lua_newuserdata(L, sizeof(timer*));
-			*t = new timer();
-			
-			(*t)->setName(luaL_checkstring(L, 2));
-			
-			luaL_getmetatable(L, "timer");
-			lua_setmetatable(L, -2);
-			
-			lua_setfield(L, -2, "__self");
-			
-			
-			lua_setglobal(L, luaL_checkstring(L, 2));
+			return luaL_error(L, "You need to name this timer...");
 		}
 		
-		return 1;
+		Script::checkTable(1);
+		createTimer(luaL_checkstring(L, 2));
+		return 0;
 	}
 
 	static int l_start(lua_State* L)
@@ -147,7 +134,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			t = checkTimer(L, 1);
+			t = Script::checkType<timer>(1);
 			t->start();
 		}
 		
@@ -161,7 +148,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			t = checkTimer(L, 1);
+			t = Script::checkType<timer>(1);
 			t->pause();
 		}
 		
@@ -175,7 +162,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			t = checkTimer(L, 1);
+			t = Script::checkType<timer>(1);
 			t->resume();
 		}
 		
@@ -189,7 +176,7 @@ namespace sinnca
 		
 		if (n == 1)
 		{
-			t = checkTimer(L, 1);
+			t = Script::checkType<timer>(1);
 			lua_pushnumber(L, t->getTicks());
 		}
 		return 1;
@@ -208,14 +195,7 @@ namespace sinnca
 
 	void registerTimer(lua_State* L)
 	{
-		luaL_newmetatable(L, "timer");
-		
-		luaL_register(L, 0, timerFuncs);
-		lua_pushvalue(L, -1);
-		
-		lua_setfield(L, -2, "__index");
-		
-		luaL_register(L, "timer", timerFuncs);
+		Script::registerType<timer>(timerFuncs);
 	}
 
 }

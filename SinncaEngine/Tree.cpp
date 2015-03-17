@@ -15,19 +15,6 @@
 
 namespace sinnca
 {
-	/*
-	tree* tree::_instance = NULL;
-	
-	tree* tree::Instance()
-	{
-		if (_instance == NULL)
-		{
-			_instance = Heap->allocateNew<tree>();
-		}
-		
-		return _instance;
-	}
-	*/
 
 	namespace Tree
 	{
@@ -37,32 +24,13 @@ namespace sinnca
 		
 		void setup(const char* path)
 		{
-			/*
-			 Script::newBlankTable();
-			 
-			 Script::pushValue(1);
-			 Script::setMetaTable(-2);
-			 
-			 Script::pushValue(1);
-			 Script::setField(1, "__index");
-			 
-			 root = (scene**)Script::newUserdata<scene>();
-			 *root = Heap->allocateNew<scene>();
-			 
-			 Script::getGlobal("_root");
-			 Script::setMetaTable(-2);
-			 Script::getMetaTable("_root");
-			 Script::setMetaTable(-2);
-			 
-			 Script::setField(-2, "__self");
-			 Script::setGlobal("root");
-			 */
+			
 			root = createScene("root");
 			
 			currentScene = root;
 			
 			root->entityStorage = NULL;
-			//root.setName("root");
+			
 			
 #ifdef snMobile
 			Script::doFile(path);
@@ -85,19 +53,6 @@ namespace sinnca
 		
 	}
 	
-	/*
-	void tree::render()
-	{
-		children.resetItr();
-		for (int i = 0; i < noOfChildren; i++, children++)
-		{
-			if (children.getData())
-			{
-				children.getData()->render();
-			}
-		}
-	}
-	 */
 	
 	
 	static int l_dumptofile(lua_State* L)
@@ -114,6 +69,7 @@ namespace sinnca
 		return 0;
 	}
 	
+	/*
 	static const luaL_Reg rootFuncs[] = {
 		{"dumpToFile", l_dumptofile},
 		{"loadFromFile", l_loadfromfile},
@@ -136,7 +92,7 @@ namespace sinnca
 		{"setCol", l_setColor},
 		{NULL, NULL}
 	};
-	
+	*/
 	void registerTree(lua_State* L)
 	{
 		//Script::registerType<ree>(rootFuncs);

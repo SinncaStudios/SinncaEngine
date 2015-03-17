@@ -106,35 +106,6 @@ namespace sinnca
 		 */
 		
 		//Create object in lua
-		
-		/*
-		Script::newBlankTable();
-		
-		Script::pushValue(1);
-		Script::setMetaTable(-2);
-		
-		Script::pushValue(1);
-		Script::setField(1, "__index");
-		
-		//entity** en = Script::newUserdata<entity*>();
-		entity** en = (entity**)lua_newuserdata(Script::getState(), sizeof(entity*));
-		if (Tree->currentScene->entityStorage != NULL)
-		{
-			*en = (entity*)Tree->currentScene->entityStorage->allocate((unsigned int)s, __alignof(entity));
-			
-		} else {
-			
-			*en = (entity*)Heap->allocate((unsigned int)s, __alignof(entity));
-		}
-		
-		//(*en)->name = n;
-		
-		Script::getMetaTable("entity");
-		Script::setMetaTable(-2);
-		
-		Script::setField(-2, "__self");
-		*/
-		
 		entity* en = Script::createObject<entity>();
 		
 		Script::setGlobal(n);
@@ -174,7 +145,6 @@ namespace sinnca
 		}
 		
 		Script::checkTable(1);
-		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
 		createEntity(luaL_checkstring(L, 2));
 		return 0;
 	}

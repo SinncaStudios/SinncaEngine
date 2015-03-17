@@ -19,19 +19,7 @@
 
 namespace sinnca
 {
-	/*
-	computer* computer::_instance = NULL;
 	
-	computer* computer::Instance()
-	{
-		if (_instance == NULL)
-		{
-			_instance = Heap->allocateNew<computer>();
-		}
-		
-		return _instance;
-	}
-	*/
 	
 	namespace Computer
 	{

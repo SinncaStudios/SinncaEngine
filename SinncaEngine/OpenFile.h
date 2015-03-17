@@ -13,7 +13,7 @@
 
 namespace sinnca
 {
-	char* openTextFile(std::string fileName);
+	const char* openTextFile(std::string fileName);
 }
 
 #endif /* defined(__SinncaEngine__OpenFile__) */

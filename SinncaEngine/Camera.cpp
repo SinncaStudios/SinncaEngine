@@ -12,7 +12,6 @@
 
 namespace sinnca
 {
-	//camera* camera::_instance = NULL;
 	
 	camera::camera()
 	{
@@ -32,17 +31,7 @@ namespace sinnca
 	{
 		
 	}
-	/*
-	camera* camera::Instance()
-	{
-		if (_instance == NULL)
-		{
-			_instance = Heap->allocateNew<camera>();
-		}
-		
-		return _instance;
-	}
-	*/
+	
 	void camera::look()
 	{
 		

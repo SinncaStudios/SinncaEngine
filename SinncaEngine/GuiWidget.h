@@ -59,7 +59,7 @@ namespace sinnca
 			Script::getGlobal(name);
 			
 			Script::getLocal(-1, "update");
-			//Script::checkType(2, LUA_TFUNCTION);
+
 			
 			Script::call(0, 0);
 		}

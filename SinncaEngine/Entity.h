@@ -19,8 +19,6 @@ namespace sinnca
 	class entity : public node
 	{
 	  
-		//point pos, rot, scl;
-		
 		renderObj* m;
 
 	public:

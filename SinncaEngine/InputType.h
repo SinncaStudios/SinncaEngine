@@ -130,11 +130,16 @@ namespace sinnca
 		return 1;
 	}
 	
-	/*
+	
 	static const luaL_Reg inputTypeFuncs[] = {
-		 
+		{"isDown", l_isDown},
+		{"isUp", l_isUp},
+		{"wasPressed", l_wasPressed},
+		{"wasReleased", l_wasReleased},
+		{"getRawPressure", l_getRawPressure},
+		{NULL, NULL}
 	};
-	*/
+	
 	
 	
 }

@@ -27,7 +27,7 @@ namespace sinnca
 		SINNCA_TEXTURE_MATRIX = 2
 	};
 	
-//#define Graphics (graphics::Instance())
+	
 	namespace Graphics
 	{
 		
@@ -51,18 +51,13 @@ namespace sinnca
 		// OpenGL information
 		extern GLint maxTextureUnits;
 		
-		
-	//public:
-		
-		//static graphics* Instance();
 		extern sprite* square;
 		
 		extern shader* defaultShader;
 		extern shader* currentShader;
 		extern image* currentImage;
 		
-		//graphics();
-		//~graphics();
+		
 		void setup();
 		void shutdown();
 		
@@ -94,10 +89,7 @@ namespace sinnca
 		
 		m3* getNormalMatrix();
 		
-	//protected:
-		
-		//static graphics* _instance;
-		
+	
 	};
 }
 

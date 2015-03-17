@@ -77,7 +77,7 @@ namespace sinnca
 		}
 		
 		Script::checkTable(1);
-		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
+		
 		createImage(luaL_checkstring(L, 2));
 		return 0;
 	}

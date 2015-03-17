@@ -17,7 +17,6 @@
 namespace sinnca
 {
 	
-//#define Computer (computer::Instance())
 	namespace Computer
 	{
 		extern int cpus, vcpus;
@@ -34,21 +33,11 @@ namespace sinnca
 		
 		extern std::string resourcePath;
 		
-	//public:
-		
-		//std::string gCard;
-		
-		//computer();
+	
 		void setup();
 		void getCompInfo();
 		std::string getResourcePath();
 		void setResourcePath(const char* path);
-		
-		//static computer* Instance();
-		
-	//protected:
-		
-		//static computer* _instance;
 		
 	};
 }

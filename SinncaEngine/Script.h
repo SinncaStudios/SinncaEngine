@@ -25,20 +25,16 @@ namespace sinnca
 		
 	}
 
-	//#define Script (luaScript::Instance())
+	
 	namespace Script
 	{
-		//public:
+		
 		// the lua state
 		extern lua_State* L;
 		
 
 		lua_State* getState();
 		
-		//void setup();
-		//void shutdown();
-		//static luaScript* Instance();
-		//luaScript();
 		void setup();
 		void shutdown();
 		
@@ -100,13 +96,11 @@ namespace sinnca
 			pushValue(1);
 			setField(1, "__index");
 			
-			//entity** en = Script::newUserdata<entity*>();
+			
 			t** ob = newUserdata<t*>();
 			
 			*ob = (t*)allocator->allocate(sizeof(t), alignof(t));
 			
-			
-			//(*en)->name = n;
 			
 			luaL_getmetatable(L, t::metatable);
 			setMetaTable(-2);
@@ -129,7 +123,7 @@ namespace sinnca
 			// get our table
 			lua_gettable(L, ind);
 			
-			// cast userdata pointer to "Node" type
+			// cast userdata pointer to whatever type
 			ud = lua_touserdata(L, -1);
 			luaL_argcheck(L, ud != 0, ind, "The object given cannot be cast into the required type...");
 			
@@ -150,15 +144,6 @@ namespace sinnca
 			
 			luaL_register(L, T::metatable, funcs);
 		}
-		
-		
-		//~luaScript();
-		
-	//protected:
-		
-		
-		
-		//static luaScript* _instance;
 		
 	};
 	

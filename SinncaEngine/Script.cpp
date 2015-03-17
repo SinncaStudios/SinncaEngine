@@ -12,34 +12,7 @@
 
 namespace sinnca
 {
-	/*
-	luaScript* luaScript::_instance = NULL;
-
-	luaScript::luaScript()
-	{
-		// Execute the script
-		L = lua_open();
-		
-		
-		// start lua
-		luaL_openlibs(L);
-		
-	}
-
-
-	luaScript* luaScript::Instance()
-	{
-		if (_instance == NULL)
-		{
-			//_instance = new luaScript();
-			//_instance = memoryManager->systems->allocateNew<luaScript>();
-			//_instance = new (memoryManager->systems->allocateNew<luaScript>()) luaScript();
-			_instance = new (Heap->allocateNew<luaScript>()) luaScript();
-		}
-		
-		return _instance;
-	}
-	 */
+	
 	namespace Script
 	{
 		lua_State* L;
@@ -219,14 +192,6 @@ namespace sinnca
 		}
 	}
 	
-	
-
-	/*
-	luaScript::~luaScript()
-	{
-		
-		lua_close(L);
-		
-	}
-	 */
 }
+
+

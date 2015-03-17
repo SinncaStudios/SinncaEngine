@@ -19,14 +19,12 @@ namespace sinnca
 	
 	namespace Audio
 	{
-		/*
-		 // variables are in Audio.cpp
-		 
-		static ALCdevice* device;
-		static ALCcontext* context;
 		
-		static ALboolean enumEnabled;
-		*/
+		extern ALCdevice* device;
+		extern ALCcontext* context;
+		
+		extern ALboolean enumEnabled;
+		
 		extern ALenum error;
 		
 		void setup();

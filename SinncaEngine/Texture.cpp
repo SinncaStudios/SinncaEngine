@@ -88,7 +88,6 @@ namespace sinnca
 	void texture::bind()
 	{
 		
-		//Graphics->currentShader->uniformVar("textured", 1);
 		Graphics::currentShader->uniformVar("mainColor", toFloat(r), toFloat(g), toFloat(b), toFloat(a));
 		
 		if (!source->bound)
@@ -119,7 +118,6 @@ namespace sinnca
 		}
 		
 		Script::checkTable(1);
-		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
 		createTexture(luaL_checkstring(L, 2));
 		return 0;
 	}

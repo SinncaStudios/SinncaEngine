@@ -43,18 +43,7 @@ namespace sinnca
 			{
 				
 				const ALCchar* devices = alcGetString(NULL, ALC_DEVICE_SPECIFIER);
-				/*
-				size_t len = 0;
 				
-				printf("AL Devices List:\n");
-				while (devices && *devices != '/0' && next && *next != '/0')
-				{
-					fprintf(stdout, "%s\n", devices);
-					len = strlen(devices);
-					devices += (len + 1);
-					next += (len + 2);
-				}
-				 */
 				fprintf(stdout, "Devices: %s\n", devices);
 			}
 			

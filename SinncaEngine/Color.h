@@ -49,14 +49,12 @@ namespace sinnca
 		
 		virtual void bind()
 		{
-			//glColor4f(r / 255.0f, g / 255.0f, b / 255.0f, a / 255.0f);
 			
 			if (Graphics::currentImage != NULL)
 			{
 				Graphics::currentImage->bound = false;
 			}
 			Graphics::currentImage = NULL;
-			//Graphics::currentShader->uniformVar("textured", 0);
 			Graphics::currentShader->uniformVar("mainColor", toFloat(r), toFloat(g), toFloat(b), toFloat(a));
 		}
 		

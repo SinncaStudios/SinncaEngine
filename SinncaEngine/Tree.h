@@ -14,29 +14,17 @@
 
 namespace sinnca
 {
-//#define Tree (tree::Instance())
+	
 	namespace Tree
 	{
 		extern scene* root;
 		
-	//public:
-		
 		extern scene* currentScene;
-		
-		//tree();
-		//~tree();
-		
 		
 		void setup(const char* path = "");
 		void shutdown();
 		scene* getRoot();
 		//void render();
-		
-		//static tree* Instance();
-		
-	//protected:
-		
-		//static tree* _instance;
 		
 	};
 	

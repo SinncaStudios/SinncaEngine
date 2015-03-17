@@ -36,8 +36,8 @@ namespace sinnca
 		//GLint compiled;
 		GLchar const *vSource = vsText.c_str();
 		GLchar const *fSource = fsText.c_str();
-		GLint vSize = vsText.size();
-		GLint fSize = fsText.size();
+		GLint vSize = (GLint)vsText.size();
+		GLint fSize = (GLint)fsText.size();
 		
 		vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -71,14 +71,7 @@ namespace sinnca
 		{
 			printf("Failed to create shader program...\n");
 		}
-		/*
-		 glGetObjectParameterivARB(&shaderProgram, GL_COMPILE_STATUS, &compiled);
-		 if (!compiled)
-		 {
-		 printf("Failed to compile shader program...\n");
-		 //return;
-		 }
-		 */
+		
 		glAttachShader(shaderProgram, vertexShader);
 		glAttachShader(shaderProgram, fragmentShader);
 		glLinkProgram(shaderProgram);
@@ -234,7 +227,7 @@ namespace sinnca
 		if (_instance == NULL)
 		{
 			_instance = Heap->allocateNew<defaultShader>();
-			/*
+			
 			_instance->vsText =
 			"attribute vec4 position;"
 			"attribute vec4 VertColor;"

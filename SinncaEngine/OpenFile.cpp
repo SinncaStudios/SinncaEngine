@@ -11,16 +11,16 @@
 namespace sinnca
 {
 	
-	char* openTextFile(std::string fileName)
+	const char* openTextFile(std::string fileName)
 	{
-		char* text;
+		char* text = nullptr;
 		
 		if (!fileName.empty()) {
 			FILE *file = fopen(fileName.c_str(), "rt");
 			
 			if (file != NULL) {
 				fseek(file, 0, SEEK_END);
-				int count = ftell(file);
+				long count = ftell(file);
 				rewind(file);
 				
 				if (count > 0) {
@@ -31,6 +31,12 @@ namespace sinnca
 				fclose(file);
 			}
 		}
-		return text;
+		
+		if (text)
+		{
+			return text;
+		}
+		
+		return "";
 	}
 }

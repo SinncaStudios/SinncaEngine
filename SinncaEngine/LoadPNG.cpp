@@ -94,7 +94,7 @@ namespace sinnca
 		}
 		
 		png_read_update_info(snPng, snInfop);
-		int rbytes = png_get_rowbytes(snPng, snInfop);
+		ulong rbytes = png_get_rowbytes(snPng, snInfop);
 		rbytes += 3 - ((rbytes-1) % 4);
 		
 		png_byte* snPNGdata;

@@ -34,7 +34,15 @@ namespace sinnca
 	
 	heap::~heap()
 	{
-		delete this;
+		/*
+		chunk* temp = heapList;
+		chunk* anotherTemp = NULL;
+		
+		while (temp->next)
+		{
+			
+		}
+		 */
 	}
 	
 	

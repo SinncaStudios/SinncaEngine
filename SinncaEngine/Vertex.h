@@ -16,15 +16,8 @@ namespace sinnca
 {
 	struct vertex
 	{
-		/*
-		point position;
-		point normal;
-
-		texCoord texco;
-		 */
 		float position[3];
 		float texco[2];
-		
 	};
 }
 
