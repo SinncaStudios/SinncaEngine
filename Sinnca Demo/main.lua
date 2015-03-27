@@ -1,13 +1,13 @@
 print("hello from lua!")
 
-font:new("test")
-test:setSize(16)
-test:setPath(resourcePath .. "Gravity-Light.ttf")
-test:generate()
+ test = font:new("test")
+--test:setSize(16)
+--test:setPath(resourcePath .. "Gravity-Light.ttf")
+--test:generate()
 
-buffer:new("hi")
-hi:load(resourcePath .. "helloworld.wav")
-
+hi = buffer:new("hi")
+--hi:load(resourcePath .. "helloworld.wav")
+--[[
 source:new("test")
 test:setBuffer(hi)
 
@@ -31,28 +31,29 @@ player:setCol(sinnca)
 
 grid:new("tiles", 20, 20, true)
 
+
 for i = 0, 19 do
 	for j = 0, 19 do
 		tiles:setTex(i, j, grassTile)
 	end
 end
-
+]]--
 
 for i, k in pairs(_G) do
 print(i, k)
 end
+print("---------------")
 
-
-for i, k in pairs(palette) do
+for i, k in pairs(___AssetTracker_) do
 print(i, k)
 end
 
-test:play()
+--test:play()
 
 print("\n\n")
 
 --_root:loadFromFile("firstScene.sinncascene")
-
+--[[
 function player:update()
 	
 	if Key.space:wasPressed() == 1 then
@@ -60,7 +61,7 @@ function player:update()
 	end
 	
 end
-
+]]--
 --_root:dumpToFile("firstScene")
 
 print("done!")

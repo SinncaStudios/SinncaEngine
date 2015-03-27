@@ -83,7 +83,7 @@ namespace sinnca
 	
 	void* guiButton::operator new(size_t s, std::string n)
 	{
-		guiButton* bn = Script::createObject<guiButton>();
+		guiButton* bn = Script::createObject<guiButton>(Tree::guiStorage);
 		
 		Script::setGlobal(n);
 		Tree::currentScene->guiManager->addChild(bn);
@@ -92,7 +92,7 @@ namespace sinnca
 	
 	void guiButton::operator delete(void *p)
 	{
-		Heap->deallocate(p);
+		Tree::guiStorage->deallocate(p);
 	}
 
 

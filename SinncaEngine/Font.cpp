@@ -236,18 +236,18 @@ namespace sinnca
 	
 	void* font::operator new(size_t s, std::string n)
 	{
-		font* ft = Script::createObject<font>();
+		font* ft = Script::createObject<font>(Tree::currentScene->assets.fontStorage);
 		
-		Script::setGlobal(n);
+		//Script::setGlobal(n);
 		
 		return (void*)ft;
 	}
 	
 	void font::operator delete(void *p)
 	{
-		if (Tree::currentScene->fontStorage != NULL)
+		if (Tree::currentScene->assets.fontStorage != NULL)
 		{
-			Tree::currentScene->fontStorage->deallocate(p);
+			Tree::currentScene->assets.fontStorage->deallocate(p);
 			
 		} else {
 			Heap->deallocate(p);
@@ -267,7 +267,7 @@ namespace sinnca
 		Script::checkTable(1);
 		createFont(lua_tostring(L, 2));
 		
-		return 0;
+		return 1;
 	}
 	
 	int l_generate(lua_State* L)

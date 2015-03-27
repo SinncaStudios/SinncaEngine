@@ -34,30 +34,6 @@ namespace sinnca
 		
 	};
 	 
-	/*
-	class LinearAllocator : public Allocator
-	{
-	public:
-		LinearAllocator(ui32 size, void* pStart);
-		~LinearAllocator();
-		
-		void* allocate(ui32 size, ui8 alignment);
-		
-		void deallocate(void* p);
-		
-		void clear();
-		
-	private:
-		//LinearAllocator(const LinearAllocator&) {}; //Prevent copies because it might cause errors
-		//LinearAllocator& operator=(const LinearAllocator&) {};
-		
-		void* _pInitialPosition;
-		
-		void* _pCurrentPosition;
-		
-		ui32   _size;
-	};
-	 */
 }
 
 #endif /* defined(__SinncaEngine__LinearAlloc__) */

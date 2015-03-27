@@ -11,6 +11,19 @@
 
 namespace sinnca
 {
+	void* guiWidget::operator new(size_t s, std::string n)
+	{
+		guiWidget* wd = Script::createObject<guiWidget>(Tree::guiStorage);
+		
+		Script::setGlobal(n);
+		return (void*)wd;
+	}
+	
+	void guiWidget::operator delete(void *p)
+	{
+		Tree::guiStorage->deallocate(p);
+	}
+	
 	static int newWidget(lua_State* L)
 	{
 		int n = lua_gettop(L);

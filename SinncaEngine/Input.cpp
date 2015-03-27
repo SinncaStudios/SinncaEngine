@@ -30,6 +30,7 @@ namespace sinnca
 			digitalButton left, middle, right;
 			
 			analogButton pressure;
+			float rumble;
 		}
 		
 		namespace Touch

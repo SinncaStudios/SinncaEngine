@@ -15,7 +15,6 @@
 #include "Script.h"
 
 
-
 namespace sinnca
 {
 	class color
@@ -80,20 +79,11 @@ namespace sinnca
 			return 1;
 		}
 		
-		void* operator new(size_t s, std::string n)
-		{
-			color* cl = Script::createObject<color>();
-			
-			Script::setGlobal(n);
-			return (void*)cl;
-		}
+		void* operator new(size_t s, std::string n); // moved to c++ file
 		#define createColor(a) new(a)color(a)
 		#define createColour(a) new(a)color(a)
 		
-		void operator delete(void* p)
-		{
-			Heap->deallocate(p);
-		}
+		void operator delete(void* p); // also moved
 		
 	};
 	typedef color colour;// for our friends accross the pond

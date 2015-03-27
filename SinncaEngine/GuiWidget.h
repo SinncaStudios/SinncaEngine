@@ -100,21 +100,12 @@ namespace sinnca
 			noOfChildren++;
 		}
 		
-		void* operator new(size_t s, std::string n)
-		{
-			guiWidget* wd = Script::createObject<guiWidget>();
-			
-			Script::setGlobal(n);
-			return (void*)wd;
-		}
+		void* operator new(size_t s, std::string n);
 		#define createGuiWidget(a) new(a)guiWidget(a)
 		
 		
-		void operator delete(void* p)
-		{
-			#warning "needs a specific allocator to alloc and dealloc"
-			Heap->deallocate(p);
-		}
+		void operator delete(void* p);
+		
 	};
 
 	void registerWidget(lua_State* L);

@@ -41,6 +41,8 @@ namespace sinnca
 			
 			// (wacom)tablet pressure
 			extern analogButton pressure;
+			// apple's new taptic touchpad control
+			extern float rumble;
 		}
 		
 		namespace Touch

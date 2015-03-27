@@ -80,7 +80,7 @@ namespace sinnca
 	
 	void* guiString::operator new(size_t s, std::string n)
 	{
-		guiString* st = Script::createObject<guiString>();
+		guiString* st = Script::createObject<guiString>(Tree::guiStorage);
 		
 		Script::setGlobal(n);
 		Tree::currentScene->guiManager->addChild(st);
@@ -89,7 +89,7 @@ namespace sinnca
 	
 	void guiString::operator delete(void *p)
 	{
-		Heap->deallocate(p);
+		Tree::guiStorage->deallocate(p);
 	}
 
 

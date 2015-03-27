@@ -99,7 +99,7 @@ namespace sinnca
 				data[i][j].xy[0] = (j - i) * tileX / 2;
 				data[i][j].xy[1] = (j + i) * tileY / 4;
 				
-				Tree::currentScene->nodeRef.push_back(&data[i][j]);
+				Tree::currentScene->assets.nodeRef.push_back(&data[i][j]);
 				
 			}
 		}
@@ -242,42 +242,19 @@ namespace sinnca
 	
 	void* grid::operator new(size_t s, std::string n)
 	{
-		Script::newBlankTable();
-		
-		Script::pushValue(1);
-		Script::setMetaTable(-2);
-		
-		Script::pushValue(1);
-		Script::setField(1, "__index");
-		
-		//entity** en = Script::newUserdata<entity*>();
-		grid** gd = (grid**)lua_newuserdata(Script::getState(), sizeof(grid*));
-		if (Tree::currentScene->gridStorage != NULL)
-		{
-			*gd = (grid*)Tree::currentScene->gridStorage->allocate((unsigned int)s, __alignof(grid));
-			
-		} else {
-			
-			*gd = (grid*)Heap->allocate((unsigned int)s, __alignof(grid));
-		}
-		
-		Script::getMetaTable("grid");
-		Script::setMetaTable(-2);
-		
-		Script::setField(-2, "__self");
-		
+		grid* gd = Script::createObject<grid>(Tree::currentScene->assets.gridStorage);
 		
 		Script::setGlobal(n);
-		Tree::currentScene->gridRef.push_back(*gd);
-		Tree::currentScene->nodeRef.push_back(*gd);
-		return ((void*)*gd);
+		Tree::currentScene->assets.gridRef.push_back(gd);
+		Tree::currentScene->assets.nodeRef.push_back(gd);
+		return ((void*)gd);
 	}
 	
 	void grid::operator delete(void *p)
 	{
-		if (Tree::currentScene->gridStorage != NULL)
+		if (Tree::currentScene->assets.gridStorage != NULL)
 		{
-			Tree::currentScene->gridStorage->deallocate(p);
+			Tree::currentScene->assets.gridStorage->deallocate(p);
 			
 		} else {
 			

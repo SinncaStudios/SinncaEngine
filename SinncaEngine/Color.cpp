@@ -7,28 +7,28 @@
 //
 
 #include "Color.h"
-#include "Script.h"
+#include "Tree.h"
 
 namespace sinnca
 {
-	// duplicate symbols appear if this is defined in color.h
-	
-	color* checkColor(int ind)
+	void* color::operator new(size_t s, std::string n)
 	{
-		void* ud = 0;
+		color* cl = Script::createObject<color>(Tree::currentScene->assets.colorStorage);
 		
-		// check for table object
-		luaL_checktype(Script->getState(), ind, LUA_TTABLE);
-		
-		// push the key we're looking for (in this case, it's "__self")
-		lua_pushstring(Script->getState(), "__self");
-		// get our table
-		lua_gettable(Script->getState(), ind);
-		
-		// cast userdata pointer to "Node" type
-		ud = dynamic_cast<color*>((color*)lua_touserdata(Script->getState(), -1));
-		luaL_argcheck(Script->getState(), ud != 0, ind, "Incompatible 'color' type...");
-		
-		return *((color**)ud);
+		Script::setGlobal(n);
+		return (void*)cl;
 	}
+	
+	void color::operator delete(void *p)
+	{
+		if (Tree::currentScene->assets.colorStorage != NULL)
+		{
+			Tree::currentScene->assets.colorStorage->deallocate(p);
+			
+		} else {
+			
+			Heap->deallocate(p);
+		}
+	}
+	
 }

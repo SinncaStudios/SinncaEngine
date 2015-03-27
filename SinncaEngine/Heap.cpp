@@ -82,6 +82,7 @@ namespace sinnca
 			}
 		}
 		
+		numOfAllocations++;
 		current->used += size;
 		return current->data->allocate(size, align);
 	}
@@ -89,6 +90,7 @@ namespace sinnca
 	void heap::deallocate(void *p)
 	{
 		current->data->deallocate(p);
+		numOfAllocations--;
 		
 		// now check the status of the chunks
 		if (current->used <= 0)

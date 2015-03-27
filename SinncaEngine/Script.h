@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Memory.h"
 #include "Heap.h"
+#include <sstream>
 
 namespace sinnca
 {
@@ -85,9 +86,22 @@ namespace sinnca
 		void setGlobal(std::string name);
 		
 		template <class t>
-		t* createObject(Memory* allocator = Heap)
+		t* createObject(Memory* allocator = nullptr)
 		{
 			
+			if (allocator == nullptr)
+			{
+				allocator = Heap;
+			}
+			
+			// get the asset tracker
+			getGlobal("___AssetTracker_");
+			// push field
+			std::stringstream ss;
+			ss << t::metatable << '_' << allocator->getNoOfAllocations();
+			push(ss.str());
+			
+			// create the object
 			newBlankTable();
 			
 			pushValue(1);
@@ -98,7 +112,6 @@ namespace sinnca
 			
 			
 			t** ob = newUserdata<t*>();
-			
 			*ob = (t*)allocator->allocate(sizeof(t), alignof(t));
 			
 			
@@ -106,6 +119,20 @@ namespace sinnca
 			setMetaTable(-2);
 			
 			setField(-2, "__self");
+			
+			
+			#warning figure this area out!
+			// copy
+			//pushValue(1);
+			//lua_insert(L, 1);
+			// put into asset tracker
+			lua_settable(L, -3);
+			setGlobal("___AssetTracker_");
+			
+			// retrive again...
+			getGlobal("___AssetTracker_");
+			push(ss.str());
+			lua_gettable(L, -2);
 			
 			return *ob;
 		}

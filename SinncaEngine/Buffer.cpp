@@ -50,18 +50,18 @@ namespace sinnca
 	void* buffer::operator new(size_t s, std::string n)
 	{
 		//Create object in lua
-		buffer* bf = Script::createObject<buffer>();
+		buffer* bf = Script::createObject<buffer>(Tree::currentScene->assets.bufferStorage);
 		
-		Script::setGlobal(n);
-		Tree::currentScene->bufferRef.push_back(bf);
+		//Script::setGlobal(n);
+		Tree::currentScene->assets.bufferRef.push_back(bf);
 		return ((void*)bf);
 	}
 	
 	void buffer::operator delete(void *p)
 	{
-		if (Tree::currentScene->bufferStorage != NULL)
+		if (Tree::currentScene->assets.bufferStorage != NULL)
 		{
-			Tree::currentScene->bufferStorage->deallocate(p);
+			Tree::currentScene->assets.bufferStorage->deallocate(p);
 			
 		} else {
 			
@@ -81,7 +81,7 @@ namespace sinnca
 		
 		Script::checkTable(1);
 		createBuffer(luaL_checkstring(L, 2));
-		return 0;
+		return 1;
 	}
 	
 	static int l_load(lua_State* L)

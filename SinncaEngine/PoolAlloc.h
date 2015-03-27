@@ -31,6 +31,7 @@ namespace sinnca
 		void* allocate(ui32 oSize, ui8 align);
 		void deallocate(void* p);
 		
+		ui32 getSize();
 	};
 	
 	/*

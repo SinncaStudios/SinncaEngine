@@ -93,9 +93,9 @@ namespace sinnca
 		Script::setField(1, "__index");
 		
 		action** ac = (action**)lua_newuserdata(Script::getState(), sizeof(action*));
-		if (Tree::currentScene->actionStorage != NULL)
+		if (Tree::currentScene->assets.actionStorage != NULL)
 		{
-			*ac = (action*)Tree::currentScene->actionStorage->allocate((unsigned int)s, __alignof(action));
+			*ac = (action*)Tree::currentScene->assets.actionStorage->allocate((unsigned int)s, __alignof(action));
 			
 		} else {
 			
@@ -111,14 +111,14 @@ namespace sinnca
 		
 		
 		Script::setGlobal(n);
-		Tree::currentScene->actionRef.push_back(*ac);
+		Tree::currentScene->assets.actionRef.push_back(*ac);
 		return ((void*)*ac);
 	}
 	void action::operator delete(void *p)
 	{
-		if (Tree::currentScene->actionStorage != NULL)
+		if (Tree::currentScene->assets.actionStorage != NULL)
 		{
-			Tree::currentScene->actionStorage->deallocate(p);
+			Tree::currentScene->assets.actionStorage->deallocate(p);
 			
 		} else {
 			

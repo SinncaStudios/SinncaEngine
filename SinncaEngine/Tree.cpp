@@ -22,14 +22,18 @@ namespace sinnca
 		scene* root;
 		scene* currentScene;
 		
+		pool* sceneStorage;
+		pool* guiStorage;
+		
 		void setup(const char* path)
 		{
-			
+			sceneStorage = new pool(sizeof(scene), alignof(scene), sizeof(scene) * 25);
+			guiStorage = new pool(sizeof(guiWidget), alignof(guiWidget), sizeof(guiWidget) * 50);
 			root = createScene("root");
 			
 			currentScene = root;
 			
-			root->entityStorage = NULL;
+			root->assets.entityStorage = NULL;
 			
 			
 #ifdef snMobile
@@ -43,6 +47,7 @@ namespace sinnca
 		void shutdown()
 		{
 			delete root;
+			delete sceneStorage;
 		}
 		
 		scene* getRoot()
@@ -54,21 +59,21 @@ namespace sinnca
 	}
 	
 	
-	
+	/*
 	static int l_dumptofile(lua_State* L)
 	{
 		
-		Tree::root->dumpToFile(lua_tostring(L, 2));
+		//Tree::root->dumpToFile(lua_tostring(L, 2));
 		
 		return 0;
 	}
 	
 	static int l_loadfromfile(lua_State* L)
 	{
-		Tree::root->readFromFile(lua_tostring(L, 2));
+		//Tree::root->readFromFile(lua_tostring(L, 2));
 		return 0;
 	}
-	
+	*/
 	/*
 	static const luaL_Reg rootFuncs[] = {
 		{"dumpToFile", l_dumptofile},

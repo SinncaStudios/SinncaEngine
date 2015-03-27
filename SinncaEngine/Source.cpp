@@ -95,19 +95,19 @@ namespace sinnca
 	{
 		//Create object in lua
 		
-		source* sc = Script::createObject<source>();
+		source* sc = Script::createObject<source>(Tree::currentScene->assets.sourceStorage);
 		
 		Script::setGlobal(n);
-		Tree::currentScene->sourceRef.push_back(sc);
-		Tree::currentScene->nodeRef.push_back(sc);
+		Tree::currentScene->assets.sourceRef.push_back(sc);
+		Tree::currentScene->assets.nodeRef.push_back(sc);
 		return ((void*)sc);
 	}
 	
 	void source::operator delete(void *p)
 	{
-		if (Tree::currentScene->sourceStorage != NULL)
+		if (Tree::currentScene->assets.sourceStorage != NULL)
 		{
-			Tree::currentScene->sourceStorage->deallocate(p);
+			Tree::currentScene->assets.sourceStorage->deallocate(p);
 			
 		} else {
 			

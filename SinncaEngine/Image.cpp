@@ -47,18 +47,18 @@ namespace sinnca
 	
 	void* image::operator new(size_t s, std::string n)
 	{
-		image* im = Script::createObject<image>();
+		image* im = Script::createObject<image>(Tree::currentScene->assets.imageStorage);
 		
 		Script::setGlobal(n);
-		Tree::currentScene->imageRef.push_back(im);
+		Tree::currentScene->assets.imageRef.push_back(im);
 		return ((void*)im);
 	}
 	
 	void image::operator delete(void *p)
 	{
-		if (Tree::currentScene->imageStorage != NULL)
+		if (Tree::currentScene->assets.imageStorage != NULL)
 		{
-			Tree::currentScene->imageStorage->deallocate(p);
+			Tree::currentScene->assets.imageStorage->deallocate(p);
 			
 		} else {
 			

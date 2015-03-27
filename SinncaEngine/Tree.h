@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "Scene.h"
+#include "PoolAlloc.h"
 
 namespace sinnca
 {
@@ -25,6 +26,9 @@ namespace sinnca
 		void shutdown();
 		scene* getRoot();
 		//void render();
+		
+		extern pool* sceneStorage;
+		extern pool* guiStorage;
 		
 	};
 	

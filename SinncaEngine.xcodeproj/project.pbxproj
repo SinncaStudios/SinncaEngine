@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		94017E7719BE1EBD00C42EA4 /* ArtificialIntelligence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */; };
 		94017E7919BE1EBD00C42EA4 /* ArtificialIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = 94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */; };
+		940351EC1AC2F468005AA474 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 940351EB1AC2F468005AA474 /* Color.cpp */; };
 		9405C0E818C1BBD800AFEDE9 /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9405C0E618C1BBD800AFEDE9 /* Font.cpp */; };
 		9405C0E918C1BBD800AFEDE9 /* Font.h in Headers */ = {isa = PBXBuildFile; fileRef = 9405C0E718C1BBD800AFEDE9 /* Font.h */; };
 		9405C0F418C30D2D00AFEDE9 /* libbz2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405C0F018C30D2D00AFEDE9 /* libbz2.a */; };
@@ -44,6 +45,8 @@
 		941E45FD1A0FC08E00310EAB /* DoubleList.h in Headers */ = {isa = PBXBuildFile; fileRef = 941E45FC1A0FC08E00310EAB /* DoubleList.h */; };
 		942F8C9E1A213E5200563FA0 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 942F8C9C1A213E5200563FA0 /* Animation.cpp */; };
 		942F8C9F1A213E5300563FA0 /* Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = 942F8C9D1A213E5200563FA0 /* Animation.h */; };
+		9437B7761AB91FBB00A09AA2 /* PoolHeap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9437B7741AB91FBB00A09AA2 /* PoolHeap.cpp */; };
+		9437B7771AB91FBB00A09AA2 /* PoolHeap.h in Headers */ = {isa = PBXBuildFile; fileRef = 9437B7751AB91FBB00A09AA2 /* PoolHeap.h */; };
 		943E19F819F0690F009CA1CF /* LoadWAV.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F719F0690F009CA1CF /* LoadWAV.cpp */; };
 		943E19FB19F09B77009CA1CF /* CopyOnWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */; };
 		943E19FC19F09B77009CA1CF /* CopyOnWrite.h in Headers */ = {isa = PBXBuildFile; fileRef = 943E19FA19F09B76009CA1CF /* CopyOnWrite.h */; };
@@ -211,6 +214,7 @@
 /* Begin PBXFileReference section */
 		94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArtificialIntelligence.cpp; sourceTree = "<group>"; };
 		94017E7619BE1EBD00C42EA4 /* ArtificialIntelligence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtificialIntelligence.h; sourceTree = "<group>"; };
+		940351EB1AC2F468005AA474 /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		9405C0E618C1BBD800AFEDE9 /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
 		9405C0E718C1BBD800AFEDE9 /* Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
 		9405C0EA18C30B9800AFEDE9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
@@ -265,6 +269,8 @@
 		942F8C9D1A213E5200563FA0 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		94321B6C18BFD97F0020BA56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		94321B6E18BFD97F0020BA56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9437B7741AB91FBB00A09AA2 /* PoolHeap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PoolHeap.cpp; sourceTree = "<group>"; };
+		9437B7751AB91FBB00A09AA2 /* PoolHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolHeap.h; sourceTree = "<group>"; };
 		943E19F719F0690F009CA1CF /* LoadWAV.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadWAV.cpp; sourceTree = "<group>"; };
 		943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CopyOnWrite.cpp; sourceTree = "<group>"; };
 		943E19FA19F09B76009CA1CF /* CopyOnWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyOnWrite.h; sourceTree = "<group>"; };
@@ -592,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				945AFB04189A3C7500BA7AB9 /* Color.h */,
+				940351EB1AC2F468005AA474 /* Color.cpp */,
 				946D06A11977492E00A39114 /* Palette.h */,
 				946D06A01977492E00A39114 /* Palette.cpp */,
 				9405C10918C50A1D00AFEDE9 /* Image.h */,
@@ -644,6 +651,8 @@
 				945AFAFB189A3BBA00BA7AB9 /* PoolAlloc.cpp */,
 				945AFB3F18B5D57500BA7AB9 /* Heap.h */,
 				945AFB3E18B5D57500BA7AB9 /* Heap.cpp */,
+				9437B7751AB91FBB00A09AA2 /* PoolHeap.h */,
+				9437B7741AB91FBB00A09AA2 /* PoolHeap.cpp */,
 			);
 			name = Memory;
 			sourceTree = "<group>";
@@ -1001,6 +1010,7 @@
 				945AFB3D18B337EE00BA7AB9 /* ButtonCombo.h in Headers */,
 				94A906041A7C81CF002892A7 /* Asset.h in Headers */,
 				942F8C9F1A213E5300563FA0 /* Animation.h in Headers */,
+				9437B7771AB91FBB00A09AA2 /* PoolHeap.h in Headers */,
 				94A7A20B19D7B75F0025EA2D /* Source.h in Headers */,
 				94C68F941A43D4DE00FEB552 /* AnalogButton.h in Headers */,
 				941D2F51183DDFBC007EB1BE /* Utility.h in Headers */,
@@ -1316,6 +1326,7 @@
 				945AFB2218A9845D00BA7AB9 /* Camera.cpp in Sources */,
 				94B6444A18E4969400FBA7F1 /* Shader.cpp in Sources */,
 				945AFB1E18A9844600BA7AB9 /* Grid.cpp in Sources */,
+				9437B7761AB91FBB00A09AA2 /* PoolHeap.cpp in Sources */,
 				94BBD9FF18D63CBB00CA2D2B /* GuiString.cpp in Sources */,
 				94BC91C4199B168100B53026 /* TimeKeeping.cpp in Sources */,
 				941ABD6C19551222000A3D28 /* LoadPNG.cpp in Sources */,
@@ -1336,6 +1347,7 @@
 				94BBDA0018D63CBB00CA2D2B /* GuiButton.cpp in Sources */,
 				944D6CCA185A782A0083EAEC /* StackAlloc.cpp in Sources */,
 				948D88FE19C5221E00E73F6A /* Action.cpp in Sources */,
+				940351EC1AC2F468005AA474 /* Color.cpp in Sources */,
 				94C68FA71A44E14F00FEB552 /* ButtonChord.cpp in Sources */,
 				945AFB2A18AC6D5D00BA7AB9 /* Input.cpp in Sources */,
 				94B344BC18220C9900C370DA /* Computer.cpp in Sources */,

@@ -64,10 +64,11 @@ namespace sinnca
 	{
 	public:
 		
-		Memory()
+		Memory() :
+		usedMemory(0),
+		numOfAllocations(0)
 		{
-			usedMemory = 0;
-			numOfAllocations = 0;
+			
 		}
 		~Memory()
 		{
@@ -129,6 +130,11 @@ namespace sinnca
 				headerSize += 1;
 			
 			deallocate(pArray - headerSize);
+		}
+		
+		ulong getNoOfAllocations()
+		{
+			return numOfAllocations;
 		}
 		
 	protected:

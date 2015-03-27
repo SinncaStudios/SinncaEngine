@@ -15,7 +15,7 @@
 #include "GuiMenu.h"
 #include "AssetManager.h"
 #include "Camera.h"
-
+/*
 // asset tracking
 #include "Entity.h"
 #include "Grid.h"
@@ -24,13 +24,14 @@
 #include "Source.h"
 #include "Buffer.h"
 #include "Action.h"
-
+*/
 namespace sinnca
 {
 	class scene : public node
 	{
 		float percLoaded;
 		bool loadable, unloadOnSwitch;
+		
 		
 		int perspective;
 		
@@ -40,9 +41,12 @@ namespace sinnca
 		
 		camera mainCamera;
 		pool* cameraStorage;
-		
-		// storage
+		assetManager assets;
 		guiMenu* guiManager;
+		
+		bool alloced;
+		/*
+		// storage
 		pool* entityStorage;
 		pool* sceneStorage;
 		pool* colorStorage;
@@ -50,7 +54,7 @@ namespace sinnca
 		pool* textureStorage;
 		pool* sourceStorage;
 		pool* bufferStorage;
-		list* gridStorage;
+		pool* gridStorage;
 		pool* actionStorage;
 		pool* fontStorage;
 		
@@ -66,7 +70,7 @@ namespace sinnca
 		std::vector<buffer*> bufferRef;
 		std::vector<action*> actionRef;
 		std::vector<font*> fontRef;
-		
+		*/
 		
 		scene();
 		~scene();
@@ -79,8 +83,8 @@ namespace sinnca
 		
 		int pers();
 		
-		int readFromFile(std::string file);
-		int dumpToFile(std::string file);
+		//int readFromFile(std::string file);
+		//int dumpToFile(std::string file);
 		
 		
 		void* operator new(size_t s, std::string n);

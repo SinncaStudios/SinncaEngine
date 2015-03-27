@@ -58,7 +58,7 @@ namespace sinnca
 	
 	void* guiMenu::operator new(size_t s, std::string n)
 	{
-		guiMenu* mu = Script::createObject<guiMenu>();
+		guiMenu* mu = Script::createObject<guiMenu>(Tree::guiStorage);
 		
 		Script::setGlobal(n);
 		if (Tree::currentScene)
@@ -72,7 +72,7 @@ namespace sinnca
 	
 	void guiMenu::operator delete(void *p)
 	{
-		Heap->deallocate(p);
+		Tree::guiStorage->deallocate(p);
 	}
 	
 	

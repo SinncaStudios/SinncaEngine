@@ -17,20 +17,25 @@
 #include "Utility.h"
 #include "Engine.h"
 
+
+
 namespace sinnca
 {
-	scene::scene()
+	scene::scene() :
+	alloced(false),
+	perspective(0), // 2D by defualt
+	percLoaded(0.0f)
 	{
 		col = &Palette::defaultColor;
 		guiManager = createGuiMenu("mainMenu");
-		percLoaded = 0.0f;
-		perspective = 0; // 2D by defualt
-		//entityStorage = memoryManager->heap->allocateNew<PoolAllocator>();
 	}
 	
 	scene::~scene()
 	{
-		//memoryManager->heap->deallocateDelete(entityStorage);
+		if (alloced) {
+			assets.shutDown();
+		}
+		
 	}
 	
 	void scene::onLoad()
@@ -80,35 +85,17 @@ namespace sinnca
 	void* scene::operator new(size_t s, std::string n)
 	{
 		
-		Script::newBlankTable();
-		
-		Script::pushValue(1);
-		Script::setMetaTable(-2);
-		
-		Script::pushValue(1);
-		Script::setField(1, "__index");
-		
-		scene** sn = (scene**)lua_newuserdata(Script::getState(), sizeof(scene*));
-		
-		*sn = (scene*)Heap->allocate((unsigned int)s, __alignof(scene));
-		(*sn)->name = n;
-		
-		Script::getMetaTable("entity");
-		Script::setMetaTable(-2);
-		
-		Script::setField(-2, "__self");
-		
-		
+		scene* sn = Script::createObject<scene>(Tree::sceneStorage);
 		Script::setGlobal(n);
-		return ((void*)*sn);
+		return ((void*)sn);
 	}
 	
 	void scene::operator delete(void *p)
 	{
 		
-		Heap->deallocate(p);
+		Tree::sceneStorage->deallocate(p);
 	}
-	
+	/*
 	int scene::dumpToFile(std::string file)
 	{
 		
@@ -142,21 +129,21 @@ namespace sinnca
 		
 		// write how many there are of things
 		// images
-		ui32 numberOfObjects = (ui32)imageRef.size();
+		ui32 numberOfObjects = (ui32)assets.imageRef.size();
 		f.write((char*)&numberOfObjects, 4);
 		// textures
-		numberOfObjects = (ui32)textureRef.size();
+		numberOfObjects = (ui32)assets.textureRef.size();
 		f.write((char*)&numberOfObjects, 4);
 		// entities
-		numberOfObjects = (ui32)entityRef.size();
+		numberOfObjects = (ui32)assets.entityRef.size();
 		f.write((char*)&numberOfObjects, 4);
 		// grids
-		numberOfObjects = (ui32)gridRef.size();
+		numberOfObjects = (ui32)assets.gridRef.size();
 		f.write((char*)&numberOfObjects, 4);
 		// that's all that this version of the format can support
 		
 		
-		for (ui32 i = 0; i < imageRef.size(); i++)
+		for (ui32 i = 0; i < assets.imageRef.size(); i++)
 		{
 			// what kind of asset is this? (2 bytes)
 			ui16 typeOfThing = 1;
@@ -166,27 +153,27 @@ namespace sinnca
 			f.write((const char*) &i, 2);
 			
 			// what is the size of this asset? (2 bytes)
-			ui16 sizeofthing = (sizeof(ui16) * 2) + imageRef[i]->name.length() + imageRef[i]->path.length() + 1;
+			ui16 sizeofthing = (sizeof(ui16) * 2) + ((image*)assets.imageRef[i])->name.length() + ((image*)assets.imageRef[i])->path.length() + 1;
 			f.write((const char*)&sizeofthing, 2);
 			// this is for just in case the engine doesn't support this type of object yet
 			
 			// write length of name
-			ui16 sizeOfName = imageRef[i]->name.length();
+			ui16 sizeOfName = ((image*)assets.imageRef[i])->name.length();
 			f.write((char*)&sizeOfName, 2);
 			// then the name
-			f << imageRef[i]->name.c_str();
+			f << ((image*)assets.imageRef[i])->name.c_str();
 			
 			// write length of path to file
-			sizeOfName = imageRef[i]->path.length();
+			sizeOfName = ((image*)assets.imageRef[i])->path.length();
 			//then the path
-			f << imageRef[i]->path;
+			f << ((image*)assets.imageRef[i])->path;
 			
 			// finish off with the texture blend mode
-			f.write((char*)&imageRef[i]->tb, 1);
+			f.write((char*)&((image*)assets.imageRef[i])->tb, 1);
 			
 		}
 		
-		for (ui32 i = 0; i < textureRef.size(); i++)
+		for (ui32 i = 0; i < assets.textureRef.size(); i++)
 		{
 			// what kind of asset is this? (2 bytes)
 			ui16 typeOfThing = 2;
@@ -196,37 +183,37 @@ namespace sinnca
 			f.write((const char*) &i, 2);
 			
 			// what is the size of this asset? (2 bytes)
-			ui16 sizeofthing = sizeof(ui16) + textureRef[i]->name.length();
+			ui16 sizeofthing = sizeof(ui16) + ((texture*)assets.textureRef[i])->name.length();
 			f.write((const char*)&sizeofthing, 2);
 			// this is for just in case the engine doesn't support this type of object yet
 			
 			
 			// write length of name
-			ui16 sizeOfName = textureRef[i]->name.length();
+			ui16 sizeOfName = ((texture*)assets.textureRef[i])->name.length();
 			f.write((char*)&sizeOfName, 2);
 			// then the name
-			f << textureRef[i]->name.c_str();
+			f << ((texture*)assets.textureRef[i])->name.c_str();
 			
 			// get the offset and size
 			static ui32 tempx, tempy;
-			textureRef[i]->getOffset(tempx, tempy);
+			((texture*)assets.textureRef[i])->getOffset(tempx, tempy);
 			f.write((char*)&tempx, 4);
 			f.write((char*)&tempy, 4);
 			
-			textureRef[i]->getSize(tempx, tempy);
+			((texture*)assets.textureRef[i])->getSize(tempx, tempy);
 			f.write((char*)&tempx, 4);
 			f.write((char*)&tempy, 4);
 			
 			// write the link to the image source
-			if (imageRef.size() == 0)
+			if (assets.imageRef.size() == 0)
 			{
 				i32 useDefault = -1;
 				f.write((char*)&useDefault, 4);
 				
 			} else {
-				for (ui32 j = 0; j < imageRef.size(); j++)
+				for (ui32 j = 0; j < assets.imageRef.size(); j++)
 				{
-					if (imageRef[j] == textureRef[i]->getSource())
+					if ((image*)assets.imageRef[j] == ((texture*)assets.textureRef[i])->getSource())
 					{
 						f.write((char*)&j, 4);
 					}
@@ -240,14 +227,14 @@ namespace sinnca
 			// write 0 for now
 			
 			// write the base color
-			f.write((const char*)&textureRef[i]->r, 1);
-			f.write((const char*)&textureRef[i]->g, 1);
-			f.write((const char*)&textureRef[i]->b, 1);
-			f.write((const char*)&textureRef[i]->a, 1);
+			f.write((const char*)&((texture*)assets.textureRef[i])->r, 1);
+			f.write((const char*)&((texture*)assets.textureRef[i])->g, 1);
+			f.write((const char*)&((texture*)assets.textureRef[i])->b, 1);
+			f.write((const char*)&((texture*)assets.textureRef[i])->a, 1);
 			
 		}
 		
-		for (ui32 i = 0; i < entityRef.size(); i++)
+		for (ui32 i = 0; i < assets.entityRef.size(); i++)
 		{
 			// what kind of node is this? (2 bytes)
 			ui16 typeOfThing = 1;
@@ -257,19 +244,19 @@ namespace sinnca
 			f.write((const char*) &i, 2);
 			
 			// what is the size of this node (2 bytes)
-			ui16 sizeofthing = sizeof(ui16) + entityRef[i]->name.length();
+			ui16 sizeofthing = sizeof(ui16) + ((entity*)assets.entityRef[i])->name.length();
 			f.write((const char*)&sizeofthing, 2);
 			// this is for just in case the engine doesn't support this type of object yet
 			
 			
 			// write length of name
-			ui16 sizeOfName = entityRef[i]->name.length();
+			ui16 sizeOfName = ((entity*)assets.entityRef[i])->name.length();
 			f.write((char*)&sizeOfName, 2);
 			// then the name
-			f << entityRef[i]->name.c_str();
+			f << ((entity*)assets.entityRef[i])->name.c_str();
 			
 			// will it draw?
-			f.write((char*)&entityRef[i]->draw, 1);
+			f.write((char*)&((entity*)assets.entityRef[i])->draw, 1);
 			
 			//Link to render object
 			ui32 renderLink = -1;
@@ -685,16 +672,16 @@ namespace sinnca
 		f.close();
 		return 0;
 	}
+	*/
 	
-	
-	
+	/*
 	static int l_dumptofile(lua_State* L)
 	{
 		int n = lua_gettop(L);
 		if (n == 2)
 		{
 			scene* sn = Script::checkType<scene>(1);
-			sn->dumpToFile(lua_tostring(L, 2));
+			//sn->dumpToFile(lua_tostring(L, 2));
 		}
 		
 		return 0;
@@ -706,15 +693,36 @@ namespace sinnca
 		if (n == 2)
 		{
 			scene* sn = Script::checkType<scene>(1);
-			sn->readFromFile(lua_tostring(L, 2));
+			//sn->readFromFile(lua_tostring(L, 2));
 		}
 		
 		return 0;
 	}
+	*/
+	static int l_initAllocators(lua_State* L)
+	{
+		scene* sn;
+		int n = lua_gettop(L);
+		if (n == 1)
+		{
+			sn = Script::checkType<scene>(1);
+			sn->assets.init();
+			sn->alloced = true;
+			
+		} else if (n == 2) {
+			sn = Script::checkType<scene>(1);
+			sn->assets.init((uint)lua_tointeger(L, 2));
+			sn->alloced = true;
+		}
+		return 0;
+	}
 	
 	static const luaL_Reg sceneFuncs[] = {
-		{"dumpToFile", l_dumptofile},
-		{"loadFromFile", l_loadfromfile},
+		//{"dumpToFile", l_dumptofile},
+		//{"loadFromFile", l_loadfromfile},
+		{"initAllocators", l_initAllocators},
+		
+		
 		{"setParent", l_setParent},
 		{"addChild", l_addChild},
 		{"removeChild", l_removeChild},

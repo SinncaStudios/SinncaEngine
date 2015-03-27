@@ -39,7 +39,8 @@ namespace sinnca
 	
 	pool::~pool()
 	{
-		freelist = nullptr;
+		//freelist = nullptr;
+		memoryManager->deallocate(freelist);
 	}
 	
 	void* pool::allocate(ui32 oSize, ui8 align)
@@ -49,6 +50,15 @@ namespace sinnca
 		if (freelist == nullptr)
 		{
 			return nullptr;
+		}
+		
+		if (usedMemory + oSize > size)
+		{
+			void* mem = *freelist;
+			mem = memoryManager->reallocate(size + (oSize * 25), mem);
+			ui8 adjustment = adjustAlign(mem, align);
+			
+			freelist = (void**)((uintptr_t)mem + adjustment);
 		}
 		
 		void* p = freelist;
@@ -71,62 +81,9 @@ namespace sinnca
 		numOfAllocations--;
 	}
 	 
-	/*
-	PoolAllocator::PoolAllocator(ui32 objectSize, ui8 objectAlignment, ui32 size, void* pMem)
-	: Allocator(), _objectSize(objectSize), _objectAlignment(objectAlignment), _size(size)
+	ui32 pool::getSize()
 	{
-		assert(objectSize >= sizeof(void*));
-		
-		//Calculate adjustment needed to keep object correctly aligned
-		ui8 adjustment = adjustAlign(pMem, objectAlignment);
-		
-		_pFreeList = (void**)((uintptr_t)pMem + adjustment);
-		
-		ui32 numObjects = (size-adjustment)/objectSize;
-		
-		void** p = _pFreeList;
-		
-		//Initialize free blocks list
-		for(ui32 i = 0; i < numObjects-1; i++)
-		{
-			*p = (void*)( (uintptr_t) p + objectSize );
-			p = (void**) *p;
-		}
-		
-		*p = nullptr;
+		return size;
 	}
-	
-	PoolAllocator::~PoolAllocator()
-	{
-		_pFreeList = nullptr;
-	}
-	
-	void* PoolAllocator::allocate(ui32 size, ui8 alignment)
-	{
-		assert(size == _objectSize && alignment == _objectAlignment);
-		
-		if(_pFreeList == nullptr)
-			return nullptr;
-		
-		void* p = _pFreeList;
-		
-		_pFreeList = (void**)(*_pFreeList);
-		
-		_usedMemory += size;
-		_numAllocations++;
-		
-		return p;
-	}
-	
-	void PoolAllocator::deallocate(void* p)
-	{
-		*((void**)p) = _pFreeList;
-		
-		_pFreeList = (void**)p;
-		
-		_usedMemory -= _objectSize;
-		_numAllocations--;
-	}
-	 */
 }
 

@@ -26,19 +26,19 @@ namespace sinnca
 	
 	void* texture::operator new(size_t s, std::string n)
 	{
-		texture* tx = Script::createObject<texture>();
+		texture* tx = Script::createObject<texture>(Tree::currentScene->assets.textureStorage);
 		
 		Script::setGlobal(n);
-		Tree::currentScene->textureRef.push_back(tx);
-		Tree::currentScene->colorRef.push_back(tx);
+		Tree::currentScene->assets.textureRef.push_back(tx);
+		Tree::currentScene->assets.colorRef.push_back(tx);
 		return ((void*)tx);
 	}
 	
 	void texture::operator delete(void *p)
 	{
-		if (Tree::currentScene->textureStorage != NULL)
+		if (Tree::currentScene->assets.textureStorage != NULL)
 		{
-			Tree::currentScene->textureStorage->deallocate(p);
+			Tree::currentScene->assets.textureStorage->deallocate(p);
 			
 		} else {
 			
