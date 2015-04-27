@@ -12,7 +12,7 @@
 
 namespace sinnca
 {
-	guiString::guiString(std::string n) : guiWidget(n)
+	guiString::guiString()
 	{
 		/*
 		draw = true;
@@ -78,11 +78,11 @@ namespace sinnca
 	}
 
 	
-	void* guiString::operator new(size_t s, std::string n)
+	void* guiString::operator new(size_t s)
 	{
 		guiString* st = Script::createObject<guiString>(Tree::guiStorage);
 		
-		Script::setGlobal(n);
+		st->ref = Script::makeReference();
 		Tree::currentScene->guiManager->addChild(st);
 		return (void*)st;
 	}
@@ -96,13 +96,13 @@ namespace sinnca
 	static int l_newString(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
 			return luaL_error(L, "You need to name this widget...");
 		}
 		
 		Script::checkTable(1);
-		createGuiString(lua_tostring(L, 2));
+		new guiString();
 		
 		return 1;
 	}

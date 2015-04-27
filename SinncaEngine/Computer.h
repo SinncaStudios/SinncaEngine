@@ -21,6 +21,7 @@ namespace sinnca
 	{
 		extern int cpus, vcpus;
 		extern int cpuSpeed;
+		extern bool hyperThreading;
 		extern long memAvalible;
 		// gpus
 		extern int gpuMemAvailible;

@@ -14,7 +14,7 @@
 namespace sinnca
 {
 
-	guiMenu::guiMenu(std::string n) : guiWidget(n)
+	guiMenu::guiMenu()
 	{
 		/*
 		draw = true;
@@ -29,11 +29,6 @@ namespace sinnca
 		
 		name = n;
 		 */
-	}
-
-	void guiMenu::update()
-	{
-		
 	}
 
 	void guiMenu::render()
@@ -56,11 +51,11 @@ namespace sinnca
 		 */
 	}
 	
-	void* guiMenu::operator new(size_t s, std::string n)
+	void* guiMenu::operator new(size_t s)
 	{
 		guiMenu* mu = Script::createObject<guiMenu>(Tree::guiStorage);
 		
-		Script::setGlobal(n);
+		mu->ref = Script::makeReference();
 		if (Tree::currentScene)
 		{
 			if (Tree::currentScene->guiManager != nullptr) {

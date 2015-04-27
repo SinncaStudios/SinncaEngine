@@ -15,10 +15,8 @@ namespace sinnca
 {
 	
 	
-	font::font(std::string n)
+	font::font()
 	{
-		
-		name = n;
 		path = "";
 		
 		size = 12.0; // 12 point is default
@@ -234,11 +232,11 @@ namespace sinnca
 	}
 	
 	
-	void* font::operator new(size_t s, std::string n)
+	void* font::operator new(size_t s)
 	{
 		font* ft = Script::createObject<font>(Tree::currentScene->assets.fontStorage);
 		
-		//Script::setGlobal(n);
+		ft->ref = Script::makeReference();
 		
 		return (void*)ft;
 	}
@@ -259,13 +257,13 @@ namespace sinnca
 	int l_newFont(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
 			return luaL_error(L, "You need to name this font object...");
 		}
 		
 		Script::checkTable(1);
-		createFont(lua_tostring(L, 2));
+		new font();
 		
 		return 1;
 	}

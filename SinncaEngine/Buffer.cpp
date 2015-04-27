@@ -12,21 +12,21 @@
 
 namespace sinnca
 {
-	buffer::buffer(std::string n)
+	buffer::buffer()
 	{
 		alGenBuffers(1, &theBuffer);
 		if ((Audio::error = alGetError() != AL_NO_ERROR))
 		{
-			fprintf(stdout, "Buffer '%s' error: %d\n", n.c_str(), Audio::error);
+			fprintf(stdout, "Buffer error: %d\n", Audio::error);
 			
 		}
 		
-		name = n;
 	}
 	
 	buffer::~buffer()
 	{
 		alDeleteBuffers(1, &theBuffer);
+		Script::unReference(ref);
 	}
 	
 	
@@ -47,12 +47,12 @@ namespace sinnca
 		return theBuffer;
 	}
 	
-	void* buffer::operator new(size_t s, std::string n)
+	void* buffer::operator new(size_t s)
 	{
 		//Create object in lua
 		buffer* bf = Script::createObject<buffer>(Tree::currentScene->assets.bufferStorage);
 		
-		//Script::setGlobal(n);
+		bf->ref = Script::makeReference();
 		Tree::currentScene->assets.bufferRef.push_back(bf);
 		return ((void*)bf);
 	}
@@ -74,13 +74,13 @@ namespace sinnca
 	static int l_newBuffer(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
 			return luaL_error(L, "You need to name this buffer...");
 		}
 		
 		Script::checkTable(1);
-		createBuffer(luaL_checkstring(L, 2));
+		new buffer();
 		return 1;
 	}
 	

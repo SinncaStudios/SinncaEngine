@@ -21,6 +21,8 @@ namespace sinnca
 	{
 		
 		// discriminated union
+	protected:
+		uint ref;
 		
 	public:
 		
@@ -30,7 +32,7 @@ namespace sinnca
 		ui8 r, g, b, a;
 		std::string name;
 
-		color(std::string n = "")
+		color()
 		{
 			r = 255;
 			g = 255;
@@ -38,7 +40,6 @@ namespace sinnca
 			
 			a = 255;
 			
-			name = n;
 		}
 		
 		float toFloat(ui8 channel)
@@ -79,9 +80,8 @@ namespace sinnca
 			return 1;
 		}
 		
-		void* operator new(size_t s, std::string n); // moved to c++ file
-		#define createColor(a) new(a)color(a)
-		#define createColour(a) new(a)color(a)
+		void* operator new(size_t s); // moved to c++ file
+		
 		
 		void operator delete(void* p); // also moved
 		
@@ -91,13 +91,13 @@ namespace sinnca
 	static int l_newColor(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
 			return luaL_error(L, "You need to name this color...");
 		}
 		
 		Script::checkTable(1);
-		createColor(lua_tostring(L, 2));
+		new color();
 		return 0;
 	}
 	

@@ -23,20 +23,18 @@ namespace sinnca
 		#endif
 	}
 	
-	timer::timer(std::string n) :
+	timer::timer() :
 	startTicks(0),
 	pauseTicks(0),
 	started(false),
 	paused(false)
 	{
-		if (n != "") {
-			name = n;
-		}
+		
 	}
 
-	void timer::setName(std::string n)
+	timer::~timer()
 	{
-		name = n;
+		Script::unReference(ref);
 	}
 
 	void timer::start()
@@ -85,11 +83,11 @@ namespace sinnca
 		return 0;
 	}
 	
-	void* timer::operator new(size_t s, std::string n)
+	void* timer::operator new(size_t s, bool l)
 	{
 		timer* tm;
 		
-		if (n == "")
+		if (!l)
 		{
 			//not being created through lua
 			tm = (timer*)Heap->allocate(sizeof(timer), alignof(timer));
@@ -97,7 +95,7 @@ namespace sinnca
 		} else {
 			
 			tm = Script::createObject<timer>();
-			Script::setGlobal(n);
+			tm->ref = Script::makeReference();
 		}
 		
 		return (void*)tm;
@@ -117,13 +115,13 @@ namespace sinnca
 	static int l_newTimer(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
 			return luaL_error(L, "You need to name this timer...");
 		}
 		
 		Script::checkTable(1);
-		createTimer(luaL_checkstring(L, 2));
+		new(true) timer();
 		return 0;
 	}
 

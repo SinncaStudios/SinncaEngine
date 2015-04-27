@@ -40,6 +40,9 @@
 		941D2F4E183AC205007EB1BE /* LinearAlloc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 941D2F4C183AC205007EB1BE /* LinearAlloc.cpp */; };
 		941D2F4F183AC205007EB1BE /* LinearAlloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 941D2F4D183AC205007EB1BE /* LinearAlloc.h */; };
 		941D2F51183DDFBC007EB1BE /* Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = 941D2F50183DDFBC007EB1BE /* Utility.h */; };
+		941DE01D1AE8AB7F0052586B /* SinncaEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		941DE0201AE8AC470052586B /* SinncaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 941DE01F1AE8AC470052586B /* SinncaView.mm */; };
+		941DE0211AE8AD350052586B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344871820BCFE00C370DA /* Foundation.framework */; };
 		941E45F41A06D57300310EAB /* helloworld.wav in Resources */ = {isa = PBXBuildFile; fileRef = 941E45F31A06D57300310EAB /* helloworld.wav */; };
 		941E45FB1A0B328E00310EAB /* Timeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 941E45F91A0B328E00310EAB /* Timeline.h */; };
 		941E45FD1A0FC08E00310EAB /* DoubleList.h in Headers */ = {isa = PBXBuildFile; fileRef = 941E45FC1A0FC08E00310EAB /* DoubleList.h */; };
@@ -141,7 +144,6 @@
 		94B344DE18221A4700C370DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344841820BCFE00C370DA /* Cocoa.framework */; };
 		94B344E618221A4700C370DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94B344E418221A4700C370DA /* InfoPlist.strings */; };
 		94B344E818221A4700C370DA /* Sinnca_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B344E718221A4700C370DA /* Sinnca_DemoTests.m */; };
-		94B344EF18221AAD00C370DA /* SinncaEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
 		94B6444A18E4969400FBA7F1 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B6444818E4969400FBA7F1 /* Shader.cpp */; };
 		94B6444C18E4969400FBA7F1 /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B6444918E4969400FBA7F1 /* Shader.h */; };
 		94B6445018E4CA4D00FBA7F1 /* OpenFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B6444E18E4CA4D00FBA7F1 /* OpenFile.cpp */; };
@@ -262,6 +264,8 @@
 		941D2F4C183AC205007EB1BE /* LinearAlloc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinearAlloc.cpp; sourceTree = "<group>"; };
 		941D2F4D183AC205007EB1BE /* LinearAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearAlloc.h; sourceTree = "<group>"; };
 		941D2F50183DDFBC007EB1BE /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		941DE01E1AE8AC470052586B /* SinncaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinncaView.h; sourceTree = "<group>"; };
+		941DE01F1AE8AC470052586B /* SinncaView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SinncaView.mm; sourceTree = "<group>"; };
 		941E45F31A06D57300310EAB /* helloworld.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = helloworld.wav; sourceTree = "<group>"; };
 		941E45F91A0B328E00310EAB /* Timeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timeline.h; sourceTree = "<group>"; };
 		941E45FC1A0FC08E00310EAB /* DoubleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleList.h; sourceTree = "<group>"; };
@@ -472,7 +476,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94B344EF18221AAD00C370DA /* SinncaEngine.framework in Frameworks */,
+				941DE01D1AE8AB7F0052586B /* SinncaEngine.framework in Frameworks */,
+				941DE0211AE8AD350052586B /* Foundation.framework in Frameworks */,
 				94B344C318221A4700C370DA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -880,6 +885,8 @@
 			children = (
 				94B344D018221A4700C370DA /* AppDelegate.h */,
 				94B344D118221A4700C370DA /* AppDelegate.m */,
+				941DE01E1AE8AC470052586B /* SinncaView.h */,
+				941DE01F1AE8AC470052586B /* SinncaView.mm */,
 				94B344D318221A4700C370DA /* MainMenu.xib */,
 				94B344D618221A4700C370DA /* Images.xcassets */,
 				94B344C518221A4700C370DA /* Supporting Files */,
@@ -1308,6 +1315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B344931820BCFE00C370DA /* SinncaEngine.mm in Sources */,
 				9405C0E818C1BBD800AFEDE9 /* Font.cpp in Sources */,
 				94A7A20619D7B60E0025EA2D /* Buffer.cpp in Sources */,
 				944D6CD2185C2A9F0083EAEC /* Game.cpp in Sources */,
@@ -1335,7 +1343,6 @@
 				945AFB2E18AC9BEE00BA7AB9 /* Keys.cpp in Sources */,
 				94BC91BE199886A800B53026 /* GuiJoystick.cpp in Sources */,
 				94E13475191488FB00DAC0BF /* Matrix.cpp in Sources */,
-				94B344931820BCFE00C370DA /* SinncaEngine.mm in Sources */,
 				945AFB1718A811B600BA7AB9 /* Utility.cpp in Sources */,
 				945AFB1A18A97AE900BA7AB9 /* Scene.cpp in Sources */,
 				943E19FB19F09B77009CA1CF /* CopyOnWrite.cpp in Sources */,
@@ -1382,6 +1389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94B344D218221A4700C370DA /* AppDelegate.m in Sources */,
+				941DE0201AE8AC470052586B /* SinncaView.mm in Sources */,
 				94B344CB18221A4700C370DA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

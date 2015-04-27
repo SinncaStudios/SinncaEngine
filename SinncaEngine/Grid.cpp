@@ -63,9 +63,8 @@ namespace sinnca
 	//
 	// http://stackoverflow.com/questions/6915555/how-to-transform-mouse-location-in-isometric-tiling-map
 	
-	grid::grid(std::string n, int xSize, int ySize, bool io)
+	grid::grid(int xSize, int ySize, bool io)
 	{
-		name = n;
 		iso = io;
 		
 		pos.x = 0.0;
@@ -116,24 +115,9 @@ namespace sinnca
 	{
 		//delete[] data;
 		dataSource->clear();
+		Script::unReference(ref);
 	}
 	
-	void grid::callBehavior()
-	{
-		for (int i = 0; i < noOfChildren; i++)
-		{
-			//children[i]->callBehavior();
-		}
-		
-		Script::getGlobal(name);
-		
-		Script::getLocal(-1, "update");
-		//Script::checkType(2, LUA_TFUNCTION);
-		
-		Script::call(0, 0);
-		
-		
-	}
 	
 	void grid::setSolid(int x, int y, bool s)
 	{
@@ -240,11 +224,11 @@ namespace sinnca
 		}
 	}
 	
-	void* grid::operator new(size_t s, std::string n)
+	void* grid::operator new(size_t s)
 	{
 		grid* gd = Script::createObject<grid>(Tree::currentScene->assets.gridStorage);
 		
-		Script::setGlobal(n);
+		gd->ref = Script::makeReference();
 		Tree::currentScene->assets.gridRef.push_back(gd);
 		Tree::currentScene->assets.nodeRef.push_back(gd);
 		return ((void*)gd);
@@ -270,14 +254,14 @@ namespace sinnca
 	static int l_newGrid(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 5)
+		if (n != 4)
 		{
 			return luaL_error(L, "You need to name this grid...");
 		}
 		
 		Script::checkTable(1);
-		createGrid(lua_tostring(L, 2), (int)lua_tointeger(L, 3), (int)lua_tointeger(L, 4), lua_toboolean(L, 5));
-		return 0;
+		new grid((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), lua_toboolean(L, 4));
+		return 1;
 	}
 	
 	static int l_setTex(lua_State* L)

@@ -26,18 +26,18 @@ namespace sinnca
 		//when it's time to specify a lua metatable, this will be looked up
 		static constexpr auto metatable = "entity";
 		
-		entity(std::string n);
+		entity();
 		~entity();
 		
 		void update();
 		
 		void render();
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 	  
 	};
 	
-#define createEntity(a) new(a)entity(a)
+//#define createEntity(a) new(a)entity(a)
 	
 	void registerEntity(lua_State* L);
 }

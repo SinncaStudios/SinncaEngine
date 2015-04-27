@@ -19,11 +19,14 @@ namespace sinnca
 	{
 		uint cooldown, overrideLimit;
 		timer t;
-		std::string luaFunc, name;
+		std::string luaFunc;
+		uint ref;
 		
 	public:
 		
-		action(std::string n);
+		static constexpr auto metatable = "action";
+		
+		action();
 		~action();
 		
 		// call the function if cooldown allows
@@ -35,13 +38,10 @@ namespace sinnca
 		void setOverride(uint ov);
 		void setFunction(std::string);
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 	};
-	
-	#define createAction(a) new(a)action(a)
-	action* checkAction(int ind);
 	
 	void registerAction(lua_State* L);
 }

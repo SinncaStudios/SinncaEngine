@@ -12,6 +12,7 @@
 //#include "Types.h"
 #include <string>
 #include <assert.h>
+#include "Script.h"
 
 namespace sinnca
 {
@@ -19,6 +20,7 @@ namespace sinnca
 	{
 		//for reference counting
 		unsigned int count;
+
 		
 		// if false, destroy if 0 references
 		bool standingBy;
@@ -26,6 +28,7 @@ namespace sinnca
 	protected:
 		
 		std::string path;
+		unsigned int ref;
 		
 	public:
 		
@@ -39,6 +42,7 @@ namespace sinnca
 		virtual ~asset()
 		{
 			// to silence a silly warning
+			Script::unReference(ref);
 		}
 		
 		

@@ -35,14 +35,14 @@ namespace sinnca
 		sinncaTime startTicks, pauseTicks;
 		
 		bool started, paused;
-		std::string name;
+		uint ref;
 		
 	public:
 		
 		static constexpr auto metatable = "timer";
 		
-		timer(std::string n = "");
-		void setName(std::string n);
+		timer();
+		~timer();
 		
 		void start();
 		void pause();
@@ -50,12 +50,11 @@ namespace sinnca
 		
 		sinncaTime getTicks();
 		
-		void* operator new(size_t s, std::string n = "");
+		void* operator new(size_t s, bool l = false);
 		void operator delete(void* p);
 		
 	};
 	
-	#define createTimer(a) new(a)timer(a)
 	
 	void registerTimer(lua_State* L);
 

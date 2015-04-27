@@ -11,11 +11,11 @@
 
 namespace sinnca
 {
-	void* guiWidget::operator new(size_t s, std::string n)
+	void* guiWidget::operator new(size_t s)
 	{
 		guiWidget* wd = Script::createObject<guiWidget>(Tree::guiStorage);
 		
-		Script::setGlobal(n);
+		wd->ref = Script::makeReference();
 		return (void*)wd;
 	}
 	
@@ -32,7 +32,7 @@ namespace sinnca
 			return luaL_error(L, "You need to name this widget...");
 		}
 		
-		guiWidget* wt = createGuiWidget(lua_tostring(L, 2));
+		guiWidget* wt = new guiWidget();
 		
 		Tree::currentScene->guiManager->addChild(wt);
 		return 1;

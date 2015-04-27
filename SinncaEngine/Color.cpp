@@ -11,11 +11,11 @@
 
 namespace sinnca
 {
-	void* color::operator new(size_t s, std::string n)
+	void* color::operator new(size_t s)
 	{
 		color* cl = Script::createObject<color>(Tree::currentScene->assets.colorStorage);
 		
-		Script::setGlobal(n);
+		cl->ref = Script::makeReference();
 		return (void*)cl;
 	}
 	

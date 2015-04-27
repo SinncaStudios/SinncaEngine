@@ -22,13 +22,13 @@ namespace sinnca
 		
 	public:
 		
-		guiButton(std::string n);
+		guiButton();
 		
-		void update();
+		//void update();
 		bool checkbounds();
 		void render();
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 	};

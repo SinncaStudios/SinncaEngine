@@ -25,7 +25,14 @@ namespace sinnca
 		#include<Lua/lauxlib.h>
 		
 	}
+	
 
+	struct luaVar
+	{
+		const char* name;
+		lua_CFunction getter;
+		lua_CFunction setter;
+	};
 	
 	namespace Script
 	{
@@ -85,6 +92,12 @@ namespace sinnca
 		
 		void setGlobal(std::string name);
 		
+		
+		uint makeReference();
+		void getReference(uint r);
+		void unReference(uint r);
+		
+		
 		template <class t>
 		t* createObject(Memory* allocator = nullptr)
 		{
@@ -93,13 +106,6 @@ namespace sinnca
 			{
 				allocator = Heap;
 			}
-			
-			// get the asset tracker
-			getGlobal("___AssetTracker_");
-			// push field
-			std::stringstream ss;
-			ss << t::metatable << '_' << allocator->getNoOfAllocations();
-			push(ss.str());
 			
 			// create the object
 			newBlankTable();
@@ -119,20 +125,7 @@ namespace sinnca
 			setMetaTable(-2);
 			
 			setField(-2, "__self");
-			
-			
-			#warning figure this area out!
-			// copy
-			//pushValue(1);
-			//lua_insert(L, 1);
-			// put into asset tracker
-			lua_settable(L, -3);
-			setGlobal("___AssetTracker_");
-			
-			// retrive again...
-			getGlobal("___AssetTracker_");
-			push(ss.str());
-			lua_gettable(L, -2);
+			Script::pushValue(1);
 			
 			return *ob;
 		}
@@ -158,7 +151,7 @@ namespace sinnca
 		}
 		
 		template<class T>
-		void registerType(const luaL_Reg funcs[])
+		void registerType(const luaL_Reg funcs[], const luaVar values[] = nullptr)
 		{
 			luaL_newmetatable(L, T::metatable);
 			

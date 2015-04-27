@@ -54,15 +54,6 @@ namespace sinnca
 		
 		
 		
-		
-		void setup()
-		{
-			fullScreen = false;
-			
-			glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &maxTextureUnits);
-			printf("Maximum texture units supported: %i\n", (int)maxTextureUnits);
-		}
-		
 		void shutdown()
 		{
 			Heap->deallocateDelete(square);
@@ -96,6 +87,8 @@ namespace sinnca
 		void init(unsigned int w, unsigned int h)
 		{
 			
+			fullScreen = false;
+			
 			defaultShader = createShader("defaultShader");
 			defaultShader->loadShaders(Computer::getResourcePath() + "/BasicVert.vs", Computer::getResourcePath() + "/BasicFrag.fs");
 			defaultShader->initShaders();
@@ -106,10 +99,15 @@ namespace sinnca
 			// Initialization code here.
 			glClearColor(0.1, 0.24, 0.4, 0);
 			
+			// basic OpenGL info
 			const unsigned char* temp = glGetString(GL_VENDOR);
 			const unsigned char* temp2 = glGetString(GL_RENDERER);
 			const unsigned char* temp3 = glGetString(GL_VERSION);
 			printf("Graphics Card: %s\nRenderer: %s\nVersion: %s\n", temp, temp2, temp3);
+			
+			// get texture unit info
+			glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS_ARB, &maxTextureUnits);
+			printf("Maximum texture units supported: %i\n", (int)maxTextureUnits);
 			
 			glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 			

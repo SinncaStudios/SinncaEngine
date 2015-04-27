@@ -57,20 +57,19 @@ namespace sinnca
 		std::string name, path;
 		texBlend tb;
 		
-		image(std::string n);
+		image();
 		~image();
 		
 		void bind();
 		void load(std::string p);
 		GLuint getData();
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 		
 	};
 	
-#define createImage(a) new(a)image(a)
 	
 	void registerImage(lua_State* L);
 	

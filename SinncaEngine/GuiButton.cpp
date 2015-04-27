@@ -17,21 +17,12 @@
 namespace sinnca
 {
 
-	guiButton::guiButton(std::string n) : guiWidget(n)
+	guiButton::guiButton()
 	{
 		
 		useAlph = false;
 	}
 
-	void guiButton::update()
-	{
-		Script::getGlobal(name);
-		
-		Script::getLocal(-1, "update");
-		//Script::checkType(2, LUA_TFUNCTION);
-		
-		Script::call(0, 0);
-	}
 
 	bool guiButton::checkbounds()
 	{
@@ -81,11 +72,11 @@ namespace sinnca
 		
 	}
 	
-	void* guiButton::operator new(size_t s, std::string n)
+	void* guiButton::operator new(size_t s)
 	{
 		guiButton* bn = Script::createObject<guiButton>(Tree::guiStorage);
 		
-		Script::setGlobal(n);
+		bn->ref = Script::makeReference();
 		Tree::currentScene->guiManager->addChild(bn);
 		return (void*)bn;
 	}
@@ -105,7 +96,7 @@ namespace sinnca
 		}
 		
 		Script::checkTable(1);
-		createGuiButton(lua_tostring(L, 2));
+		new guiButton();
 		return 0;
 	}
 

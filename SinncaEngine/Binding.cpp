@@ -54,9 +54,6 @@ namespace sinnca
 			registerFont(L);
 			
 			
-			// create asset and node tracking table
-			newBlankTable();
-			setGlobal("___AssetTracker_");
 		}
 	}
 	

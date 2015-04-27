@@ -38,7 +38,6 @@ namespace sinnca
 		Script::bindFunctions();
 		
 		// Start opengl graphics
-		Graphics::setup();
 		Graphics::init(glW, glH);
 		Palette::setup();
 		

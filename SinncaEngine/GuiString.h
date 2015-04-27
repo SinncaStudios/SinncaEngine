@@ -23,19 +23,19 @@ namespace sinnca
 		
 		static constexpr auto metatable = "guiString";
 		
-		guiString(std::string n);
+		guiString();
 		~guiString();
 		
 		void render();
 		void setFont(font* f);
 		void setStr(std::string s);
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 	};
 	
-	#define createGuiString(a) new(a)guiString(a)
+	
 	void registerString(lua_State* L);
 }
 

@@ -55,10 +55,9 @@ namespace sinnca
 		bool iso; // isometric?
 		friend class tile;
 		
-		grid(std::string n, int xSize, int ySize, bool io);
+		grid(int xSize, int ySize, bool io);
 		~grid();
 		
-		void callBehavior();
 		void setSolid(int x, int y, bool s);
 		void setTexture(int x, int y, texture* t);
 		bool checkBounds(int& x, int& y);
@@ -69,12 +68,12 @@ namespace sinnca
 		
 		void render();
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 	};
 	
-	#define createGrid(a, b, c, d) new(a)grid(a, b, c, d)
+	//#define createGrid(a, b, c, d) new(a)grid(a, b, c, d)
 	
 	void registerGrid(lua_State* L);
 }

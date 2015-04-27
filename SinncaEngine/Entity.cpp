@@ -16,9 +16,8 @@
 
 namespace sinnca
 {
-	entity::entity(std::string n)
+	entity::entity()
 	{
-		name = n;
 		
 		pos.x = 0.0f;
 		pos.y = 0.0f;
@@ -41,7 +40,7 @@ namespace sinnca
 	
 	entity::~entity()
 	{
-		//Heap->deallocateDelete(col);
+		Script::unReference(ref);
 	}
 	
 	void entity::update()
@@ -52,7 +51,7 @@ namespace sinnca
 			(*i)->update();
 		}
 		
-		Script::getGlobal(name);
+		Script::getReference(ref);
 		
 		Script::getLocal(-1, "update");
 		Script::call(0, 0);
@@ -96,7 +95,7 @@ namespace sinnca
 	}
 	
 	
-	void* entity::operator new(size_t s, std::string n)
+	void* entity::operator new(size_t s)
 	{
 		/*
 		 Don't look at me
@@ -108,7 +107,7 @@ namespace sinnca
 		//Create object in lua
 		entity* en = Script::createObject<entity>(Tree::currentScene->assets.entityStorage);
 		
-		Script::setGlobal(n);
+		en->ref = Script::makeReference();
 		Tree::currentScene->assets.entityRef.push_back(en);
 		Tree::currentScene->assets.nodeRef.push_back(en);
 		return ((void*)en);
@@ -123,6 +122,7 @@ namespace sinnca
 	}
 	void entity::operator delete(void *p)
 	{
+		
 		if (Tree::currentScene->assets.entityStorage != NULL)
 		{
 			Tree::currentScene->assets.entityStorage->deallocate(p);
@@ -139,14 +139,14 @@ namespace sinnca
 	{
 		
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
 			return luaL_error(L, "You need to name this entity...");
 		}
 		
 		Script::checkTable(1);
-		createEntity(luaL_checkstring(L, 2));
-		return 0;
+		new entity();
+		return 1;
 	}
 	
 	

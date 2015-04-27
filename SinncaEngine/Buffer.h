@@ -39,17 +39,17 @@ namespace sinnca
 		
 		std::string name;
 		
-		buffer(std::string n);
+		buffer();
 		~buffer();
 		
 		void load(std::string p);
 		ALuint getBuffer();
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 	};
 	
-	#define createBuffer(a) new(a)buffer(a)
+	
 	buffer* checkBuffer(int ind);
 	
 	void registerBuffer(lua_State* L);

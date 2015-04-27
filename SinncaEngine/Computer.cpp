@@ -26,6 +26,7 @@ namespace sinnca
 		int cpus, vcpus;
 		int cpuSpeed;
 		long memAvalible;
+		bool hyperThreading;
 		// gpus
 		int gpuMemAvailible;
 		
@@ -74,8 +75,13 @@ namespace sinnca
 				
 				// Windows functions will go here
 				
-				#endif
+				#elif snMacosx
+				// open, read, and parse:
+				// System/Library/CoreServices/Loginwindow.app/Contents/Resources/english.lproj/AboutThisMac.Strings
 				
+				// gets COMPLETE info
+				
+				#elif snUnix
 				size_t size = sizeof(cpus);
 				sysctlbyname("hw.physicalcpu", &cpus, &size, NULL, 0);
 				printf("cpus: %i\n", cpus);
@@ -91,6 +97,15 @@ namespace sinnca
 				size = sizeof(machineModel);
 				sysctlbyname("hw.model", &machineModel, &size, NULL, 0);
 				printf("Model: %s\n", machineModel.c_str());
+				
+				#endif
+			}
+			
+			if (vcpus == (cpus * 2))
+			{
+				hyperThreading = true;
+			} else {
+				hyperThreading = false;
 			}
 		}
 		

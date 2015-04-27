@@ -137,8 +137,6 @@ namespace sinnca
 	
 	int l_keyDown(lua_State* L)
 	{
-		
-		
 		int a = (int)lua_tointeger(L, -1);
 		lua_pushnumber(L, Input::Keyboard::keys[a].x);
 		

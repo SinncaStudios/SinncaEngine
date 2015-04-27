@@ -24,16 +24,15 @@ namespace sinnca
 
 	class node
 	{
+		
+		
 	protected:
 		
 		// parent node and children nodes (obvious, I know...)
 		node* parent;
 		linkList<node*> children;
 		int noOfChildren;
-		
-		std::string name;
-		std::string behavior;
-		
+		uint ref;
 		
 		bool draw;
 		
@@ -53,8 +52,7 @@ namespace sinnca
 		}
 		virtual ~node()
 		{
-			// deallocate children
-			//children.clear();
+			Script::unReference(ref);
 		}
 		
 		virtual void update()
@@ -63,6 +61,12 @@ namespace sinnca
 			{
 				(*i)->update();
 			}
+			
+			
+			Script::getReference(ref);
+			
+			Script::getLocal(-1, "update");
+			Script::call(0, 0);
 		}
 		
 		virtual void render()
@@ -70,11 +74,6 @@ namespace sinnca
 			
 		}
 		
-		
-		void setName(std::string n)
-		{
-			name = n;
-		}
 		
 		bool willDraw()
 		{

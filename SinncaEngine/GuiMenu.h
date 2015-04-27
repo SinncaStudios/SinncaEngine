@@ -17,18 +17,18 @@ namespace sinnca
 	{
 	public:
 		
-		guiMenu(std::string n);
+		guiMenu();
 		
 		//void setName(std::string n);
-		void update();
+		//void update();
 		void render();
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 	};
 	
-	#define createGuiMenu(a) new(a)guiMenu(a)
+	
 	void registerGuiMenu();
 }
 

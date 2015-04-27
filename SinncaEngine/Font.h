@@ -52,7 +52,7 @@ namespace sinnca
 		
 		std::vector<glyph> data;
 		
-		font(std::string n);
+		font();
 		~font();
 		
 		void load(std::string p);
@@ -62,11 +62,10 @@ namespace sinnca
 		void setPath(std::string s);
 		
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 	};
 	
-	#define createFont(a) new(a)font(a)
 	void registerFont(lua_State* L);
 
 

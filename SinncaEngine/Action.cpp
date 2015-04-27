@@ -11,12 +11,17 @@
 
 namespace sinnca
 {
-	action::action(std::string n) :
+	action::action() :
 	cooldown(0),
 	overrideLimit(0),
 	luaFunc("")
 	{
-		name = n;
+		
+	}
+	
+	action::~action()
+	{
+		
 	}
 	
 	
@@ -28,7 +33,7 @@ namespace sinnca
 			
 			if (luaFunc != "")
 			{
-				Script::getGlobal(name);
+				Script::getReference(ref);
 			
 				Script::getLocal(-1, luaFunc);
 				Script::call(0, 0);
@@ -49,7 +54,7 @@ namespace sinnca
 		{
 			if (luaFunc != "")
 			{
-				Script::getGlobal(name);
+				Script::getReference(ref);
 				
 				Script::getLocal(-1, luaFunc);
 				Script::call(0, 0);
@@ -79,40 +84,14 @@ namespace sinnca
 		luaFunc = f;
 	}
 	
-	void* action::operator new(size_t s, std::string n)
+	void* action::operator new(size_t s)
 	{
 		//Create object in lua
+		action* ac = Script::createObject<action>();
 		
-		
-		Script::newBlankTable();
-		
-		Script::pushValue(1);
-		Script::setMetaTable(-2);
-		
-		Script::pushValue(1);
-		Script::setField(1, "__index");
-		
-		action** ac = (action**)lua_newuserdata(Script::getState(), sizeof(action*));
-		if (Tree::currentScene->assets.actionStorage != NULL)
-		{
-			*ac = (action*)Tree::currentScene->assets.actionStorage->allocate((unsigned int)s, __alignof(action));
-			
-		} else {
-			
-			*ac = (action*)Heap->allocate((unsigned int)s, __alignof(action));
-		}
-		
-		//(*en)->name = n;
-		
-		Script::getMetaTable("buffer");
-		Script::setMetaTable(-2);
-		
-		Script::setField(-2, "__self");
-		
-		
-		Script::setGlobal(n);
-		Tree::currentScene->assets.actionRef.push_back(*ac);
-		return ((void*)*ac);
+		ac->ref = Script::makeReference();
+		Tree::currentScene->assets.actionRef.push_back(ac);
+		return ((void*)ac);
 	}
 	void action::operator delete(void *p)
 	{
@@ -130,14 +109,14 @@ namespace sinnca
 	static int l_newAction(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
 			return luaL_error(L, "You need to name this action...");
 		}
 		
 		Script::checkTable(1);
 		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
-		createAction(luaL_checkstring(L, 2));
+		new action();
 		return 0;
 	}
 	

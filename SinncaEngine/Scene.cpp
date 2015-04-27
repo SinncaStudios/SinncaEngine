@@ -27,7 +27,7 @@ namespace sinnca
 	percLoaded(0.0f)
 	{
 		col = &Palette::defaultColor;
-		guiManager = createGuiMenu("mainMenu");
+		guiManager = new guiMenu();
 	}
 	
 	scene::~scene()
@@ -35,6 +35,7 @@ namespace sinnca
 		if (alloced) {
 			assets.shutDown();
 		}
+		Script::unReference(ref);
 		
 	}
 	

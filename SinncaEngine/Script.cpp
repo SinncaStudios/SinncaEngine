@@ -190,6 +190,22 @@ namespace sinnca
 		{
 			lua_setglobal(L, name.c_str());
 		}
+		
+		
+		uint makeReference()
+		{
+			return luaL_ref(L, LUA_REGISTRYINDEX);
+		}
+		
+		void getReference(uint r)
+		{
+			lua_rawgeti(L, LUA_REGISTRYINDEX, r);
+		}
+		
+		void unReference(uint r)
+		{
+			luaL_unref(L, LUA_REGISTRYINDEX, r);
+		}
 	}
 	
 }

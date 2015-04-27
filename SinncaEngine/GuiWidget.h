@@ -30,7 +30,7 @@ namespace sinnca
 		
 		static constexpr auto metatable = "guiWidget";
 		
-		guiWidget(std::string n)
+		guiWidget()
 		{
 			draw = true;
 			
@@ -48,21 +48,6 @@ namespace sinnca
 			
 		}
 		
-		
-		void update()
-		{
-			for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
-			{
-				(*i)->update();
-			}
-			
-			Script::getGlobal(name);
-			
-			Script::getLocal(-1, "update");
-
-			
-			Script::call(0, 0);
-		}
 		
 		
 		void render()
@@ -100,10 +85,7 @@ namespace sinnca
 			noOfChildren++;
 		}
 		
-		void* operator new(size_t s, std::string n);
-		#define createGuiWidget(a) new(a)guiWidget(a)
-		
-		
+		void* operator new(size_t s);		
 		void operator delete(void* p);
 		
 	};
