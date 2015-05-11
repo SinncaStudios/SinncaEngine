@@ -30,7 +30,7 @@ namespace sinnca
 		
 		static constexpr auto metatable = "guiWidget";
 		
-		guiWidget(std::string n)
+		guiWidget()
 		{
 			draw = true;
 			
@@ -56,7 +56,7 @@ namespace sinnca
 				(*i)->update();
 			}
 			
-			Script::getGlobal(name);
+			Script::getReference(ref);
 			
 			Script::getLocal(-1, "update");
 
@@ -100,14 +100,14 @@ namespace sinnca
 			noOfChildren++;
 		}
 		
-		void* operator new(size_t s, std::string n)
+		void* operator new(size_t s)
 		{
-			guiWidget* wd = Script::createObject<guiWidget>();
+			uint reference;
+			guiWidget* wd = Script::createObject<guiWidget>(&reference);
 			
-			Script::setGlobal(n);
+			wd->ref = reference;
 			return (void*)wd;
 		}
-		#define createGuiWidget(a) new(a)guiWidget(a)
 		
 		
 		void operator delete(void* p)

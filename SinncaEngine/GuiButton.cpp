@@ -17,16 +17,20 @@
 namespace sinnca
 {
 
-	guiButton::guiButton(std::string n) : guiWidget(n)
+	guiButton::guiButton() :
+	useAlph(false)
 	{
 		
-		useAlph = false;
 	}
 
 	void guiButton::update()
 	{
-		Script::getGlobal(name);
+		for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
+		{
+			(*i)->update();
+		}
 		
+		Script::getReference(ref);
 		Script::getLocal(-1, "update");
 		//Script::checkType(2, LUA_TFUNCTION);
 		
@@ -81,11 +85,12 @@ namespace sinnca
 		
 	}
 	
-	void* guiButton::operator new(size_t s, std::string n)
+	void* guiButton::operator new(size_t s)
 	{
-		guiButton* bn = Script::createObject<guiButton>();
+		uint reference;
+		guiButton* bn = Script::createObject<guiButton>(&reference);
 		
-		Script::setGlobal(n);
+		bn->ref = reference;
 		Tree::currentScene->guiManager->addChild(bn);
 		return (void*)bn;
 	}
@@ -99,14 +104,14 @@ namespace sinnca
 	static int newButton(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n > 2)
+		if (n != 1)
 		{
-			return luaL_error(L, "You need to name this button...");
+			return luaL_error(L, "You need to put this object into a variable");
 		}
 		
 		Script::checkTable(1);
-		createGuiButton(lua_tostring(L, 2));
-		return 0;
+		new guiButton();
+		return 1;
 	}
 
 	static int hover(lua_State* L)

@@ -1,35 +1,35 @@
 print("hello from lua!")
 
-font:new("test")
+test = font:new()
 test:setSize(16)
 test:setPath(resourcePath .. "Gravity-Light.ttf")
 test:generate()
 
-buffer:new("hi")
+hi = buffer:new()
 hi:load(resourcePath .. "helloworld.wav")
 
-source:new("test")
+test = source:new()
 test:setBuffer(hi)
 
-entity:new("player")
+player = entity:new()
 
-image:new("atlas")
+atlas = image:new()
 atlas:load(resourcePath .. "sinnca sprite.png")
 
-image:new("grass")
+grass = image:new()
 grass:load(resourcePath .. "iso_test.png")
 
-texture:new("grassTile")
+grassTile = texture:new()
 grassTile:setSource(grass)
 grassTile:setOffset(0, 0)
 
-texture:new("sinnca")
+sinnca = texture:new()
 sinnca:setSource(atlas)
 sinnca:setOffset(0, 0)
 
 player:setCol(sinnca)
 
-grid:new("tiles", 20, 20, true)
+tiles = grid:new(20, 20, true)
 
 for i = 0, 19 do
 	for j = 0, 19 do

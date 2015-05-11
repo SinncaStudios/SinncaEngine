@@ -14,12 +14,12 @@ namespace sinnca
 	static int newWidget(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
-			return luaL_error(L, "You need to name this widget...");
+			return luaL_error(L, "You need to put this object into a variable");
 		}
 		
-		guiWidget* wt = createGuiWidget(lua_tostring(L, 2));
+		guiWidget* wt = new guiWidget();
 		
 		Tree::currentScene->guiManager->addChild(wt);
 		return 1;

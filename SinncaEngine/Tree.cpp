@@ -24,9 +24,7 @@ namespace sinnca
 		
 		void setup(const char* path)
 		{
-			
-			root = createScene("root");
-			
+			root = new scene();
 			currentScene = root;
 			
 			root->entityStorage = NULL;
@@ -57,15 +55,13 @@ namespace sinnca
 	
 	static int l_dumptofile(lua_State* L)
 	{
-		
-		Tree::root->dumpToFile(lua_tostring(L, 2));
-		
+		//Tree::root->dumpToFile(lua_tostring(L, 2));
 		return 0;
 	}
 	
 	static int l_loadfromfile(lua_State* L)
 	{
-		Tree::root->readFromFile(lua_tostring(L, 2));
+		//Tree::root->readFromFile(lua_tostring(L, 2));
 		return 0;
 	}
 	

@@ -63,9 +63,8 @@ namespace sinnca
 	//
 	// http://stackoverflow.com/questions/6915555/how-to-transform-mouse-location-in-isometric-tiling-map
 	
-	grid::grid(std::string n, int xSize, int ySize, bool io)
+	grid::grid(int xSize, int ySize, bool io)
 	{
-		name = n;
 		iso = io;
 		
 		pos.x = 0.0;
@@ -120,12 +119,12 @@ namespace sinnca
 	
 	void grid::callBehavior()
 	{
-		for (int i = 0; i < noOfChildren; i++)
+		for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
 		{
-			//children[i]->callBehavior();
+			(*i)->update();
 		}
 		
-		Script::getGlobal(name);
+		Script::getReference(ref);
 		
 		Script::getLocal(-1, "update");
 		//Script::checkType(2, LUA_TFUNCTION);
@@ -240,37 +239,15 @@ namespace sinnca
 		}
 	}
 	
-	void* grid::operator new(size_t s, std::string n)
+	void* grid::operator new(size_t s)
 	{
-		Script::newBlankTable();
+		uint reference;
+		grid* gd = Script::createObject<grid>(&reference);
 		
-		Script::pushValue(1);
-		Script::setMetaTable(-2);
-		
-		Script::pushValue(1);
-		Script::setField(1, "__index");
-		
-		//entity** en = Script::newUserdata<entity*>();
-		grid** gd = (grid**)lua_newuserdata(Script::getState(), sizeof(grid*));
-		if (Tree::currentScene->gridStorage != NULL)
-		{
-			*gd = (grid*)Tree::currentScene->gridStorage->allocate((unsigned int)s, __alignof(grid));
-			
-		} else {
-			
-			*gd = (grid*)Heap->allocate((unsigned int)s, __alignof(grid));
-		}
-		
-		Script::getMetaTable("grid");
-		Script::setMetaTable(-2);
-		
-		Script::setField(-2, "__self");
-		
-		
-		Script::setGlobal(n);
-		Tree::currentScene->gridRef.push_back(*gd);
-		Tree::currentScene->nodeRef.push_back(*gd);
-		return ((void*)*gd);
+		gd->ref = reference;
+		Tree::currentScene->gridRef.push_back(gd);
+		Tree::currentScene->nodeRef.push_back(gd);
+		return ((void*)gd);
 	}
 	
 	void grid::operator delete(void *p)
@@ -293,14 +270,14 @@ namespace sinnca
 	static int l_newGrid(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 5)
+		if (n != 4)
 		{
 			return luaL_error(L, "You need to name this grid...");
 		}
 		
 		Script::checkTable(1);
-		createGrid(lua_tostring(L, 2), (int)lua_tointeger(L, 3), (int)lua_tointeger(L, 4), lua_toboolean(L, 5));
-		return 0;
+		new grid((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), lua_toboolean(L, 4));
+		return 1;
 	}
 	
 	static int l_setTex(lua_State* L)

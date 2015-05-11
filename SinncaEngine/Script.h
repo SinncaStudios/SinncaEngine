@@ -84,9 +84,16 @@ namespace sinnca
 		
 		void setGlobal(std::string name);
 		
+		uint createReference();
+		void getReference(uint r);
+		void unReference(uint r);
+		
 		template <class t>
-		t* createObject(Memory* allocator = Heap)
+		t* createObject( uint *ref = nullptr, Memory* allocator = nullptr)
 		{
+			if (allocator == nullptr)
+				allocator = Heap;
+			
 			
 			newBlankTable();
 			
@@ -106,7 +113,11 @@ namespace sinnca
 			setMetaTable(-2);
 			
 			setField(-2, "__self");
-			
+			if (ref)
+			{
+				pushValue(-1);
+				*ref = createReference();
+			}
 			return *ob;
 		}
 		

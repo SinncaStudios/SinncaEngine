@@ -12,19 +12,19 @@
 
 namespace sinnca
 {
-	guiString::guiString(std::string n) : guiWidget(n)
+	guiString::guiString()
 	{
-		/*
+		
 		draw = true;
 		
 		pos.x = 1;
 		pos.y = 1;
 		
-		col = &Palette->white;
+		col = &Palette::white;
 		
 		scl.x = 20;
 		scl.y = 20;
-		*/
+		
 		
 		ft = NULL;
 		str = "";
@@ -32,7 +32,7 @@ namespace sinnca
 	
 	guiString::~guiString()
 	{
-		
+		Script::unReference(ref);
 	}
 
 	void guiString::render()
@@ -78,11 +78,12 @@ namespace sinnca
 	}
 
 	
-	void* guiString::operator new(size_t s, std::string n)
+	void* guiString::operator new(size_t s)
 	{
-		guiString* st = Script::createObject<guiString>();
+		uint reference;
+		guiString* st = Script::createObject<guiString>(&reference);
 		
-		Script::setGlobal(n);
+		st->ref = reference;
 		Tree::currentScene->guiManager->addChild(st);
 		return (void*)st;
 	}
@@ -96,13 +97,13 @@ namespace sinnca
 	static int l_newString(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
-			return luaL_error(L, "You need to name this widget...");
+			return luaL_error(L, "You need to put this object into a variable");
 		}
 		
 		Script::checkTable(1);
-		createGuiString(lua_tostring(L, 2));
+		new guiString();
 		
 		return 1;
 	}

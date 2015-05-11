@@ -29,7 +29,7 @@ namespace sinnca
 		
 		ALfloat pitch, gain;
 		
-		source(std::string n);
+		source();
 		~source();
 		
 		void setBuffer(buffer* b);
@@ -39,12 +39,11 @@ namespace sinnca
 		void pause();
 		void rewind();
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 	};
 	
-	#define createSource(a) new(a)source(a)
 	
 	void registerSource(lua_State* L);
 	

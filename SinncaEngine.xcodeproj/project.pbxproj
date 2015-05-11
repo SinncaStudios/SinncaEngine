@@ -89,6 +89,7 @@
 		945AFB3D18B337EE00BA7AB9 /* ButtonCombo.h in Headers */ = {isa = PBXBuildFile; fileRef = 945AFB3B18B337EE00BA7AB9 /* ButtonCombo.h */; };
 		945AFB4018B5D57500BA7AB9 /* Heap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 945AFB3E18B5D57500BA7AB9 /* Heap.cpp */; };
 		945AFB4118B5D57500BA7AB9 /* Heap.h in Headers */ = {isa = PBXBuildFile; fileRef = 945AFB3F18B5D57500BA7AB9 /* Heap.h */; };
+		9461129A1AFE82580018E2DE /* SinncaEngine.framework in Resources */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
 		946179081848632B0048FF81 /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 946179071848632B0048FF81 /* Node.h */; };
 		946D06A21977492E00A39114 /* Palette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 946D06A01977492E00A39114 /* Palette.cpp */; };
 		946D06A41977492E00A39114 /* Palette.h in Headers */ = {isa = PBXBuildFile; fileRef = 946D06A11977492E00A39114 /* Palette.h */; };
@@ -1248,6 +1249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9461129A1AFE82580018E2DE /* SinncaEngine.framework in Resources */,
 				94AAFAA11996D15C000AA4E4 /* iso_test.png in Resources */,
 				945AFB3018ACA37900BA7AB9 /* main.lua in Resources */,
 				94412361198D2F5E00BB3179 /* sinnca sprite.png in Resources */,

@@ -13,9 +13,8 @@
 
 namespace sinnca
 {
-	image::image(std::string n) :
-	bound(false),
-	name(n)
+	image::image() :
+	bound(false)
 	{
 		glGenTextures(1, &data);
 	}
@@ -45,11 +44,12 @@ namespace sinnca
 		return data;
 	}
 	
-	void* image::operator new(size_t s, std::string n)
+	void* image::operator new(size_t s)
 	{
-		image* im = Script::createObject<image>();
+		uint reference;
+		image* im = Script::createObject<image>(&reference);
 		
-		Script::setGlobal(n);
+		im->ref = reference;
 		Tree::currentScene->imageRef.push_back(im);
 		return ((void*)im);
 	}
@@ -69,17 +69,15 @@ namespace sinnca
 	
 	static int l_newImage(lua_State* L)
 	{
-		
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
-			return luaL_error(L, "You need to name this image...");
+			return luaL_error(L, "You need to put this object into a variable");
 		}
 		
 		Script::checkTable(1);
-		
-		createImage(luaL_checkstring(L, 2));
-		return 0;
+		new image();
+		return 1;
 	}
 	
 	static int l_loadImage(lua_State* L)

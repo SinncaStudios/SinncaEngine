@@ -30,10 +30,7 @@ namespace sinnca
 		node* parent;
 		linkList<node*> children;
 		int noOfChildren;
-		
-		std::string name;
-		std::string behavior;
-		
+		uint ref;
 		
 		bool draw;
 		
@@ -70,11 +67,6 @@ namespace sinnca
 			
 		}
 		
-		
-		void setName(std::string n)
-		{
-			name = n;
-		}
 		
 		bool willDraw()
 		{

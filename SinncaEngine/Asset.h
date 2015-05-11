@@ -10,6 +10,7 @@
 #define SinncaEngine_Asset_h
 
 //#include "Types.h"
+#include "Script.h"
 #include <string>
 #include <assert.h>
 
@@ -26,6 +27,7 @@ namespace sinnca
 	protected:
 		
 		std::string path;
+		unsigned int ref;
 		
 	public:
 		
@@ -38,7 +40,7 @@ namespace sinnca
 		
 		virtual ~asset()
 		{
-			// to silence a silly warning
+			Script::unReference(ref);
 		}
 		
 		

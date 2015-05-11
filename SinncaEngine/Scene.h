@@ -79,15 +79,15 @@ namespace sinnca
 		
 		int pers();
 		
-		int readFromFile(std::string file);
-		int dumpToFile(std::string file);
+		//int readFromFile(std::string file);
+		//int dumpToFile(std::string file);
 		
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 	};
 	
-	#define createScene(a) new(a)scene()
+	//#define createScene(a) new(a)scene()
 	void registerScene(lua_State* L);
 }
 

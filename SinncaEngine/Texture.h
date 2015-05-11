@@ -18,6 +18,7 @@ namespace sinnca
 	class texture : public color
 	{
 		image* source;
+		uint ref;
 		
 		// Offset in image atlas
 		uint xOff, yOff;
@@ -27,10 +28,10 @@ namespace sinnca
 		
 		static constexpr auto metatable = "texture";
 		
-		texture(std::string n);
+		texture();
 		~texture();
 		
-		void* operator new(size_t s, std::string n);
+		void* operator new(size_t s);
 		void operator delete(void* p);
 		
 		void setSource(image* i);
@@ -43,8 +44,6 @@ namespace sinnca
 		void bind();
 	};
 	
-	
-#define createTexture(a) new(a)texture(a)
 	void registerTexture(lua_State* L);
 }
 

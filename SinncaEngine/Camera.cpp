@@ -29,7 +29,7 @@ namespace sinnca
 	}
 	camera::~camera()
 	{
-		
+		Script::unReference(ref);
 	}
 	
 	void camera::look()

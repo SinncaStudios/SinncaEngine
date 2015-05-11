@@ -19,11 +19,11 @@
 
 namespace sinnca
 {
-	scene::scene()
+	scene::scene() :
+	percLoaded(0.0f)
 	{
 		col = &Palette::defaultColor;
-		guiManager = createGuiMenu("mainMenu");
-		percLoaded = 0.0f;
+		guiManager = new guiMenu();
 		perspective = 0; // 2D by defualt
 		//entityStorage = memoryManager->heap->allocateNew<PoolAllocator>();
 	}
@@ -31,6 +31,7 @@ namespace sinnca
 	scene::~scene()
 	{
 		//memoryManager->heap->deallocateDelete(entityStorage);
+		Script::unReference(ref);
 	}
 	
 	void scene::onLoad()
@@ -77,30 +78,14 @@ namespace sinnca
 		return perspective;
 	}
 	
-	void* scene::operator new(size_t s, std::string n)
+	void* scene::operator new(size_t s)
 	{
+		//Create object in lua
+		uint reference;
+		scene* sn = Script::createObject<scene>(&reference);
 		
-		Script::newBlankTable();
-		
-		Script::pushValue(1);
-		Script::setMetaTable(-2);
-		
-		Script::pushValue(1);
-		Script::setField(1, "__index");
-		
-		scene** sn = (scene**)lua_newuserdata(Script::getState(), sizeof(scene*));
-		
-		*sn = (scene*)Heap->allocate((unsigned int)s, __alignof(scene));
-		(*sn)->name = n;
-		
-		Script::getMetaTable("entity");
-		Script::setMetaTable(-2);
-		
-		Script::setField(-2, "__self");
-		
-		
-		Script::setGlobal(n);
-		return ((void*)*sn);
+		sn->ref = reference;
+		return ((void*)sn);
 	}
 	
 	void scene::operator delete(void *p)
@@ -109,6 +94,7 @@ namespace sinnca
 		Heap->deallocate(p);
 	}
 	
+	/*
 	int scene::dumpToFile(std::string file)
 	{
 		
@@ -416,9 +402,11 @@ namespace sinnca
 		f.close();
 		return 0;
 	}
-	
+	 */
+	/*
 	int scene::readFromFile(std::string file)
 	{
+		
 		std::string wFileExt = file;
 		if (!wFileExt.find_last_of("."))
 		{
@@ -683,11 +671,12 @@ namespace sinnca
 		memoryManager->deallocate(textureContainer);
 		
 		f.close();
+		
 		return 0;
 	}
+	*/
 	
-	
-	
+	/*
 	static int l_dumptofile(lua_State* L)
 	{
 		int n = lua_gettop(L);
@@ -711,10 +700,11 @@ namespace sinnca
 		
 		return 0;
 	}
+	 */
 	
 	static const luaL_Reg sceneFuncs[] = {
-		{"dumpToFile", l_dumptofile},
-		{"loadFromFile", l_loadfromfile},
+		//{"dumpToFile", l_dumptofile},
+		//{"loadFromFile", l_loadfromfile},
 		{"setParent", l_setParent},
 		{"addChild", l_addChild},
 		{"removeChild", l_removeChild},

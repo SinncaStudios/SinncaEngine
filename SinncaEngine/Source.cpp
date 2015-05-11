@@ -12,16 +12,14 @@
 
 namespace sinnca
 {
-	source::source(std::string n)
+	source::source()
 	{
 		alGenSources(1, &theSource);
 		if ((Audio::error = alGetError() != AL_NO_ERROR))
 		{
-			printf("Source '%s' error: %d\n", n.c_str(), Audio::error);
+			printf("Source error: error in creation %d\n", Audio::error);
 		}
 		
-		
-		name = n;
 		
 		Tree::currentScene->addChild(this);
 		parent = Tree::currentScene;
@@ -52,7 +50,7 @@ namespace sinnca
 		alSourcei(theSource, AL_BUFFER, b->getBuffer());
 		if ((Audio::error = alGetError() != AL_NO_ERROR))
 		{
-			printf("Source '%s' error: %d\n", name.c_str(), Audio::error);
+			printf("Source error: setting buffer %d\n", Audio::error);
 		}
 		
 		theBuffer->addRef();
@@ -72,7 +70,7 @@ namespace sinnca
 			
 			if ((Audio::error = alGetError() != AL_NO_ERROR))
 			{
-				printf("Source '%s' error: %s\n", name.c_str(), alGetString(Audio::error));
+				printf("Source error: can't play %s\n", alGetString(Audio::error));
 			}
 		}
 	}
@@ -91,13 +89,13 @@ namespace sinnca
 		alSourceRewind(theSource);
 	}
 	
-	void* source::operator new(size_t s, std::string n)
+	void* source::operator new(size_t s)
 	{
 		//Create object in lua
+		uint reference;
+		source* sc = Script::createObject<source>(&reference);
 		
-		source* sc = Script::createObject<source>();
-		
-		Script::setGlobal(n);
+		sc->ref = reference;
 		Tree::currentScene->sourceRef.push_back(sc);
 		Tree::currentScene->nodeRef.push_back(sc);
 		return ((void*)sc);
@@ -119,15 +117,15 @@ namespace sinnca
 	static int l_newSource(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
-			return luaL_error(L, "You need to name this source...");
+			return luaL_error(L, "You need to put this object into a variable");
 		}
 		
 		Script::checkTable(1);
 		//new(luaL_checkstring(L, 2)) entity(luaL_checkstring(L, 2));
-		createSource(luaL_checkstring(L, 2));
-		return 0;
+		new source();
+		return 1;
 	}
 	
 	static int l_setBuffer(lua_State* L)

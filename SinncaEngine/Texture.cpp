@@ -12,10 +12,10 @@
 namespace sinnca
 {
 	
-	texture::texture(std::string n)
+	texture::texture() :
+	source(nullptr)
 	{
-		source = nullptr;
-		name = n;
+		
 	}
 	
 	texture::~texture()
@@ -24,11 +24,12 @@ namespace sinnca
 		
 	}
 	
-	void* texture::operator new(size_t s, std::string n)
+	void* texture::operator new(size_t s)
 	{
-		texture* tx = Script::createObject<texture>();
+		uint reference;
+		texture* tx = Script::createObject<texture>(&reference);
 		
-		Script::setGlobal(n);
+		tx->ref = reference;
 		Tree::currentScene->textureRef.push_back(tx);
 		Tree::currentScene->colorRef.push_back(tx);
 		return ((void*)tx);
@@ -112,14 +113,14 @@ namespace sinnca
 	static int l_newTexture(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
-			return luaL_error(L, "You need to name this texture...");
+			return luaL_error(L, "You need to put this object into a variable");
 		}
 		
 		Script::checkTable(1);
-		createTexture(luaL_checkstring(L, 2));
-		return 0;
+		new texture();
+		return 1;
 	}
 	
 	static int l_setSource(lua_State* L)
