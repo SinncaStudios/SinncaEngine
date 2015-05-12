@@ -52,7 +52,7 @@ namespace sinnca
 	}
 	
 	
-	
+	/*
 	static int l_dumptofile(lua_State* L)
 	{
 		//Tree::root->dumpToFile(lua_tostring(L, 2));
@@ -64,6 +64,7 @@ namespace sinnca
 		//Tree::root->readFromFile(lua_tostring(L, 2));
 		return 0;
 	}
+	 */
 	
 	/*
 	static const luaL_Reg rootFuncs[] = {

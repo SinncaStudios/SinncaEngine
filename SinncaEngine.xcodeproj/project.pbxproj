@@ -98,7 +98,6 @@
 		948D890019C5221E00E73F6A /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 948D88FD19C5221E00E73F6A /* Action.h */; };
 		949D5BE119CE10C20005BD8C /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 949D5BE019CE10C10005BD8C /* Engine.h */; };
 		949F0D341AAFEB1400CD246B /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 949F0D331AAFEB1400CD246B /* libpng16.a */; };
-		949F0D351AB0A62B00CD246B /* EntityInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 949F0D311AAFE3B500CD246B /* EntityInspector.xib */; };
 		94A7A1FD19D716230025EA2D /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A1FB19D716230025EA2D /* Listener.cpp */; };
 		94A7A1FE19D716230025EA2D /* Listener.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A7A1FC19D716230025EA2D /* Listener.h */; };
 		94A7A20219D71AED0025EA2D /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A20019D71AED0025EA2D /* Audio.cpp */; };
@@ -177,6 +176,8 @@
 		94C68FAF1A44F38E00FEB552 /* InputWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FAE1A44F38E00FEB552 /* InputWatcher.h */; };
 		94C68FB11A490ED700FEB552 /* AnalogHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68FB01A490ED700FEB552 /* AnalogHelper.h */; };
 		94CC22C61A84748D007858E8 /* DigitalButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94CC22C51A84748D007858E8 /* DigitalButton.cpp */; };
+		94D178F21B011A1200CA6E36 /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94D178F01B011A1200CA6E36 /* tinyxml2.cpp */; };
+		94D178F31B011A1200CA6E36 /* tinyxml2.h in Headers */ = {isa = PBXBuildFile; fileRef = 94D178F11B011A1200CA6E36 /* tinyxml2.h */; };
 		94E098491A9AD8FF0031D1E2 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94E098471A9AD8FF0031D1E2 /* AssetManager.cpp */; };
 		94E0984A1A9AD8FF0031D1E2 /* AssetManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 94E098481A9AD8FF0031D1E2 /* AssetManager.h */; };
 		94E0984D1AA597240031D1E2 /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94E0984B1AA597240031D1E2 /* Display.cpp */; };
@@ -319,7 +320,6 @@
 		948D88FC19C5221E00E73F6A /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = Action.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		948D88FD19C5221E00E73F6A /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		949D5BE019CE10C10005BD8C /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
-		949F0D311AAFE3B500CD246B /* EntityInspector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntityInspector.xib; sourceTree = "<group>"; };
 		949F0D331AAFEB1400CD246B /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = ../../../../usr/local/lib/libpng16.a; sourceTree = "<group>"; };
 		94A7A1FB19D716230025EA2D /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Listener.cpp; sourceTree = "<group>"; };
 		94A7A1FC19D716230025EA2D /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listener.h; sourceTree = "<group>"; };
@@ -413,6 +413,8 @@
 		94C68FAE1A44F38E00FEB552 /* InputWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputWatcher.h; sourceTree = "<group>"; };
 		94C68FB01A490ED700FEB552 /* AnalogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalogHelper.h; sourceTree = "<group>"; };
 		94CC22C51A84748D007858E8 /* DigitalButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DigitalButton.cpp; sourceTree = "<group>"; };
+		94D178F01B011A1200CA6E36 /* tinyxml2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml2.cpp; sourceTree = "<group>"; };
+		94D178F11B011A1200CA6E36 /* tinyxml2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml2.h; sourceTree = "<group>"; };
 		94E098471A9AD8FF0031D1E2 /* AssetManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetManager.cpp; sourceTree = "<group>"; };
 		94E098481A9AD8FF0031D1E2 /* AssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetManager.h; sourceTree = "<group>"; };
 		94E0984B1AA597240031D1E2 /* Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Display.cpp; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				94B6444E18E4CA4D00FBA7F1 /* OpenFile.cpp */,
 				943E19FA19F09B76009CA1CF /* CopyOnWrite.h */,
 				943E19F919F09B73009CA1CF /* CopyOnWrite.cpp */,
+				94D178EF1B0119F400CA6E36 /* TinyXML2 */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -730,7 +733,6 @@
 		94B344771820BCFE00C370DA = {
 			isa = PBXGroup;
 			children = (
-				949F0D311AAFE3B500CD246B /* EntityInspector.xib */,
 				94B3448A1820BCFE00C370DA /* SinncaEngine */,
 				94B3449F1820BCFF00C370DA /* SinncaEngineTests */,
 				94B344C418221A4700C370DA /* Sinnca Demo */,
@@ -971,6 +973,15 @@
 			name = "Input Watchers";
 			sourceTree = "<group>";
 		};
+		94D178EF1B0119F400CA6E36 /* TinyXML2 */ = {
+			isa = PBXGroup;
+			children = (
+				94D178F11B011A1200CA6E36 /* tinyxml2.h */,
+				94D178F01B011A1200CA6E36 /* tinyxml2.cpp */,
+			);
+			name = TinyXML2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1033,6 +1044,7 @@
 				945AFB2718A9848600BA7AB9 /* Tree.h in Headers */,
 				944D6CCF185C0B750083EAEC /* ListAlloc.h in Headers */,
 				94017E7919BE1EBD00C42EA4 /* ArtificialIntelligence.h in Headers */,
+				94D178F31B011A1200CA6E36 /* tinyxml2.h in Headers */,
 				945AFB02189A3C3D00BA7AB9 /* MemoryManager.h in Headers */,
 				94B6444C18E4969400FBA7F1 /* Shader.h in Headers */,
 				9405C10118C3E12900AFEDE9 /* Vertex.h in Headers */,
@@ -1213,7 +1225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				949F0D351AB0A62B00CD246B /* EntityInspector.xib in Resources */,
 				940B833A1AABA871006BCB59 /* Document.xib in Resources */,
 				940B833C1AABA871006BCB59 /* Images.xcassets in Resources */,
 				940B833F1AABA871006BCB59 /* MainMenu.xib in Resources */,
@@ -1354,6 +1365,7 @@
 				941D2F4E183AC205007EB1BE /* LinearAlloc.cpp in Sources */,
 				9405C10E18C50ABA00AFEDE9 /* Texture.cpp in Sources */,
 				9405C10A18C50A1D00AFEDE9 /* Image.cpp in Sources */,
+				94D178F21B011A1200CA6E36 /* tinyxml2.cpp in Sources */,
 				94B344B81820CB3200C370DA /* Power.cpp in Sources */,
 				9405C10418C4344100AFEDE9 /* Sprite.cpp in Sources */,
 			);
