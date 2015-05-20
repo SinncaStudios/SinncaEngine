@@ -51,6 +51,7 @@ namespace sinnca
 		~memManager();
 		
 		void* allocate(size_t size);
+		void* reallocate(size_t size, void* p);
 		void deallocate(void* p);
 		void start();
 		

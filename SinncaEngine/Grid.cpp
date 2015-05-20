@@ -98,7 +98,7 @@ namespace sinnca
 				data[i][j].xy[0] = (j - i) * tileX / 2;
 				data[i][j].xy[1] = (j + i) * tileY / 4;
 				
-				Tree::currentScene->nodeRef.push_back(&data[i][j]);
+				Tree::currentScene->assets.nodeRef.push_back(&data[i][j]);
 				
 			}
 		}
@@ -245,16 +245,16 @@ namespace sinnca
 		grid* gd = Script::createObject<grid>(&reference);
 		
 		gd->ref = reference;
-		Tree::currentScene->gridRef.push_back(gd);
-		Tree::currentScene->nodeRef.push_back(gd);
+		Tree::currentScene->assets.gridRef.push_back(gd);
+		Tree::currentScene->assets.nodeRef.push_back(gd);
 		return ((void*)gd);
 	}
 	
 	void grid::operator delete(void *p)
 	{
-		if (Tree::currentScene->gridStorage != NULL)
+		if (Tree::currentScene->assets.gridStorage != NULL)
 		{
-			Tree::currentScene->gridStorage->deallocate(p);
+			Tree::currentScene->assets.gridStorage->deallocate(p);
 			
 		} else {
 			

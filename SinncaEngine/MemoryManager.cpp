@@ -63,6 +63,28 @@ namespace sinnca
 		return temp;
 	}
 	
+	void* memManager::reallocate(size_t size, void *p)
+	{
+		if (size == 0)
+		{
+			// do nothing
+			return p;
+		}
+		
+		void* newPointer = nullptr;
+		for (int i = 0; i < alloations.size(); i++)
+		{
+			if (alloations[i] == p)
+			{
+				newPointer = realloc(p, size);
+				
+				break;
+			}
+		}
+		
+		return newPointer;
+	}
+	
 	void memManager::deallocate(void *p)
 	{
 		for (int i = 0; i < alloations.size(); i++)

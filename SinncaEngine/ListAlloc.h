@@ -43,37 +43,6 @@ namespace sinnca
 	};
 	 
 	
-	/*
-	class FreeListAllocator : public Allocator
-	{
-	public:
-		FreeListAllocator(ui32 size, void* pStart);
-		~FreeListAllocator();
-		
-		void* allocate(ui32 size, ui8 alignment);
-		
-		void deallocate(void* p);
-		
-	private:
-		
-		struct AllocationHeader
-		{
-			ui32 size;
-			ui32 adjustment;
-		};
-		
-		struct FreeBlock
-		{
-			ui32 size;
-			FreeBlock* pNext;
-		};
-		
-		//FreeListAllocator(const FreeListAllocator&) {}; //Prevent copies because it might cause errors
-		//FreeListAllocator& operator=(const FreeListAllocator&) {};
-		
-		FreeBlock* _pFreeBlocks;
-	};
-	 */
 }
 
 #endif /* defined(__SinncaEngine__ListAlloc__) */

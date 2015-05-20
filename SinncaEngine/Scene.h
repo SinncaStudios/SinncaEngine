@@ -16,6 +16,7 @@
 #include "AssetManager.h"
 #include "Camera.h"
 
+/*
 // asset tracking
 #include "Entity.h"
 #include "Grid.h"
@@ -24,6 +25,7 @@
 #include "Source.h"
 #include "Buffer.h"
 #include "Action.h"
+*/
 
 namespace sinnca
 {
@@ -40,7 +42,12 @@ namespace sinnca
 		
 		camera mainCamera;
 		pool* cameraStorage;
+		assetManager assets;
+		guiMenu* guiManager;
 		
+		bool alloced;
+		
+		/*
 		// storage
 		guiMenu* guiManager;
 		pool* entityStorage;
@@ -66,7 +73,7 @@ namespace sinnca
 		std::vector<buffer*> bufferRef;
 		std::vector<action*> actionRef;
 		std::vector<font*> fontRef;
-		
+		*/
 		
 		scene();
 		~scene();

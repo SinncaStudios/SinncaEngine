@@ -27,7 +27,7 @@ namespace sinnca
 			root = new scene();
 			currentScene = root;
 			
-			root->entityStorage = NULL;
+			//root->assets.entityStorage = NULL;
 			
 			
 #ifdef snMobile

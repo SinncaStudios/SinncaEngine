@@ -41,7 +41,7 @@ namespace sinnca
 			{
 				prevBlock = freeBlocks;
 				freeBlocks = freeBlocks->next;
-				continue; // HERE >:(
+				continue;
 			}
 			
 			assert(sizeof(allocHeader) >= sizeof(freeBlocks));
@@ -53,7 +53,7 @@ namespace sinnca
 				
 				if(prevBlock != nullptr)
 				{
-					prevBlock = freeBlocks->next;
+					prevBlock->next = freeBlocks->next;
 				} else {
 					freeBlocks = freeBlocks->next;
 				}
@@ -66,7 +66,7 @@ namespace sinnca
 				
 				if(prevBlock != nullptr)
 				{
-					prevBlock = nextBlock;
+					prevBlock->next = nextBlock;
 					
 				} else {
 					

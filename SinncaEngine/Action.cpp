@@ -81,44 +81,18 @@ namespace sinnca
 	
 	void* action::operator new(size_t s, std::string n)
 	{
-		//Create object in lua
-		
-		
-		Script::newBlankTable();
-		
-		Script::pushValue(1);
-		Script::setMetaTable(-2);
-		
-		Script::pushValue(1);
-		Script::setField(1, "__index");
-		
-		action** ac = (action**)lua_newuserdata(Script::getState(), sizeof(action*));
-		if (Tree::currentScene->actionStorage != NULL)
-		{
-			*ac = (action*)Tree::currentScene->actionStorage->allocate((unsigned int)s, __alignof(action));
-			
-		} else {
-			
-			*ac = (action*)Heap->allocate((unsigned int)s, __alignof(action));
-		}
-		
-		//(*en)->name = n;
-		
-		Script::getMetaTable("buffer");
-		Script::setMetaTable(-2);
-		
-		Script::setField(-2, "__self");
-		
+		uint reference;
+		action* ac = Script::createObject<action>(&reference, Tree::currentScene->assets.actionStorage);
 		
 		Script::setGlobal(n);
-		Tree::currentScene->actionRef.push_back(*ac);
-		return ((void*)*ac);
+		Tree::currentScene->assets.actionRef.push_back(ac);
+		return (void*)ac;
 	}
 	void action::operator delete(void *p)
 	{
-		if (Tree::currentScene->actionStorage != NULL)
+		if (Tree::currentScene->assets.actionStorage != NULL)
 		{
-			Tree::currentScene->actionStorage->deallocate(p);
+			Tree::currentScene->assets.actionStorage->deallocate(p);
 			
 		} else {
 			

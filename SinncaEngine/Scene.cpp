@@ -702,9 +702,28 @@ namespace sinnca
 	}
 	 */
 	
+	static int l_initAllocators(lua_State* L)
+	{
+		scene* sn;
+		int n = lua_gettop(L);
+		if (n == 1)
+		{
+			sn = Script::checkType<scene>(1);
+			sn->assets.init();
+			sn->alloced = true;
+			
+		} else if (n == 2) {
+			sn = Script::checkType<scene>(1);
+			sn->assets.init((uint)lua_tointeger(L, 2));
+			sn->alloced = true;
+		}
+		return 0;
+	}
+	
 	static const luaL_Reg sceneFuncs[] = {
 		//{"dumpToFile", l_dumptofile},
 		//{"loadFromFile", l_loadfromfile},
+		{"initAllocators", l_initAllocators},
 		{"setParent", l_setParent},
 		{"addChild", l_addChild},
 		{"removeChild", l_removeChild},

@@ -53,15 +53,15 @@ namespace sinnca
 		buffer* bf = Script::createObject<buffer>(&reference);
 		
 		bf->ref = reference;
-		Tree::currentScene->bufferRef.push_back(bf);
+		Tree::currentScene->assets.bufferRef.push_back(bf);
 		return ((void*)bf);
 	}
 	
 	void buffer::operator delete(void *p)
 	{
-		if (Tree::currentScene->bufferStorage != NULL)
+		if (Tree::currentScene->assets.bufferStorage != NULL)
 		{
-			Tree::currentScene->bufferStorage->deallocate(p);
+			Tree::currentScene->assets.bufferStorage->deallocate(p);
 			
 		} else {
 			
