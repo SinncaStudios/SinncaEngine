@@ -17,16 +17,8 @@ namespace sinnca
 #define Heap (heap::Instance())
 	class heap : public Memory
 	{
-		struct chunk
-		{
-			ui32 size;
-			ui32 used;
-			list* data;
-			chunk* next;
-		};
-		
-		chunk* heapList;
-		chunk* current;
+	
+		list* heapList;
 		
 	public:
 		

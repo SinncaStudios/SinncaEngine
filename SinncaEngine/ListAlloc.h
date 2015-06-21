@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Memory.h"
 
+
 namespace sinnca
 {
 	
@@ -31,10 +32,12 @@ namespace sinnca
 		
 		// ...and this block you cannot cha-a-ange...
 		block* freeBlock;
+		bool canResize;
+		ulong capacity;
 
 	public:
 		
-		list(ui32 size);
+		list(ui32 size, bool resize = false);
 		~list();
 		
 		void* allocate(ui32 size, ui8 align);

@@ -18,8 +18,10 @@ namespace sinnca
 	namespace Tree
 	{
 		extern scene* root;
-		
 		extern scene* currentScene;
+		
+		extern pool* sceneStorage;
+		extern pool* guiStorage;
 		
 		void setup(const char* path = "");
 		void shutdown();

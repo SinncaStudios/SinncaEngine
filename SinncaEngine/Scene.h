@@ -90,7 +90,7 @@ namespace sinnca
 		//int dumpToFile(std::string file);
 		
 		
-		void* operator new(size_t s);
+		void* operator new(size_t s, std::string n = "");
 		void operator delete(void* p);
 	};
 	

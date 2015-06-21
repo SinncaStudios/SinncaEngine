@@ -22,12 +22,41 @@ namespace sinnca
 		scene* root;
 		scene* currentScene;
 		
+		pool* sceneStorage;
+		pool* guiStorage;
+		
 		void setup(const char* path)
 		{
-			root = new scene();
+			sceneStorage = new pool(sizeof(scene), alignof(scene), sizeof(scene) * 25);
+			guiStorage = new pool(sizeof(guiWidget), alignof(guiWidget), sizeof(guiWidget) * 50);
+			
+			root = new("root") scene();
+			/*
+			Script::newBlankTable();
+			
+			Script::pushValue(1);
+			Script::setMetaTable(-2);
+			
+			Script::pushValue(1);
+			Script::setField(1, "__index");
+			
+			
+			scene** ob = Script::newUserdata<scene*>();
+			
+			*ob = (scene*)Heap->allocate(sizeof(scene), alignof(scene));
+			
+			
+			luaL_getmetatable(Script::getState(), "scene");
+			Script::setMetaTable(-2);
+			
+			Script::setField(-2, "__self");
+			Script::setGlobal("root");
+			root = *ob;
+			*/
+			
 			currentScene = root;
 			
-			//root->assets.entityStorage = NULL;
+			root->assets.entityStorage = NULL;
 			
 			
 #ifdef snMobile
@@ -40,6 +69,8 @@ namespace sinnca
 		
 		void shutdown()
 		{
+			delete guiStorage;
+			delete sceneStorage;
 			delete root;
 		}
 		

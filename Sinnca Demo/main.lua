@@ -1,5 +1,8 @@
 print("hello from lua!")
 
+
+testscene = scene:new()
+
 test = font:new()
 test:setSize(16)
 test:setPath(resourcePath .. "Gravity-Light.ttf")
@@ -41,11 +44,16 @@ end
 for i, k in pairs(_G) do
 print(i, k)
 end
-
-
-for i, k in pairs(palette) do
+print("---")
+for i, k in pairs(root) do
 print(i, k)
 end
+print("---")
+for i, k in pairs(sinnca) do
+print(i, k)
+end
+root:initAllocators()
+--testscene:initAllocators()
 
 test:play()
 
