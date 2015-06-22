@@ -159,6 +159,7 @@
 		94BC91C6199B168100B53026 /* TimeKeeping.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C3199B168100B53026 /* TimeKeeping.h */; };
 		94BC91CA199C79F800B53026 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94BC91C8199C79F800B53026 /* Timer.cpp */; };
 		94BC91CC199C79F800B53026 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 94BC91C9199C79F800B53026 /* Timer.h */; };
+		94C622771B376EF9007BC59D /* OptTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C622761B376EF9007BC59D /* OptTree.h */; };
 		94C68F8D1A3801FB00FEB552 /* Gravity-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94C68F8B1A37FFF600FEB552 /* Gravity-Light.ttf */; };
 		94C68F901A43C94600FEB552 /* InputType.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F8F1A43C94600FEB552 /* InputType.h */; };
 		94C68F921A43CFE900FEB552 /* DigitalButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C68F911A43CFE900FEB552 /* DigitalButton.h */; };
@@ -396,6 +397,7 @@
 		94BC91C3199B168100B53026 /* TimeKeeping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeKeeping.h; sourceTree = "<group>"; };
 		94BC91C8199C79F800B53026 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		94BC91C9199C79F800B53026 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		94C622761B376EF9007BC59D /* OptTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptTree.h; sourceTree = "<group>"; };
 		94C68F8B1A37FFF600FEB552 /* Gravity-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gravity-Light.ttf"; path = "../Gravity-Light.ttf"; sourceTree = "<group>"; };
 		94C68F8F1A43C94600FEB552 /* InputType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputType.h; sourceTree = "<group>"; };
 		94C68F911A43CFE900FEB552 /* DigitalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalButton.h; sourceTree = "<group>"; };
@@ -712,6 +714,7 @@
 			children = (
 				945AFB1918A97AE900BA7AB9 /* Scene.h */,
 				945AFB1818A97AE900BA7AB9 /* Scene.cpp */,
+				94C622751B376EAF007BC59D /* OptTrees */,
 				945AFB1318A749A700BA7AB9 /* Entity.h */,
 				945AFB1218A749A700BA7AB9 /* Entity.cpp */,
 				945AFB1D18A9844600BA7AB9 /* Grid.h */,
@@ -939,6 +942,14 @@
 			name = Gui;
 			sourceTree = "<group>";
 		};
+		94C622751B376EAF007BC59D /* OptTrees */ = {
+			isa = PBXGroup;
+			children = (
+				94C622761B376EF9007BC59D /* OptTree.h */,
+			);
+			name = OptTrees;
+			sourceTree = "<group>";
+		};
 		94C68F8E1A43C90400FEB552 /* Input Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -1006,6 +1017,7 @@
 				94BBDA0418D63DC700CA2D2B /* GuiString.h in Headers */,
 				94BBDA4218D7FA1000CA2D2B /* i_graphics.h in Headers */,
 				94B6445218E4CA4D00FBA7F1 /* OpenFile.h in Headers */,
+				94C622771B376EF9007BC59D /* OptTree.h in Headers */,
 				94BBDA0818D642D700CA2D2B /* GuiMenu.h in Headers */,
 				944D6CCB185A782A0083EAEC /* StackAlloc.h in Headers */,
 				944D6CD3185C2A9F0083EAEC /* Game.h in Headers */,
