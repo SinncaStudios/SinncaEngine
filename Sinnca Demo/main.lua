@@ -49,10 +49,10 @@ for i, k in pairs(root) do
 print(i, k)
 end
 print("---")
-for i, k in pairs(sinnca) do
+for i, k in pairs(scene) do
 print(i, k)
 end
-root:initAllocators()
+root.initAllocators(root)
 --testscene:initAllocators()
 
 test:play()

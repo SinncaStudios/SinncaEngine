@@ -58,8 +58,8 @@ namespace sinnca
 				float texCoX = percX / m->getVertices()->texco[0];
 				float texCoY = percY / m->getVertices()->texco[1];
 				
-				ui32* pix = col->getPixel(texCoX * col->getWidth(), texCoY * col->getHeight());
-				if (pix[3] == 0x00)
+				ui32 pix = col->getPixel(texCoX * col->getWidth(), texCoY * col->getHeight());
+				if ((pix & 255) == 0x00)
 				{
 					return false;
 					

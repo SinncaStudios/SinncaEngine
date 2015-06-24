@@ -62,9 +62,11 @@ namespace sinnca
 		void setSolid(int x, int y, bool s);
 		void setTexture(int x, int y, texture* t);
 		bool checkBounds(int& x, int& y);
-		void getTileXY(int x, int y, int& _x, int& _y);
+		bool getTileXY(int x, int y, int& _x, int& _y);
 		int getX();
 		int getY();
+		int getTileX();
+		int getTileY();
 		tile* getTile(int x, int y);
 		
 		void render();

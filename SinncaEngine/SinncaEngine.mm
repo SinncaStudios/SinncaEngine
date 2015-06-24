@@ -60,6 +60,7 @@ using namespace sinnca;
 	
 	if (running)
 	{
+		#warning remove all of this! check FPS in loopItr
 		static CFTimeInterval delta = CFAbsoluteTimeGetCurrent() - engineTime;
 		
 		if (delta > 10.0f)

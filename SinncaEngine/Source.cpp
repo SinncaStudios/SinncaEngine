@@ -21,7 +21,7 @@ namespace sinnca
 		}
 		
 		
-		Tree::currentScene->addChild(this);
+		Tree::currentScene->node::addChild(this);
 		parent = Tree::currentScene;
 		
 		pitch = 1.0f;

@@ -13,6 +13,8 @@
 #include "Script.h"
 #include "Global.h"
 
+#include <new>
+
 namespace sinnca
 {
 
@@ -30,33 +32,11 @@ namespace sinnca
 			sceneStorage = new pool(sizeof(scene), alignof(scene), sizeof(scene) * 25);
 			guiStorage = new pool(sizeof(guiWidget), alignof(guiWidget), sizeof(guiWidget) * 50);
 			
-			root = new("root") scene();
-			/*
-			Script::newBlankTable();
-			
-			Script::pushValue(1);
-			Script::setMetaTable(-2);
-			
-			Script::pushValue(1);
-			Script::setField(1, "__index");
-			
-			
-			scene** ob = Script::newUserdata<scene*>();
-			
-			*ob = (scene*)Heap->allocate(sizeof(scene), alignof(scene));
-			
-			
-			luaL_getmetatable(Script::getState(), "scene");
-			Script::setMetaTable(-2);
-			
-			Script::setField(-2, "__self");
-			Script::setGlobal("root");
-			root = *ob;
-			*/
+			root = new scene();
 			
 			currentScene = root;
 			
-			root->assets.entityStorage = NULL;
+			//root->assets.entityStorage = NULL;
 			
 			
 #ifdef snMobile
@@ -96,15 +76,63 @@ namespace sinnca
 		return 0;
 	}
 	 */
-	
-	/*
-	static const luaL_Reg rootFuncs[] = {
-		{"dumpToFile", l_dumptofile},
-		{"loadFromFile", l_loadfromfile},
-		{"setParent", l_setParent},
-		{"addChild", l_addChild},
-		{"removeChild", l_removeChild},
+	static int l_rootInitAllocators(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n == 1)
+		{
+			Tree::root->assets.init();
+			Tree::root->alloced = true;
+		}
 		
+		return 0;
+	}
+	
+	static int l_rootSetParent(lua_State* L)
+	{
+		std::cout << "Root scene cannot have a parent" << std::endl;
+		return 0;
+	}
+	
+	static int l_rootAddChild(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n < 2)
+		{
+			std::cout << "You need to provide at least one other node to add. This function can handle batch adding of nodes." << std::endl;
+			return 0;
+		}
+		for (int i = 2; i < n; i++)
+		{
+			Tree::root->addChild(Script::checkType<node>(i));
+		}
+		return 0;
+	}
+	
+	static int l_rootRemoveChild(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n < 2)
+		{
+			std::cout << "You need to provide at least one other node to remove. This function can handle batch removal of nodes." << std::endl;
+			return 0;
+		}
+		for (int i = 2; i < n; i++)
+		{
+			Tree::root->removeChild(Script::checkType<node>(i));
+		}
+		
+		return 0;
+	}
+	
+	static const luaL_Reg rootFuncs[] = {
+		//{"dumpToFile", l_dumptofile},
+		//{"loadFromFile", l_loadfromfile},
+		{"initAllocators", l_rootInitAllocators},
+		{"setParent", l_rootSetParent},
+		{"addChild", l_rootAddChild},
+		{"removeChild", l_rootRemoveChild},
+		/*
 		{"setG", l_setG},
 		{"setR", l_setR},
 		{"setS", l_setS},
@@ -118,12 +146,22 @@ namespace sinnca
 		{"getS", l_getScl},
 		
 		{"setCol", l_setColor},
+		 */
 		{NULL, NULL}
 	};
-	*/
+	
 	void registerTree(lua_State* L)
 	{
-		//Script::registerType<ree>(rootFuncs);
+		luaL_newmetatable(L, "root");
+		
+		luaL_register(L, 0, rootFuncs);
+		lua_pushvalue(L, -1);
+		
+		lua_setfield(L, -2, "__index");
+		
+		
+		
+		luaL_register(L, "root", rootFuncs);
 	}
 }
 
