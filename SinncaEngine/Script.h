@@ -141,6 +141,26 @@ namespace sinnca
 			return *((T**)ud);
 		}
 		
+		template<typename T>
+		T* checkTypeUnprotected(int ind)
+		{
+			void* ud = 0;
+			
+			// check for table object
+			luaL_checktype(L, ind, LUA_TTABLE);
+			
+			// push the key we're looking for (in this case, it's "__self")
+			lua_pushstring(L, "__self");
+			// get our table
+			lua_gettable(L, ind);
+			
+			// cast userdata pointer to whatever type
+			ud = lua_touserdata(L, -1);
+			luaL_argcheck(L, ud != 0, ind, "The object given cannot be cast into the required type...");
+			
+			return *((T**)ud);
+		}
+		
 		template<class T>
 		void registerType(const luaL_Reg funcs[])
 		{
