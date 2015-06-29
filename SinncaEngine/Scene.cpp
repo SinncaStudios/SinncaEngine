@@ -78,11 +78,17 @@ namespace sinnca
 		return perspective;
 	}
 	
-	void* scene::operator new(size_t s)
+	void* scene::operator new(size_t s, std::string n)
 	{
 		//Create object in lua
 		uint reference;
 		scene* sn = Script::createObject<scene>(&reference);
+		
+		if (n != "")
+		{
+			//Script::pushValue(1);
+			Script::setGlobal(n);
+		}
 		
 		sn->ref = reference;
 		return ((void*)sn);
@@ -702,9 +708,44 @@ namespace sinnca
 	}
 	 */
 	
+	static int l_newScene(lua_State* L)
+	{
+		int n = lua_gettop(L);
+		if (n != 1)
+		{
+			return luaL_error(L, "You need to put this object into a variable");
+		}
+		
+		Script::checkTable(1);
+		new scene();
+		return 1;
+	}
+	
+	static int l_initAllocators(lua_State* L)
+	{
+		scene* sn;
+		int n = lua_gettop(L);
+		if (n == 1)
+		{
+			sn = Script::checkType<scene>(1);
+			sn->assets.init();
+			sn->alloced = true;
+			
+		} else if (n == 2) {
+			sn = Script::checkType<scene>(1);
+			sn->assets.init((uint)lua_tointeger(L, 2));
+			sn->alloced = true;
+		}
+		return 0;
+	}
+	
 	static const luaL_Reg sceneFuncs[] = {
+		
+		{"new", l_newScene},
+		{"initAllocators", l_initAllocators},
 		//{"dumpToFile", l_dumptofile},
 		//{"loadFromFile", l_loadfromfile},
+		
 		{"setParent", l_setParent},
 		{"addChild", l_addChild},
 		{"removeChild", l_removeChild},

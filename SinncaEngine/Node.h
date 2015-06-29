@@ -100,6 +100,10 @@ namespace sinnca
 			noOfChildren--;
 		}
 		
+		uint getReference()
+		{
+			return ref;
+		}
 		
 		friend class scene;
 		friend class entity;

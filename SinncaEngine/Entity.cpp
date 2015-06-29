@@ -110,8 +110,8 @@ namespace sinnca
 		entity* en = Script::createObject<entity>(&reference);
 		
 		en->ref = reference;
-		Tree::currentScene->entityRef.push_back(en);
-		Tree::currentScene->nodeRef.push_back(en);
+		Tree::currentScene->assets.entityRef.push_back(en);
+		Tree::currentScene->assets.nodeRef.push_back(en);
 		return ((void*)en);
 		
 		/*
@@ -124,9 +124,9 @@ namespace sinnca
 	}
 	void entity::operator delete(void *p)
 	{
-		if (Tree::currentScene->entityStorage != NULL)
+		if (Tree::currentScene->assets.entityStorage != NULL)
 		{
-			Tree::currentScene->entityStorage->deallocate(p);
+			Tree::currentScene->assets.entityStorage->deallocate(p);
 			
 		} else {
 			

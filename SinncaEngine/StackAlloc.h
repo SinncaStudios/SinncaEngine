@@ -36,46 +36,9 @@ namespace sinnca
 		void* allocate(ui32 size, ui8 align);
 		void deallocate(void* point);
 		
-		//void* operator new(size_t s);
-		//void operator delete(void* p);
 		
 	};
 	 
-	
-	/*
-	class StackAllocator : public Allocator
-	{
-	public:
-		StackAllocator(ui32 size, void* pStart);
-		~StackAllocator();
-		
-		void* allocate(ui32 size, ui8 alignment);
-		
-		void deallocate(void* p);
-		
-	private:
-		//StackAllocator(const StackAllocator&) {}; //Prevent copies because it might cause errors
-		//StackAllocator& operator=(const StackAllocator&) {};
-		
-		struct AllocationHeader
-		{
-#if _DEBUG
-			void* pPrevAddress;
-#endif
-			ui8 adjustment;
-		};
-		
-		void* _pInitialPosition;
-		
-#if _DEBUG
-		void* _pPrevPosition;
-#endif
-		
-		void* _pCurrentPosition;
-		
-		ui32   _size;
-	};
-	 */
 }
 
 #endif /* defined(__SinncaEngine__StackAlloc__) */

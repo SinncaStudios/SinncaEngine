@@ -89,8 +89,13 @@
 		945AFB3D18B337EE00BA7AB9 /* ButtonCombo.h in Headers */ = {isa = PBXBuildFile; fileRef = 945AFB3B18B337EE00BA7AB9 /* ButtonCombo.h */; };
 		945AFB4018B5D57500BA7AB9 /* Heap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 945AFB3E18B5D57500BA7AB9 /* Heap.cpp */; };
 		945AFB4118B5D57500BA7AB9 /* Heap.h in Headers */ = {isa = PBXBuildFile; fileRef = 945AFB3F18B5D57500BA7AB9 /* Heap.h */; };
-		9461129A1AFE82580018E2DE /* SinncaEngine.framework in Resources */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
 		946179081848632B0048FF81 /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 946179071848632B0048FF81 /* Node.h */; };
+		946260941B0673CA00A373C5 /* SinncaEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
+		946260951B0673CA00A373C5 /* SinncaEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		946260991B06742700A373C5 /* SinncaEngine.framework in Resources */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
+		9462609A1B06777400A373C5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B344D318221A4700C370DA /* MainMenu.xib */; };
+		9462609D1B0679BF00A373C5 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9462609C1B0679BF00A373C5 /* GameView.mm */; };
+		9462609E1B067AE300A373C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344871820BCFE00C370DA /* Foundation.framework */; };
 		946D06A21977492E00A39114 /* Palette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 946D06A01977492E00A39114 /* Palette.cpp */; };
 		946D06A41977492E00A39114 /* Palette.h in Headers */ = {isa = PBXBuildFile; fileRef = 946D06A11977492E00A39114 /* Palette.h */; };
 		948B9C11182612010010E7ED /* Memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 948B9C0F182612010010E7ED /* Memory.h */; };
@@ -132,13 +137,11 @@
 		94B344CB18221A4700C370DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B344CA18221A4700C370DA /* main.m */; };
 		94B344CF18221A4700C370DA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 94B344CD18221A4700C370DA /* Credits.rtf */; };
 		94B344D218221A4700C370DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B344D118221A4700C370DA /* AppDelegate.m */; };
-		94B344D518221A4700C370DA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B344D318221A4700C370DA /* MainMenu.xib */; };
 		94B344D718221A4700C370DA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B344D618221A4700C370DA /* Images.xcassets */; };
 		94B344DD18221A4700C370DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344991820BCFF00C370DA /* XCTest.framework */; };
 		94B344DE18221A4700C370DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344841820BCFE00C370DA /* Cocoa.framework */; };
 		94B344E618221A4700C370DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94B344E418221A4700C370DA /* InfoPlist.strings */; };
 		94B344E818221A4700C370DA /* Sinnca_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B344E718221A4700C370DA /* Sinnca_DemoTests.m */; };
-		94B344EF18221AAD00C370DA /* SinncaEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B344811820BCFE00C370DA /* SinncaEngine.framework */; };
 		94B6444A18E4969400FBA7F1 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B6444818E4969400FBA7F1 /* Shader.cpp */; };
 		94B6444C18E4969400FBA7F1 /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B6444918E4969400FBA7F1 /* Shader.h */; };
 		94B6445018E4CA4D00FBA7F1 /* OpenFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B6444E18E4CA4D00FBA7F1 /* OpenFile.cpp */; };
@@ -195,6 +198,13 @@
 			remoteGlobalIDString = 940B832B1AABA870006BCB59;
 			remoteInfo = "Sinnca Editor";
 		};
+		946260961B0673CA00A373C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94B344781820BCFE00C370DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94B344801820BCFE00C370DA;
+			remoteInfo = SinncaEngine.framework;
+		};
 		94B3449C1820BCFF00C370DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94B344781820BCFE00C370DA /* Project object */;
@@ -210,6 +220,20 @@
 			remoteInfo = "Sinnca Demo";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		946260981B0673CB00A373C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				946260951B0673CA00A373C5 /* SinncaEngine.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		94017E7519BE1EBD00C42EA4 /* ArtificialIntelligence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArtificialIntelligence.cpp; sourceTree = "<group>"; };
@@ -315,6 +339,8 @@
 		945AFB3E18B5D57500BA7AB9 /* Heap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Heap.cpp; sourceTree = "<group>"; };
 		945AFB3F18B5D57500BA7AB9 /* Heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heap.h; sourceTree = "<group>"; };
 		946179071848632B0048FF81 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		9462609B1B0679BF00A373C5 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		9462609C1B0679BF00A373C5 /* GameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameView.mm; sourceTree = "<group>"; };
 		946D06A01977492E00A39114 /* Palette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Palette.cpp; sourceTree = "<group>"; };
 		946D06A11977492E00A39114 /* Palette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Palette.h; sourceTree = "<group>"; };
 		948B9C0F182612010010E7ED /* Memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memory.h; sourceTree = "<group>"; };
@@ -471,7 +497,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94B344EF18221AAD00C370DA /* SinncaEngine.framework in Frameworks */,
+				9462609E1B067AE300A373C5 /* Foundation.framework in Frameworks */,
+				946260941B0673CA00A373C5 /* SinncaEngine.framework in Frameworks */,
 				94B344C318221A4700C370DA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -878,6 +905,8 @@
 				94B344D018221A4700C370DA /* AppDelegate.h */,
 				94B344D118221A4700C370DA /* AppDelegate.m */,
 				94B344D318221A4700C370DA /* MainMenu.xib */,
+				9462609B1B0679BF00A373C5 /* GameView.h */,
+				9462609C1B0679BF00A373C5 /* GameView.mm */,
 				94B344D618221A4700C370DA /* Images.xcassets */,
 				94B344C518221A4700C370DA /* Supporting Files */,
 			);
@@ -1157,10 +1186,12 @@
 				94B344BE18221A4700C370DA /* Sources */,
 				94B344BF18221A4700C370DA /* Frameworks */,
 				94B344C018221A4700C370DA /* Resources */,
+				946260981B0673CB00A373C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				946260971B0673CA00A373C5 /* PBXTargetDependency */,
 			);
 			name = "Sinnca Demo";
 			productName = "Sinnca Demo";
@@ -1272,7 +1303,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9461129A1AFE82580018E2DE /* SinncaEngine.framework in Resources */,
+				9462609A1B06777400A373C5 /* MainMenu.xib in Resources */,
+				946260991B06742700A373C5 /* SinncaEngine.framework in Resources */,
 				94AAFAA11996D15C000AA4E4 /* iso_test.png in Resources */,
 				945AFB3018ACA37900BA7AB9 /* main.lua in Resources */,
 				94412361198D2F5E00BB3179 /* sinnca sprite.png in Resources */,
@@ -1285,7 +1317,6 @@
 				94AAFA9D1996D15C000AA4E4 /* iso_grass copy.png in Resources */,
 				940B83261AA9463E006BCB59 /* BasicVert.vs in Resources */,
 				94B344CF18221A4700C370DA /* Credits.rtf in Resources */,
-				94B344D518221A4700C370DA /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1395,6 +1426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9462609D1B0679BF00A373C5 /* GameView.mm in Sources */,
 				94B344D218221A4700C370DA /* AppDelegate.m in Sources */,
 				94B344CB18221A4700C370DA /* main.m in Sources */,
 			);
@@ -1415,6 +1447,11 @@
 			isa = PBXTargetDependency;
 			target = 940B832B1AABA870006BCB59 /* Sinnca Editor */;
 			targetProxy = 940B83451AABA871006BCB59 /* PBXContainerItemProxy */;
+		};
+		946260971B0673CA00A373C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94B344801820BCFE00C370DA /* SinncaEngine.framework */;
+			targetProxy = 946260961B0673CA00A373C5 /* PBXContainerItemProxy */;
 		};
 		94B3449D1820BCFF00C370DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1778,6 +1815,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sinnca Demo/Sinnca Demo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1785,6 +1823,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Sinnca Demo/Sinnca Demo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1795,9 +1834,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = /;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sinnca Demo/Sinnca Demo-Prefix.pch";
 				INFOPLIST_FILE = "Sinnca Demo/Sinnca Demo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

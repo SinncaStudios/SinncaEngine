@@ -98,7 +98,7 @@ namespace sinnca
 				data[i][j].xy[0] = (j - i) * tileX / 2;
 				data[i][j].xy[1] = (j + i) * tileY / 4;
 				
-				Tree::currentScene->nodeRef.push_back(&data[i][j]);
+				Tree::currentScene->assets.nodeRef.push_back(&data[i][j]);
 				
 			}
 		}
@@ -166,15 +166,16 @@ namespace sinnca
 		}
 	}
 	
-	void grid::getTileXY(int x, int y, int& _x, int& _y)
+	bool grid::getTileXY(int x, int y, int& _x, int& _y)
 	{
 		if (x > size[0]-1 || x < 0 || y > size[1]-1 || y < 0)
 		{
-			return;
+			return false;
 		}
 		
 		_x = data[x][y].getX();
 		_y = data[x][y].getY();
+		return true;
 	}
 	
 	int grid::getX()
@@ -184,6 +185,16 @@ namespace sinnca
 	int grid::getY()
 	{
 		return size[1];
+	}
+	
+	int grid::getTileX()
+	{
+		return tileX;
+	}
+	
+	int grid::getTileY()
+	{
+		return tileY;
 	}
 	
 	tile* grid::getTile(int x, int y)
@@ -245,16 +256,16 @@ namespace sinnca
 		grid* gd = Script::createObject<grid>(&reference);
 		
 		gd->ref = reference;
-		Tree::currentScene->gridRef.push_back(gd);
-		Tree::currentScene->nodeRef.push_back(gd);
+		Tree::currentScene->assets.gridRef.push_back(gd);
+		Tree::currentScene->assets.nodeRef.push_back(gd);
 		return ((void*)gd);
 	}
 	
 	void grid::operator delete(void *p)
 	{
-		if (Tree::currentScene->gridStorage != NULL)
+		if (Tree::currentScene->assets.gridStorage != NULL)
 		{
-			Tree::currentScene->gridStorage->deallocate(p);
+			Tree::currentScene->assets.gridStorage->deallocate(p);
 			
 		} else {
 			
@@ -301,10 +312,19 @@ namespace sinnca
 		{
 			grid* gr = Script::checkType<grid>(1);
 			int x, y;
-			gr->getTileXY((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), x, y);
+			if (!gr->getTileXY((int)lua_tointeger(L, 2), (int)lua_tointeger(L, 3), x, y))
+			{
+				lua_pushinteger(L, gr->getTileX() * -1);
+				lua_pushinteger(L, gr->getTileY() * -1);
+				
+			} else {
+				
+				lua_pushinteger(L, x);
+				lua_pushinteger(L, y);
+			}
 			
-			lua_pushinteger(L, x);
-			lua_pushinteger(L, y);
+		} else {
+			return 0;
 		}
 		
 		return 2;

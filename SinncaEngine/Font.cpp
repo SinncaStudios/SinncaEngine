@@ -243,9 +243,9 @@ namespace sinnca
 	
 	void font::operator delete(void *p)
 	{
-		if (Tree::currentScene->fontStorage != NULL)
+		if (Tree::currentScene->assets.fontStorage != NULL)
 		{
-			Tree::currentScene->fontStorage->deallocate(p);
+			Tree::currentScene->assets.fontStorage->deallocate(p);
 			
 		} else {
 			Heap->deallocate(p);

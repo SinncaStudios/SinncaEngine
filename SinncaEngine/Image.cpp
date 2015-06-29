@@ -50,15 +50,15 @@ namespace sinnca
 		image* im = Script::createObject<image>(&reference);
 		
 		im->ref = reference;
-		Tree::currentScene->imageRef.push_back(im);
+		Tree::currentScene->assets.imageRef.push_back(im);
 		return ((void*)im);
 	}
 	
 	void image::operator delete(void *p)
 	{
-		if (Tree::currentScene->imageStorage != NULL)
+		if (Tree::currentScene->assets.imageStorage != NULL)
 		{
-			Tree::currentScene->imageStorage->deallocate(p);
+			Tree::currentScene->assets.imageStorage->deallocate(p);
 			
 		} else {
 			

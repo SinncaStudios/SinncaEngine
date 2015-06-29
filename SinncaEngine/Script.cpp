@@ -39,21 +39,13 @@ namespace sinnca
 		
 		void doFile(std::string file)
 		{
-			luaL_dofile(L, file.c_str());
-			/*
-			 try
-			 {
-			 
-			 luaL_dofile(L, file.c_str());
-			 
-			 }
-			 catch (const std::exception &TheError)
-			 {
-			 
-			 std::cout << TheError.what();
-			 
-			 }
-			 */
+			if (luaL_dofile(L, file.c_str()))
+			{
+				//printf("%s\n", lua_tostring(L, -1));
+				std::cout << lua_tostring(L, -1) << std::endl;
+			}
+			
+			
 		}
 		
 		void doString(std::string str)

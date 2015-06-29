@@ -13,17 +13,17 @@
 #include "Memory.h"
 #include "Heap.h"
 
+extern "C"
+{
+#include <Lua/lua.h>
+#include <Lua/lualib.h>
+#include <Lua/lauxlib.h>
+}
+
 namespace sinnca
 {
 		
-	extern "C"
-	{
-		
-		#include<Lua/lua.h>
-		#include<Lua/lualib.h>
-		#include<Lua/lauxlib.h>
-		
-	}
+	
 
 	
 	namespace Script
@@ -109,7 +109,7 @@ namespace sinnca
 			*ob = (t*)allocator->allocate(sizeof(t), alignof(t));
 			
 			
-			luaL_getmetatable(L, t::metatable);
+			getMetaTable(t::metatable);
 			setMetaTable(-2);
 			
 			setField(-2, "__self");
@@ -137,6 +137,10 @@ namespace sinnca
 			// cast userdata pointer to whatever type
 			ud = lua_touserdata(L, -1);
 			luaL_argcheck(L, ud != 0, ind, "The object given cannot be cast into the required type...");
+			if (ud == nullptr)
+			{
+				return nullptr;
+			}
 			
 			return *((T**)ud);
 		}

@@ -23,6 +23,8 @@ namespace sinnca
 		
 	public:
 		
+		static constexpr auto metatable = "action";
+		
 		action(std::string n);
 		~action();
 		

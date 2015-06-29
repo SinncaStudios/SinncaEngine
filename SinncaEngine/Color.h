@@ -58,17 +58,9 @@ namespace sinnca
 			Graphics::currentShader->uniformVar("mainColor", toFloat(r), toFloat(g), toFloat(b), toFloat(a));
 		}
 		
-		virtual ui32* getPixel(float u = 0.0f, float v = 0.0f)
+		virtual ui32 getPixel(float u = 0.0f, float v = 0.0f)
 		{
-			ui32 workingCopy;
-			ui32* product = &workingCopy;
-			
-			product[0] = r;
-			product[1] = g;
-			product[2] = b;
-			product[3] = a;
-			
-			return product;
+			return (r << 24) + (g << 16) + (b << 8) + a;
 		}
 		
 		virtual uint getWidth()

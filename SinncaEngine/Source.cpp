@@ -21,7 +21,7 @@ namespace sinnca
 		}
 		
 		
-		Tree::currentScene->addChild(this);
+		Tree::currentScene->node::addChild(this);
 		parent = Tree::currentScene;
 		
 		pitch = 1.0f;
@@ -96,16 +96,16 @@ namespace sinnca
 		source* sc = Script::createObject<source>(&reference);
 		
 		sc->ref = reference;
-		Tree::currentScene->sourceRef.push_back(sc);
-		Tree::currentScene->nodeRef.push_back(sc);
+		Tree::currentScene->assets.sourceRef.push_back(sc);
+		Tree::currentScene->assets.nodeRef.push_back(sc);
 		return ((void*)sc);
 	}
 	
 	void source::operator delete(void *p)
 	{
-		if (Tree::currentScene->sourceStorage != NULL)
+		if (Tree::currentScene->assets.sourceStorage != NULL)
 		{
-			Tree::currentScene->sourceStorage->deallocate(p);
+			Tree::currentScene->assets.sourceStorage->deallocate(p);
 			
 		} else {
 			

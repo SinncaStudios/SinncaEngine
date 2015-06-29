@@ -8,13 +8,17 @@
 
 #include "ListAlloc.h"
 #include "MemoryManager.h"
+#include "Utility.h"
 
 namespace sinnca
 {
 	
-	list::list(ui32 size)
+	list::list(ui32 size, bool resize) :
+	canResize(resize),
+	capacity(size)
 	{
-		freeBlock = (block*)memoryManager->allocate(size);
+		data = memoryManager->allocate(size);
+		freeBlock = (block*)data;
 		assert(size > sizeof(freeBlock));
 		
 		freeBlock->size = size;
@@ -32,59 +36,90 @@ namespace sinnca
 		
 		block* prevBlock = nullptr;
 		block* freeBlocks = freeBlock;
+		bool trying = true;
 		
-		while(freeBlocks)
+		do
 		{
-			ui8 adjust = adjustHeader(freeBlocks, align, sizeof(allocHeader));
-			
-			if (freeBlocks->size < size + adjust)
+			trying = false;
+			while(freeBlocks)
 			{
-				prevBlock = freeBlocks;
-				freeBlocks = freeBlocks->next;
-				continue; // HERE >:(
-			}
-			
-			assert(sizeof(allocHeader) >= sizeof(freeBlocks));
-			
-			if(freeBlocks->size - size - adjust <= sizeof(allocHeader))
-			{
+				ui8 adjust = adjustHeader(freeBlocks, align, sizeof(allocHeader));
 				
-				size = freeBlocks->size;
-				
-				if(prevBlock != nullptr)
+				if (freeBlocks->size < size + adjust)
 				{
-					prevBlock = freeBlocks->next;
-				} else {
+					prevBlock = freeBlocks;
 					freeBlocks = freeBlocks->next;
+					continue;
 				}
 				
-			} else {
+				assert(sizeof(allocHeader) >= sizeof(freeBlocks));
 				
-				block* nextBlock = (block*)((uintptr_t)freeBlocks + size +adjust);
-				nextBlock->size = freeBlocks->size - size - adjust;
-				nextBlock->next = freeBlocks->next;
-				
-				if(prevBlock != nullptr)
+				if(freeBlocks->size - size - adjust <= sizeof(allocHeader))
 				{
-					prevBlock = nextBlock;
+					
+					size = freeBlocks->size;
+					
+					if(prevBlock != nullptr)
+					{
+						prevBlock->next = freeBlocks->next;
+					} else {
+						freeBlocks = freeBlocks->next;
+					}
 					
 				} else {
 					
-					freeBlock = nextBlock;
+					block* nextBlock = (block*)((uintptr_t)freeBlocks + size +adjust);
+					nextBlock->size = freeBlocks->size - size - adjust;
+					nextBlock->next = freeBlocks->next;
+					
+					if(prevBlock != nullptr)
+					{
+						prevBlock->next = nextBlock;
+						
+					} else {
+						
+						freeBlock = nextBlock;
+					}
+					
 				}
 				
+				uintptr_t alignedAddress = (uintptr_t)freeBlocks + adjust;
+				allocHeader* header = (allocHeader*)(alignedAddress - sizeof(allocHeader));
+				header->size = size + adjust;
+				header->adjust = adjust;
+				
+				usedMemory += adjust + size;
+				numOfAllocations++;
+				
+				return (void*)alignedAddress;
 			}
 			
-			uintptr_t alignedAddress = (uintptr_t)freeBlocks + adjust;
-			allocHeader* header = (allocHeader*)(alignedAddress - sizeof(allocHeader));
-			header->size = size + adjust;
-			header->adjust = adjust;
-			
-			usedMemory += adjust + size;
-			numOfAllocations++;
-			
-			return (void*)alignedAddress;
-		}
+			if (canResize)
+			{
+				// if we reach this point, it means that this allocator has run out of memory, BUT NEVER FEAR! We can re-allocate
+				size_t allocSize = toMegabyte(1);
+				if (size > allocSize)
+					allocSize = size;
+				
+				
+				block* newBlock = (block*)memoryManager->reallocate(size + allocSize, freeBlock);
+				size += allocSize;
+				
+				if (newBlock != nullptr)
+				{
+					freeBlock = newBlock;
+					
+				} else {
+					memoryManager->deallocate(freeBlock);
+					assert("Memory resizing failed!");
+				}
+				freeBlock = newBlock;
+				
+				// now go and make the actual allocation
+				trying = true;
+			}
+		} while (trying);
+		
 		
 		return nullptr;
 	}
@@ -163,6 +198,37 @@ namespace sinnca
 		
 		numOfAllocations--;
 		usedMemory -= size;
+		
+		
+		if (canResize)
+		{
+			// check size after deallocation
+			// shrink the block if you can
+		 
+			if ((capacity - usedMemory) > toMegabyte(1.5))
+			{
+				// shrink so that 1MB is free
+				ui32 allocSize = (ui32)capacity - (ui32)toMegabyte(1);
+				
+				while ((capacity - usedMemory) > toMegabyte(1.5)) {
+					allocSize -= toMegabyte(1);
+					printf("size of data: %lu\nfree mem: %lu\n", capacity, capacity - usedMemory);
+				}
+				
+				void* newBlock = memoryManager->reallocate(size + allocSize, data);
+				if (newBlock != nullptr)
+				{
+					freeBlock = (block*)newBlock;
+					freeBlock->size = allocSize;
+					
+				} else {
+					memoryManager->deallocate(freeBlock);
+					assert("Memory resizing failed!");
+				}
+				
+			}
+		}
+		
 	}
 	 
 	
