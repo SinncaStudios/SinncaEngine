@@ -36,7 +36,11 @@ namespace sinnca
 				// this is virtual, so just return true
 				return true;
 			}
-		}
+		};
+		
+	protected:
+		
+		leaf* rootLeaf;
 		
 	};
 }

@@ -160,7 +160,10 @@ namespace sinnca
 			
 			// cast userdata pointer to whatever type
 			ud = lua_touserdata(L, -1);
-			luaL_argcheck(L, ud != 0, ind, "The object given cannot be cast into the required type...");
+			if (ud == nullptr)
+			{
+				return nullptr;
+			}
 			
 			return *((T**)ud);
 		}

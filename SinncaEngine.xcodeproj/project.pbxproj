@@ -24,6 +24,8 @@
 		9405C12F18C5932F00AFEDE9 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405C12E18C5932F00AFEDE9 /* libfreetype.a */; };
 		9405C13718C90E3C00AFEDE9 /* Array.h in Headers */ = {isa = PBXBuildFile; fileRef = 9405C13618C90E3B00AFEDE9 /* Array.h */; };
 		9405C13918CB947400AFEDE9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9405C13818CB947400AFEDE9 /* GLKit.framework */; };
+		940786121B70702F00B3C314 /* QuadTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 940786101B70702F00B3C314 /* QuadTree.cpp */; };
+		940786131B70702F00B3C314 /* QuadTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 940786111B70702F00B3C314 /* QuadTree.h */; };
 		940B83241AA9463E006BCB59 /* BasicFrag.fs in Resources */ = {isa = PBXBuildFile; fileRef = 940B83221AA9463E006BCB59 /* BasicFrag.fs */; };
 		940B83261AA9463E006BCB59 /* BasicVert.vs in Resources */ = {isa = PBXBuildFile; fileRef = 940B83231AA9463E006BCB59 /* BasicVert.vs */; };
 		940B83321AABA871006BCB59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B83311AABA871006BCB59 /* AppDelegate.m */; };
@@ -101,6 +103,8 @@
 		948B9C11182612010010E7ED /* Memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 948B9C0F182612010010E7ED /* Memory.h */; };
 		948D88FE19C5221E00E73F6A /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948D88FC19C5221E00E73F6A /* Action.cpp */; };
 		948D890019C5221E00E73F6A /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 948D88FD19C5221E00E73F6A /* Action.h */; };
+		9496B8431B76E81F00BDB870 /* LineTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9496B8411B76E81F00BDB870 /* LineTree.cpp */; };
+		9496B8441B76E81F00BDB870 /* LineTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 9496B8421B76E81F00BDB870 /* LineTree.h */; };
 		949D5BE119CE10C20005BD8C /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 949D5BE019CE10C10005BD8C /* Engine.h */; };
 		949F0D341AAFEB1400CD246B /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 949F0D331AAFEB1400CD246B /* libpng16.a */; };
 		94A7A1FD19D716230025EA2D /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94A7A1FB19D716230025EA2D /* Listener.cpp */; };
@@ -262,6 +266,8 @@
 		9405C13418C804B600AFEDE9 /* libILUT.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libILUT.1.dylib; path = ../../../../usr/local/lib/libILUT.1.dylib; sourceTree = "<group>"; };
 		9405C13618C90E3B00AFEDE9 /* Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Array.h; sourceTree = "<group>"; };
 		9405C13818CB947400AFEDE9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		940786101B70702F00B3C314 /* QuadTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuadTree.cpp; sourceTree = "<group>"; };
+		940786111B70702F00B3C314 /* QuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadTree.h; sourceTree = "<group>"; };
 		940B83221AA9463E006BCB59 /* BasicFrag.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicFrag.fs; sourceTree = "<group>"; };
 		940B83231AA9463E006BCB59 /* BasicVert.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicVert.vs; sourceTree = "<group>"; };
 		940B832C1AABA870006BCB59 /* Sinnca Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sinnca Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -346,6 +352,8 @@
 		948B9C0F182612010010E7ED /* Memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memory.h; sourceTree = "<group>"; };
 		948D88FC19C5221E00E73F6A /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = Action.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		948D88FD19C5221E00E73F6A /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		9496B8411B76E81F00BDB870 /* LineTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineTree.cpp; sourceTree = "<group>"; };
+		9496B8421B76E81F00BDB870 /* LineTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineTree.h; sourceTree = "<group>"; };
 		949D5BE019CE10C10005BD8C /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		949F0D331AAFEB1400CD246B /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = ../../../../usr/local/lib/libpng16.a; sourceTree = "<group>"; };
 		94A7A1FB19D716230025EA2D /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Listener.cpp; sourceTree = "<group>"; };
@@ -975,6 +983,10 @@
 			isa = PBXGroup;
 			children = (
 				94C622761B376EF9007BC59D /* OptTree.h */,
+				9496B8421B76E81F00BDB870 /* LineTree.h */,
+				9496B8411B76E81F00BDB870 /* LineTree.cpp */,
+				940786111B70702F00B3C314 /* QuadTree.h */,
+				940786101B70702F00B3C314 /* QuadTree.cpp */,
 			);
 			name = OptTrees;
 			sourceTree = "<group>";
@@ -1040,6 +1052,7 @@
 				94C68F921A43CFE900FEB552 /* DigitalButton.h in Headers */,
 				945AFB2318A9845D00BA7AB9 /* Camera.h in Headers */,
 				945AFB3418B1E48800BA7AB9 /* RenderObj.h in Headers */,
+				940786131B70702F00B3C314 /* QuadTree.h in Headers */,
 				94C68FAF1A44F38E00FEB552 /* InputWatcher.h in Headers */,
 				941E45FD1A0FC08E00310EAB /* DoubleList.h in Headers */,
 				946D06A41977492E00A39114 /* Palette.h in Headers */,
@@ -1057,6 +1070,7 @@
 				94A7A20B19D7B75F0025EA2D /* Source.h in Headers */,
 				94C68F941A43D4DE00FEB552 /* AnalogButton.h in Headers */,
 				941D2F51183DDFBC007EB1BE /* Utility.h in Headers */,
+				9496B8441B76E81F00BDB870 /* LineTree.h in Headers */,
 				945AFB3918B3377B00BA7AB9 /* RapidPress.h in Headers */,
 				94C68FAC1A44E96800FEB552 /* UpandDown.h in Headers */,
 				941D2F4F183AC205007EB1BE /* LinearAlloc.h in Headers */,
@@ -1389,6 +1403,7 @@
 				945AFB2618A9848600BA7AB9 /* Tree.cpp in Sources */,
 				943E19F819F0690F009CA1CF /* LoadWAV.cpp in Sources */,
 				945AFB0A189DA60100BA7AB9 /* Graphics.cpp in Sources */,
+				9496B8431B76E81F00BDB870 /* LineTree.cpp in Sources */,
 				94BBDA0018D63CBB00CA2D2B /* GuiButton.cpp in Sources */,
 				944D6CCA185A782A0083EAEC /* StackAlloc.cpp in Sources */,
 				948D88FE19C5221E00E73F6A /* Action.cpp in Sources */,
@@ -1398,6 +1413,7 @@
 				945AFB4018B5D57500BA7AB9 /* Heap.cpp in Sources */,
 				94BBDA0118D63CBB00CA2D2B /* GuiMenu.cpp in Sources */,
 				9405C10018C3E12900AFEDE9 /* Vertex.cpp in Sources */,
+				940786121B70702F00B3C314 /* QuadTree.cpp in Sources */,
 				94C68FA31A44E07000FEB552 /* ButtonHold.cpp in Sources */,
 				94E098491A9AD8FF0031D1E2 /* AssetManager.cpp in Sources */,
 				944D6CCE185C0B750083EAEC /* ListAlloc.cpp in Sources */,
