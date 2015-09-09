@@ -20,11 +20,12 @@
 namespace sinnca
 {
 	scene::scene() :
-	percLoaded(0.0f)
+	percLoaded(0.0f),
+	loadable(false),
+	retain(false)
 	{
 		col = &Palette::defaultColor;
 		guiManager = new guiMenu();
-		perspective = 0; // 2D by defualt
 		//entityStorage = memoryManager->heap->allocateNew<PoolAllocator>();
 	}
 	
@@ -36,22 +37,44 @@ namespace sinnca
 	
 	void scene::onLoad()
 	{
-		switch (perspective)
-		{
-			case 0:
-				Graphics::ortho(-1.0f, 1.0f);
-				break;
-				
-			case 1:
-				Graphics::perspective(100.f, 0.1f, 35.0f);
-				break;
-			default:
-				break;
-		}
+		mainCamera.setup();
+		
+		
+		Script::getReference(ref);
+		
+		Script::getLocal(-1, "onLoad");
+		Script::call(0, 0);
+		
+		Script::doFile(file);
 	}
 	void scene::unLoad()
 	{
+		if (!Tree::currentScene->retain) {
+			Tree::currentScene->assets.shutDown();
+		}
 		
+		Script::getReference(ref);
+		
+		Script::getLocal(-1, "unLoad");
+		Script::call(0, 0);
+	}
+	
+	bool scene::switchTo()
+	{
+		Tree::currentScene->unLoad();
+		
+		Tree::currentScene = this;
+		Graphics::sceneColor(col);
+		return 1;
+	}
+	
+	void scene::setLoadable(bool b)
+	{
+		loadable = b;
+	}
+	void scene::setRetain(bool b)
+	{
+		retain = b;
 	}
 	
 	void scene::update()
@@ -65,7 +88,7 @@ namespace sinnca
 	
 	void scene::render()
 	{
-		Graphics::sceneColor(col->toFloat(col->r), col->toFloat(col->g), col->toFloat(col->b));
+		//Graphics::sceneColor(col->toFloat(col->r), col->toFloat(col->g), col->toFloat(col->b));
 		
 		for (linkList<node*>::iterator i = children.begin(); i != children.end(); ++i)
 		{
@@ -73,10 +96,6 @@ namespace sinnca
 		}
 	}
 	
-	int scene::pers()
-	{
-		return perspective;
-	}
 	
 	void* scene::operator new(size_t s, std::string n)
 	{
@@ -721,6 +740,45 @@ namespace sinnca
 		return 1;
 	}
 	
+	static int l_switchScene(lua_State* L)
+	{
+		scene* sn;
+		int n = lua_gettop(L);
+		if (n == 1)
+		{
+			sn = Script::checkType<scene>(1);
+			sn->switchTo();
+		}
+		
+		return 0;
+	}
+	
+	static int l_loadable(lua_State* L)
+	{
+		scene* sn;
+		int n = lua_gettop(L);
+		if (n == 2)
+		{
+			sn = Script::checkType<scene>(1);
+			sn->setLoadable(lua_toboolean(L, 2));
+		}
+		
+		return 0;
+	}
+	
+	static int l_retain(lua_State* L)
+	{
+		scene* sn;
+		int n = lua_gettop(L);
+		if (n == 2)
+		{
+			sn = Script::checkType<scene>(1);
+			sn->setRetain(lua_toboolean(L, 2));
+		}
+		
+		return 0;
+	}
+	
 	static int l_initAllocators(lua_State* L)
 	{
 		scene* sn;
@@ -743,6 +801,9 @@ namespace sinnca
 		
 		{"new", l_newScene},
 		{"initAllocators", l_initAllocators},
+		{"switchTo", l_switchScene},
+		{"setLoadable", l_loadable},
+		{"setRetain", l_retain},
 		//{"dumpToFile", l_dumptofile},
 		//{"loadFromFile", l_loadfromfile},
 		
@@ -763,6 +824,7 @@ namespace sinnca
 		{"getS", l_getScl},
 		
 		{"setCol", l_setColor},
+		
 		{NULL, NULL}
 	};
 	

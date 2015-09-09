@@ -15,7 +15,7 @@
 namespace sinnca
 {
 	
-	class guiButton : public guiWidget
+	class guiButton : public guiWidget, public digitalButton
 	{
 		
 		bool useAlph;

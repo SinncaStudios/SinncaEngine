@@ -27,6 +27,7 @@ namespace sinnca
 		SINNCA_TEXTURE_MATRIX = 2
 	};
 	
+	class color;
 	
 	namespace Graphics
 	{
@@ -67,6 +68,7 @@ namespace sinnca
 		void setScreenSize(int w, int h);
 		void enableScissor(int x, int y, int w, int h);
 		void sceneColor(float r, float g, float b);
+		void sceneColor(color* cl);
 		
 		void move(point p);
 		void move(float x, float y, float z);

@@ -30,6 +30,7 @@ namespace sinnca
 		// each variable is one byte with a range of 0 to 255
 		ui8 r, g, b, a;
 		std::string name;
+		uint ref;
 
 		color(std::string n = "")
 		{
@@ -72,15 +73,17 @@ namespace sinnca
 			return 1;
 		}
 		
-		void* operator new(size_t s, std::string n)
+		void* operator new(size_t s)
 		{
-			color* cl = Script::createObject<color>();
+			//Create object in lua
+			uint reference;
+			color* cl = Script::createObject<color>(&reference);
 			
-			Script::setGlobal(n);
-			return (void*)cl;
+			cl->ref = reference;
+			return ((void*)cl);
 		}
-		#define createColor(a) new(a)color(a)
-		#define createColour(a) new(a)color(a)
+//		#define createColor(a) new(a)color(a)
+//		#define createColour(a) new(a)color(a)
 		
 		void operator delete(void* p)
 		{
@@ -93,14 +96,14 @@ namespace sinnca
 	static int l_newColor(lua_State* L)
 	{
 		int n = lua_gettop(L);
-		if (n != 2)
+		if (n != 1)
 		{
-			return luaL_error(L, "You need to name this color...");
+			return luaL_error(L, "You need to put this object into a variable");
 		}
 		
 		Script::checkTable(1);
-		createColor(lua_tostring(L, 2));
-		return 0;
+		new color();
+		return 1;
 	}
 	
 	static int l_setColorValue(lua_State* L)

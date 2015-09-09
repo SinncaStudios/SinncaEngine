@@ -2,6 +2,10 @@ print("hello from lua!")
 
 
 testscene = scene:new()
+reddish = color:new()
+
+reddish:setColor(225, 50, 67)
+testscene:setCol(reddish)
 
 test = font:new()
 test:setSize(16)
@@ -65,6 +69,14 @@ function player:update()
 	
 	if Key.space:wasPressed() == 1 then
 		print("space")
+	end
+	
+	if Key.q:wasPressed() == 1 then
+		testscene:switchTo()
+	end
+	
+	if Key.e:wasPressed() == 1 then
+		root:switchTo()
 	end
 	
 end

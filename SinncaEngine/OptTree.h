@@ -9,27 +9,23 @@
 #ifndef SinncaEngine_OptTree_h
 #define SinncaEngine_OptTree_h
 
-#include "Node.h"
+//#include "Node.h"
+//#include "Types.h"
 
 namespace sinnca
 {
+	/*
 	class optTree
 	{
 		// when the objects in a leaf node exceed this limit, the node will subdivide
 		uint objectsPerLeaf;
 		
-		struct leaf : public node
+		struct leaf
 		{
 			leaf* subNodes;
 			uint level;
 			
-			virtual void update()
-			{
-				for (auto i = children.begin(); i != children.end(); ++i)
-				{
-					(*i)->update();
-				}
-			}
+			virtual void update() = 0;
 			
 			virtual bool subdivide()
 			{
@@ -43,6 +39,7 @@ namespace sinnca
 		leaf* rootLeaf;
 		
 	};
+	 */
 }
 
 #endif

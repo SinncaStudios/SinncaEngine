@@ -32,22 +32,35 @@ namespace sinnca
 		Script::unReference(ref);
 	}
 	
-	void camera::look()
+	void camera::setup()
 	{
-		
+		if (isOrtho)
+		{
+			Graphics::ortho(-1.0f, 1.0f);
+			
+		} else {
+			Graphics::perspective(100.f, 0.1f, 35.0f);
+		}
 	}
 	
-	void camera::look2D()
+	void camera::look()
 	{
-		Graphics::setMatrixMode(SINNCA_PROJECTION_MATRIX);
-		// move camera
-		Graphics::move(pos);
-		
-		// zoom is taking z and putting in in the x and y
-		Graphics::scale(zoom.x, zoom.x, 0.0);
-		
-		// put the modelview back
-		Graphics::setMatrixMode(SINNCA_MODELVIEW_MATRIX);
+		if (isOrtho)
+		{
+			Graphics::setMatrixMode(SINNCA_PROJECTION_MATRIX);
+			// move camera
+			Graphics::move(pos);
+			
+			// zoom is taking z and putting in in the x and y
+			Graphics::scale(zoom.x, zoom.x, 0.0);
+			
+			// put the modelview back
+			Graphics::setMatrixMode(SINNCA_MODELVIEW_MATRIX);
+			
+		} else {
+			
+			
+		}
 	}
 	
 	void camera::render()

@@ -33,6 +33,7 @@ namespace sinnca
 			guiStorage = new pool(sizeof(guiWidget), alignof(guiWidget), sizeof(guiWidget) * 50);
 			
 			root = new scene();
+			root->setRetain(true);
 			
 			currentScene = root;
 			
@@ -109,6 +110,12 @@ namespace sinnca
 		return 0;
 	}
 	
+	static int l_switchScene(lua_State* L)
+	{
+		Tree::root->switchTo();
+		return 0;
+	}
+	
 	static int l_rootRemoveChild(lua_State* L)
 	{
 		int n = lua_gettop(L);
@@ -147,6 +154,7 @@ namespace sinnca
 		
 		{"setCol", l_setColor},
 		 */
+		{"switchTo", l_switchScene},
 		{NULL, NULL}
 	};
 	

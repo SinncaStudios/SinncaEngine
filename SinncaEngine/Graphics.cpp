@@ -19,6 +19,7 @@
 
 #include "Tree.h"
 #include "Camera.h"
+#include "Color.h"
 
 namespace sinnca
 {
@@ -83,14 +84,10 @@ namespace sinnca
 			
 			
 			currentShader->bindShader();
-			if (Tree::currentScene->pers() == 0)
-			{
-				
-				Tree::currentScene->mainCamera.look2D();
-				
-				Tree::currentScene->render();
-				
-			}
+			
+			Tree::currentScene->mainCamera.look();
+			Tree::currentScene->render();
+			
 		}
 		
 		void init(unsigned int w, unsigned int h)
@@ -159,6 +156,10 @@ namespace sinnca
 		void sceneColor(float r, float g, float b)
 		{
 			glClearColor(r, g, b, 1.0f);
+		}
+		void sceneColor(color* cl)
+		{
+			glClearColor(cl->r / 255.0f, cl->g / 255.0f, cl->b / 255.0f, 1.0f);
 		}
 		
 		m4* getModelMatrix()

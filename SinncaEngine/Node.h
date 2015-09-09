@@ -21,7 +21,7 @@
 namespace sinnca
 {
 	
-	extern class scene;
+	class scene;
 	namespace Tree
 	{
 		extern scene* root;

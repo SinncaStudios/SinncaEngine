@@ -36,6 +36,12 @@ namespace sinnca
 	
 	void assetManager::shutDown()
 	{
+		if (!entityStorage)
+		{
+			// if entitySorage exists, then the others should exist too
+			return;
+		}
+		
 		delete entityStorage;
 		delete colorStorage;
 		delete imageStorage;

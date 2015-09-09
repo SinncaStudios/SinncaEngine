@@ -18,7 +18,7 @@ namespace sinnca
 	
 	enum method3D
 	{
-		none, // no 3D effect
+		none, // no 3D effect, also default
 		native, // built-in display is capible of 3D effect
 		stereoscopic, // 3D using those two color glasses like the tenth doctor wears to find "stuff"
 		crosseye, // displays both views next to each other. User then looks at screen crosseyed to create 3D effect
@@ -32,6 +32,7 @@ namespace sinnca
 		
 	public:
 		
+		bool isOrtho;
 		static constexpr auto metatable = "camera";
 		
 		//point pos;
@@ -44,8 +45,9 @@ namespace sinnca
 		camera();
 		~camera();
 		
+		void setup();
+		
 		void look();
-		void look2D();
 		
 		void render();
 		

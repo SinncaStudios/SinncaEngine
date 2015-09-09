@@ -16,25 +16,15 @@
 #include "AssetManager.h"
 #include "Camera.h"
 
-/*
-// asset tracking
-#include "Entity.h"
-#include "Grid.h"
-#include "Image.h"
-#include "Texture.h"
-#include "Source.h"
-#include "Buffer.h"
-#include "Action.h"
-*/
 
 namespace sinnca
 {
 	class scene : public node
 	{
 		float percLoaded;
-		bool loadable, unloadOnSwitch;
+		bool loadable, retain;
 		
-		int perspective;
+		std::string file;
 		
 	public:
 		
@@ -42,8 +32,10 @@ namespace sinnca
 		
 		camera mainCamera;
 		pool* cameraStorage;
+		
 		assetManager assets;
 		guiMenu* guiManager;
+		guiMenu* loadingScreen;
 		
 		bool alloced;
 		
@@ -81,10 +73,14 @@ namespace sinnca
 		void onLoad();
 		void unLoad();
 		
+		void preLoad();
+		bool switchTo();
+		void setLoadable(bool b);
+		void setRetain(bool b);
+		
 		void update();
 		void render();
 		
-		int pers();
 		
 		//int readFromFile(std::string file);
 		//int dumpToFile(std::string file);

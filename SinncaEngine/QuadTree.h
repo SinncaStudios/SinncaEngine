@@ -13,10 +13,12 @@
 
 namespace sinnca
 {
+	/*
 	class quadTree : public optTree
 	{
 		
 	};
+	 */
 }
 
 #endif /* defined(__SinncaEngine__QuadTree__) */

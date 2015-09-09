@@ -9,6 +9,6 @@
 #ifndef __SinncaEngine__LineTree__
 #define __SinncaEngine__LineTree__
 
-#include <stdio.h>
+#include "OptTree.h"
 
 #endif /* defined(__SinncaEngine__LineTree__) */

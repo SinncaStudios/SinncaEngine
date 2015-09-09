@@ -83,14 +83,7 @@ namespace sinnca
 		
 		if (m == NULL)
 		{
-			if (Tree::currentScene->pers() == 0)
-			{
-				Graphics::square->render();
-				
-			} else {
-				
-			}
-			
+			Graphics::square->render();
 		}
 		
 	}

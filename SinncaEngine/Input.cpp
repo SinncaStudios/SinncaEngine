@@ -102,6 +102,7 @@ namespace sinnca
 		{
 			// this area can probably be better optimized
 			// maybe this can work without prevKeyState
+			#warning Why can't I use arrow keys?
 			
 			Keyboard::prevKeyState[k] = Keyboard::keys[k].x;
 			Keyboard::keys[k].x = 1.0f;
